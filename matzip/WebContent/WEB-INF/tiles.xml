@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	
+	<definition name="main" template="/tiles/layout.jsp">
+		<put-attribute name="title" value="matzip" />
+		<put-attribute name="header" value="/tiles/header.jsp" />
+		<put-attribute name="body" value="/matzip/main/matzipMain.jsp" />
+		<put-attribute name="footer" value="/tiles/footer.jsp" />
+	</definition>
+	
+	<definition name="matzipMain" extends="main">
+		<put-attribute name="title" value="메인"/>
+		<put-attribute name="body" value="/matzip/main/matzipMain.jsp"/>
+	</definition>
+	
+	
+		<!-- 학준  시작  -->
+	<!-- 회원 가입 -->
+<!--  
+	<definition name="joinForm" extends="main">
+		<put-attribute name="title" value="YammYammY 회원가입" />
+		<put-attribute name="body"
+value="/YammyYammy/member/memberJoin/join.jsp" />
+<put-attribute name="footer" value="" />
+	</definition>
+
+	회원 수정
+	<definition name="myPageModifyForm" extends="main">
+		<put-attribute name="title" value="YammYammY MyPage" />
+		<put-attribute name="body"	value="/YammyYammy/member/memberMyPage/myPage.jsp" />
+	</definition>
+	
+	
+	
+	<definition name="myBookMarkForm" extends="main">
+		<put-attribute name="title" value="YammYYammY MyBookMark" />
+		<put-attribute name="body"  value="/YammyYammy/member/memberMyBookMark/myBookMarkForm.jsp" />
+	</definition>
+	
+	<definition name="myBookList" extends="main">
+		<put-attribute name="title" value="YammYYammY MyBookList" />
+		<put-attribute name="body"	value="/YammyYammy/member/memberMyBookMark/myBookMarkList.jsp" />
+		<put-attribute name="footer" value="/tiles/footer2.jsp" />
+	</definition>
+	
+	<definition name="myCommentList" extends="main">
+		<put-attribute name="title" value="YammYYammY MyComment" />
+		<put-attribute name="body"	value="/YammyYammy/member/memberMyBookMark/myCommentList.jsp" />
+		<put-attribute name="footer" value="/tiles/footer2.jsp" />
+	</definition>
+	
+	
+	학준  끝  
+
+
+
+
+	<definition name="searchList" extends="main">
+		<put-attribute name="header" value="/tiles/header.jsp" />
+		<put-attribute name="title" value="검색리스트" />
+		<put-attribute name="body" value="/YammyYammy/list/searchList.jsp" />
+		<put-attribute name="footer" value="/tiles/footer2.jsp" />
+	</definition>
+   
+	<definition name="notice" extends="main">
+		<put-attribute name="header" value="/tiles/header_search.jsp" />
+		<put-attribute name="title" value="notice"/>
+		<put-attribute name="body" value="/YammyYammy/etc/notice.jsp"/>
+	</definition>
+   
+	<definition name="introduce" extends="main">
+		<put-attribute name="title" value="introduce"/>
+		<put-attribute name="body" value="/YammyYammy/etc/introduce.jsp"/>
+	</definition>
+   
+   FAQ 시작
+	<definition name="FAQ" extends="main">
+		<put-attribute name="title" value="/YammyYammy/etc/faq.jsp"/>
+		<put-attribute name="body" value="/YammyYammy/etc/faq.jsp"/>
+	</definition>
+   
+	<definition name="FAQWriteForm" extends="main">
+   		<put-attribute name="title" value="자주찾는질문" />
+   		<put-attribute name="body" value="/YammyYammy/etc/faqForm.jsp" />
+	</definition>
+   
+	<definition name="FAQView" extends="main">
+		<put-attribute name="title" value="자주찾는질문" />
+		<put-attribute name="body" value="/YammyYammy/etc/faqView.jsp" />
+	</definition>
+   FAQ 끝
+   
+   <definition name="login" extends="main">
+		<put-attribute name="title" value="로그인"/>
+		<put-attribute name="body" value="/YammyYammy/login/loginForm.jsp"/>
+	</definition>
+	
+	QNA 시작
+	<definition name="QNA" extends="main">
+		<put-attribute name="title" value="1:1 문의게시판"/>
+		<put-attribute name="body" value="/YammyYammy/etc/qna.jsp"/>
+	</definition>
+	
+	<definition name="QNAWriteForm" extends="main">
+   		<put-attribute name="title" value="1:1 문의게시판" />
+   		<put-attribute name="body" value="/YammyYammy/etc/qnaForm.jsp" />
+	</definition>
+   
+	<definition name="QNAView" extends="main">
+		<put-attribute name="title" value="1:1 문의게시판" />
+		<put-attribute name="body" value="/YammyYammy/etc/qnaView.jsp" />
+	</definition>
+	QNA 끝
+
+	관리자관리자
+   <definition name="adminPage" extends="main">
+      <put-attribute name="title" value="관리자페이지"/>
+      <put-attribute name="body" value="/YammyYammy/admin/adminPage.jsp"/>
+      <put-attribute name="footer" value="" />
+   </definition>
+   
+   <definition name="registList" extends="main">
+      <put-attribute name="title" value="등록요청페이지"/>
+      <put-attribute name="body" value="/YammyYammy/admin/registList.jsp"/>
+      <put-attribute name="footer" value="" />
+   </definition>
+   
+   <definition name="modifyList" extends="main">
+      <put-attribute name="title" value="수정요청페이지"/>
+      <put-attribute name="body" value="/YammyYammy/admin/modifyList.jsp"/>
+      <put-attribute name="footer" value="" />
+   </definition>
+   
+   <definition name="deleteList" extends="main">
+      <put-attribute name="title" value="삭제요청페이지"/>
+      <put-attribute name="body" value="/YammyYammy/admin/deleteList.jsp"/>
+      <put-attribute name="footer" value="" />
+   </definition>
+   
+   <definition name="qnaList" extends="main">
+      <put-attribute name="title" value="문의게시판"/>
+      <put-attribute name="body" value="/YammyYammy/etc/qna.jsp"/>
+   </definition>
+   
+   <definition name="memberList" extends="main">
+      <put-attribute name="title" value="회원관리페이지"/>
+      <put-attribute name="body" value="/YammyYammy/admin/memberList.jsp"/>
+      <put-attribute name="footer" value=""/>
+   </definition>
+   
+   <definition name="registStoreForm" extends="main">
+      <put-attribute name="title" value="가게 등록 페이지"/>
+      <put-attribute name="body" value="/YammyYammy/admin/registForm.jsp"/>
+      <put-attribute name="footer" value="" />
+	</definition>
+
+	혜영씨 시작
+	
+	<definition name="userAgreement" extends="main">
+		<put-attribute name="title" value="개인이용약관"/>
+		<put-attribute name="body" value="/YammyYammy/etc/userAgreement.jsp"/>
+	</definition>
+	
+	<definition name="privacyAgreement" extends="main">
+		<put-attribute name="title" value="기업소개"/>
+		<put-attribute name="body" value="/YammyYammy/etc/privacyAgreement.jsp"/>
+	</definition>
+	
+	혜영씨끝
+	
+	가게 상세보기
+	
+	<definition name="storeView" template="/tiles/layout_store.jsp">
+		<put-attribute name="header" value="/tiles/header.jsp" />
+		<put-attribute name="body" value="/YammyYammy/list/storeView.jsp" />
+		<put-attribute name="body2" value="/YammyYammy/list/commentList.jsp" />
+		<put-attribute name="footer" value="/tiles/footer.jsp" />
+	</definition>
+	
+	가게 상세보기 끝
+	
+	<definition name="noticeList" extends="main">
+		<put-attribute name="title" value="공지사항"/>
+		<put-attribute name="header" value="/tiles/header.jsp" />
+		<put-attribute name="body" value="/YammyYammy/etc/notice.jsp"/>
+	</definition>
+	
+		<definition name="noticeWrite" extends="main">
+		<put-attribute name="title" value="공지사항"/>
+		<put-attribute name="body" value="/YammyYammy/etc/noticeWrite.jsp"/>
+	</definition>
+	
+			<definition name="noticeView" extends="main">
+			<put-attribute name="title" value="공지사항"/>
+		<put-attribute name="body" value="/YammyYammy/etc/noticeView.jsp"/>
+	</definition>
+	 -->
+	
+</tiles-definitions>
