@@ -26,6 +26,7 @@
    </servlet>
    
    <display-name>Struts2</display-name>
+   
   <filter>
   	<filter-name>struts2</filter-name>
   	<filter-class>
