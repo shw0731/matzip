@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="likeReg">
-<typeAlias alias="" type=""/>
+<typeAlias alias="like" type="LikeVO"/>
 <!-- 리절트 맵 -->
 
-<resultMap id="likeRes" class="likeReg">
+<resultMap id="likeres" class="likeReg">
   <result property="memberID" column="memberID"/>
   <result property="RestaurantNo" column="RestaurantNo"/>
 </resultMap>
+<!-- LIKEREG에서 선택한 음식점 게시판과 맞는 유저아이디, 유저아이디개수, 음식점게시판번호를 가져온다.  -->
+<select id="like-rate" resultMap="likeres" parameterClass="like">
+SELECT MEMBERID, COUNT(MEMBERID) as "LIKERATE", RESTAURANTNO 
+FROM LIKEREG 
+WHERE RESTAURANTNO=#RestaurentNo#
+</select>
+<!-- LIKEREG에 유저아이디와 음식점 게시판번호를 입력한다 -->
+<insert id="like-up" parameterClass="like">
+INSERT INTO LIKEREG(MEMBERID, RESTAURANTNO)
+VALUES(#memberID#, #RestaurantNo#)
+</insert>
+<!-- 선택한 음식점게시판번호와 맞는 유저아이디와 음식점 번호를 삭제한다. -->
+<delete id="like-down" parameterClass="like">
+DELETE FROM LIKEREG(MEMBERID, RESTAURANTNO) WHERE RESTAURANTNO=#RestaurantNo#
+</delete>
 </sqlMap>
