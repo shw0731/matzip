@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="blackList">
+<typeAlias alias="blackList" type="blackListVO"/>
+<!-- 리절트 맵 -->
+
+<resultMap id="blackListRes" class="blackList">
+  <result property="PhoneNumber" column="PhoneNumber"/>
+</resultMap>
+
+<!-- 공통 -->
+<sql id="select-all">
+  SELECT * FROM BLACKLISTBOARD
+</sql>
+
+<!-- 공통으로 사용할 where-no절 정의 -->
+<sql id="where-no">
+  WHERE PHONENUMBER = #PHONENUMBER#
+</sql>
+
+<!-- select쿼리문 -->
+<select id="selectAll" resultMap="blackListRes">
+  <include refid="select-all"/>
+  ORDER BY PHONENUMBER DESC
+</select>
+
+<select id="selectOne" resultMap="blackListRes" parameterClass="int">
+  <include refid="select-all"/>
+  <include refid="where-no"/>
+</select>
+
+<select id="selectLastNo" resultClass="blackListRes">
+  SELECT max(PhoneNumber) as PhoneNumber FROM BLACKLISTBOARD
+</select>
+
+<!-- insert쿼리문 정의 -->
+<insert id="insertBoard" parameterClass="blackListRes">
+  INSERT INTO BLACKLISTBOARD(PHONENUMBER)
+  VALUE (BLACKLISTBOARD_NO_SQL.NEXTVAL,#PhoneNumber#)
+</insert>
+
+<!-- update쿼리문 정의 -->
+<update id="updateBoard" parameterClass="blackListRes">
+  UPDATE BLACKLISTBOARD SET PHONENUMBER=#phoneNumber#
+<include refid="where-no"/>
+</update>
+
+<!-- delete쿼리문 정의 -->
+<delete id="deleteBoard" parameterClass="blackListRes">
+  DELETE FROM BLACKLISTBOARD
+  <include refid="where-no"/>
+</delete>
+
+</sqlMap>

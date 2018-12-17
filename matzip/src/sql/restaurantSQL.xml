@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="restaurant">
+
+<typeAlias alias="restaurant" type="restaurantVO"/>
+
+<!-- 리절트 맵 -->
+<resultMap id="restaurantRes" class="restaurantBoard">
+   <result property="restaurantNo" column="restaurantNo"/>
+   <result property="ownerID" column="ownerID"/>
+   <result property="restaurantName" column="restaurantName"/>
+   <result property="context" column="context"/>
+   <result property="images" column="images"/>
+   <result property="category" column="category"/>
+   <result property="address" column="address"/>
+   <result property="like" column="like"/>
+   <result property="location" column="location"/>
+   <result property="isPower" column="isRes"/>
+   <result property="isRes" column="isRes"/>
+   <result property="starPoint" column="starPoint"/>
+</resultMap>
+
+<!-- 공통으로 사용할 select절 -->
+<sql id="select-all">
+  SELECT * FROM RESTAURANTBOARD
+</sql>
+
+<!-- 공통으로 사용할 where-no절 정의 -->
+<sql id="where-no">
+  WHERE restaurantNo = #restaurantNo#
+</sql>
+
+<!-- select쿼리문-->
+<select id="selecAll" resultMap="restaurantRes">
+  <include refid="select-all"/>
+  ORDER By restaurantNo DESC
+</select>
+
+<select id="selectOne" resultMap="restaurantRes" parameterClass="int">
+  <include refid="select-all"/>
+  <include refid="where-no"/>
+</select>
+
+<select id="selectLastNo" resultClass="restaurantRes">
+  SELECT max(restaurantNo) as restaurantNo FROM RESTAURANTBOARD
+</select>
+
+<!-- 검색로직 -->
+
+<select id="selectSearchA" resultMap="restaurantRes" parameterClass="String">
+  <include refid="select-all"/>
+  WHERE address like #searchKeyword#
+  ORDER BY restaurantNo DESC
+</select>
+
+<select id="selectSearchS" resultMap="restaurantRes" parameterClass="string">
+  <include refid="select-all"/>
+  WHERE restaurantName like #searchKeyword#
+  ORDER BY restaurantNo DESC
+</select>
+
+<select id="selectSearchC" resultMap="restaurantRes" parameterClass="String">
+  <include refid="select-all"/>
+  WHERE context like #searchKeyword#
+  ORDER BY restaurantNo DESC
+</select>
+
+<!-- insert쿼리문 정의 -->
+<insert id="insertBoard" parameterClass="board">
+  INSERT INTO RESTAURANTBOARD(RESTAURANTNO, OWNERID, RESTAURANTNAME, CONTEXT, IMAGES, CATEGORY, ADDRESS, LIKE, LOCATION, ISPOWER, ISRES, STARPOINT );
+  VALUE (RESTORANTBOARD_NO_SEQ.NEXTVAL, #restaurantNo#, #ownerID#, #restaurantName#, #context#, #images#, #category#, #address#, #like#, #location#, #isPower#, #isRes#, #starPoint#);
+</insert>
+
+<!-- update쿼리문 정의 -->
+<update id="updateBoard" parameterClass="board">
+  UPDATE RESTAURANTBOARD SET
+  restaurantNo = #restaurantNo#,
+  ownerID = #ownerID#,
+  restaurantName = #restaurantName#,
+  context = #context#,
+  images = #images#,
+  category = #category#,
+  address = #address#,
+  like = #like#,
+  location = #location#,
+  isPower = #isPower#,
+  isRes = #isRes#,
+  starPoint = #starPoint#
+  <include refid="where-no"/>
+</update>
+
+<!-- delete쿼리문 정의 -->
+<delete id="deleteBoard" parameterClass="board">
+  DELETE FROM RESTAURANTBOARD
+  <include refid="where-no"/>
+</delete>
+
+</sqlMap>

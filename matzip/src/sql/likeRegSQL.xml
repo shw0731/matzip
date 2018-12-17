@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="likeReg">
+<typeAlias alias="" type=""/>
+<!-- 리절트 맵 -->
+
+<resultMap id="likeRes" class="likeReg">
+  <result property="memberID" column="memberID"/>
+  <result property="RestaurantNo" column="RestaurantNo"/>
+</resultMap>
+</sqlMap>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="member">
+<typeAlias alias="member" type="memberVO"/>
+<!-- 리절트 맵 -->
+<resultMap id="memberRes" class="member">
+  <result property="name" column="name"/>
+  <result property="phoneNumber" column="phoneNumber"/>
+  <result property="ID" column="ID"/>
+  <result property="password" column="password"/>
+  <result property="blacklist" column="blacklist"/>
+  <result property="email" column="email"/>
+  <result property="isCustom" column="isCustom"/>
+  <result property="point" column="ponumber"/>
+  <result property="isSuper" column="isSuper"/>
+</resultMap>
+
+<!-- 공통 사용 쿼리 -->
+<sql id="select-all">
+	SELECT * FROM MEMBER
+</sql>
+
+
+</sqlMap>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="QnA">
+<typeAlias alias="" type=""/>
+<!-- 리절트 맵 -->
+
+<resultMap id="QnABoardRes" class="QnABoard">
+  <result property="serviceNo" column="serviceNo"/>
+  <result property="ID" column="ID"/>
+  <result property="subject" column="subject"/>
+  <result property="context" column="context"/>
+  <result property="password" column="password"/>
+  <result property="reg_date" column="reg_date"/>
+  <result property="isAnswer" column="isAnswer"/>
+</resultMap>
+
+</sqlMap>

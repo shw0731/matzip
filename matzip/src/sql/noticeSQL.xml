@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="notice">
+<typeAlias alias="notice" type="NoticeVO"/>
+<!-- 리절트 맵 -->
+
+<resultMap id="noticeRes" class="NoticeBoard">
+  <result property="serviceNo" column="serviceNo"/>
+  <result property="subject" column="subject"/>
+  <result property="context" column="context"/>
+  <result property="password" column="password"/>
+  <result property="reg_date" column="reg_date"/>
+</resultMap>
+
+	<sql id="select-all-notice">
+	SELECT * FROM NOTICEBOARD
+	</sql>
+
+	<sql id="where-no-notice">
+	WHERE serviceNo = #serviceNo#
+	</sql>
+
+	<select id="selectAllNotice" resultMap="noticeRes"
+	parameterClass="int">
+	<include refid="select-all-notice" />
+	ORDER BY serviceNo DESC	
+	</select>
+
+	<insert id="insertNotice" parameterClass="notice">
+		INSERT INTO NOTICEBOARD (serviceNo,
+		subject,
+		context,
+		password,
+		reg_date)
+		VALUES (NOTICEBOARD_SEQUENCE.NEXTVAL,
+		#subject#,
+		#context#,
+		#reg_date#
+		)
+	</insert>
+
+	<select id="selectLastNotice" resultClass="notice"
+		parameterClass="int">
+		SELECT max(serviceNo) as no FROM NOTICEBOARD
+	</select>
+
+	<select id="selectNotice" resultMap="noticeRes" parameterClass="int">
+		<include refid="select-all-notice" />
+		<include refid="where-no-notice" />
+	</select>
+
+	<update id="updateNoticeCount" parameterClass="notice">
+		UPDATE NOTICEBOARD SET notice_count = notice_count + 1
+		<include refid="where-no-notice" />
+	</update>
+
+	<delete id="deleteNotice" parameterClass="notice">
+		DELETE FROM NOTICEBOARD
+		<include refid="where-no-notice" />
+	</delete>
+
+	<update id="updateNotice" parameterClass="notice">
+		UPDATE NOTICEBOARD SET subject = #subject#,
+		context = #context#
+		<include refid="where-no-notice" />
+	</update>
+
+	
+
+
+</sqlMap>
