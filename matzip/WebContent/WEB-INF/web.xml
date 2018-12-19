@@ -34,7 +34,7 @@
   	</filter-class>
   	 <init-param>
   		<param-name>struts.i18n.encoding</param-name>
-  		<param-value>euc-kr</param-value>
+  		<param-value>UTF-8</param-value>
   	</init-param>
   </filter>
   
