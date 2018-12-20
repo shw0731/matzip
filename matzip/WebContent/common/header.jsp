@@ -1,3 +1,42 @@
+
+<script>
+function validation(frm){
+	
+	var frm=document.forms(0);
+	
+	if(frm.ID.value==""){
+		alert("아이디를 입력해 주세요.");
+		return false;
+	}
+	else if(frm.password.value==""){
+		alert("비밀번호을 입력해 주세요.");
+		return false;
+	}
+	else if(frm.email.value==""){
+		alert("이메일을 입력해 주세요.");
+		return false;
+	}
+	else if(frm.isType.value==""){
+		alert("회원유형을 선택해주세요.");
+		return false;
+	}
+	return true;
+	
+}
+
+
+function openConfirmId(Joinform){	
+	var id = Joinform.ID.value;
+	
+	if(id.length == 0){
+		alert("아이디를 입력하세요.");
+		Joinform.ID.focus();
+		return false;
+	}
+	open("toolbar=no,location=no,status=no,menubar=no,"+
+						 "scrollbars=no,resizable=no,width=400,height=200");
+}
+</script>
 <head>
 
     <meta charset="utf-8">
@@ -38,6 +77,7 @@
     </nav>
     
     <!-- login -->
+    
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true" >
   <div class="modal-dialog" role="document">
@@ -50,9 +90,9 @@
       </div>
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
-          <i class="fa fa-user prefix grey-text"></i>
+          <i class="fa fa-id-badge prefix grey-text"></i>
           <input type="email" id="defaultForm-email" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Your ID</label>
         </div>
 
         <div class="md-form mb-4">
@@ -71,6 +111,7 @@
 </div>
 
 <!-- Join -->
+
 <div class="modal fade" id="modalJoinForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -83,36 +124,53 @@
       </div>
       <div class="modal-body mx-2">
         <div class="md-form mb-2">
+          <i class="fa fa-id-badge prefix grey-text"></i>
+          <input type="text" name="orangeForm-name" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-name">ID</label>
+          <s:textfield name="ID" theme="simple" value="%{resultClass.ID}"/>
+          <input button type="button" name="confirm_id" value="Check" onclick="validation()"/><br>
+       </div></div>
+      <div class="modal-body mx-2">
+        <div class="md-form mb-2">
           <i class="fa fa-user prefix grey-text"></i>
-          <input type="text" id="orangeForm-name" class="form-control validate">
+          <input type="text" name="orangeForm-name" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+          <s:textfield name="name" theme="simple" value="%{resultClass.name}" />
         </div>
         <div class="md-form mb-2">
           <i class="fa fa-mobile prefix grey-text"></i>
-          <input type="email" id="orangeForm-email" class="form-control validate">
+          <input type="email" name="orangeForm-email" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-email">Your phone</label>
+          <s:textfield name="phoneNumber" theme="simple" value="%{resultClass.phoneNumber}" /><br>
         </div>
 		<div class="md-form mb-2">
           <i class="fa fa-envelope prefix grey-text"></i>
-          <input type="password" id="orangeForm-conpass" class="form-control validate">
+          <input type="password" name="orangeForm-conpass" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-pass">E-mail</label>
+          <s:textfield name="email" theme="simple" value="%{resultClass.email}" /><br>
         </div>
         <div class="md-form mb-2">
           <i class="fa fa-lock prefix grey-text"></i>
-          <input type="password" id="orangeForm-pass" class="form-control validate">
+          <input type="password" name="orangeForm-pass" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
+        <s:password name="password" theme="simple" value="%{resultClass.password}" />
         </div>
 
 		<div class="md-form mb-2">
           <i class="fa fa-lock prefix grey-text"></i>
-          <input type="password" id="orangeForm-conpass" class="form-control validate">
+          <input type="password" name="orangeForm-conpass" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-pass">Confirm Password</label>
         </div>
+        Type<br/>
+        <input type="radio" name="checkType" value="0"/>a general member
+	    <input type="radio" name="checkType" value="1"/>a store-owner
+	    <br><br>
         
         
       </div>
       <div class="modal-footer d-flex justify-content-center">
         <button class="btn btn-deep-orange">Sign up</button>
+        
       </div>
     </div>
   </div>

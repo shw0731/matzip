@@ -5,7 +5,25 @@
 <struts>
 		<!-- 용량제한 100MB로 설정 -->
 	<constant name="struts.multipart.maxSize" value="104857600" />
-	
+ <package name="main" extends="struts-default, tiles-default">
+ 
+ <action name="JoinForm" class="member.JoinAction" method="form">
+   <result type="tiles">JoinForm</result>
+ </action>
+<action name="JoinAction" class="member.JoinAction" >
+	<result type="chain">main</result>
+</action>
+ <action name="idCheckAction" class="member.JoinAction" method="idCheckMethod" >
+   <result name="success">/common/search/idCheck.jsp</result>
+</action>
+<action name="loginAction" class="member.LoginAction" >
+	<result type="chain" name="success" >main</result>
+	<result name="error">/common/search/loginError.jsp</result>
+</action>
+<action name="logout" class="member.LoginAction" method="logout">
+	<result type="chain">main</result>
+</action>
+
 	<!-- <package name="main" extends="struts-default, tiles-default">
 	
 		<action name="main" class="action.YammyMainAction">
@@ -341,5 +359,5 @@
 		</action>
 		
 	</package> -->
-
+</package>
 </struts>

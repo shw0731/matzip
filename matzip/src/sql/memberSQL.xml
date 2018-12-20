@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="member">
-<typeAlias alias="member" type="memberVO"/>
+<typeAlias alias="member" type="MemberVO"/>
 <!-- 리절트 맵 -->
 <resultMap id="memberRes" class="member">
   <result property="name" column="name"/>
@@ -10,15 +10,63 @@
   <result property="password" column="password"/>
   <result property="blacklist" column="blacklist"/>
   <result property="email" column="email"/>
-  <result property="isCustom" column="isCustom"/>
+  <result property="isType" column="isType"/>
   <result property="point" column="ponumber"/>
-  <result property="isSuper" column="isSuper"/>
 </resultMap>
 
 <!-- 공통 사용 쿼리 -->
 <sql id="select-all">
-	SELECT * FROM MEMBER
+	SELECT * FROM MEMBERBOARD
 </sql>
 
+<!-- 공통으로 사용할 where-no절 정의 -->
+<sql id="where-no">
+  WHERE ID = #id#
+</sql>
+
+<!-- select쿼리문 정의 -->
+<select id="selectAll" resultMap="memberRes">
+  <include refid="select-all"/>
+  ORDER BY ID DESC
+</select>
+
+<select id="selectOne" resultMap="memberRes" parameterClass="int">
+  <include refid="select-all"/>
+  <include refid="where-no"/>
+</select>
+
+<select id="selectPassword" resultMap="memberRes" parameterClass="board">
+  <include refid="select-all"/>
+  <include refid="where-no"/>
+  AND password=#password#
+</select>
+
+<select id="idCheck" resultClass="String" parameterClass="String">
+  SELECT ID FROM memberBoard WHERE ID = #ID#
+</select>
+
+<!-- insert쿼리문 정의 -->
+<insert id="insertBoard" parameterClass="board">
+  INSERT INTO MEMBERBOARD (ID, NAME, PHONENUMBER,  PASSWORD, BLACKLIST, EMAIL, ISTYPE, POINT)
+  VALUE (MEMBERBOARD_ID_SEQ.NEXTVAL, #name#, #phonenumber#, #password#, #blacklist#, #email#, #istype#, #point#)
+</insert>
+
+<!-- update 쿼리문 정의 -->
+<update id="updateBoard" parameterClass="board">
+  UPDATE MEMBERBOARD SET ID = #id#,
+                      NAME = #name#,
+                      PHONENUMBER = #phonenumber#,
+                      PASSWORD = #password#,
+                      BLACKLIST = #blacklist#,
+                      EMAIL = #email#,
+                      ISTYPE = #istype#,
+                      POINT = #point#
+     <include refid="where-no"/>
+</update>
+
+<!-- delete쿼리문 정의 -->
+<delete id="deleteBoard" parameterClass="board">
+  DELETE FROM MEMBERBOARD
+</delete>
 
 </sqlMap>
