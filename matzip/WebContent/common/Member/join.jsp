@@ -39,11 +39,8 @@ function openConfirmId(Joinform){
 		alert("아이디를 입력하세요.");
 		Joinform.ID.focus();
 		return false;
-	} else{
-		
 	}
-	open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"+
-						 "scrollbars=no,resizable=no,width=400,height=200");
+	return true;
 }
 </script>
 
@@ -56,16 +53,19 @@ function openConfirmId(Joinform){
 <br/>
 <br/>
 
-<form name="Joinform" action="JoinAction.action" method="post" enctype="multipart/form-data" onsubmit="return validation(this)">
+<form name="Joinform" action="JoinAction.action" method="post" enctype="multipart/form-data" onsubmit="return openConfirmId(this)">
 
-	ID : <s:textfield name="ID" theme="simple" value="%{resultClass.ID}" />
+    NAME : <s:textfield name="name" theme="simple" value="%{resultClass.name}" /><br>
+	ID : <s:textfield name="ID" theme="simple" value="%{resultClass.ID}" /><br>
 	<input type="button" name="isCheck" value="중복확인" onclick="openConfirmId(this.form)" /><br>
 	password : <s:password name="password" theme="simple" value="%{resultClass.password}" /><br>
 	email : <s:textfield name="email" theme="simple" value="%{resultClass.email}" /><br>
+	phonenumber : <s:textfield name="phoneNumber" theme="simple" value="%{resultClass.phoneNumber}" /><br>
 	Type :
 	<input type="radio" name="checkType" value="0"/>일반회원
 	<input type="radio" name="checkType" value="1"/>점주
 	<br><br>
+	
 	<input name="submit" type="submit" value="작성완료" >
 </form>
 

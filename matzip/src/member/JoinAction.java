@@ -16,10 +16,13 @@ public class JoinAction extends ActionSupport {
 	private MemberVO paramClass;
 	private MemberVO resultClass;
 	
+	private String name;
 	private String ID;
 	private String password;
 	private String email;
 	private int isType; //0회원 1점주 2관리자
+	private String phoneNumber;
+	private int blacklist;
 	
 	private String idCheck;
 	
@@ -39,13 +42,16 @@ public class JoinAction extends ActionSupport {
 		resultClass = new MemberVO();
 		
 		//등록할 항목
+		paramClass.setName(getName());
 		paramClass.setID(getID());
 		paramClass.setPassword(getPassword());
 		paramClass.setEmail(getEmail());
 		paramClass.setIstype(getIsType()); 
+		paramClass.setPhoneNumber(getPhoneNumber());
+		paramClass.setBlacklist(getBlacklist());
 		
 		//등록 쿼리 수행
-		sqlMapper.insert("insertBoard", paramClass);
+		sqlMapper.insert("member.insertMember", paramClass);
 			
 	return SUCCESS;
 	}
@@ -79,6 +85,12 @@ public class JoinAction extends ActionSupport {
 		this.paramClass = paramClass;
 	}
 
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public MemberVO getResultClass() {
 		return resultClass;
 	}
@@ -117,6 +129,24 @@ public class JoinAction extends ActionSupport {
 
 	public void setIsType(int isType) {
 		this.isType = isType;
+	}
+	public String getIdCheck() {
+		return idCheck;
+	}
+	public void setIdCheck(String idCheck) {
+		this.idCheck = idCheck;
+	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	public int getBlacklist() {
+		return blacklist;
+	}
+	public void setBlacklist(int blackList) {
+		this.blacklist = blackList;
 	}
 	
 	}

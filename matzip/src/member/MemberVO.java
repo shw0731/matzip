@@ -25,8 +25,8 @@ public class MemberVO {
 	public String getID() {
 		return ID;
 	}
-	public void setID(String iD) {
-		ID = ID;
+	public void setID(String ID) {
+		this.ID = ID;
 	}
 	public int getBlacklist() {
 		return blacklist;

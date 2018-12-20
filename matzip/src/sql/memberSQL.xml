@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="member">
-<typeAlias alias="member" type="MemberVO"/>
+<typeAlias alias="member" type="member.MemberVO"/>
 <!-- 리절트 맵 -->
 <resultMap id="memberRes" class="member">
   <result property="name" column="name"/>
@@ -11,17 +11,16 @@
   <result property="blacklist" column="blacklist"/>
   <result property="email" column="email"/>
   <result property="isType" column="isType"/>
-  <result property="point" column="ponumber"/>
 </resultMap>
 
 <!-- 공통 사용 쿼리 -->
 <sql id="select-all">
-	SELECT * FROM MEMBERBOARD
+	SELECT * FROM MEMBER
 </sql>
 
 <!-- 공통으로 사용할 where-no절 정의 -->
 <sql id="where-no">
-  WHERE ID = #id#
+  WHERE ID = #ID#
 </sql>
 
 <!-- select쿼리문 정의 -->
@@ -35,38 +34,41 @@
   <include refid="where-no"/>
 </select>
 
-<select id="selectPassword" resultMap="memberRes" parameterClass="board">
+<select id="selectPassword" resultMap="memberRes" parameterClass="member">
   <include refid="select-all"/>
   <include refid="where-no"/>
   AND password=#password#
 </select>
 
 <select id="idCheck" resultClass="String" parameterClass="String">
-  SELECT ID FROM memberBoard WHERE ID = #ID#
+  SELECT ID FROM member WHERE ID = #ID#
 </select>
 
 <!-- insert쿼리문 정의 -->
-<insert id="insertBoard" parameterClass="board">
-  INSERT INTO MEMBERBOARD (ID, NAME, PHONENUMBER,  PASSWORD, BLACKLIST, EMAIL, ISTYPE, POINT)
-  VALUE (MEMBERBOARD_ID_SEQ.NEXTVAL, #name#, #phonenumber#, #password#, #blacklist#, #email#, #istype#, #point#)
+<insert id="insertMember" parameterClass="member">
+  INSERT INTO MEMBER (
+  ID, NAME, PHONENUMBER,  PASSWORD, BLACKLIST, EMAIL, ISTYPE
+  )
+  VALUES (
+  #ID#, #name#, #phoneNumber#, #password#, #blacklist#, #email#, #isType#
+  )
 </insert>
 
 <!-- update 쿼리문 정의 -->
-<update id="updateBoard" parameterClass="board">
-  UPDATE MEMBERBOARD SET ID = #id#,
+<update id="updateMember" parameterClass="member">
+  UPDATE MEMBER SET ID = #ID#,
                       NAME = #name#,
-                      PHONENUMBER = #phonenumber#,
+                      PHONENUMBER = #phoneNumber#,
                       PASSWORD = #password#,
                       BLACKLIST = #blacklist#,
                       EMAIL = #email#,
-                      ISTYPE = #istype#,
-                      POINT = #point#
+                      ISTYPE = #isType#
      <include refid="where-no"/>
 </update>
 
 <!-- delete쿼리문 정의 -->
-<delete id="deleteBoard" parameterClass="board">
-  DELETE FROM MEMBERBOARD
+<delete id="deleteMember" parameterClass="member">
+  DELETE FROM MEMBER
 </delete>
 
 </sqlMap>

@@ -125,7 +125,7 @@ function openConfirmId(Joinform){
       <div class="modal-body mx-2">
         <div class="md-form mb-2">
           <i class="fa fa-id-badge prefix grey-text"></i>
-          <input type="text" name="orangeForm-name" class="form-control validate">
+          <input type="text" name="ID" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-name">ID</label>
           <s:textfield name="ID" theme="simple" value="%{resultClass.ID}"/>
           <input button type="button" name="confirm_id" value="Check" onclick="validation()"/><br>
@@ -133,19 +133,19 @@ function openConfirmId(Joinform){
       <div class="modal-body mx-2">
         <div class="md-form mb-2">
           <i class="fa fa-user prefix grey-text"></i>
-          <input type="text" name="orangeForm-name" class="form-control validate">
+          <input type="text" name="name" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
           <s:textfield name="name" theme="simple" value="%{resultClass.name}" />
         </div>
         <div class="md-form mb-2">
           <i class="fa fa-mobile prefix grey-text"></i>
-          <input type="email" name="orangeForm-email" class="form-control validate">
+          <input type="email" name="email" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-email">Your phone</label>
           <s:textfield name="phoneNumber" theme="simple" value="%{resultClass.phoneNumber}" /><br>
         </div>
 		<div class="md-form mb-2">
           <i class="fa fa-envelope prefix grey-text"></i>
-          <input type="password" name="orangeForm-conpass" class="form-control validate">
+          <input type="password" name="email" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-pass">E-mail</label>
           <s:textfield name="email" theme="simple" value="%{resultClass.email}" /><br>
         </div>
