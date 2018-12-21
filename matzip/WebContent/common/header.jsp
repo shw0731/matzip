@@ -37,7 +37,7 @@ function openConfirmId(){
 		if(id.length == 0){
 		alert("아이디를 입력하세요.");
 		Joinform.ID.focus();
-		return false;
+		return false;                 
 	}else{
 		return true;
 	}
@@ -73,10 +73,13 @@ function openConfirmId(){
         
         
          <input type="text" class="search-bar" style="width:200px; height:40px;"/>
-         <button type="button" id="searchbtn" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" onclick="goReplace('/common/search/search.jsp')">검색</button>
+         <button type="button" id="searchbtn" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" onclick="goReplace('/common/search/search.jsp')">검색</button> --> -->
+         <!-- <button type="button" id="searchbtn" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" onclick="javascript:data_check(); return false;">검색</button> -->
+         <button type="button" id="filter" class="btn btn-primary" data-toggle="modal" data-target="#searchFilter">검색필터</button>
           <ul class="navbar-nav text-uppercase ml-auto">
             
             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalLoginForm">LOGIN</button>
+            
           </ul>
         
       </div>
@@ -176,14 +179,48 @@ function openConfirmId(){
         
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <input class="btn btn-deep-orange" type="submit"></input>
-        
+        <input class="btn btn-deep-orange" type="button"></input>
       </div>
+      <input type="hidden" id="address-data" name="address"/>
+      <input type="hidden" id="category-data" name="category"/>
       </form>
     </div>
   </div>
 </div>
     
+    
+    
+    <div class="modal fade" id="searchFilter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-2">
+        <div class="md-form mb-2">
+          <i class="fa fa-id-badge prefix grey-text"></i>
+          <input type="text" id="filter_address" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-name">지역</label>
+       </div>
+       </div>
+      <div class="modal-body mx-2">
+        <div class="md-form mb-2">
+          <i class="fa fa-user prefix grey-text"></i>
+          <input type="text" id="filter_category" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-name">음식종류</label>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-primary" onclick="javascript:fn_get_filter(); return false">적용</input>
+      </div>
+      
+    </div>
+  </div>
+</div>
     
         <!-- Bootstrap core JavaScript -->
     <script src="/vendor/jquery/jquery.min.js"></script>
@@ -200,7 +237,32 @@ function openConfirmId(){
     <script src="/js/agency.min.js"></script>
     
     <script type="text/javascript">
+	$(document).ready(function(){
+		
+	});  
+    
     function goReplace(str) { location.replace(str); }
+	    
+    
+    var fn_get_filter = function(){
+    	var address = $('#filter_address').val();
+    	var category = $('#filter_category').val();
+    	
+   		$('#address-data').val(address);
+   		$('#category-data').val(category);
+   		
+   		$('#searchFilter').modal('hide');
+   		$('.modal-backdrop').css('display','none');
+    }
+    
+    var data_check = function(){
+    	
+    	var data1 = $('#address-data').val();
+   		var data2 = $('#category-data').val();
+   		
+   		console.log('check data1 ==>',data1);
+   		console.log('check data2 ==>',data2);
+    }
 
 
     </script>
