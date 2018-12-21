@@ -1,8 +1,9 @@
 
 <script>
-function validation(frm){
+function validation(){
 	
-	var frm=document.forms(0);
+	var frm=document.JoinForm;
+	
 	
 	if(frm.ID.value==""){
 		alert("아이디를 입력해 주세요.");
@@ -10,6 +11,9 @@ function validation(frm){
 	}
 	else if(frm.password.value==""){
 		alert("비밀번호을 입력해 주세요.");
+		return false;
+	}else if(frm.name.value==""){
+		alert("이름을 입력해주세요.");
 		return false;
 	}
 	else if(frm.email.value==""){
@@ -19,22 +23,24 @@ function validation(frm){
 	else if(frm.isType.value==""){
 		alert("회원유형을 선택해주세요.");
 		return false;
+	}else if(frm.password.value!=frm.comPassword.value){
+		alert("비밀번호가 동일하지 않습니다.");
+		return false;
 	}
 	return true;
 	
 }
 
 
-function openConfirmId(Joinform){	
-	var id = Joinform.ID.value;
-	
-	if(id.length == 0){
+function openConfirmId(){	
+	var id = document.getElementById('user_id').value;
+		if(id.length == 0){
 		alert("아이디를 입력하세요.");
 		Joinform.ID.focus();
 		return false;
+	}else{
+		return true;
 	}
-	open("toolbar=no,location=no,status=no,menubar=no,"+
-						 "scrollbars=no,resizable=no,width=400,height=200");
 }
 </script>
 <head>
@@ -125,11 +131,11 @@ function openConfirmId(Joinform){
       <div class="modal-body mx-2">
         <div class="md-form mb-2">
           <i class="fa fa-id-badge prefix grey-text"></i>
-          <form name="Joinform" action="JoinAction.action" method="post" enctype="multipart/form-data" onsubmit="return validation(this)">
-          <input type="text" name="ID" class="form-control validate">
+          <form name="JoinForm" action="JoinAction.action" method="post" enctype="multipart/form-data" onsubmit="return validation()">
+          <input type="text" id="user_id" name="ID" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-name">ID</label>
           <s:textfield name="ID" theme="simple" value="%{resultClass.ID}"/>
-          <input button type="button" name="confirm_id" value="Check" onclick="validation()"/><br>
+          <input button type="button" name="confirm_id" value="Check" onclick="openConfirmId()"/><br>
        </div></div>
       <div class="modal-body mx-2">
         <div class="md-form mb-2">
@@ -163,14 +169,14 @@ function openConfirmId(Joinform){
           <label data-error="wrong" data-success="right" for="orangeForm-pass">Confirm Password</label>
         </div>
         Type<br/>
-        <input type="radio" name="checkType" value="0"/>a general member
-	    <input type="radio" name="checkType" value="1"/>a store-owner
+        <input type="radio" name="isType" value="0"/>a general member
+	    <input type="radio" name="isType" value="1"/>a store-owner
 	    <br><br>
         
         
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-deep-orange" type="submit">Sign up</button>
+        <input class="btn btn-deep-orange" type="submit"></input>
         
       </div>
       </form>
