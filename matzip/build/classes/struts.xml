@@ -11,7 +11,7 @@
    <result type="tiles">JoinForm</result>
  </action>
 <action name="JoinAction" class="member.JoinAction" >
-	<result type="chain">main</result>
+	<result>/index.jsp</result>
 </action>
  <action name="idCheckAction" class="member.JoinAction" method="idCheckMethod" >
    <result name="success">/common/search/idCheck.jsp</result>

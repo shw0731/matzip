@@ -125,6 +125,7 @@ function openConfirmId(Joinform){
       <div class="modal-body mx-2">
         <div class="md-form mb-2">
           <i class="fa fa-id-badge prefix grey-text"></i>
+          <form name="Joinform" action="JoinAction.action" method="post" enctype="multipart/form-data" onsubmit="return validation(this)">
           <input type="text" name="ID" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-name">ID</label>
           <s:textfield name="ID" theme="simple" value="%{resultClass.ID}"/>
@@ -139,26 +140,26 @@ function openConfirmId(Joinform){
         </div>
         <div class="md-form mb-2">
           <i class="fa fa-mobile prefix grey-text"></i>
-          <input type="email" name="email" class="form-control validate">
+          <input type="text" name="phoneNumber" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-email">Your phone</label>
           <s:textfield name="phoneNumber" theme="simple" value="%{resultClass.phoneNumber}" /><br>
         </div>
 		<div class="md-form mb-2">
           <i class="fa fa-envelope prefix grey-text"></i>
-          <input type="password" name="email" class="form-control validate">
+          <input type="email" name="email" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-pass">E-mail</label>
           <s:textfield name="email" theme="simple" value="%{resultClass.email}" /><br>
         </div>
         <div class="md-form mb-2">
           <i class="fa fa-lock prefix grey-text"></i>
-          <input type="password" name="orangeForm-pass" class="form-control validate">
+          <input type="password" name="password" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
         <s:password name="password" theme="simple" value="%{resultClass.password}" />
         </div>
 
 		<div class="md-form mb-2">
           <i class="fa fa-lock prefix grey-text"></i>
-          <input type="password" name="orangeForm-conpass" class="form-control validate">
+          <input type="password" name="comPassword" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-pass">Confirm Password</label>
         </div>
         Type<br/>
@@ -169,9 +170,10 @@ function openConfirmId(Joinform){
         
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-deep-orange">Sign up</button>
+        <button class="btn btn-deep-orange" type="submit">Sign up</button>
         
       </div>
+      </form>
     </div>
   </div>
 </div>
