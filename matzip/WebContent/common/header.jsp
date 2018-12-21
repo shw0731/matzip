@@ -37,7 +37,7 @@ function openConfirmId(){
 		if(id.length == 0){
 		alert("아이디를 입력하세요.");
 		Joinform.ID.focus();
-		return false;
+		return false;                 
 	}else{
 		return true;
 	}
