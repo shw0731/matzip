@@ -22,7 +22,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	
 	private String password;
 	private String isType;
-	private String email;
+	private String ID;
 	
 	public LoginAction() throws IOException {
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -30,12 +30,15 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		reader.close();
 	}
 	//비밀번호가 맞으면 세션유지
+	
 	public String execute() throws Exception{
 		password = getPassword();
-		resultClass = (MemberVO) sqlMapper.queryForObject("email", getEmail());
+		resultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", getID());
 		if (resultClass != null) {
 			if (resultClass.getPassword().equals(password)) {
-				session.put("email", resultClass.getEmail());
+				
+				session.put("ID", resultClass.getID());
+				session.put("password", resultClass.getPassword());
 				return SUCCESS;
 			}
 		}
@@ -46,7 +49,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	public String logout() throws Exception{
 		if(session.get("ID") != null) {
 			session.remove("password");
-			session.remove("email");
+			session.remove("ID");
 		}
 		return SUCCESS;
 		
@@ -107,12 +110,12 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		this.isType = isType;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getID() {
+		return ID;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setID(String ID) {
+		this.ID = ID;
 	}
 	
 

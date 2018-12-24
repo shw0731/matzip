@@ -13,35 +13,35 @@
   <result property="isType" column="isType"/>
 </resultMap>
 
-<!-- 공통 사용 쿼리 -->
+<!-- 공통으로 사용할 select 절 정의 -->
 <sql id="select-all">
-	SELECT * FROM MEMBER
+	SELECT * FROM MEMBER 
 </sql>
-
-<!-- 공통으로 사용할 where-no절 정의 -->
+		
+<!-- 공통으로 사용할 where-no 절 정의 -->
 <sql id="where-no">
-  WHERE ID = #ID#
+	WHERE ID = #ID#
 </sql>
+	
 
 <!-- select쿼리문 정의 -->
 <select id="selectAll" resultMap="memberRes">
-  <include refid="select-all"/>
-  ORDER BY ID DESC
+  SELECT * FROM MEMBER ORDER BY ID DESC
 </select>
 
-<select id="selectOne" resultMap="memberRes" parameterClass="int">
-  <include refid="select-all"/>
-  <include refid="where-no"/>
+<select id="selectOne" resultMap="memberRes" parameterClass="String">
+  SELECT * FROM MEMBER WHERE ID = #ID#
+</select>
+
+<!-- 아이디 중복확인하기 -->
+<select id="idCheck" resultClass="String" parameterClass="String">
+  SELECT ID FROM MEMBER WHERE ID = #ID# 
 </select>
 
 <select id="selectPassword" resultMap="memberRes" parameterClass="member">
   <include refid="select-all"/>
   <include refid="where-no"/>
   AND password=#password#
-</select>
-
-<select id="idCheck" resultClass="String" parameterClass="String">
-  SELECT ID FROM member WHERE ID = #ID#
 </select>
 
 <!-- insert쿼리문 정의 -->

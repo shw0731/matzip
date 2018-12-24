@@ -31,10 +31,23 @@ function validation(){
 	
 }
 
+function checkValue(){
+	var frm=document.forms(0);
+	if(frm.ID==""){
+		alert("아이디를 입력해 주세요.");
+		return false;
+	}
+	else if(frm.password==""){
+		alert("비밀번호를 입력해 주세요.");
+		return false;
+	}
+	return true;
+}
+
 
 function openConfirmId(){	
-	var id = document.getElementById('user_id').value;
-		if(id.length == 0){
+	var id = document.getElementById('ID').value;
+		if(ID.length == 0){
 		alert("아이디를 입력하세요.");
 		Joinform.ID.focus();
 		return false;                 
@@ -77,7 +90,6 @@ function openConfirmId(){
          <!-- <button type="button" id="searchbtn" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" onclick="javascript:data_check(); return false;">검색</button> -->
          <button type="button" id="filter" class="btn btn-primary" data-toggle="modal" data-target="#searchFilter">검색필터</button>
           <ul class="navbar-nav text-uppercase ml-auto">
-            
             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalLoginForm">LOGIN</button>
             
           </ul>
@@ -100,21 +112,24 @@ function openConfirmId(){
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <i class="fa fa-id-badge prefix grey-text"></i>
-          <input type="email" id="defaultForm-email" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="defaultForm-email">Your ID</label>
+          <form name="LoginForm" action="LoginAction.action" method="post" enctype="multipart/form-data" onsubmit="return openConfirmId()">
+          <input type="text" name="ID" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="defaultForm-ID">Your ID</label>
         </div>
 
         <div class="md-form mb-4">
           <i class="fa fa-lock prefix grey-text"></i>
-          <input type="password" id="defaultForm-pass" class="form-control validate">
+          <input type="password" name="password" class="form-control validate">
           <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
         </div>
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
         <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalJoinForm">Join</button>
-        <button class="btn btn-primary btn-lg">Login</button>
+        <!-- <button type="button" class="btn btn-primary btn-lg" >Login</button> -->
+        <input button type="submit" class="btn btn-primary btn-lg" value="Login" onclick="return checkValue()"/>
       </div>
+      </form>
     </div>
   </div>
 </div>
