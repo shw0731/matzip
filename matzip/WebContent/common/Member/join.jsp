@@ -1,78 +1,66 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css'/>
-<script>
-function validation(){
-	
-	var frm=document.forms(0);
-	
-	if(frm.ID.value==""){
-		alert("아이디를 입력해 주세요.");
-		return false;
-	}
-	else if(frm.password.value==""){
-		alert("비밀번호을 입력해 주세요.");
-		return false;
-	}
-	else if(frm.email.value==""){
-		alert("이메일을 입력해 주세요.");
-		return false;
-	}
-	else if(frm.isType.value==""){
-		alert("회원유형을 선택해주세요.");
-		return false;
-	}
-	return true;
-	
-}
 
+<div class="modal fade" id="modalJoinForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-2">
+        <div class="md-form mb-2">
+          <i class="fa fa-id-badge prefix grey-text"></i>
+          <form name="JoinForm" action="JoinAction.action" method="post" enctype="multipart/form-data" onsubmit="return validation()">
+          <input type="text" id="user_id" name="ID" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-name">ID</label>
+          <s:textfield name="ID" theme="simple" value="%{resultClass.ID}"/>
+          <input button type="button" name="confirm_id" value="Check" onclick="openConfirmId()"/><br>
+       </div></div>
+      <div class="modal-body mx-2">
+        <div class="md-form mb-2">
+          <i class="fa fa-user prefix grey-text"></i>
+          <input type="text" name="name" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+          <s:textfield name="name" theme="simple" value="%{resultClass.name}" />
+        </div>
+        <div class="md-form mb-2">
+          <i class="fa fa-mobile prefix grey-text"></i>
+          <input type="text" name="phoneNumber" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-email">Your phone</label>
+          <s:textfield name="phoneNumber" theme="simple" value="%{resultClass.phoneNumber}" /><br>
+        </div>
+		<div class="md-form mb-2">
+          <i class="fa fa-envelope prefix grey-text"></i>
+          <input type="email" name="email" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-pass">E-mail</label>
+          <s:textfield name="email" theme="simple" value="%{resultClass.email}" /><br>
+        </div>
+        <div class="md-form mb-2">
+          <i class="fa fa-lock prefix grey-text"></i>
+          <input type="password" name="password" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
+        <s:password name="password" theme="simple" value="%{resultClass.password}" />
+        </div>
 
-function openConfirmId(Joinform){	
-	var id = Joinform.ID.value;
-	
-	if(id.length == 0){
-		alert("아이디를 입력하세요.");
-		Joinform.ID.focus();
-		return false;
-	}
-	return true;
-}
-</script>
-
-</head>
-<body>
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-<form name="Joinform" action="JoinAction.action" method="post" enctype="multipart/form-data" onsubmit="return openConfirmId(this)">
-
-    NAME : <s:textfield name="name" theme="simple" value="%{resultClass.name}" /><br>
-	ID : <s:textfield name="ID" theme="simple" value="%{resultClass.ID}" /><br>
-	<input type="button" name="isCheck" value="중복확인" onclick="openConfirmId(this.form)" /><br>
-	password : <s:password name="password" theme="simple" value="%{resultClass.password}" /><br>
-	email : <s:textfield name="email" theme="simple" value="%{resultClass.email}" /><br>
-	phonenumber : <s:textfield name="phoneNumber" theme="simple" value="%{resultClass.phoneNumber}" /><br>
-	Type :
-	<input type="radio" name="checkType" value="0"/>일반회원
-	<input type="radio" name="checkType" value="1"/>점주
-	<br><br>
-	
-	<input name="submit" type="submit" value="작성완료" >
-</form>
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-</body>
-</html>
+		<div class="md-form mb-2">
+          <i class="fa fa-lock prefix grey-text"></i>
+          <input type="password" name="comPassword" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-pass">Confirm Password</label>
+        </div>
+        Type<br/>
+        <input type="radio" name="isType" value="0"/>a general member
+	    <input type="radio" name="isType" value="1"/>a store-owner
+	    <br><br>
+        
+        
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input class="btn btn-deep-orange" type="submit"></input>
+      </div>
+     
+      </form>
+    </div>
+  </div>
+</div>

@@ -86,7 +86,7 @@ function openConfirmId(){
         
         
          <input type="text" class="search-bar" style="width:200px; height:40px;"/>
-         <button type="button" id="searchbtn" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" onclick="goReplace('/common/search/search.jsp')">검색</button> --> -->
+         <button type="button" id="searchbtn" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" onclick="goReplace('/common/search/search.jsp')">검색</button>
          <!-- <button type="button" id="searchbtn" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" onclick="javascript:data_check(); return false;">검색</button> -->
          <button type="button" id="filter" class="btn btn-primary" data-toggle="modal" data-target="#searchFilter">검색필터</button>
           <ul class="navbar-nav text-uppercase ml-auto">
@@ -99,143 +99,14 @@ function openConfirmId(){
     
     <!-- login -->
     
-    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true" >
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">LOGIN</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <i class="fa fa-id-badge prefix grey-text"></i>
-          <form name="LoginForm" action="LoginAction.action" method="post" enctype="multipart/form-data" onsubmit="return openConfirmId()">
-          <input type="text" name="ID" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="defaultForm-ID">Your ID</label>
-        </div>
-
-        <div class="md-form mb-4">
-          <i class="fa fa-lock prefix grey-text"></i>
-          <input type="password" name="password" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
-        </div>
-
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalJoinForm">Join</button>
-        <!-- <button type="button" class="btn btn-primary btn-lg" >Login</button> -->
-        <input button type="submit" class="btn btn-primary btn-lg" value="Login" onclick="return checkValue()"/>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
+   <%@ include file="/common/Member/login.jsp"%>
 
 <!-- Join -->
 
-<div class="modal fade" id="modalJoinForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-2">
-        <div class="md-form mb-2">
-          <i class="fa fa-id-badge prefix grey-text"></i>
-          <form name="JoinForm" action="JoinAction.action" method="post" enctype="multipart/form-data" onsubmit="return validation()">
-          <input type="text" id="user_id" name="ID" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-name">ID</label>
-          <s:textfield name="ID" theme="simple" value="%{resultClass.ID}"/>
-          <input button type="button" name="confirm_id" value="Check" onclick="openConfirmId()"/><br>
-       </div></div>
-      <div class="modal-body mx-2">
-        <div class="md-form mb-2">
-          <i class="fa fa-user prefix grey-text"></i>
-          <input type="text" name="name" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
-          <s:textfield name="name" theme="simple" value="%{resultClass.name}" />
-        </div>
-        <div class="md-form mb-2">
-          <i class="fa fa-mobile prefix grey-text"></i>
-          <input type="text" name="phoneNumber" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-email">Your phone</label>
-          <s:textfield name="phoneNumber" theme="simple" value="%{resultClass.phoneNumber}" /><br>
-        </div>
-		<div class="md-form mb-2">
-          <i class="fa fa-envelope prefix grey-text"></i>
-          <input type="email" name="email" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-pass">E-mail</label>
-          <s:textfield name="email" theme="simple" value="%{resultClass.email}" /><br>
-        </div>
-        <div class="md-form mb-2">
-          <i class="fa fa-lock prefix grey-text"></i>
-          <input type="password" name="password" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
-        <s:password name="password" theme="simple" value="%{resultClass.password}" />
-        </div>
-
-		<div class="md-form mb-2">
-          <i class="fa fa-lock prefix grey-text"></i>
-          <input type="password" name="comPassword" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-pass">Confirm Password</label>
-        </div>
-        Type<br/>
-        <input type="radio" name="isType" value="0"/>a general member
-	    <input type="radio" name="isType" value="1"/>a store-owner
-	    <br><br>
-        
-        
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <input class="btn btn-deep-orange" type="button"></input>
-      </div>
-      <input type="hidden" id="address-data" name="address"/>
-      <input type="hidden" id="category-data" name="category"/>
-      </form>
-    </div>
-  </div>
-</div>
+    <%@ include file="/common/Member/join.jsp"%>
     
-    
-    
-    <div class="modal fade" id="searchFilter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-2">
-        <div class="md-form mb-2">
-          <i class="fa fa-id-badge prefix grey-text"></i>
-          <input type="text" id="filter_address" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-name">지역</label>
-       </div>
-       </div>
-      <div class="modal-body mx-2">
-        <div class="md-form mb-2">
-          <i class="fa fa-user prefix grey-text"></i>
-          <input type="text" id="filter_category" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-name">음식종류</label>
-        </div>
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <button type="button" class="btn btn-primary" onclick="javascript:fn_get_filter(); return false">적용</input>
-      </div>
-      
-    </div>
-  </div>
-</div>
+    <!--  검색 필터 -->
+    <%@ include file="/common/search/searchFilter.jsp"%>
     
         <!-- Bootstrap core JavaScript -->
     <script src="/vendor/jquery/jquery.min.js"></script>
@@ -259,25 +130,7 @@ function openConfirmId(){
     function goReplace(str) { location.replace(str); }
 	    
     
-    var fn_get_filter = function(){
-    	var address = $('#filter_address').val();
-    	var category = $('#filter_category').val();
-    	
-   		$('#address-data').val(address);
-   		$('#category-data').val(category);
-   		
-   		$('#searchFilter').modal('hide');
-   		$('.modal-backdrop').css('display','none');
-    }
     
-    var data_check = function(){
-    	
-    	var data1 = $('#address-data').val();
-   		var data2 = $('#category-data').val();
-   		
-   		console.log('check data1 ==>',data1);
-   		console.log('check data2 ==>',data2);
-    }
 
 
     </script>
