@@ -15,7 +15,7 @@
 </action>
 <action name="LoginAction" class="member.LoginAction" >
 	<result name="success" >/index.jsp</result>
-	<result name="error">/common/loginError.jsp</result>
+	<result name="error">/common/Member/loginError.jsp</result>
 </action>
 <action name="logout" class="member.LoginAction" method="logout">
 	<result>/index.jsp</result>
