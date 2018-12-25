@@ -1,4 +1,4 @@
-
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <script>
 function validation(){
 	
@@ -74,7 +74,7 @@ function openConfirmId(){
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom styles for this template -->
     <link href="/css/agency.css" rel="stylesheet">
 
@@ -88,9 +88,16 @@ function openConfirmId(){
          <input type="text" class="search-bar" style="width:200px; height:40px;"/>
          <button type="button" id="searchbtn" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" onclick="goReplace('/common/search/search.jsp')">검색</button>
          <!-- <button type="button" id="searchbtn" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" onclick="javascript:data_check(); return false;">검색</button> -->
-         <button type="button" id="filter" class="btn btn-primary" data-toggle="modal" data-target="#searchFilter">검색필터</button>
+         
+          <button id="filter" class="btn btn-primary" data-toggle="modal" data-target="#searchFilter"><i class="fa fa-sliders"></i></button>
+          
           <ul class="navbar-nav text-uppercase ml-auto">
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalLoginForm">LOGIN</button>
+            <s:if test="session !=NULL">
+             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalmyPageForm">MYPAGE</button>
+          </s:if>
+          <s:else>
+             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalLoginForm">LOGIN</button>
+          </s:else>
             
           </ul>
         
