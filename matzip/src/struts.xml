@@ -355,6 +355,9 @@
 			</result>
 		</action>
 		
+		
 	</package> -->
+	
 </package>
+	<include file="/configs/Notice.xml" />
 </struts>
