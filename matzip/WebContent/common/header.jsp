@@ -92,8 +92,11 @@ function openConfirmId(){
           <button id="filter" class="btn btn-primary" data-toggle="modal" data-target="#searchFilter"><i class="fa fa-sliders"></i></button>
           
           <ul class="navbar-nav text-uppercase ml-auto">
-            <s:if test="session !=NULL">
+            <s:if test="session.ID !=NULL">
              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalmyPageForm">MYPAGE</button>
+          	 <form action="logout.action">
+          	 <button type="submit" class="btn btn-primary btn-lg">LOGOUT</button>
+          	 </form>
           </s:if>
           <s:else>
              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalLoginForm">LOGIN</button>
