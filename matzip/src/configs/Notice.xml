@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+      <!-- 용량제한 100MB로 설정 -->
+      <constant name = "struts.multipart.maxSize" value = "104857600" />
+ 
+      <package name = "notice" extends = "struts-default">
+            <!-- 글로벌 예외 처리 화면 설정 -->
+            <global-results>
+                  <result name = "error">/notice/pageError.jsp</result>
+            </global-results>
+  
+            <global-exception-mappings>
+                  <exception-mapping result = "error" exception = "java.lang.Exception" />
+            </global-exception-mappings>
+  
+            <!-- 게시판 리스트 액션 -->
+            <action name = "listAction" class = "notice.listAction">
+                  <result>/notice/noticeList.jsp</result>
+            </action>
+  
+            <!-- 게시판 쓰기 액션 -->
+            <action name = "writeForm" class = "notice.writeAction" method = "form">
+                  <result>/notice/noticeWrite.jsp</result>
+            </action>
+  
+            <action name = "writeAction" class = "notice.writeAction">
+                  <result type = "redirect-action">
+                        <param name = "actionName">listAction</param>
+                  </result>
+            </action>
+  
+            <!-- 게시판 상세보기 액션 -->
+           <action name = "viewAction" class = "notice.viewAction">
+                  <result>/notice/noticeView.jsp</result>
+           </action>
+           
+                       <!-- 게시판 수정 액션 -->
+            <action name = "modifyForm" class = "notice.viewAction">
+                  <result type = "chain">writeForm</result>
+            </action>
+  
+            <action name = "modifyAction" class = "notice.modifyAction">
+                  <result type = "chain">viewAction</result>
+            </action>
+            
+                        <!-- 게시판 삭제 액션 -->
+            <action name = "deleteAction" class = "notice.deleteAction">
+                  <result type = "chain">listAction</result>
+            </action>
+      </package>
+</struts>
