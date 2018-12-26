@@ -2,7 +2,7 @@ package notice;
 
  
 
-public class NO_pagingAction 
+public class pagingAction 
 {
       private int currentPage; // 현재페이지
       private int totalCount; // 전체 게시물 수
@@ -21,7 +21,7 @@ public class NO_pagingAction
  
 
       // 페이징 생성자
-      public NO_pagingAction(int currentPage, int totalCount, int blockCount, int blockPage) 
+      public pagingAction(int currentPage, int totalCount, int blockCount, int blockPage) 
       {
             this.blockCount = blockCount;
             this.blockPage = blockPage;

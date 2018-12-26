@@ -32,7 +32,7 @@
       </tr>
  
       <s:iterator value = "list" status = "stat">
-            <s:url id = "viewURL" action = "viewAction">
+            <s:url id = "viewURL" action = "no_viewAction">
                   <s:param name = "no">
                         <s:property value = "no" />
                   </s:param>
@@ -70,7 +70,7 @@
             <td colspan = "5">
                   <input type = "button" value = "글쓰기" class = "inputb" 
                         onClick = "javascript:location.href=
-                        'writeForm.action?currentPage=<s:property value = "currentPage" />';">
+                        'no_writeForm.action?currentPage=<s:property value = "currentPage" />';">
             </td>
       </tr>
 </table>

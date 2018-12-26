@@ -10,38 +10,38 @@
 
   
             <!-- 게시판 리스트 액션 -->
-            <action name = "listAction" class = "notice.NO_listAction">
+            <action name = "no_listAction" class = "notice.listAction">
                   <result>/common/notice/noticeList.jsp</result>
             </action>
   
             <!-- 게시판 쓰기 액션 -->
-            <action name = "writeForm" class = "notice.NO_writeAction" method = "form">
+            <action name = "no_writeForm" class = "notice.writeAction" method = "form">
                   <result>/common/notice/noticeWrite.jsp</result>
             </action>
   
-            <action name = "writeAction" class = "notice.NO_writeAction">
+            <action name = "no_writeAction" class = "notice.writeAction">
                   <result type = "redirect-action">
-                        <param name = "actionName">listAction</param>
+                        <param name = "actionName">no_listAction</param>
                   </result>
             </action>
   
             <!-- 게시판 상세보기 액션 -->
-           <action name = "viewAction" class = "notice.NO_viewAction">
+           <action name = "no_viewAction" class = "notice.viewAction">
                   <result>/common/notice/noticeView.jsp</result>
            </action>
            
                        <!-- 게시판 수정 액션 -->
-            <action name = "modifyForm" class = "notice.NO_viewAction">
-                  <result type = "chain">writeForm</result>
+            <action name = "no_modifyForm" class = "notice.viewAction">
+                  <result type = "chain">no_writeForm</result>
             </action>
   
-            <action name = "modifyAction" class = "notice.NO_modifyAction">
-                  <result type = "chain">viewAction</result>
+            <action name = "no_modifyAction" class = "notice.modifyAction">
+                  <result type = "chain">no_viewAction</result>
             </action>
             
                         <!-- 게시판 삭제 액션 -->
-            <action name = "deleteAction" class = "notice.NO_deleteAction">
-                  <result type = "chain">listAction</result>
+            <action name = "no_deleteAction" class = "notice.deleteAction">
+                  <result type = "chain">no_listAction</result>
             </action>
       </package>
 </struts>

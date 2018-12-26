@@ -62,14 +62,14 @@
  
 
 <s:if test = "resultClass == NULL">
-<form action = "writeAction.action" method = "post"
+<form action = "no_writeAction.action" method = "post"
       enctype = "multipart/form-data" onsubmit = "return validation();">
 </s:if>
 
  
 
 <s:else>
-<form action = "modifyAction.action" method = "post" enctype = "multipart/form-data">
+<form action = "no_modifyAction.action" method = "post" enctype = "multipart/form-data">
       <s:hidden name = "no" value = "%{resultClass.no}" />
       <s:hidden name = "currentPage" value = "%{currentPage}" />
 </s:else>
@@ -126,7 +126,7 @@
                   <input name = "submit" type = "submit" value = "작성완료" class = "inputb">
                   <input name = "list" type = "button" value = "목록" class = "inputb"
                         onClick = "javascript:location.href=
-                        'listAction.action?currentPage=<s:property value = "currentPage" />'">
+                        'no_listAction.action?currentPage=<s:property value = "currentPage" />'">
             </td>
       </tr>
 </table>

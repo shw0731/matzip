@@ -18,7 +18,7 @@ import java.io.IOException;
 
  
 
-public class NO_deleteAction extends ActionSupport
+public class deleteAction extends ActionSupport
 {
       public static Reader reader;
       public static SqlMapClient sqlMapper;
@@ -32,7 +32,7 @@ public class NO_deleteAction extends ActionSupport
       private int no;
  
       // 생성자
-      public NO_deleteAction() throws IOException
+      public deleteAction() throws IOException
       {
             // sqlMapConfig.xml 파일의 설정내용을 가져온다.
             reader = Resources.getResourceAsReader("sqlMapConfig.xml");

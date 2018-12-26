@@ -4,7 +4,7 @@ package notice;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import notice.NO_pagingAction;
+import notice.pagingAction;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -18,7 +18,7 @@ import java.io.IOException;
 
  
 
-public class NO_listAction extends ActionSupport 
+public class listAction extends ActionSupport 
 {
       public static Reader reader; // 파일 스트림을 위한 reader
  
@@ -34,10 +34,10 @@ public class NO_listAction extends ActionSupport
       private int blockCount = 10; // 한 페이지의  게시물의 수
       private int blockPage = 5; // 한 화면에 보여줄 페이지 수
       private String pagingHtml; // 페이징을 구현한 html
-      private NO_pagingAction page; // 페이징 클래스
+      private pagingAction page; // 페이징 클래스
  
       // 생성자
-      public NO_listAction() throws IOException 
+      public listAction() throws IOException 
       {
             // sqlMapConfig.xml 파일의 설정내용을 가져온다.
             reader = Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -57,7 +57,7 @@ public class NO_listAction extends ActionSupport
             totalCount = list.size(); // 전체 글 개수를 구한다.
   
             // pagingAction 객체 생성
-            page = new NO_pagingAction(currentPage, totalCount, blockCount, blockPage); 
+            page = new pagingAction(currentPage, totalCount, blockCount, blockPage); 
             pagingHtml = page.getPagingHtml().toString(); // 페이지 html 생성
 
  
@@ -113,8 +113,8 @@ public class NO_listAction extends ActionSupport
 
  
 
-      public NO_pagingAction getPage() { return page; }
-      public void setPage(NO_pagingAction page) { this.page = page; }
+      public pagingAction getPage() { return page; }
+      public void setPage(pagingAction page) { this.page = page; }
 }
 
 
