@@ -7,47 +7,40 @@
       <constant name = "struts.multipart.maxSize" value = "104857600" />
  
       <package name = "notice" extends = "struts-default">
-            <!-- 글로벌 예외 처리 화면 설정 -->
-            <global-results>
-                  <result name = "error">/notice/pageError.jsp</result>
-            </global-results>
-  
-            <global-exception-mappings>
-                  <exception-mapping result = "error" exception = "java.lang.Exception" />
-            </global-exception-mappings>
+
   
             <!-- 게시판 리스트 액션 -->
-            <action name = "listAction" class = "notice.listAction">
-                  <result>/notice/noticeList.jsp</result>
+            <action name = "listAction" class = "notice.NO_listAction">
+                  <result>/common/notice/noticeList.jsp</result>
             </action>
   
             <!-- 게시판 쓰기 액션 -->
-            <action name = "writeForm" class = "notice.writeAction" method = "form">
-                  <result>/notice/noticeWrite.jsp</result>
+            <action name = "writeForm" class = "notice.NO_writeAction" method = "form">
+                  <result>/common/notice/noticeWrite.jsp</result>
             </action>
   
-            <action name = "writeAction" class = "notice.writeAction">
+            <action name = "writeAction" class = "notice.NO_writeAction">
                   <result type = "redirect-action">
                         <param name = "actionName">listAction</param>
                   </result>
             </action>
   
             <!-- 게시판 상세보기 액션 -->
-           <action name = "viewAction" class = "notice.viewAction">
-                  <result>/notice/noticeView.jsp</result>
+           <action name = "viewAction" class = "notice.NO_viewAction">
+                  <result>/common/notice/noticeView.jsp</result>
            </action>
            
                        <!-- 게시판 수정 액션 -->
-            <action name = "modifyForm" class = "notice.viewAction">
+            <action name = "modifyForm" class = "notice.NO_viewAction">
                   <result type = "chain">writeForm</result>
             </action>
   
-            <action name = "modifyAction" class = "notice.modifyAction">
+            <action name = "modifyAction" class = "notice.NO_modifyAction">
                   <result type = "chain">viewAction</result>
             </action>
             
                         <!-- 게시판 삭제 액션 -->
-            <action name = "deleteAction" class = "notice.deleteAction">
+            <action name = "deleteAction" class = "notice.NO_deleteAction">
                   <result type = "chain">listAction</result>
             </action>
       </package>

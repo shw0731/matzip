@@ -24,7 +24,7 @@ import java.net.URLEncoder;
 
  
 
-public class viewAction extends ActionSupport
+public class NO_viewAction extends ActionSupport
 {
       public static Reader reader;
       public static SqlMapClient sqlMapper;
@@ -42,7 +42,7 @@ public class viewAction extends ActionSupport
       private long contentLength;
  
       // 생성자
-      public viewAction() throws IOException
+      public NO_viewAction() throws IOException
       {
             // sqlMapConfig.xml 파일의 설정내용을 가져온다.
             reader = Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -58,7 +58,7 @@ public class viewAction extends ActionSupport
 
   
             // 해당 번호의 글을 가져온다.
-            resultClass = (noticeVO)sqlMapper.queryForObject("selectOne", getNo());
+            resultClass = (noticeVO)sqlMapper.queryForObject("notice.selectOne", getNo());
   
             return SUCCESS;
       }

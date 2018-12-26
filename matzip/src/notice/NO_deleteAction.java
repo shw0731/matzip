@@ -18,7 +18,7 @@ import java.io.IOException;
 
  
 
-public class deleteAction extends ActionSupport
+public class NO_deleteAction extends ActionSupport
 {
       public static Reader reader;
       public static SqlMapClient sqlMapper;
@@ -32,7 +32,7 @@ public class deleteAction extends ActionSupport
       private int no;
  
       // 생성자
-      public deleteAction() throws IOException
+      public NO_deleteAction() throws IOException
       {
             // sqlMapConfig.xml 파일의 설정내용을 가져온다.
             reader = Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -50,14 +50,14 @@ public class deleteAction extends ActionSupport
             resultClass = new noticeVO();
   
             // 해당 번호의 글을 가져온다.
-            resultClass = (noticeVO)sqlMapper.queryForObject("selectOne", getNo());
+            resultClass = (noticeVO)sqlMapper.queryForObject("notice.selectOne", getNo());
   
   
             // 삭제할 항목 설정
             paramClass.setNo(getNo());
   
             // 삭제 쿼리 수행
-            sqlMapper.update("deleteBoard", paramClass);
+            sqlMapper.update("notice.deleteBoard", paramClass);
   
             return SUCCESS;
       }

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ 
+
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 
+      'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+ 
+<sqlMap namespace="notice"> 
+      <typeAlias alias = "board" type = "notice.noticeVO" />
+ 
+      <!-- 리절트 맵 정의 -->
+      <resultMap id = "boardRes" class = "board">
+            <result property = "no" column = "no" />
+            <result property = "subject" column = "subject" />
+            <result property = "writer" column = "writer" />
+            <result property = "content" column = "content" />
+            <result property = "regdate" column = "regdate" />
+      </resultMap>
+ 
+      <!-- 공통으로 사용할 select 절 정의 -->
+      <sql id = "select-all">
+            SELECT * FROM NOTICEBOARD
+      </sql>
+ 
+      <!-- 공통으로 사용할 where-no 절 정의 -->
+      <sql id = "where-no">
+            WHERE no = #no#
+      </sql>
+ 
+      <!-- select 쿼리문 정의 -->
+      <select id = "selectAll" resultMap = "boardRes" parameterClass = "int">
+            <include refid = "select-all" />
+            ORDER BY no DESC
+      </select>
+ 
+      <select id = "selectOne" resultMap = "boardRes" parameterClass = "int">
+            <include refid = "select-all" />
+            <include refid = "where-no" />
+      </select>
+ 
+      <select id = "selectLastNo" resultClass = "board" parameterClass = "int">
+            SELECT max(no) as no FROM NOTICEBOARD
+      </select>
+ 
+ 
+      <!-- insert 쿼리문 정의 -->
+      <insert id = "insertBoard" parameterClass = "board">
+            INSERT INTO NOTICEBOARD(NO,
+                  SUBJECT,
+                  WRITER,
+                  CONTENT,
+                  REGDATE
+            )
+            VALUES(NOTICEBOARD_NO_SEQ.NEXTVAL,
+                  #subject#,
+                  #writer#,
+                  #content#,
+                  #regdate#
+            )
+      </insert>
+ 
+      <!-- update 쿼리문 정의 -->
+      <update id = "updateBoard" parameterClass = "board">
+            UPDATE NOTICEBOARD SET SUBJECT = #subject#,
+                  Writer = #writer#,
+                  CONTENT = #content#
+   
+            <include refid = "where-no" />
+      </update>
+ 
+ 
+ 
+      <!-- delete 쿼리문 정의 -->
+      <delete id = "deleteBoard" parameterClass = "board">
+            DELETE FROM NOTICEBOARD
+  
+            <include refid = "where-no" />
+      </delete>
+</sqlMap>
+
+
