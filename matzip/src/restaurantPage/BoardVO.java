@@ -10,7 +10,6 @@ public class BoardVO {
 	private String address;
 	private int likes;
 	private String location;
-	private String password;
 	private int isPower;
 	private int isRes;
 	private float starPoint;
@@ -58,12 +57,7 @@ public class BoardVO {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	
 	public float getStarPoint() {
 		return starPoint;
 	}

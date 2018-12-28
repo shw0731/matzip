@@ -15,7 +15,6 @@
    <result property="address" column="address"/>
    <result property="likes" column="likes"/>
    <result property="location" column="location"/>
-   <result property="password" column="password"/>
    <result property="isPower" column="isPower"/>
    <result property="isRes" column="isRes"/>
    <result property="starPoint" column="starPoint"/>
@@ -41,6 +40,11 @@
 <select id="selectOne" resultMap="restaurantRes" parameterClass="int">
   <include refid="select-all"/><!-- SELECT * FROM RESTAURANTBOARD -->
   <include refid="where-no"/><!--  WHERE restaurantNo = #restaurantNo# --> <!-- restaurantNo에 해당하는 RESTAURANTBOARD에 있는 데이터 전부를 꺼낸다. -->
+</select>
+
+<select id="selectID" resultMap="restaurantRes" parameterClass="int">
+  <include refid="select-all"/><!-- SELECT * FROM RESTAURANTBOARD -->
+  WHERE ownerID = #ownerID# <!--  WHERE restaurantNo = #restaurantNo# --> <!-- restaurantNo에 해당하는 RESTAURANTBOARD에 있는 데이터 전부를 꺼낸다. -->
 </select>
 
 <select id="selectLastNo" resultClass="restaurantBoard">
@@ -77,8 +81,7 @@
   							CATEGORY, 
   							ADDRESS, 
   							LIKES, 
-  							LOCATION, 
-  							PASSWORD, 
+  							LOCATION,  
   							ISPOWER, 
   							ISRES,
   							STARPOINT)
@@ -90,8 +93,7 @@
  						 		#category#, 
  						 		#address#, 
  						 		#likes#, 
- 						 		#location#, 
- 						 		#password#, 
+ 						 		#location#,  
  						 		#isPower#, 
  						 		#isRes#, 
  						 		#starPoint#)

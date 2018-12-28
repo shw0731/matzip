@@ -68,9 +68,13 @@ public class WriteAction extends ActionSupport{
 		paramClass.setAddress(getAddress());
 		paramClass.setCategory(getCategory());
 		paramClass.setContext(getContext());
-	
+		paramClass.setIsRes(0);
+		paramClass.setIsPower(0);
+		paramClass.setLocation("0");
+		paramClass.setLikes(0);
+		paramClass.setStarPoint(0);
 		// 등록 쿼리 수행.
-		sqlMapper.insert("rest.insertBoard", paramClass);
+		
 
 /*		// 첨부파일을 선택했다면 파일을 업로드한다.
 		if (getUpload() != null) {
@@ -89,10 +93,18 @@ public class WriteAction extends ActionSupport{
 		for (int i = 0; i < uploads.size(); i++) {
 			File destFile = new File(fileUploadPath
 					+ getUploadsFileName().get(i));
-			
+			if(images==null)
+				images=getUploadsFileName().get(i);
+			else
+				images+=getUploadsFileName().get(i);
+			if(i!=uploads.size()-1)
+				images+=",";
 			FileUtils.copyFile(getUploads().get(i), destFile);
 		}
-
+		 paramClass.setImages(images);
+		
+		sqlMapper.insert("rest.insertBoard", paramClass);
+		
 		return SUCCESS;
 	}
 
