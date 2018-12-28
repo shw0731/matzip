@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="rest">
+
+<typeAlias alias="restaurantBoard" type="restaurantPage.BoardVO"/>
+
+<!-- 리절트 맵 -->
+<resultMap id="restaurantRes" class="restaurantBoard">
+   <result property="restaurantNo" column="restaurantNo"/>
+   <result property="ownerID" column="ownerID"/>
+   <result property="restaurantName" column="restaurantName"/>
+   <result property="context" column="context"/>
+   <result property="images" column="images"/>
+   <result property="category" column="category"/>
+   <result property="address" column="address"/>
+   <result property="likes" column="likes"/>
+   <result property="location" column="location"/>
+   <result property="password" column="password"/>
+   <result property="isPower" column="isPower"/>
+   <result property="isRes" column="isRes"/>
+   <result property="starPoint" column="starPoint"/>
+
+</resultMap>
+
+<!-- 공통으로 사용할 select절 -->
+<sql id="select-all">
+  SELECT * FROM RESTAURANTBOARD <!-- RESTAURANTBOARD 에있는 데이터 모두를 꺼내온다 -->
+</sql>
+
+<!-- 공통으로 사용할 where-no절 정의 -->
+<sql id="where-no">
+  WHERE restaurantNo = #restaurantNo#<!-- 해당하는 restaurantNo를 찾아온다 -->
+</sql>
+
+<!-- select쿼리문-->
+<select id="selectAll" resultMap="restaurantRes">
+  <include refid="select-all"/><!-- SELECT * FROM RESTAURANTBOARD -->
+  ORDER BY RESTAURANTNO DESC <!-- restaurantNo를 가져와서 내림차순 정렬 -->
+</select>
+
+<select id="selectOne" resultMap="restaurantRes" parameterClass="int">
+  <include refid="select-all"/><!-- SELECT * FROM RESTAURANTBOARD -->
+  <include refid="where-no"/><!--  WHERE restaurantNo = #restaurantNo# --> <!-- restaurantNo에 해당하는 RESTAURANTBOARD에 있는 데이터 전부를 꺼낸다. -->
+</select>
+
+<select id="selectLastNo" resultClass="restaurantBoard">
+  SELECT max(restaurantNo) as restaurantNo FROM RESTAURANTBOARD <!-- RESTAURANTBOARD에서 restaurantNo값의 최대값을 restaurantNo로 명명하여 꺼낸다. -->
+</select>
+
+<!-- 검색로직 -->
+
+<select id="selectSearchA" resultMap="restaurantRes" parameterClass="String">
+  <include refid="select-all"/><!-- SELECT * FROM RESTAURANTBOARD -->
+  WHERE address like #searchKeyword#    		<!--RESTAURANTBOARD에서 #searchKeyword#에 부합하는 address값들을 전부 꺼내어 restaurantNo값으로 내림차순 정렬한다. -->
+  ORDER BY restaurantNo DESC
+</select>
+
+<select id="selectSearchS" resultMap="restaurantRes" parameterClass="string">
+  <include refid="select-all"/><!-- SELECT * FROM RESTAURANTBOARD -->
+  WHERE restaurantName like #searchKeyword# <!--RESTAURANTBOARD에서 #searchKeyword#에 부합하는 restaurantName값들을 전부 꺼내어 restaurantNo값으로 내림차순 정렬한다. -->
+  ORDER BY restaurantNo DESC
+</select>
+
+<select id="selectSearchC" resultMap="restaurantRes" parameterClass="String">
+  <include refid="select-all"/><!-- SELECT * FROM RESTAURANTBOARD -->
+  WHERE context like #searchKeyword#<!--RESTAURANTBOARD에서 #searchKeyword#에 부합하는 context값들을 전부 꺼내어 restaurantNo값으로 내림차순 정렬한다. -->
+  ORDER BY restaurantNo DESC
+</select>
+
+<!-- insert쿼리문 정의 -->
+<insert id="insertBoard" parameterClass="restaurantBoard">
+  INSERT INTO RESTAURANTBOARD(RESTAURANTNO, 
+  							OWNERID, 
+  							RESTAURANTNAME, 
+  							CONTEXT, 
+  							IMAGES, 
+  							CATEGORY, 
+  							ADDRESS, 
+  							LIKES, 
+  							LOCATION, 
+  							PASSWORD, 
+  							ISPOWER, 
+  							ISRES,
+  							STARPOINT)
+ 						 VALUES (RESTAURANTBOARD_NO_SEQ.NEXTVAL,
+ 						 		#ownerID#, 
+ 						 		#restaurantName#, 
+ 						 		#context#, 
+ 						 		#images#, 
+ 						 		#category#, 
+ 						 		#address#, 
+ 						 		#likes#, 
+ 						 		#location#, 
+ 						 		#password#, 
+ 						 		#isPower#, 
+ 						 		#isRes#, 
+ 						 		#starPoint#)
+</insert><!-- RESTAURANTBOARD에 값들을 입력한다. -->
+
+<!-- update쿼리문 정의 -->
+<update id="updateBoard" parameterClass="restaurantBoard">
+  UPDATE RESTAURANTBOARD SET
+  restaurantName = #restaurantName#,
+  context = #context#,
+  images = #images#,
+  category = #category#,
+  address = #address#,
+  location = #location#
+  <include refid="where-no"/><!--  WHERE restaurantNo = #restaurantNo# -->
+</update><!-- RESTAURANTBOARD에서  해당 restaurantNo 에 맞는 데이터값들을 바꿔준다 -->
+
+<update id="updateFile" parameterClass="restaurantBoard">
+	UPDATE RESTAURANTBOARD SET 
+	images=#images#
+	<include refid="where-no"/>
+</update>
+
+<!-- delete쿼리문 정의 -->
+<delete id="deleteBoard" parameterClass="restaurantBoard">
+  DELETE FROM RESTAURANTBOARD
+  <include refid="where-no"/><!--  WHERE restaurantNo = #restaurantNo# -->
+</delete><!-- RESTAURANTBOARD에서  해당 restaurantNo 에 맞는 데이터값들을 삭제해준다 -->
+
+</sqlMap>

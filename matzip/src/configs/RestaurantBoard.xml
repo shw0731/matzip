@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+		<!-- 용량제한 100MB로 설정 -->
+	<constant name="struts.multipart.maxSize" value="104857600" />
+	<package name="restaurantboard" extends="struts-default">
+		<action name="listAction" class="restaurantPage.ListAction">
+			<result>/common/RestaurantBoard/RestaurantList.jsp</result>
+		</action>
+		
+		<action name="WriteForm" class="restaurantPage.WriteAction" method="form">
+			<result>/common/RestaurantBoard/RestaurantWriteForm.jsp</result>
+		</action>
+		
+		<action name="Write" class="restaurantPage.WriteAction">
+			<result type="redirect-action">
+				<param name="actionName">listAction</param>
+			</result>			
+		</action>
+		
+		<action name="PageViewAction" class="restaurantPage.PageViewAction">
+			<result>/common/RestaurantBoard/RestaurantPage.jsp</result>
+		</action>
+
+		<action name="fileUploadForm" class="restaurantPage.WriteAction">
+			<result>/common/RestaurantBoard/RestaurantWriteForm.jsp</result>
+		</action>
+
+		<action name="fileUploadAction" class="restaurantPage.WriteAction" method="upload">
+			<result name="input">/common/RestaurantBoard/RestaurantWriteForm.jsp</result>
+			<result>/common/RestaurantBoard/RestaurantList.jsp</result>
+		</action>
+
+		<action name="multiUploadListForm">
+			<result>/common/RestaurantBoard/RestaurantWriteForm.jsp</result>
+		</action>
+
+		<action name="multiUploadListAction" class="restaurantPage.WriteAction" method="upload">
+			<result>/common/RestaurantBoard/RestaurantList.jsp</result>
+		</action> 
+	</package>
+</struts>

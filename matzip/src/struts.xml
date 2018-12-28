@@ -28,4 +28,5 @@
 	
 </package>
 	<include file="/configs/Notice.xml" />
+	<include file="/configs/RestaurantBoard.xml" />
 </struts>
