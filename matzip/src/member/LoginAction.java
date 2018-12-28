@@ -5,6 +5,9 @@ import java.io.Reader;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
+import com.opensymphony.xwork2.ActionContext;
+
+
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -37,8 +40,14 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		if (resultClass != null) {
 			if (resultClass.getPassword().equals(password)) {
 				
-				session.put("ID", resultClass.getID());
-				session.put("password", resultClass.getPassword());
+				
+				 ActionContext context = ActionContext.getContext();//session을 생성하기 위해
+				  Map<String, String> session = (Map<String, String>)context.getSession();// Map 사용시
+				  session.put("ID", resultClass.getID());
+				  
+				  context.setSession(session);
+
+				
 				return SUCCESS;
 			}
 		}
@@ -47,11 +56,16 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	}
 	//로그아웃시 세션지움
 	public String logout() throws Exception{
-		if(session.get("ID") != null) {
-			session.remove("password");
-			session.remove("ID");
-		}
+		ActionContext context = ActionContext.getContext();
+		  Map<String, String> session = (Map<String, String>)context.getSession();
+		  if(session.get("ID") != null){
+		   session.remove("ID");
+		   
+		  }
+		  context.setSession(session);
 		return SUCCESS;
+		  
+
 		
 	}
 

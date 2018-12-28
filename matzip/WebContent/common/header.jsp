@@ -82,10 +82,10 @@ function openConfirmId(){
 
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="/index.jsp">맛.zip</a>
+        <a class="navbar-brand js-scroll-trigger" href="MainAction.action">맛.zip</a>
         
         
-         <input type="text" class="search-bar" style="width:200px; height:40px;"/>
+         <input type="text" class="search-bar" style="width:200px; height:40px;"></input>
          <button type="button" id="searchbtn" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" onclick="goReplace('/common/search/search.jsp')">검색</button>
          <!-- <button type="button" id="searchbtn" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" onclick="javascript:data_check(); return false;">검색</button> -->
          
@@ -118,6 +118,8 @@ function openConfirmId(){
     <!--  검색 필터 -->
     <%@ include file="/common/search/searchFilter.jsp"%>
     
+    <!-- 마이페이지 -->
+    <%@ include file="/common/Member/myPage.jsp"%>
         <!-- Bootstrap core JavaScript -->
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
