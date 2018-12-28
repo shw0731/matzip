@@ -9,15 +9,15 @@
 	<SCRIPT type="text/javascript">
 		function validation() {
 		
-			var frm = document.forms(0);
+			var frm = document.rest;
 			
 			if(frm.restaurantName.value == "") {
 				alert("음식점명을 입력해주세요.");
 				return false;
 			} 
 			
-			else if(frm.ownerID.value == "") {
-				alert("점주명을 입력해주세요.");
+			else if(frm.address.value == "") {
+				alert("주소를 입력해주세요.");
 				return false;
 			}
 			
@@ -44,11 +44,11 @@
   	</table>
   
 		<s:if test="resultClass == NULL">
-			<form action="Write.action" method="post" enctype="multipart/form-data" onsubmit="return validation();">
+			<form action="Write.action" method="post" enctype="multipart/form-data" onsubmit="return validation();" name="form">
 		</s:if>
 		
 		<s:else>
-		  <form action="modifyAction.action" method="post" enctype="multipart/form-data">
+		  <form action="modifyAction.action" method="post" enctype="multipart/form-data" name="form">
 		  <s:hidden name="restaurantNo" value="%{resultClass.restaurantNo}" />
 		  <s:hidden name="currentPage" value="%{currentPage}" />
 		  <s:hidden name="images" value="%{resultClass.images}" />
@@ -89,14 +89,6 @@
           <td bgcolor="#FFFFFF">
            <select name="category"> 
 			<option value="" >카테고리</option>
- 	 	 	<option value="치킨"
- 	 	 	<s:if test="modifyClass.category.equals('치킨')">	
-				selected="selected"
-			</s:if>>치킨</option>
-			<option value="피자"
-			<s:if test="modifyClass.category.equals('피자')">	
-				selected="selected"
-			</s:if>>피자/양식</option>
 			<option value="중식"
 			<s:if test="modifyClass.category.equals('중식')">	
 				selected="selected"
@@ -109,26 +101,18 @@
 	 	   	<s:if test="modifyClass.category.equals('일식')">	
 				selected="selected"
 			</s:if>>일식</option>
-	  	  	<option value="돈까스"
-	  	  	<s:if test="modifyClass.category.equals('돈까스')">	
+	  	  	<option value="양식"
+	  	  	<s:if test="modifyClass.category.equals('양식')">	
 				selected="selected"
-			</s:if>>돈까스</option>
-	 	   	<option value="족발"
-	 	   	<s:if test="modifyClass.category.equals('족발')">	
+			</s:if>>양식</option>
+	 	   	<option value="세계"
+	 	   	<s:if test="modifyClass.category.equals('세계')">	
 				selected="selected"
-			</s:if>>족발/보쌈</option>
-	    	<option value="분식"
-	    	<s:if test="modifyClass.category.equals('분식')">	
+			</s:if>>세계</option>
+	    	<option value="뷔페"
+	    	<s:if test="modifyClass.category.equals('뷔페')">	
 				selected="selected"
-			</s:if>>분식</option>
-	    	<option value="디저트"
-	    	<s:if test="modifyClass.category.equals('디저트')">	
-				selected="selected"
-			</s:if>>디저트</option>
-	    	<option value="기타"
-	    	<s:if test="modifyClass.category.equals('기타')">	
-				selected="selected"
-			</s:if>>기타</option>
+			</s:if>>뷔페</option>
 		</select>
           </td>
         </tr>
