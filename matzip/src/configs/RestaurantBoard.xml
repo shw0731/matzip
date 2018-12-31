@@ -40,5 +40,19 @@
 		<action name="multiUploadListAction" class="restaurantPage.WriteAction" method="upload">
 			<result>/common/RestaurantBoard/RestaurantList.jsp</result>
 		</action> 
+		
+                       <!-- 게시판 수정 액션 -->
+        <action name = "modifyForm" class = "restaurantPage.PageViewAction">
+              <result type = "chain">WriteForm</result>
+        </action>
+  
+        <action name = "modifyAction" class = "restaurantPage.ModifyAction">
+              <result type = "chain">PageViewAction</result>
+        </action>
+        
+                       <!-- 게시판 삭제 액션 -->
+        <action name = "deleteAction" class = "restaurantPage.DeleteAction">
+              <result type = "chain">listAction</result>
+        </action>
 	</package>
 </struts>

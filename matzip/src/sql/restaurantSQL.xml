@@ -114,7 +114,7 @@ CONNECT BY <![CDATA[LEVEL <= length(regexp_replace(A.IMAGES, '[^,]+',''))+1 ]]>
   images = #images#,
   category = #category#,
   address = #address#,
-  location = #location#
+  location = #location# 
   <include refid="where-no"/><!--  WHERE restaurantNo = #restaurantNo# -->
 </update><!-- RESTAURANTBOARD에서  해당 restaurantNo 에 맞는 데이터값들을 바꿔준다 -->
 
