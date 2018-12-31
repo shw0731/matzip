@@ -51,6 +51,13 @@
   SELECT max(restaurantNo) as restaurantNo FROM RESTAURANTBOARD <!-- RESTAURANTBOARD에서 restaurantNo값의 최대값을 restaurantNo로 명명하여 꺼낸다. -->
 </select>
 
+<!-- ,로 잘라서 배열로 꺼내기 -->
+<select id="selectimage" resultClass="restaurantRes">
+ SELECT distinct regexp_substr(A.IMAGES, '[^,]+', 1, LEVEL) IMAGES
+   FROM (SELECT (SELECT IMAGES FROM RESTAURANTBOARD WHERE RESTAURANTNO=#restaurantNo#) IMAGES FROM RESTAURANTBOARD) A
+CONNECT BY <![CDATA[LEVEL <= length(regexp_replace(A.IMAGES, '[^,]+',''))+1 ]]> 
+</select>
+
 <!-- 검색로직 -->
 
 <select id="selectSearchA" resultMap="restaurantRes" parameterClass="String">
