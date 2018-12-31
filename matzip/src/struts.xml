@@ -29,4 +29,5 @@
 </package>
 	<include file="/configs/Notice.xml" />
 	<include file="/configs/RestaurantBoard.xml" />
+	<include file="/configs/Like.xml" />
 </struts>
