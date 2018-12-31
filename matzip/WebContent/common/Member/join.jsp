@@ -15,7 +15,7 @@
           <form name="JoinForm" action="JoinAction.action" method="post" enctype="multipart/form-data" onsubmit="return validation()">
           <input type="text" id="user_id" name="ID" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-name">ID</label>
-          <s:textfield name="ID" theme="simple" value="%{resultClass.ID}"/>
+         
           <input button type="button" name="confirm_id" value="Check" onclick="openConfirmId()"/><br>
        </div></div>
       <div class="modal-body mx-2">
@@ -23,25 +23,25 @@
           <i class="fa fa-user prefix grey-text"></i>
           <input type="text" name="name" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
-          <s:textfield name="name" theme="simple" value="%{resultClass.name}" />
+         
         </div>
         <div class="md-form mb-2">
           <i class="fa fa-mobile prefix grey-text"></i>
           <input type="text" name="phoneNumber" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-email">Your phone</label>
-          <s:textfield name="phoneNumber" theme="simple" value="%{resultClass.phoneNumber}" /><br>
+      
         </div>
 		<div class="md-form mb-2">
           <i class="fa fa-envelope prefix grey-text"></i>
           <input type="email" name="email" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-pass">E-mail</label>
-          <s:textfield name="email" theme="simple" value="%{resultClass.email}" /><br>
+        
         </div>
         <div class="md-form mb-2">
           <i class="fa fa-lock prefix grey-text"></i>
           <input type="password" name="password" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
-        <s:password name="password" theme="simple" value="%{resultClass.password}" />
+       
         </div>
 
 		<div class="md-form mb-2">

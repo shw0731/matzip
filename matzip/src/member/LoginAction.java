@@ -59,6 +59,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		ActionContext context = ActionContext.getContext();
 		  Map<String, String> session = (Map<String, String>)context.getSession();
 		  if(session.get("ID") != null){
+			  
 		   session.remove("ID");
 		   
 		  }
