@@ -31,41 +31,7 @@ public class ListAction extends ActionSupport{ //공공 클래스인 가게리스트액션을 
 	private String pagingHtml; 	//페이징을 구현한 HTML
 	private PagingAction page; 	// 페이징 클래스
 	
-	private File store_thumbnail;
-	private File store_image1;
-	private File store_image2;
-	private File store_image3;
-	private File store_image4;
-	private File store_image5;
-	private File store_image6;
-	private File store_image7;
-	private File store_image8;
-	private File store_image9;
-	private File store_image10; //파일객체
 	
-	private String store_thumbnailContentType;
-	private String store_image1ContentType; 
-	private String store_image2ContentType;
-	private String store_image3ContentType;
-	private String store_image4ContentType;
-	private String store_image5ContentType;
-	private String store_image6ContentType;
-	private String store_image7ContentType;
-	private String store_image8ContentType;
-	private String store_image9ContentType;
-	private String store_image10ContentType;//컨텐츠 타입
-	
-	private String store_thumbnailFileName;
-	private String store_image1FileName;
-	private String store_image2FileName;
-	private String store_image3FileName;
-	private String store_image4FileName;
-	private String store_image5FileName;
-	private String store_image6FileName;
-	private String store_image7FileName;
-	private String store_image8FileName;
-	private String store_image9FileName;
-	private String store_image10FileName;//파일이름
 	
 	private List<File> uploads = new ArrayList<File>();
 	private List<String> uploadsFileName = new ArrayList<String>();

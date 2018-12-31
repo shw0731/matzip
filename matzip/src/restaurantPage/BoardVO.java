@@ -2,7 +2,7 @@ package restaurantPage;
 
 public class BoardVO {
 	private int restaurantNo;
-	private String ownerID;
+	private String ID;
 	private String restaurantName;
 	private String context;
 	private String images;
@@ -15,11 +15,11 @@ public class BoardVO {
 	private float starPoint;
 	
 	
-	public String getOwnerID() {
-		return ownerID;
+	public String getID() {
+		return ID;
 	}
-	public void setOwnerID(String ownerID) {
-		this.ownerID = ownerID;
+	public void setID(String ID) {
+		this.ID = ID;
 	}
 	public String getRestaurantName() {
 		return restaurantName;

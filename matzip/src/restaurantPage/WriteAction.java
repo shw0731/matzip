@@ -24,7 +24,7 @@ public class WriteAction extends ActionSupport{
 	private int currentPage; //현재 페이지
 
 	private int restaurantNo; //음식점번호
-	private String ownerID; //주인아이디
+	private String ID; //주인아이디
 	private String restaurantName; //음식점이름
 	private String context; //내용
 	private String images; //업로드 이미지
@@ -40,7 +40,9 @@ public class WriteAction extends ActionSupport{
 	private List<String> uploadsFileName = new ArrayList<String>();
 	private List<String> uploadsContentType = new ArrayList<String>();
 	private String fileUploadPath = "C:\\Java\\upload\\";
-
+	
+	
+	
 
 	// 생성자
 	public WriteAction() throws IOException {
@@ -61,8 +63,12 @@ public class WriteAction extends ActionSupport{
 		//파라미터와 리절트 객체 생성.
 		paramClass = new BoardVO();
 		resultClass = new BoardVO();
-
+		
+	
+		
+		
 		// 등록할 항목 설정.
+		paramClass.setID("11");	//예시로 아이디11
 		paramClass.setRestaurantNo(getRestaurantNo());
 		paramClass.setRestaurantName(getRestaurantName());
 		paramClass.setAddress(getAddress());
@@ -73,9 +79,10 @@ public class WriteAction extends ActionSupport{
 		paramClass.setLocation("0");
 		paramClass.setLikes(0);
 		paramClass.setStarPoint(0);
+		paramClass.setImages("0");
 		// 등록 쿼리 수행.
 		
-
+		sqlMapper.insert("rest.insertBoard", paramClass);
 /*		// 첨부파일을 선택했다면 파일을 업로드한다.
 		if (getUpload() != null) {
 
@@ -89,7 +96,7 @@ public class WriteAction extends ActionSupport{
 
 			//파일 정보 업데이트.
 			sqlMapper.update("rest.updateFile", paramClass);*/
-
+		makeDir();
 		for (int i = 0; i < uploads.size(); i++) {
 			File destFile = new File(fileUploadPath
 					+ getUploadsFileName().get(i));
@@ -102,12 +109,36 @@ public class WriteAction extends ActionSupport{
 			FileUtils.copyFile(getUploads().get(i), destFile);
 		}
 		 paramClass.setImages(images);
+		 paramClass.setRestaurantNo(restaurantNo);
 		
-		sqlMapper.insert("rest.insertBoard", paramClass);
+		 sqlMapper.update("rest.updateFile",paramClass);
+		
 		
 		return SUCCESS;
 	}
 
+	public void makeDir()throws Exception{
+		
+	
+		
+		
+
+		restaurantNo = (int)sqlMapper.queryForObject("rest.selectID","11");
+		fileUploadPath+=restaurantNo;
+		File Folder = new File(fileUploadPath);
+		
+		// 해당 디렉토리가 없을경우 디렉토리를 생성합니다.
+		if (!Folder.exists()) {
+			try{
+			    Folder.mkdir(); //폴더 생성합니다.
+			    
+		        } 
+		        catch(Exception e){
+			    e.getStackTrace();
+		        }        
+	        }
+		fileUploadPath+="\\";
+		}
 	public List<File> getUploads() {
 		return uploads;
 	}
@@ -164,12 +195,12 @@ public class WriteAction extends ActionSupport{
 		this.restaurantNo = restaurantNo;
 	}
 
-	public String getOwnerID() {
-		return ownerID;
+	public String getID() {
+		return ID;
 	}
 
-	public void setOwnerID(String ownerID) {
-		this.ownerID = ownerID;
+	public void setOwnerID(String ID) {
+		this.ID = ID;
 	}
 
 	public String getRestaurantName() {

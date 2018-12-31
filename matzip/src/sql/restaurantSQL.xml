@@ -7,7 +7,7 @@
 <!-- 리절트 맵 -->
 <resultMap id="restaurantRes" class="restaurantBoard">
    <result property="restaurantNo" column="restaurantNo"/>
-   <result property="ownerID" column="ownerID"/>
+   <result property="ID" column="ID"/>
    <result property="restaurantName" column="restaurantName"/>
    <result property="context" column="context"/>
    <result property="images" column="images"/>
@@ -42,9 +42,9 @@
   <include refid="where-no"/><!--  WHERE restaurantNo = #restaurantNo# --> <!-- restaurantNo에 해당하는 RESTAURANTBOARD에 있는 데이터 전부를 꺼낸다. -->
 </select>
 
-<select id="selectID" resultMap="restaurantRes" parameterClass="int">
-  <include refid="select-all"/><!-- SELECT * FROM RESTAURANTBOARD -->
-  WHERE ownerID = #ownerID# <!--  WHERE restaurantNo = #restaurantNo# --> <!-- restaurantNo에 해당하는 RESTAURANTBOARD에 있는 데이터 전부를 꺼낸다. -->
+<select id="selectID" resultClass="int" parameterClass="String">
+  SELECT restaurantNo FROM RESTAURANTBOARD<!-- SELECT restaurantNo FROM RESTAURANTBOARD -->
+  WHERE ID = #ID# <!--  WHERE restaurantNo = #restaurantNo# --> <!-- restaurantNo에 해당하는 RESTAURANTBOARD에 있는 데이터 전부를 꺼낸다. -->
 </select>
 
 <select id="selectLastNo" resultClass="restaurantBoard">
@@ -74,7 +74,7 @@
 <!-- insert쿼리문 정의 -->
 <insert id="insertBoard" parameterClass="restaurantBoard">
   INSERT INTO RESTAURANTBOARD(RESTAURANTNO, 
-  							OWNERID, 
+  							ID, 
   							RESTAURANTNAME, 
   							CONTEXT, 
   							IMAGES, 
@@ -86,7 +86,7 @@
   							ISRES,
   							STARPOINT)
  						 VALUES (RESTAURANTBOARD_NO_SEQ.NEXTVAL,
- 						 		#ownerID#, 
+ 						 		#ID#, 
  						 		#restaurantName#, 
  						 		#context#, 
  						 		#images#, 
