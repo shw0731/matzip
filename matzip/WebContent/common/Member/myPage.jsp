@@ -1,5 +1,10 @@
+ <%@ taglib prefix="s" uri="/struts-tags" %>
+ 
  <div class="modal fade" id="modalmyPageForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true" >
+  
+  <!-- 회원 -->
+  <s:if test="resultClass.isType==0">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
     
@@ -61,4 +66,219 @@
      </div>
     </div>
   </div>
+  </s:if>
+  <!-- 점주 -->
+  <s:elseif test="resultClass.isType==1">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+    
+    <!--Modal Header -->
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">점주페이지</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <p><a href="#"><small>고객센터</small></a></p>	
+      </div>
+      <!--Modal body -->
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="fa fa-id-badge prefix grey-text">
+          	${resultClass.ID}
+          </i><a href="#"><small>정보수정</small></a>
+        </div>
+       </div>
+      <table width="600" border="0" cellspacing="0" cellpadding="2">
+  		<tr>
+  			<td align="center"><h2>음식점게시양식</h2></td>
+  		</tr>
+  
+  
+		<s:if test="resultClass == NULL">
+			<form action="Write.action" method="post" enctype="multipart/form-data" onsubmit="return validation();" name="form">
+		</s:if>
+		
+		<s:else>
+		  <form action="modifyAction.action" method="post" enctype="multipart/form-data" name="form">
+		  <s:hidden name="restaurantNo" value="%{resultClass.restaurantNo}" />
+		  <s:hidden name="currentPage" value="%{currentPage}" />
+		  <s:hidden name="images" value="%{resultClass.images}" />
+		</s:else>
+
+       <table width="600" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td align="right" colspan="2"><font color="#FF0000">*</font>는 필수 입력사항입니다.</td>
+        </tr>
+        
+        <tr bgcolor="#777777">
+          <td height="1" colspan="2"></td>
+        </tr>
+				
+        
+        <tr>
+          <td bgcolor="#F4F4F4" width="100px"><font color="#FF0000">*</font>  음식점명 </td>
+          <td bgcolor="#FFFFFF">
+            <s:textfield name="restaurantName" theme="simple" value="%{resultClass.restaurantName}" cssStyle="width:100px" maxlength="20"/>
+          </td>
+        </tr>
+        <tr bgcolor="#777777">
+          <td height="1" colspan="2"></td>	
+        </tr>
+ 
+        <tr>
+          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  주소 </td>
+          <td bgcolor="#FFFFFF">
+            <s:textfield name="address" theme="simple" value="%{resultClass.address}" cssStyle="width:100px" maxlength="20"/>
+          </td>
+        </tr>
+        <tr bgcolor="#777777">
+          <td height="1" colspan="2"></td>	
+        </tr>
+        
+	<tr>
+          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  분류 </td>
+          <td bgcolor="#FFFFFF">
+           <select name="category"> 
+			<option value="" >카테고리</option>
+			<option value="중식"
+			<s:if test="modifyClass.category.equals('중식')">	
+				selected="selected"
+			</s:if>>중식</option>
+	 	   	<option value="한식"
+	 	   	<s:if test="modifyClass.category.equals('한식')">	
+				selected="selected"
+			</s:if>>한식</option>
+	 	   	<option value="일식"
+	 	   	<s:if test="modifyClass.category.equals('일식')">	
+				selected="selected"
+			</s:if>>일식</option>
+	  	  	<option value="양식"
+	  	  	<s:if test="modifyClass.category.equals('양식')">	
+				selected="selected"
+			</s:if>>양식</option>
+	 	   	<option value="세계"
+	 	   	<s:if test="modifyClass.category.equals('세계')">	
+				selected="selected"
+			</s:if>>세계</option>
+	    	<option value="뷔페"
+	    	<s:if test="modifyClass.category.equals('뷔페')">	
+				selected="selected"
+			</s:if>>뷔페</option>
+		</select>
+          </td>
+        </tr>
+        <tr bgcolor="#777777">
+          <td height="1" colspan="2"></td>
+        </tr>
+	<tr>
+          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  내용 </td>
+          <td bgcolor="#FFFFFF">
+            <s:textarea name="context" theme="simple" value="%{resultClass.context}" cols="50" rows="10" />
+          </td>
+        </tr>
+        <tr bgcolor="#777777">
+          <td height="1" colspan="2"></td>
+        </tr>
+        
+
+   		<tr bgcolor="#777777">
+          <td height="1" colspan="2"></td>
+        </tr>
+   		<tr>
+   		<td bgcolor="#F4F4F4"> 게시판<br/> 내부 사진</td>
+   		<td>
+   			 <s:form action="multiUploadListAction" method="POST" enctype="multipart/form-data">
+				<s:file label="File[1]" name="uploads" />
+				<s:file label="File[2]" name="uploads" />
+				<s:file label="FIle[3]" name="uploads" />
+			</s:form>	
+     </td>
+       
+
+        <tr bgcolor="#777777">
+          <td height="1" colspan="2"></td>	
+        </tr>
+        
+        <tr>
+          <td height="10" colspan="2"></td>
+        </tr>
+        
+        
+        <tr>
+          <td align="right" colspan="2">
+          	<input name="submit" type="submit" value="작성완료" class="inputb">
+            <input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage" />'">
+          </td>
+        </tr>
+
+    </table>
+    </form>
+  </div>
+  </div>
+  </s:elseif>
+  
+  
+  <s:else>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    
+    <!--Modal Header -->
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">관리자페이지</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <p><a href="#"><small>고객센터</small></a></p>	
+      </div>
+      <!--Modal body -->
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="fa fa-id-badge prefix grey-text">
+          	${resultClass.ID}
+          </i><a href="#"><small>정보수정</small></a>
+        </div>
+        <div class="md-form mb-5">
+          <i class="fa fa-gem prefix grey-text"><a href=""><small>잔여포인트 : <strong>${resultClass.point}점</strong></small></a></i>
+          
+          <!-- 예약현황 -->
+          <div>
+          <ul>
+          	<li>할매순댓국</li>
+          </ul>
+          </div>
+          <!--예약현황 END -->
+          
+          
+          <!-- 마이 리뷰-->
+         <div>
+         <label for="">마이리뷰</label>
+         	<ul>
+          	<li>존나마싯쓰</li>
+          </ul>
+         </div>
+         <!--마이리뷰 END  -->
+         
+         
+        </div>
+      </div>
+      <!--Modal Footer -->
+      <div class="modal-footer d-flex justify-content-center">
+      
+      <i class="fas fa-heart w-100"><small>관심 목록</small></i>
+      </div>
+    <div class="">
+      	<ul>
+      		<li>
+      			<i class="fas fa-utensils"></i> 개마싯쓰 	
+      			</li>
+   		</ul>
+   		<ul>
+      		<li>
+      			<i class="fas fa-utensils"></i> 쑝마시쓰 	
+      			</li>
+   		</ul>
+     </div>
+    </div>
+  </div>
+  </s:else>
 </div>

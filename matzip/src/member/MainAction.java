@@ -18,6 +18,7 @@ public class MainAction extends ActionSupport implements SessionAware {
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	private Map session;
+	private MemberVO resultClass = new MemberVO();
 	public MainAction() throws IOException {
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
@@ -25,7 +26,7 @@ public class MainAction extends ActionSupport implements SessionAware {
 	}
 	public String execute() throws Exception{
 		
-				
+		resultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", session.get("ID"));	
 				return SUCCESS;
 			
 		}

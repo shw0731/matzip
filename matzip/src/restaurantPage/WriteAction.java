@@ -19,7 +19,7 @@ public class WriteAction extends ActionSupport{
 	public static SqlMapClient sqlMapper; //SqlMapClient API를 사용하기 위한 sqlMapper 객체.
 
 	private BoardVO paramClass; //파라미터를 저장할 객체
-	private BoardVO resultClass; //쿼리 결과 값을 저장할 객체
+	private BoardVO restResultClass; //쿼리 결과 값을 저장할 객체
 
 	private int currentPage; //현재 페이지
 
@@ -62,7 +62,7 @@ public class WriteAction extends ActionSupport{
 
 		//파라미터와 리절트 객체 생성.
 		paramClass = new BoardVO();
-		resultClass = new BoardVO();
+		restResultClass = new BoardVO();
 		
 	
 		
@@ -87,7 +87,7 @@ public class WriteAction extends ActionSupport{
 		if (getUpload() != null) {
 
 			//등록한 글 번호 가져오기.
-			resultClass = (BoardVO) sqlMapper.queryForObject("rest.selectLastNo");
+			restResultClass = (BoardVO) sqlMapper.queryForObject("rest.selectLastNo");
 
 
 			//서버에 파일 저장.
@@ -171,12 +171,12 @@ public class WriteAction extends ActionSupport{
 		this.paramClass = paramClass;
 	}
 
-	public BoardVO getResultClass() {
-		return resultClass;
+	public BoardVO getRestResultClass() {
+		return restResultClass;
 	}
 
-	public void setResultClass(BoardVO resultClass) {
-		this.resultClass = resultClass;
+	public void setRestResultClass(BoardVO restResultClass) {
+		this.restResultClass = restResultClass;
 	}
 
 	public int getCurrentPage() {
