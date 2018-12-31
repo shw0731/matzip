@@ -76,21 +76,17 @@
       <div class="modal-header text-center">
         <h4 class="modal-title w-100 font-weight-bold">점주페이지</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+           <span aria-hidden="true">&times;</span>
         </button>
-        <p><a href="#"><small>고객센터</small></a></p>	
       </div>
       <!--Modal body -->
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <i class="fa fa-id-badge prefix grey-text">
-          	${resultClass.ID}
-          </i><a href="#"><small>정보수정</small></a>
-        </div>
-       </div>
-      <table width="600" border="0" cellspacing="0" cellpadding="2">
+
+          	<text align=right>${resultClass.ID} 님의 방문을 환영합니다.
+          </i><a href="#" width="100" border="0" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"><small>정보수정</small></a>
+          	<a href="#" width="100" border="0" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"><small>고객센터</small></a></text>	
+      <table width="300" border="0" cellspacing="0" cellpadding="2" align="center" valign="top">
   		<tr>
-  			<td align="center"><h2>음식점게시양식</h2></td>
+  			&nbsp;&nbsp;<td align="center" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"><h2>음식점게시양식</h2></td>
   		</tr>
   
   
@@ -105,40 +101,34 @@
 		  <s:hidden name="images" value="%{resultClass.images}" />
 		</s:else>
 
-       <table width="600" border="0" cellspacing="0" cellpadding="0">
+       <table width="600" border="0" cellspacing="5px" cellpadding="3px" align="center" valign="top">
         <tr>
-          <td align="right" colspan="2"><font color="#FF0000">*</font>는 필수 입력사항입니다.</td>
+          <td align="right" colspan="2"><font color="#FF0000">★</font>는 필수 입력사항입니다.</td>
         </tr>
         
-        <tr bgcolor="#777777">
+        <tr bgcolor="yellow">
           <td height="1" colspan="2"></td>
         </tr>
 				
         
         <tr>
-          <td bgcolor="#F4F4F4" width="100px"><font color="#FF0000">*</font>  음식점명 </td>
+          <td bgcolor="#ffffff" width="100px" align="center"> <font class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"> <font color="#FF0000">★</font>&nbsp;음식점명 </td>
           <td bgcolor="#FFFFFF">
-            <s:textfield name="restaurantName" theme="simple" value="%{resultClass.restaurantName}" cssStyle="width:100px" maxlength="20"/>
+            &nbsp;&nbsp;<s:textfield name="restaurantName" theme="simple" value="%{resultClass.restaurantName}" cssStyle="width:100px" maxlength="20"/>
           </td>
-        </tr>
-        <tr bgcolor="#777777">
-          <td height="1" colspan="2"></td>	
         </tr>
  
         <tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  주소 </td>
+          <td bgcolor="#FFFFFF" align="center"><font class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" align="center"><font color="#FF0000">★</font>&nbsp;주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소 </td>
           <td bgcolor="#FFFFFF">
-            <s:textfield name="address" theme="simple" value="%{resultClass.address}" cssStyle="width:100px" maxlength="20"/>
+            &nbsp;&nbsp;<s:textfield name="address" theme="simple" value="%{resultClass.address}" cssStyle="width:100px" maxlength="20"/>
           </td>
-        </tr>
-        <tr bgcolor="#777777">
-          <td height="1" colspan="2"></td>	
         </tr>
         
 	<tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  분류 </td>
+          <td bgcolor="#FFFFFF" align="center"><font class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" align="center"><font color="#FF0000">★</font>&nbsp;분&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;류 </td>
           <td bgcolor="#FFFFFF">
-           <select name="category"> 
+           &nbsp;&nbsp;<select name="category"> 
 			<option value="" >카테고리</option>
 			<option value="중식"
 			<s:if test="modifyClass.category.equals('중식')">	
@@ -167,25 +157,20 @@
 		</select>
           </td>
         </tr>
-        <tr bgcolor="#777777">
-          <td height="1" colspan="2"></td>
-        </tr>
+
 	<tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  내용 </td>
+          <td bgcolor="#FFFFFF" align="center"><font class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"><font color="#FF0000">★</font>&nbsp;내&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;용 </td>
           <td bgcolor="#FFFFFF">
-            <s:textarea name="context" theme="simple" value="%{resultClass.context}" cols="50" rows="10" />
+            &nbsp;&nbsp;<s:textarea name="context" theme="simple" value="%{resultClass.context}" cols="50" rows="10" />
           </td>
         </tr>
-        <tr bgcolor="#777777">
-          <td height="1" colspan="2"></td>
-        </tr>
-        
+    
 
-   		<tr bgcolor="#777777">
+   		<tr bgcolor="yellow">
           <td height="1" colspan="2"></td>
         </tr>
    		<tr>
-   		<td bgcolor="#F4F4F4"> 게시판<br/> 내부 사진</td>
+   		<td bgcolor="#FFFFFF" align="center"><font class="btn btn-primary btn-xl text-uppercase js-scroll-trigger">&nbsp; 게시판<br/> 내부 사진</td>
    		<td>
    			 <s:form action="multiUploadListAction" method="POST" enctype="multipart/form-data">
 				<s:file label="File[1]" name="uploads" />
@@ -195,7 +180,7 @@
      </td>
        
 
-        <tr bgcolor="#777777">
+        <tr bgcolor="yellow">
           <td height="1" colspan="2"></td>	
         </tr>
         
@@ -206,18 +191,20 @@
         
         <tr>
           <td align="right" colspan="2">
-          	<input name="submit" type="submit" value="작성완료" class="inputb">
-            <input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage" />'">
+          	<input name="submit" type="submit" value="작성완료" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger">
+            <input name="list" type="button" value="목록" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage" />'">
+			<br>
+			<br>
           </td>
         </tr>
-
     </table>
     </form>
+    </table>
   </div>
   </div>
   </s:elseif>
   
-  
+  <!-- 관리자 페이지 -->
   <s:else>
   <div class="modal-dialog" role="document">
     <div class="modal-content">
