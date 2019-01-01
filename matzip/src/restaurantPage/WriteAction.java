@@ -1,5 +1,9 @@
 package restaurantPage;
 
+import org.apache.struts2.interceptor.SessionAware;
+import com.opensymphony.xwork2.ActionContext;
+
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -11,16 +15,18 @@ import java.io.IOException;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 
-public class WriteAction extends ActionSupport{
+public class WriteAction extends ActionSupport implements SessionAware{
 	public static Reader reader; //파일 스트림을 위한 reader.
 	public static SqlMapClient sqlMapper; //SqlMapClient API를 사용하기 위한 sqlMapper 객체.
 
 	private BoardVO paramClass; //파라미터를 저장할 객체
 	private BoardVO restResultClass; //쿼리 결과 값을 저장할 객체
 
+	private Map session;
 	private int currentPage; //현재 페이지
 
 	private int restaurantNo; //음식점번호
@@ -68,7 +74,7 @@ public class WriteAction extends ActionSupport{
 		
 		
 		// 등록할 항목 설정.
-		paramClass.setID("11");	//예시로 아이디11
+		paramClass.setID((String)session.get("ID"));
 		paramClass.setRestaurantNo(getRestaurantNo());
 		paramClass.setRestaurantName(getRestaurantName());
 		paramClass.setAddress(getAddress());
@@ -123,7 +129,7 @@ public class WriteAction extends ActionSupport{
 		
 		
 
-		restaurantNo = (int)sqlMapper.queryForObject("rest.selectID","11");
+		restaurantNo = (int)sqlMapper.queryForObject("rest.selectID",(String)session.get("ID"));
 		fileUploadPath+=restaurantNo;
 		File Folder = new File(fileUploadPath);
 		
@@ -139,6 +145,16 @@ public class WriteAction extends ActionSupport{
 	        }
 		fileUploadPath+="\\";
 		}
+	
+	
+	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
+	}
+
 	public List<File> getUploads() {
 		return uploads;
 	}

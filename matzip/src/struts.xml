@@ -23,6 +23,9 @@
 <action name="logout" class="member.LoginAction" method="logout">
 	<result>/index.jsp</result>
 </action>
+<action name="searchAction" class="search.SearchAction">
+	<result>/common/search/search.jsp</result>
+</action>
 
 	
 	

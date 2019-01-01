@@ -18,7 +18,7 @@ public class PageViewAction extends ActionSupport{
 	public static SqlMapClient sqlMapper;
 
 	private BoardVO paramClass = new BoardVO(); //파라미터를 저장할 객체
-	private BoardVO resultClass = new BoardVO(); //쿼리 결과 값을 저장할 객체
+	private BoardVO restResultClass = new BoardVO(); //쿼리 결과 값을 저장할 객체
 
 	private int currentPage;
 
@@ -53,7 +53,7 @@ public class PageViewAction extends ActionSupport{
 		// 해당 게시물의 좋아요 수를 가져온다.
 		paramClass.setRestaurantNo(restaurantNo);
 		// 해당 번호의 글을 가져온다.
-		resultClass = (BoardVO) sqlMapper.queryForObject("rest.selectOne", getRestaurantNo());
+		restResultClass = (BoardVO) sqlMapper.queryForObject("rest.selectOne", getRestaurantNo());
 		return SUCCESS;
 	}
 
@@ -65,12 +65,12 @@ public class PageViewAction extends ActionSupport{
 		this.paramClass = paramClass;
 	}
 
-	public BoardVO getResultClass() {
-		return resultClass;
+	public BoardVO getRestResultClass() {
+		return restResultClass;
 	}
 
-	public void setResultClass(BoardVO resultClass) {
-		this.resultClass = resultClass;
+	public void setRestResultClass(BoardVO restResultClass) {
+		this.restResultClass = restResultClass;
 	}
 
 	public int getCurrentPage() {

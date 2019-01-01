@@ -86,14 +86,17 @@ function openConfirmId(){
         
         
          <input type="text" class="search-bar" style="width:200px; height:40px;"></input>
-         <button type="button" id="searchbtn" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" onclick="goReplace('/common/search/search.jsp')">검색</button>
+         <form action="searchAction.action">
+         <button type="submit" id="searchbtn" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" >검색</button>
          <!-- <button type="button" id="searchbtn" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" onclick="javascript:data_check(); return false;">검색</button> -->
-         
+         </form>
           <button id="filter" class="btn btn-primary" data-toggle="modal" data-target="#searchFilter"><i class="fa fa-sliders"></i></button>
           
           <ul class="navbar-nav text-uppercase ml-auto">
             <s:if test="session.ID !=NULL">
-             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalmyPageForm">MYPAGE</button>
+             <form action="WriteForm.action">
+             <button type="submit" class="btn btn-primary btn-lg">MYPAGE</button>
+             </form>
           	 <form action="logout.action">
           	 <button type="submit" class="btn btn-primary btn-lg">LOGOUT</button>
           	 </form>
@@ -139,7 +142,6 @@ function openConfirmId(){
 		
 	});  
     
-    function goReplace(str) { location.replace(str); }
 	    
     
     

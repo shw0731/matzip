@@ -43,15 +43,15 @@
   		</tr>
   	</table>
   
-		<s:if test="resultClass == NULL">
+		<s:if test="restResultClass == NULL">
 			<form action="Write.action" method="post" enctype="multipart/form-data" onsubmit="return validation();" name="form">
 		</s:if>
 		
 		<s:else>
 		  <form action="modifyAction.action" method="post" enctype="multipart/form-data" name="form">
-		  <s:hidden name="restaurantNo" value="%{resultClass.restaurantNo}" />
+		  <s:hidden name="restaurantNo" value="%{restResultClass.restaurantNo}" />
 		  <s:hidden name="currentPage" value="%{currentPage}" />
-		  <s:hidden name="images" value="%{resultClass.images}" />
+		  <s:hidden name="images" value="%{restResultClass.images}" />
 		</s:else>
 
        <table width="600" border="0" cellspacing="0" cellpadding="0">
@@ -67,7 +67,7 @@
         <tr>
           <td bgcolor="#F4F4F4" width="100px"><font color="#FF0000">*</font>  음식점명 </td>
           <td bgcolor="#FFFFFF">
-            <s:textfield name="restaurantName" theme="simple" value="%{resultClass.restaurantName}" cssStyle="width:100px" maxlength="20"/>
+            <s:textfield name="restaurantName" theme="simple" value="%{restResultClass.restaurantName}" cssStyle="width:100px" maxlength="20"/>
           </td>
         </tr>
         <tr bgcolor="#777777">
@@ -77,7 +77,7 @@
         <tr>
           <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  주소 </td>
           <td bgcolor="#FFFFFF">
-            <s:textfield name="address" theme="simple" value="%{resultClass.address}" cssStyle="width:100px" maxlength="20"/>
+            <s:textfield name="address" theme="simple" value="%{restResultClass.address}" cssStyle="width:100px" maxlength="20"/>
           </td>
         </tr>
         <tr bgcolor="#777777">
@@ -122,7 +122,7 @@
 	<tr>
           <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  내용 </td>
           <td bgcolor="#FFFFFF">
-            <s:textarea name="context" theme="simple" value="%{resultClass.context}" cols="50" rows="10" />
+            <s:textarea name="context" theme="simple" value="%{restResultClass.context}" cols="50" rows="10" />
           </td>
         </tr>
         <tr bgcolor="#777777">
@@ -150,30 +150,7 @@
 			</s:form>	
      </td>
        
-<%--           <td bgcolor="#F4F4F4">  첨부파일 </td>
-          <td bgcolor="#FFFFFF">
-            <s:file name="upload" theme="simple"/>
-            <form method="post" action="WriteForm.action" enctype="multipart/form-data">
-            <s:if test="%{resultClass.images} != NULL">
-		&nbsp; * <s:property value="%{resultClass.images}" /> 파일이 등록되어 있습니다. 다시 업로드하면 기존의 파일은 삭제됩니다.
-			</s:if>
-			<s:file name="upload" theme="simple"/>
-            
-            <s:if test="%{resultClass.images} != NULL">
-		&nbsp; * <s:property value="%{resultClass.images}" /> 파일이 등록되어 있습니다. 다시 업로드하면 기존의 파일은 삭제됩니다.
-			</s:if>
-			<s:file name="upload" theme="simple"/>
-            
-            <s:if test="%{resultClass.images} != NULL">
-		&nbsp; * <s:property value="%{resultClass.images}" /> 파일이 등록되어 있습니다. 다시 업로드하면 기존의 파일은 삭제됩니다.
-			</s:if>
-			<s:file name="upload" theme="simple"/>
-            
-            <s:if test="%{resultClass.images} != NULL">
-		&nbsp; * <s:property value="%{resultClass.images}" /> 파일이 등록되어 있습니다. 다시 업로드하면 기존의 파일은 삭제됩니다.
-			</s:if>
-          </td>
-        </tr> --%>
+
         <tr bgcolor="#777777">
           <td height="1" colspan="2"></td>	
         </tr>

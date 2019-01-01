@@ -26,7 +26,7 @@
         	<td height="1" colspan="5"></td>
       	  </tr>
 
-	    <s:iterator value="list" status="stat">
+	    <s:iterator value="restList" status="stat">
 
 		<s:url id="viewURL" action="PageViewAction" >
 			<s:param name="restaurantNo">
@@ -48,7 +48,7 @@
       
 	      </s:iterator>
 			
-	      <s:if test="list.size() <= 0">
+	      <s:if test="restList.size() <= 0">
 				
 	      <tr bgcolor="#FFFFFF"  align="center">
 		<td colspan="5">등록된 게시물이 없습니다.</td>
