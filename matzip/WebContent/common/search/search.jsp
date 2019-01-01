@@ -56,17 +56,32 @@ html, body, #map {
 				<s:property value="currentPage" />
 			</s:param>
 		</s:url>
-	<!-- 	<script>
-		
-		var str = '<s:property value="images"/>';
-		var imageStr = str.split(",");
-		for(var i = 0;i<imageStr.length;i++){
-			id_test = document.getElementById('out'+i);
-			
-			id_test.src='<s:property value="restaurantNo"/>'+'/'+imagesStr[i];
-			  
-		}
-		</script> -->
+		<script>
+		console.log('<s:property value="context"/>');
+geocoder.addressSearch('제주특별자치도 제주시 첨단로 242', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === daum.maps.services.Status.OK) {
+
+        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        var marker = new daum.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new daum.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+        });
+        infowindow.open(map, marker);
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+    } 
+}); 
+</script>
 		
 	
 	
@@ -80,13 +95,13 @@ html, body, #map {
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active" >
-      <img  class="d-block w-100" src="/imgs/<s:property value="restaurantNo"/>/<s:property value="images.split(',')[0]"/>" alt="First slide">
+      <img  class="d-block img-thumbnail" style="width: 400px; height: 300px;" src="/imgs/<s:property value="restaurantNo"/>/<s:property value="images.split(',')[0]"/>" alt="First slide">
     </div>
     <div class="carousel-item" >
-      <img class="d-block w-100" src="/imgs/<s:property value="restaurantNo"/>/<s:property value="images.split(',')[1]"/>" alt="Second slide">
+      <img class="d-block img-thumbnail" style="width: 400px; height: 300px;" src="/imgs/<s:property value="restaurantNo"/>/<s:property value="images.split(',')[1]"/>" alt="Second slide">
     </div>
     <div class="carousel-item" >
-      <img class="d-block w-100" src="/imgs/<s:property value="restaurantNo"/>/<s:property value="images.split(',')[2]"/>" alt="Third slide">
+      <img class="d-block img-thumbnail" style="width: 400px; height: 300px;" src="/imgs/<s:property value="restaurantNo"/>/<s:property value="images.split(',')[2]"/>" alt="Third slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carousel<s:property value="#stat.index"/>" role="button" data-slide="prev">
