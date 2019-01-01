@@ -29,7 +29,7 @@ public class deleteAction extends ActionSupport
       private int currentPage; // 현재 페이지
  
  
-      private int no;
+      private int serviceno;
  
       // 생성자
       public deleteAction() throws IOException
@@ -50,11 +50,11 @@ public class deleteAction extends ActionSupport
             resultClass = new noticeVO();
   
             // 해당 번호의 글을 가져온다.
-            resultClass = (noticeVO)sqlMapper.queryForObject("notice.selectOne", getNo());
+            resultClass = (noticeVO)sqlMapper.queryForObject("notice.selectOne", getServiceno());
   
   
             // 삭제할 항목 설정
-            paramClass.setNo(getNo());
+            paramClass.setServiceno(getServiceno());
   
             // 삭제 쿼리 수행
             sqlMapper.update("notice.deleteBoard", paramClass);
@@ -65,8 +65,8 @@ public class deleteAction extends ActionSupport
       public noticeVO getParamClass() { return paramClass; }
       public void setParamClass(noticeVO paramClass) { this.paramClass = paramClass; }
  
-      public int getNo() { return no; }
-      public void setNo(int no) { this.no = no; }
+      public int getServiceno() { return serviceno; }
+      public void setServiceno(int serviceno) { this.serviceno = serviceno; }
  
       public noticeVO getResultClass() { return resultClass; }
       public void setResultClass(noticeVO resultClass) { this.resultClass = resultClass; }

@@ -34,7 +34,7 @@ public class viewAction extends ActionSupport
  
       private int currentPage;
  
-      private int no;
+      private int serviceno;
  
  
       private InputStream inputStream;
@@ -58,7 +58,7 @@ public class viewAction extends ActionSupport
 
   
             // 해당 번호의 글을 가져온다.
-            resultClass = (noticeVO)sqlMapper.queryForObject("notice.selectOne", getNo());
+            resultClass = (noticeVO)sqlMapper.queryForObject("notice.selectOne", getServiceno());
   
             return SUCCESS;
       }
@@ -81,8 +81,8 @@ public class viewAction extends ActionSupport
  
 
  
-      public int getNo() { return no; }
-      public void setNo(int no) { this.no = no; }
+      public int getServiceno() { return serviceno; }
+      public void setServiceno(int serviceno) { this.serviceno = serviceno; }
  
       public InputStream getInputStream() { return inputStream; }
       public void setInputStream(InputStream inputStream) 

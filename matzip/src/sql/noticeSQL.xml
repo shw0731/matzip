@@ -10,11 +10,10 @@
  
       <!-- 리절트 맵 정의 -->
       <resultMap id = "boardRes" class = "board">
-            <result property = "no" column = "no" />
+            <result property = "serviceno" column = "serviceno" />
             <result property = "subject" column = "subject" />
-            <result property = "writer" column = "writer" />
-            <result property = "content" column = "content" />
-            <result property = "regdate" column = "regdate" />
+            <result property = "context" column = "context" />
+            <result property = "reg_date" column = "reg_date" />
       </resultMap>
  
       <!-- 공통으로 사용할 select 절 정의 -->
@@ -24,13 +23,13 @@
  
       <!-- 공통으로 사용할 where-no 절 정의 -->
       <sql id = "where-no">
-            WHERE no = #no#
+            WHERE serviceno = #serviceno#
       </sql>
  
       <!-- select 쿼리문 정의 -->
       <select id = "selectAll" resultMap = "boardRes" parameterClass = "int">
             <include refid = "select-all" />
-            ORDER BY no DESC
+            ORDER BY serviceno DESC
       </select>
  
       <select id = "selectOne" resultMap = "boardRes" parameterClass = "int">
@@ -39,31 +38,28 @@
       </select>
  
       <select id = "selectLastNo" resultClass = "board" parameterClass = "int">
-            SELECT max(no) as no FROM NOTICEBOARD
+            SELECT max(serviceno) as serviceno FROM NOTICEBOARD
       </select>
  
  
       <!-- insert 쿼리문 정의 -->
       <insert id = "insertBoard" parameterClass = "board">
-            INSERT INTO NOTICEBOARD(NO,
+            INSERT INTO NOTICEBOARD(SERVICENO,
                   SUBJECT,
-                  WRITER,
-                  CONTENT,
-                  REGDATE
+                  CONTEXT,
+                  REG_DATE
             )
             VALUES(NOTICEBOARD_NO_SEQ.NEXTVAL,
                   #subject#,
-                  #writer#,
-                  #content#,
-                  #regdate#
+                  #context#,
+                  #reg_date#
             )
       </insert>
  
       <!-- update 쿼리문 정의 -->
       <update id = "updateBoard" parameterClass = "board">
             UPDATE NOTICEBOARD SET SUBJECT = #subject#,
-                  Writer = #writer#,
-                  CONTENT = #content#
+                  CONTEXT = #context#
    
             <include refid = "where-no" />
       </update>

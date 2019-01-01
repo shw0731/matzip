@@ -11,9 +11,9 @@
  
 
 <SCRIPT type = "text/javascript">
-      function open_win_noresizable(url, writer)
+      function open_win_noresizable(url)
       {
-            var oWin = window.open(url, writer, 
+            var oWin = window.open(url,
                    "scrollbars=no, status=no, resizable=no, width=600, height=500");
       }
 </SCRIPT>
@@ -57,7 +57,7 @@
 		<tr>
 			<td width="100" align="center">내용</td>
 			<td width="500" >
-				${resultClass.content }
+				${resultClass.context }
 			</td>
 		</tr>
       <tr bgcolor = "#777777">
@@ -80,19 +80,19 @@
       <tr>
             <td align = "right" colspan = "2">
                   <s:url id = "modifyURL" action = "no_modifyForm">
-                        <s:param name = "no">
-                              <s:property value = "no" />
+                        <s:param name = "serviceno">
+                              <s:property value = "serviceno" />
                         </s:param>
                   </s:url>
    
 				<input name = "list" type = "button" value = "수정" class = "inputb"
-                        onClick = "javascript:open_win_noresizable('no_modifyForm.action?no='+
-                        '<s:property value = "resultClass.no" />&currentPage='+
+                        onClick = "javascript:open_win_noresizable('no_modifyForm.action?serviceno='+
+                        '<s:property value = "resultClass.serviceno" />&currentPage='+
                         '<s:property value = "currentPage" />','modify')">
     
                  <input name = "list" type = "button" value = "삭제" class = "inputb"
-                        onClick = "javascript:location.href='no_deleteAction.action?no='+
-                        '<s:property value = "resultClass.no" />&currentPage='+
+                        onClick = "javascript:location.href='no_deleteAction.action?serviceno='+
+                        '<s:property value = "resultClass.serviceno" />&currentPage='+
                         '<s:property value = "currentPage" />','delete'">
 
 

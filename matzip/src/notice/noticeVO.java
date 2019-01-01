@@ -8,16 +8,15 @@ import java.util.Date;
 
 public class noticeVO 
 {
-      private int no;
+      private int serviceno;
       private String subject;
-      private String writer;
-      private String content;
-      private Date regdate;
-	public int getNo() {
-		return no;
+      private String context;
+      private Date reg_date;
+	public int getServiceno() {
+		return serviceno;
 	}
-	public void setNo(int no) {
-		this.no = no;
+	public void setServiceno(int serviceno) {
+		this.serviceno = serviceno;
 	}
 	public String getSubject() {
 		return subject;
@@ -25,23 +24,17 @@ public class noticeVO
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	public String getWriter() {
-		return writer;
+	public String getContext() {
+		return context;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setContext(String context) {
+		this.context = context;
 	}
-	public String getContent() {
-		return content;
+	public Date getReg_date() {
+		return reg_date;
 	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public Date getRegdate() {
-		return regdate;
-	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setReg_date(Date reg_date) {
+		this.reg_date = reg_date;
 	}
 	
       

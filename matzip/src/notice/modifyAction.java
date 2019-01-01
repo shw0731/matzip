@@ -32,11 +32,10 @@ public class modifyAction extends ActionSupport
  
       private int currentPage; // 현재 페이지
  
-      private int no;
+      private int serviceno;
       private String subject;
-      private String writer;
       private String password;
-      private String content;
+      private String context;
       private String old_file;
  
       private File upload; // 파일 객체
@@ -63,10 +62,9 @@ public class modifyAction extends ActionSupport
             resultClass = new noticeVO();
   
             // 수정할 항목 설정
-            paramClass.setNo(getNo());
+            paramClass.setServiceno(getServiceno());
             paramClass.setSubject(getSubject());
-            paramClass.setWriter(getWriter());
-            paramClass.setContent(getContent());
+            paramClass.setContext(getContext());
   
             // 일단 항목만 수정한다.
             sqlMapper.update("notice.updateBoard", paramClass);
@@ -74,7 +72,7 @@ public class modifyAction extends ActionSupport
 
   
             // 수정이 끝나면 view 페이지로 이동
-            resultClass = (noticeVO)sqlMapper.queryForObject("notice.selectOne", getNo());
+            resultClass = (noticeVO)sqlMapper.queryForObject("notice.selectOne", getServiceno());
   
             return SUCCESS;
       }
@@ -85,8 +83,6 @@ public class modifyAction extends ActionSupport
       public noticeVO getResultClass() { return resultClass; }
       public void setResultClass(noticeVO resultClass) { this.resultClass = resultClass; }
  
-      public String getWriter() { return writer; }
-      public void setWriter(String writer) { this.writer = writer; }
  
       public String getSubject() { return subject; }
       public void setSubject(String subject) { this.subject = subject; }
@@ -94,8 +90,8 @@ public class modifyAction extends ActionSupport
       public String getPassword() { return password; }
       public void setPassword(String password) { this.password = password; }
  
-      public String getContent() { return content; }
-      public void setContent(String content) { this.content = content; }
+      public String getContext() { return context; }
+      public void setContext(String context) { this.context = context; }
  
       public File getUpload() { return upload; }
       public void setUpload(File upload) { this.upload = upload; }
@@ -112,8 +108,8 @@ public class modifyAction extends ActionSupport
       public void setFileUploadPath(String fileUploadPath)
       { this.fileUploadPath = fileUploadPath; }
  
-      public int getNo() { return no; }
-      public void setNo(int no) { this.no = no; }
+      public int getServiceno() { return serviceno; }
+      public void setServiceno(int serviceno) { this.serviceno = serviceno; }
  
       public String getOld_file() { return old_file; }
       public void setOld_file(String old_file) { this.old_file = old_file; }

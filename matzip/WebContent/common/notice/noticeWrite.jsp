@@ -25,16 +25,7 @@
 
                   return false;
             }
-            else if(frm.writer.value == "")
-            {
-                  alert("이름을 입력해주세요.");
-
- 
-
-                  return false;
-            
-            }
-            else if(frm.content.value == "")
+            else if(frm.context.value == "")
             {
                   alert("내용을 입력해주세요.");
 
@@ -70,7 +61,7 @@
 
 <s:else>
 <form action = "no_modifyAction.action" method = "post" enctype = "multipart/form-data">
-      <s:hidden name = "no" value = "%{resultClass.no}" />
+      <s:hidden name = "serviceno" value = "%{resultClass.serviceno}" />
       <s:hidden name = "currentPage" value = "%{currentPage}" />
 </s:else>
 
@@ -81,14 +72,6 @@
             <td height = "1" colspan = "2"></td>
       </tr>
       
-            <tr>
-            <td bgcolor = "#F4F4F4"></font> 작성자</td>
-            <td bgcolor = "#FFFFFF">
-            
-                  <s:textfield name = "writer" theme = "simple" value = "%{resultClass.writer}"
-                        cssStyle = "width:100px" maxlength = "20" />
-            </td>
-      </tr>
 
       <tr bgcolor = "#777777">
             <td height = "1" colspan = "2"></td>
@@ -108,8 +91,8 @@
       <tr>
             <td bgcolor = "#F4F4F4"></font>공지 내용</td>
             <td bgcolor = "#FFFFFF">
-                  <s:textarea name = "content" theme = "simple"
-                        value = "%{resultClass.content}" cols = "50" rows = "10" />
+                  <s:textarea name = "context" theme = "simple"
+                        value = "%{resultClass.context}" cols = "50" rows = "10" />
             </td>
       </tr>
       <tr bgcolor = "#777777">

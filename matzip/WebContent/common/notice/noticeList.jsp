@@ -24,7 +24,6 @@
       <tr align = "center" bgcolor = "#F3F3F3">
             <td width = "50"><strong>번호</strong></td>
             <td width = "350"><strong>제목</strong></td>
-            <td width = "70"><strong>작성자</strong></td>
             <td width = "80"><strong>날짜</strong></td>
       </tr>
       <tr bgcolor = "#777777">
@@ -33,8 +32,8 @@
  
       <s:iterator value = "list" status = "stat">
             <s:url id = "viewURL" action = "no_viewAction">
-                  <s:param name = "no">
-                        <s:property value = "no" />
+                  <s:param name = "serviceno">
+                        <s:property value = "serviceno" />
                   </s:param>
                   <s:param name = "currentPage">
                         <s:property value = "currentPage" />
@@ -42,12 +41,11 @@
             </s:url>
   
             <tr bgcolor = "#FFFFFF" align = "center">
-                  <td><s:property value = "no" /></td>
+                  <td><s:property value = "serviceno" /></td>
                   <td align = "left">&nbsp;<s:a href = "%{viewURL}">
                         <s:property value = "subject" /></s:a>
                   </td>
-                  <td align = "center"><s:property value = "writer" /></td>
-                  <td align = "center"><s:property value = "regdate" /></td>
+                  <td align = "center"><s:property value = "reg_date" /></td>
             </tr>
             <tr bgcolor = "#777777">
                   <td height = "1" colspan = "5"></td>
