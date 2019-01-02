@@ -56,9 +56,9 @@
   <body>
   
  
-  	<table width="600" border="0" cellspacing="0" cellpadding="2">
+  	<table width="300" border="0" cellspacing="0" cellpadding="2" align="center" valign="top">
   		<tr>
-  			<td align="center"><h2>음식점게시양식</h2></td>
+  			&nbsp;&nbsp;<td align="center" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"><h2>음식점게시양식</h2></td>
   		</tr>
   	</table>
   
@@ -73,30 +73,27 @@
 		  <s:hidden name="images" value="%{restResultClass.images}" />
 		</s:else>
 
-       <table width="600" border="0" cellspacing="0" cellpadding="0">
+       <table width="600" border="0" cellspacing="5px" cellpadding="3px" align="center" valign="top">
         <tr>
           <td align="right" colspan="2"><font color="#FF0000">*</font>는 필수 입력사항입니다.</td>
         </tr>
         
-        <tr bgcolor="#777777">
+        <tr bgcolor="yellow">
           <td height="1" colspan="2"></td>
         </tr>
 				
         
         <tr>
-          <td bgcolor="#F4F4F4" width="100px"><font color="#FF0000">*</font>  음식점명 </td>
+          <td bgcolor="#ffffff" width="100px" align="center"> <font class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"> <font color="#FF0000">★</font>&nbsp;음식점명 </td>
           <td bgcolor="#FFFFFF">
-            <s:textfield name="restaurantName" theme="simple" value="%{restResultClass.restaurantName}" cssStyle="width:100px" maxlength="20"/>
+            &nbsp;&nbsp;<s:textfield name="restaurantName" theme="simple" value="%{restResultClass.restaurantName}" cssStyle="width:100px" maxlength="20"/>
           </td>
-        </tr>
-        <tr bgcolor="#777777">
-          <td height="1" colspan="2"></td>	
         </tr>
  
         <tr>
-        	<td bgcolor="#F4F4F4" width="100px"><font color="#FF0000">*</font>주소 </td>
+          <td bgcolor="#FFFFFF" align="center"><font class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" align="center"><font color="#FF0000">★</font>&nbsp;주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소 </td>
         	<td>
-        	<input type="text" name="address" style="width:300px" id="sample5_address" placeholder="주소">
+        	&nbsp;&nbsp;<input type="text" name="address" style="width:300px" id="sample5_address" placeholder="주소">
 			<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색">
 			<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
 
@@ -153,14 +150,11 @@
 
 
         </tr>
-        <tr bgcolor="#777777">
-          <td height="1" colspan="2"></td>	
-        </tr>
         
 	<tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  분류 </td>
+          <td bgcolor="#FFFFFF" align="center"><font class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" align="center"><font color="#FF0000">★</font>&nbsp;분&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;류 </td>
           <td bgcolor="#FFFFFF">
-           <select name="category"> 
+           &nbsp;&nbsp;<select name="category"> 
 			<option value="" >카테고리</option>
 			<option value="중식"
 			<s:if test="modifyClass.category.equals('중식')">	
@@ -189,32 +183,19 @@
 		</select>
           </td>
         </tr>
-        <tr bgcolor="#777777">
-          <td height="1" colspan="2"></td>
-        </tr>
+
 	<tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  내용 </td>
+          <td bgcolor="#FFFFFF" align="center"><font class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"><font color="#FF0000">★</font>&nbsp;내&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;용 </td>
           <td bgcolor="#FFFFFF">
-            <s:textarea name="context" theme="simple" value="%{restResultClass.context}" cols="50" rows="10" />
+            &nbsp;&nbsp;<s:textarea name="context" theme="simple" value="%{restResultClass.context}" cols="50" rows="10" />
           </td>
         </tr>
-        <tr bgcolor="#777777">
+   		<tr bgcolor="yellow">
           <td height="1" colspan="2"></td>
         </tr>
         
-<%--          <tr>
-        <td bgcolor="#F4F4F4"> 썸네일 사진 </td>
-        <td>
-            <s:form action="fileUploadAction" method="POST" enctype="multipart/form-data">
-       			 <s:file name="upload" label="File"/>
-   			 </s:form>
-   		</td>
-   		</tr> --%>
-   		<tr bgcolor="#777777">
-          <td height="1" colspan="2"></td>
-        </tr>
    		<tr>
-   		<td bgcolor="#F4F4F4"> 게시판<br/> 내부 사진</td>
+   		<td bgcolor="#FFFFFF" align="center"><font class="btn btn-primary btn-xl text-uppercase js-scroll-trigger">&nbsp; 게시판<br/> 내부 사진</td>
    		<td>
    			 <s:form action="multiUploadListAction" method="POST" enctype="multipart/form-data">
 				<s:file label="File[1]" name="uploads" />
@@ -224,7 +205,7 @@
      </td>
        
 
-        <tr bgcolor="#777777">
+        <tr bgcolor="yellow">
           <td height="1" colspan="2"></td>	
         </tr>
         
