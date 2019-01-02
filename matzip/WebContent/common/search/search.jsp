@@ -17,27 +17,20 @@ html, body, #map {
 }
 </style>
 <div id="map"></div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=82957f9de3f5badbdcfb736f5cc155ac"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=82957f9de3f5badbdcfb736f5cc155ac&libraries=services"></script>
 <script>
-		var container = document.getElementById('map');
-		var options = {
-			center: new daum.maps.LatLng(33.450701, 126.570667),
-			level: 3
-		};
-
-		var map = new daum.maps.Map(container, options);
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		mapOption = {
+    	center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+    		level: 3 // 지도의 확대 레벨
+		};  
+		// 지도를 생성합니다    
+		var map = new daum.maps.Map(mapContainer, mapOption); 
 		
-		// 마커가 표시될 위치입니다 
-		var markerPosition  = new daum.maps.LatLng(33.450701, 126.570667); 
-
-		// 마커를 생성합니다
-		var marker = new daum.maps.Marker({
-		    position: markerPosition
-		});
-		var imageStr;
-		// 마커가 지도 위에 표시되도록 설정합니다
-		marker.setMap(map);
-	
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new daum.maps.services.Geocoder();
+		
+		var tmp;
 		
 	</script>
 	<br>
@@ -57,8 +50,11 @@ html, body, #map {
 			</s:param>
 		</s:url>
 		<script>
-		console.log('<s:property value="context"/>');
-geocoder.addressSearch('제주특별자치도 제주시 첨단로 242', function(result, status) {
+		
+		
+		
+		
+		geocoder.addressSearch('<s:property value="address"/>', function(result, status) {
 
     // 정상적으로 검색이 완료됐으면 
      if (status === daum.maps.services.Status.OK) {
@@ -73,12 +69,15 @@ geocoder.addressSearch('제주특별자치도 제주시 첨단로 242', function
 
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new daum.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0;"><s:property value="restaurantName"/></div>'
         });
         infowindow.open(map, marker);
 
-        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        map.setCenter(coords);
+      	//1등위치 기준
+        if('<s:property value="#stat.index"/>'=='0'){
+    	 tmp = coords;
+        }
+       map.setCenter(tmp);
     } 
 }); 
 </script>
