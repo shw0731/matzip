@@ -3,34 +3,13 @@
 	"-//Apache Software Foundation//DTD Struts Configration 2.0//EN"
 	"http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-		<!-- 용량제한 100MB로 설정 -->
-	<constant name="struts.multipart.maxSize" value="104857600" />
- <package name="main" extends="struts-default, tiles-default">
- 
- <action name="JoinForm" class="member.JoinAction" method="form">
-   <result type="tiles">JoinForm</result>
- </action>
-<action name="JoinAction" class="member.JoinAction" >
-	<result>/index.jsp</result>
-</action>
-<action name="MainAction" class="member.MainAction" >
-	<result>/index.jsp</result>
-</action>
-<action name="LoginAction" class="member.LoginAction" >
-	<result name="success" >/index.jsp</result>
-	<result name="error">/common/Member/loginError.jsp</result>
-</action>
-<action name="logout" class="member.LoginAction" method="logout">
-	<result>/index.jsp</result>
-</action>
-<action name="searchAction" class="search.SearchAction">
-	<result>/common/search/search.jsp</result>
-</action>
 
-	
-	
-</package>
+<!-- 용량제한 100MB로 설정 -->
+<constant name="struts.multipart.maxSize" value="104857600" />
+
 	<include file="/configs/Notice.xml" />
 	<include file="/configs/RestaurantBoard.xml" />
 	<include file="/configs/Like.xml" />
+    <include file="/configs/Member.xml" />
+	
 </struts>

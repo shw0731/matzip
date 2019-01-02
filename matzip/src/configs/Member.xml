@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+      <!-- 용량제한 100MB로 설정 -->
+      <constant name = "struts.multipart.maxSize" value = "104857600" />
+      <package name = "member" extends = "struts-default">
+
+<action name="JoinAction" class="member.JoinAction" >
+	<result>/index.jsp</result>
+</action>
+<!-- 메인으로 돌아가기 -->
+<action name="MainAction" class="member.MainAction" >
+	<result>/index.jsp</result>
+</action>
+<!-- 로그인 -->
+<action name="LoginAction" class="member.LoginAction" >
+	<result name="success" >/index.jsp</result>
+	<result name="error">/common/Member/loginError.jsp</result>
+</action>
+<!-- 로그아웃 -->
+<action name="logout" class="member.LoginAction" method="logout">
+	<result>/index.jsp</result>
+</action>
+<!-- 검색 -->
+<action name="searchAction" class="search.SearchAction">
+	<result>/common/search/search.jsp</result>
+</action>
+<!-- 아이디 체크 -->
+<action name="CheckIdAction" class="member.CheckIdAction">
+<result>/common/Member/CheckId.jsp</result>
+</action>
+<!-- 비밀번호 찾기 -->
+<action name="FindPwAction" class="member.FindPwAction" method="find">
+  <result name="success">/common/Member/findMember.jsp</result>
+  <result name="error">/common/Member/findLoginError.jsp</result>
+</action>
+<!-- 정보 수정 -->
+<action name="MemberModifyForm" class="member.MemberModifyAction">
+  <result>/common/Member/myPage.jsp</result>
+</action>
+
+<action name="MemberModifyAction" class="member.MemberModifyAction" method="modify">
+  <result>/common/Member/myPageSuccess.jsp</result>
+</action>
+
+<!--회원탈퇴 -->
+<action name="MemberDeleteAction" class="member.MemberDeleteAction">
+  <result>/common/Member/deleteSuccess.jsp</result>
+</action>
+</package>
+
+</struts>
+
+  

@@ -1,5 +1,16 @@
  <%@ taglib prefix="s" uri="/struts-tags" %>
- 
+<%@ page session="true" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+    <% String id=session.getId();
+    %>
+ <script>
+  function Modify(){
+	 var url="MemberModifyAction.action?ID="+ ModifyForm.ID.value;
+	 
+		 open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"+
+		 "scrollbars=no,resizable=no,width=600,height=400");
+ }
+  </script>
+  
  <div class="modal fade" id="modalmyPageForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true" >
   
@@ -21,7 +32,7 @@
         <div class="md-form mb-5">
           <i class="fa fa-id-badge prefix grey-text">
           	${resultClass.ID}
-          </i><a href="#"><small>정보수정</small></a>
+           </i><a href="javascript:Modify();"><small>정보수정</small></a>
         </div>
         <div class="md-form mb-5">
           <i class="fa fa-gem prefix grey-text"><a href=""><small>잔여포인트 : <strong>${resultClass.point}점</strong></small></a></i>
@@ -64,6 +75,10 @@
       			</li>
    		</ul>
      </div>
+          <!-- 탈퇴 -->
+     <form name="deleteAction" action="MemberDeleteAction.action">
+     <input type="submit" value="탈퇴하기" class="submit"></td>
+    </form>
     </div>
   </div>
   </s:if>
