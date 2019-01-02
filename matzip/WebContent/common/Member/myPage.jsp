@@ -84,6 +84,10 @@
           	<text align=right>${resultClass.ID} 님의 방문을 환영합니다.
           </i><a href="#" width="100" border="0" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"><small>정보수정</small></a>
           	<a href="#" width="100" border="0" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"><small>고객센터</small></a></text>	
+          	<br><br>
+    		<a href="javascript:location.href='WriteForm.action?currentPage=<s:property value="currentPage" />';" target="_blank"> <img src="/img/mypage/myRestRes.png" width="210" height="90" border=0></a><br>
+    		<a href="javascript:location.href='modifyForm.action?currentPage=<s:property value="currentPage" />';" target="_blank"> <img src="/img/mypage/myRestModify.png" width="210" height="90" border=0></a><br> 		
+    		<a href="javascript:location.href='deleteForm.action?currentPage=<s:property value="currentPage" />';" target="_blank"> <img src="/img/mypage/myRestDel.png" width="210" height="90" border=0></a><br>    		
       <table width="300" border="0" cellspacing="0" cellpadding="2" align="center" valign="top">
   		<tr>
   			&nbsp;&nbsp;<td align="center" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"><h2>음식점게시양식</h2></td>
