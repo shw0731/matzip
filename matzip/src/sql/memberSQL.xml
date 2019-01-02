@@ -34,14 +34,18 @@
 </select>
 
 <!-- 아이디 중복확인하기 -->
-<select id="idCheck" resultClass="String" parameterClass="String">
-  SELECT ID FROM MEMBER WHERE ID = #ID# 
+<select id="idCheck" resultClass="member" parameterClass="String">
+  SELECT * FROM MEMBER WHERE ID = #ID# 
 </select>
 
 <select id="selectPassword" resultMap="memberRes" parameterClass="member">
   <include refid="select-all"/>
   <include refid="where-no"/>
   AND password=#password#
+</select>
+<!-- 비밀번호 찾기 -->
+<select id="findPw" resultMap="memberRes" parameterClass="member">
+select * from MEMBER where ID = #ID# and EMAIL = #email#
 </select>
 
 <!-- insert쿼리문 정의 -->
@@ -56,19 +60,16 @@
 
 <!-- update 쿼리문 정의 -->
 <update id="updateMember" parameterClass="member">
-  UPDATE MEMBER SET ID = #ID#,
-                      NAME = #name#,
+  UPDATE MEMBER SET   
                       PHONENUMBER = #phoneNumber#,
                       PASSWORD = #password#,
-                      BLACKLIST = #blacklist#,
-                      EMAIL = #email#,
-                      ISTYPE = #isType#
-     <include refid="where-no"/>
+                      EMAIL = #email#
+     WHERE ID = #ID#
 </update>
 
 <!-- delete쿼리문 정의 -->
 <delete id="deleteMember" parameterClass="member">
-  DELETE FROM MEMBER
+  DELETE FROM MEMBER WHERE ID = #ID#
 </delete>
 
 </sqlMap>
