@@ -1,5 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+<meta charset="UTF-8" />
 <script>
 function validation(){
 	

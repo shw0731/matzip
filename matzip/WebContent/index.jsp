@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+
 
 <%@ include file="/common/header.jsp"%>
-
+<%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+<meta charset="UTF-8" />
   <body id="page-top">
     <!-- Header -->
     <header class="masthead">
@@ -23,7 +24,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">평점 TOP 3</h2>
+            <h2 class="section-heading text-uppercase">왜안떠!! TOP 3</h2>
             <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
           </div>
         </div>
