@@ -96,9 +96,8 @@ function openConfirmId(){
           
           <ul class="navbar-nav text-uppercase ml-auto">
             <s:if test="session.ID !=NULL">
-             <form action="MemberModifyForm.action">
              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalmyPageForm">MYPAGE</button>
-             </form>
+          
           	 <form action="logout.action">
           	 <button type="submit" class="btn btn-primary btn-lg">LOGOUT</button>
           	 </form>
