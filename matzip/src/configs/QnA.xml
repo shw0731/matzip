@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+		<!-- 용량제한 100MB로 설정 -->
+	<constant name="struts.multipart.maxSize" value="104857600" />
+	
+	<package name="qna" extends="struts-default, tiles-default">
+		<!-- 게시판 리스트 액션 -->
+		<action name="QnAList"  class="qna.QnAAction">
+			<result>/common/QNA/QnAList.jsp</result>
+		</action>
+	
+		
+		<!-- 글쓰기 액션 -->
+		<action name="QnAWriteForm" class="qna.QnAWriteAction" method="form">
+	 	<result>/common/QNA/QnAWriteForm.jsp</result>
+	</action>
+	
+	<action name="QnAWriteAction" class="qna.QnAWriteAction">
+		<result type="redirect-action">
+			<param name="actionName">QnAList</param>
+		</result>
+	</action>
+	
+	<!-- 게시판 답변글쓰기 액션 -->
+	<action name="QnAReplyForm" class="qna.QnAWriteAction" method="reply">
+	 	<result type="chain">QnAWriteForm</result>
+	</action>
+	<action name="QnAReplyAction" class="qna.QnAWriteAction">
+		<result type="redirect-action">
+			<param name="actionName">QnAList</param>
+		</result>
+	</action>
+		
+		<!-- 글읽기 액션 -->
+		
+		<action name="QnAViewAction" class="qna.QnAViewAction">
+			<result>/common/QNA/QnAView.jsp</result>
+		</action>
+		
+		<!-- 비밀번호 체크 액션 -->
+	<action name="checkForm" class="qna.QnAViewAction" method="checkForm">
+		<result>/common/QNA/checkPassword.jsp</result>
+	</action>
+	
+	
+	<action name="checkAction" class="qna.QnAViewAction" method="checkAction">
+		<result name="error">/common/QNA/checkError.jsp</result>
+		<result>/common/QNA/checkSuccess.jsp</result>
+	</action>
+	
+	<!-- 게시판 수정 액션 -->
+	<action name="QnAModifyForm" class="qna.QnAViewAction">
+		<result type="chain">QnAWriteForm</result>
+	</action>
+	
+	<action name="QnAModifyAction" class="qna.QnAModifyAction">
+		<result type="chain">QnAViewAction</result>
+	</action>
+		<!-- 삭제 액션 -->
+	<action name="QnADeleteAction" class="qna.QnADeleteAction">
+		<result type="chain">QnAList</result>
+	</action>
+	
+	
+	
+	
+	</package>
+		
+		 <!-- 수정 액션 -->
+		
+	<!-- 	<action name="modifyForm" class="board.viewAction">
+		<result type="chain">writeForm</result>
+	</action>
+	
+	<action name="modifyAction" class="board.modifyAction">
+		<result type="chain">viewAction</result>
+	</action> -->
+		
+	
+	
+	<!-- <package name="main" extends="struts-default, tiles-default">
+	
+		<action name="main" class="action.YammyMainAction">
+			<result name="input">searchList</result>
+			<result type="tiles">yammyMain</result>
+		</action>
+		
+		<action name="searchList" class="action.etc.searchList">
+			<result type="tiles">searchList</result>
+		</action>
+		
+		
+	학준 
+			회원가입
+		<action name="joinForm" class="member.memberJoinAction" method="form">
+			<result type="tiles">joinForm</result>
+		</action>
+		<action name="joinAction" class="member.memberJoinAction" >
+			<result type="chain" >main</result>
+		</action>
+		<action name="idCheckAction" class="member.memberJoinAction" method="idCheckMethod" >
+			<result name="success">/YammyYammy/member/memberJoin/idCheck.jsp</result>
+		</action>
+		
+		로그인
+		<action name="loginAction" class="member.memberLoginAction" >
+			<result type="chain" name="success" >main</result>
+			<result name="error">/YammyYammy/member/memberLogin/loginError.jsp</result>
+		</action>
+
+		로그아웃 
+		<action name="logout" class="member.memberLoginAction" method="logout">
+			<result type="chain">main</result>
+		</action>
+		
+		
+		마이 페이지 
+		<action name="myPageAction" class="member.memberMyPageAction" method="form">
+			<result type="tiles">myPageModifyForm</result>
+		</action>
+		
+		<action name="myPageModify" class="member.memberMyPageAction" method="modify">
+			<result type="chain">myPageAction</result>
+		</action>
+		
+		나의 맛집 , 코맨트   myBookMarkList myCommentList
+		
+			
+		<action name="myBookMarkForm" class="member.memberBookMarkAction" method="form">
+			<result type="tiles">myBookMarkForm</result>
+		</action>
+		회원 즐겨찾기 목록
+		<action name="myBookList" class="member.memberBookMarkAction" method="myBookMarkList">
+			<result type="tiles">myBookList</result>
+		</action>
+		회원 코멘트 목록 
+		<action name="myCommentList" class="member.memberBookMarkAction" method="myCommentList">
+			<result type="tiles">myCommentList</result>
+		</action>
+		
+		<action name="myCommentDelete" class="member.memberBookMarkAction" method="myCommentDelete">
+			<result type="chain">myCommentList</result>
+		</action>
+		 
+		 
+		<action name="insertBookMark" class="action.BookMarkAction">
+      		  <result>/YammyYammy/store/storeBookMark/BookMarkResult.jsp</result>
+    	</action>
+			
+		<action name="CommentLikeAction" class="action.comment.CommentLikeAction" method="CommentLike">
+      		  <result>/YammyYammy/store/StoreLike/like.jsp</result>
+    	</action>
+		
+		<action name="CommentBadAction" class="action.comment.CommentLikeAction" method="CommentBad">
+      		  <result>/YammyYammy/store/StoreLike/bad.jsp</result>
+    	</action>
+		
+		평점
+		<action name="RatingAction" class="action.RatingAction" >
+      		  <result name="success" type="chain">storeView</result>
+      		  <result name="error">storeView</result>
+      		  
+      		  <result type="tiles">storeView</result>
+    	</action>
+		
+		<action name="RatingForm" class="action.RatingAction" method="Form" >
+      		  <result>/YammyYammy/etc/store_estimation.jsp</result>
+      		  
+    	</action>
+		
+	학준 
+		
+		
+		
+	</package>
+	
+	<package name="ExEx" extends="struts-default, tiles-default">
+	
+		<action name="notice"  class="action.etc.Notice">
+			<result type="tiles">notice</result>
+		</action>
+		
+		<action name="introduce"  class="action.etc.Introduce">
+			<result type="tiles">introduce</result>
+		</action>
+		
+		<action name="login"  class="action.LoginAction">
+			<result type="tiles">login</result>
+		</action>
+		
+		<action name="qnaList"  class="action.etc.QNA" method="list">
+			<result type="tiles">QNA</result>
+		</action>
+		
+	</package>
+	
+	faq관련 Action 시작
+	<package name="faq" extends="struts-default, tiles-default">
+		<action name="faqView" class="action.etc.FAQ">
+			<result type="tiles">FAQView</result>
+		</action>
+		<action name="faqList"  class="action.etc.FAQ" method="list">
+			<result type="tiles">FAQ</result>
+		</action>
+		<action name="faqForm" class="action.etc.FAQ" method="form">
+			<result type="tiles">FAQWriteForm</result>
+		</action>
+		<action name="faqWrite" class="action.etc.FAQ" method="write">
+			<result type="redirect-action">
+				<param name="actionName">faqList</param>
+			</result>
+		</action>
+		<action name="faqModify" class="action.etc.FAQ" method="modify">
+			<result type="chain">faqView</result>
+		</action>
+		<action name="faqDelete" class="action.etc.FAQ" method="delete">
+			<result type="redirect-action">
+				<param name="actionName">faqList</param>
+			</result>
+		</action>
+		<action name="faqModifyForm" class="action.etc.FAQ">
+			<result type="chain">faqForm</result>
+		</action>
+	</package>
+	faq관련 Action 끝
+	
+	  qna관련 Action 시작 
+	  <package name="qna" extends="struts-default, tiles-default">
+		
+		<action name="qnaList"  class="qna.QnaAction" method="list">
+			<result type="tiles">QnaList</result>
+		</action>
+		
+		<action name="qnaView" class="qna.QnaAction">
+			<result type="tiles">QNAView</result>
+		</action>
+		
+		<action name="qnaWrite" class="qna.QnaWriteAction" method="write">
+			<result type="tiles">
+				<param name="actionName">QnaWrite</param>
+			</result>
+		</action>
+		
+		
+	</package>
+		  <action name="qnaForm" class="action.etc.QNA" method="form">
+			<result type="tiles">QNAWriteForm</result>
+		</action>
+		
+		<action name="qnaModify" class="action.etc.QNA" method="modify">
+			<result type="chain">qnaView</result>
+		</action>
+		<action name="qnaDelete" class="action.etc.QNA" method="delete">
+			<result type="redirect-action">
+				<param name="actionName">qnaList</param>
+			</result>
+		</action>
+		<action name="qnaModifyForm" class="action.etc.QNA">
+			<result type="chain">qnaForm</result>
+		</action>
+		<action name="qnaReplyForm" class="action.etc.QNA" method="reply">
+			<result type="chain">qnaForm</result>
+		</action>
+		<action name="qnaReply" class="action.etc.QNA" method="write">
+			<result type="redirect-action">
+				<param name="actionName">qnaList</param>
+			</result>
+		</action>
+	</package>
+	-->
+	<!--  qna관련 Action 끝 -->
+	<!--
+	관리자페이지
+	<package name="admin" extends="struts-default, tiles-default">
+		관리자페이지
+		<action name="adminPage"  class="action.admin.adminPage">
+			<result type="tiles">adminPage</result>
+		</action>
+		
+		<action name="registList"  class="action.admin.RequireList">
+			<result type="tiles">registList</result>
+		</action>
+		
+		<action name="modifyList"  class="action.admin.RequireList" method="modify">
+			<result type="tiles">modifyList</result>
+		</action>
+		
+		<action name="deleteList"  class="action.admin.RequireList" method="delete">
+			<result type="tiles">deleteList</result>
+		</action>
+			
+		<action name="registStoreForm"  class="action.admin.RequireList" method="regForm" >
+			<result type="tiles">registStoreForm</result>
+		</action>
+		
+		<action name="qnaAdminList"  class="action.etc.QNA" method="adminList">
+			<result type="tiles">QNA</result>
+		</action>
+		
+		<action name="memberList"  class="action.admin.memberList" >
+			<result type="tiles">memberList</result>
+		</action>
+		
+		<action name="memberDelete"  class="action.admin.memberList" method="delete" >
+			<result type="chain">memberList</result>
+		</action>
+		
+		<action name="insertAction"  class="action.admin.YammyList" >
+			<result type="chain">registList</result>
+		</action>
+		추가
+		<action name="modifyAction" class="action.admin.YammyList" method="modify">
+			<result type="chain">modifyList</result>
+		</action>
+		
+		<action name="deleteAction" class="action.admin.YammyList" method="delete">
+			<result type="chain">deleteList</result>
+		</action>
+		
+		혜영씨
+		
+		<action name="userAgreement"  class="action.etc.userAgreement" >
+			<result type="tiles">userAgreement</result>
+		</action>
+		
+		<action name="privacyAgreement"  class="action.etc.privacyAgreement" >
+			<result type="tiles">privacyAgreement</result>
+		</action>
+		
+		혜영씨끝
+		</package>
+		관리자 끝
+		
+		메뉴 & 코멘트  & 가게 상세보기
+		<package name="store" extends="struts-default, tiles-default">
+		
+		<action name="commentList" class="action.comment.Comment">
+			<result type="chain">storeView2</result>
+		</action>
+		<action name="storeView2" class="action.list.YammyRequire" method="view">
+			<result type="tiles">storeView</result>
+		</action>
+		<action name="commentForm" class="action.comment.Comment" method="form">
+			<result>/YammyYammy/list/commentForm.jsp</result>
+		</action>
+		<action name="commentWrite" class="action.comment.Comment" method="write">
+			<result type="redirect-action">
+				<param name="actionName">storeView</param>
+			</result>
+		</action>
+		<action name="commentDelete" class="action.comment.Comment" method="delete">
+			<result type="chain">storeView</result>
+		</action>
+		<action name="comment_Like_Hate" class="action.comment.Comment" method="like">
+			<result name="error" type="redirect-action">
+				<param name="actionName">comment_Like_Hate_Delete</param>
+			</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">storeView</param>
+			</result>
+		</action>
+		<action name="comment_Like_Hate_Delete" class="action.comment.Comment" method="likedelete">
+			<result type="redirect-action">
+				<param name="actionName">storeView</param>
+			</result>
+		</action>
+		<action name="storeView" class="action.list.YammyRequire" method="view">
+			<result type="chain">commentList</result>
+		</action>
+		<action name="menuList" class="action.list.YammyRequire" method="menu">
+			<result>/YammyYammy/list/menuList.jsp</result>
+		</action>
+		<action name="reqModifyForm" class="action.list.RequireStore" method="form">
+			<result>/YammyYammy/require/modifyStoreForm.jsp</result>
+		</action>
+		<action name="reqModify" class="action.list.RequireStore">
+			<result>/YammyYammy/require/modifyStoreForm.jsp</result>
+		</action>
+		<action name="reqDelete" class="action.list.RequireStore" method="delete">
+			<result>/YammyYammy/require/autoClose.jsp</result>
+		</action>
+		<action name="reqStoreForm" class="action.list.RequireStore" method="form">
+			<result>/YammyYammy/require/reqStoreForm.jsp</result>
+		</action>
+		<action name="reqStore" class="action.list.RequireStore" method="insert">
+			<result>/YammyYammy/require/autoClose.jsp</result>
+		</action>
+		
+		</package>
+		
+		메뉴 & 코멘트 & 가게 상세보기 끝
+		
+		
+		<package name="notice" extends="struts-default, tiles-default">
+
+		<action name="noticeList" class="action.etc.Notice" method="list">
+			<result type="tiles">noticeList</result>
+		</action>
+
+		<action name="noticeView" class="action.etc.Notice" method="view">
+			<result type="tiles">noticeView</result>
+		</action>
+
+		<action name="noticeWriteForm" class="action.etc.Notice" method="form">
+			<result type="tiles">noticeWrite</result>
+		</action>
+
+		<action name="noticeWrite" class="action.etc.Notice" method="write">
+			<result type="chain">noticeList</result>
+		</action>
+		
+		<action name="noticeModifyForm" class="action.etc.Notice" method="view">
+			<result type="chain">noticeWriteForm</result>
+		</action>
+
+		<action name="noticeModify" class="action.etc.Notice" method="modify">
+			<result type="chain">noticeView</result>
+		</action>
+
+		<action name="noticeDelete" class="action.etc.Notice" method="delete">
+			<result type="redirect-action">
+				<param name="actionName">noticeList</param>
+			</result>
+		</action>
+		
+	</package> -->
+
+</struts>

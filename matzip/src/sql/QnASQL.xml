@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+
+<typeAlias alias="QnA" type="qna.QnAVO"/>
+<!-- 리절트 맵 -->
+
+<resultMap id="qnaRes" class="QnA">
+  <result property="serviceno" column="serviceno"/>
+  <result property="id" column="id"/>
+  <result property="subject" column="subject"/>
+  <result property="context" column="context"/>
+  <result property="password" column="password"/>
+  <result property="reg_date" column="reg_date"/>
+  <result property="isprivate" column="isprivate"/>
+  <result property="answerno" column="answerno"/>
+  <result property="isanswer" column="isanswer"/>
+</resultMap>
+
+ 
+
+<!-- QNABOARD 의 모든 데이터를 가져온다 -->
+<sql id="select-all">
+SELECT * FROM QNABOARD 
+</sql>
+
+<!-- 공통으로 사용할 where-no 절 정의 -->
+ 	<sql id="where-serviceno">
+		WHERE serviceno = #serviceno#
+	</sql> 
+ 
+
+<select id = "QnAselectAll" resultMap = "qnaRes">
+	<include refid="select-all"/>
+	 ORDER BY answerno DESC, isanswer ASC
+</select>
+
+
+
+<select id="QnAselectNo" resultMap="qnaRes" parameterClass="int">
+	SELECT * FROM QNABOARD 
+	WHERE SERVICENO = #serviceno#
+</select>
+
+<select id="QnAselectLastNo" resultClass="QnA" parameterClass="int" >
+			SELECT max(serviceno) as serviceno FROM QNABOARD
+	</select>
+	
+	<select id="QnAselectPassword" resultMap="qnaRes">
+		<include refid="select-all"/>
+		<include refid="where-serviceno" />  
+		AND password = #password#
+	</select>
+
+<insert id="QnAInsert" parameterClass="QnA">
+INSERT INTO QNABOARD(SERVICENO, ID, SUBJECT, CONTEXT, PASSWORD, REG_DATE, ISPRIVATE, ANSWERNO, ISANSWER) 
+VALUES(QNABOARD_SEQ.NEXTVAL, #id#, #subject#, #context#, #password#, #reg_date#, #isprivate#,QNABOARD_SEQ.CURRVAL,0)
+</insert>
+
+<insert id="QnAInsertReply" parameterClass="QnA">
+INSERT INTO QNABOARD(SERVICENO, ID, SUBJECT, CONTEXT, PASSWORD, REG_DATE,  ISPRIVATE, ANSWERNO , ISANSWER)
+VALUES(QNABOARD_SEQ.NEXTVAL, #id#, #subject#, #context#, #password#, #reg_date#, #isprivate#, #answerno#,1)
+</insert>
+
+
+
+<update id="QnAUpdate" parameterClass="QnA">
+	UPDATE QNABOARD SET SUBJECT = #subject#, 
+					ID = #id#,
+					PASSWORD = #password#,
+					CONTEXT = #context#<!-- ,
+					ISPRIVATE = #isprivate#,
+					ANSWERNO = #answerno# -->
+	<include refid = "where-serviceno" />
+	</update>
+
+<delete id="QnADelete" parameterClass="QnA">
+DELETE FROM QNABOARD
+<include refid="where-serviceno"/>
+</delete> 
+
+
+
+</sqlMap> 

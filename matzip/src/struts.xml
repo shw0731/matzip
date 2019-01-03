@@ -2,6 +2,7 @@
 <!DOCTYPE struts PUBLIC
 	"-//Apache Software Foundation//DTD Struts Configration 2.0//EN"
 	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
 <struts>
 
 <!-- 용량제한 100MB로 설정 -->
@@ -11,6 +12,7 @@
 	<include file="/configs/RestaurantBoard.xml" />
 	<include file="/configs/Like.xml" />
     <include file="/configs/Member.xml" />
-    <include file="/configs/Reivew.xml"/>
+    <include file="/configs/Reivew.xml" />
+    <include file="/configs/QnA.xml" /> 
 	
 </struts>

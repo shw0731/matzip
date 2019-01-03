@@ -19,8 +19,9 @@
 	<sqlMap resource="/sql/memberSQL.xml" />
       <sqlMap resource = "/sql/noticeSQL.xml" />
       <sqlMap resource="/sql/restaurantSQL.xml" />
+      <sqlMap resource="/sql/QnASQL.xml" /> 
 <!-- 	<sqlMap resource="/sql/powerLinkRegSQL.xml" />
-	<sqlMap resource="/sql/QnASQL.xml" />
+	 />
 	<sqlMap resource="/sql/reservationRegSQL.xml" />
 	
 	<sqlMap resource="/sql/reviewSQL.xml" /> -->
