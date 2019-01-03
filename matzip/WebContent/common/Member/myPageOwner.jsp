@@ -6,7 +6,7 @@ function delConfirm(){
 		  alert('취소되었습니다.');
 		  return false;
 	  }
-}
+} 
 </script>
 
  <!-- 점주 -->

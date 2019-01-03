@@ -18,7 +18,7 @@
 	  }
   }
   </script>
-  
+
  <div class="modal fade" id="modalmyPageForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true" >
   
@@ -33,13 +33,13 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <p><a href="#"><small>고객센터</small></a></p>	
+        <a href="#"><small>고객센터</small></a>
       </div>
       <!--Modal body -->
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <i class="fa fa-id-badge prefix grey-text">
-          	${resultClass.ID}
+          	　${resultClass.ID}
           	<%-- </i><button type="button" class="btn btn-primary collapsed" data-toggle="modal" data-target=#modalModifyForm"><small>정보수정</small></button> --%>
           </i><a href="javascript:Modify();"><small>정보수정</small></a>
           <ul>
@@ -50,7 +50,7 @@
           </ul>
           </div>
         <div class="md-form mb-5">
-          <i class="fa fa-gem prefix grey-text"><a href=""><small>잔여포인트 : <strong>${resultClass.point}점</strong></small></a></i>
+          <i class="fa fa-id-badge prefix grey-text">　My Point : <strong><a href="">${resultClass.point}점</strong></a></i>
           
           <!-- 예약현황 -->
           <div>
@@ -62,8 +62,8 @@
           
           
           <!-- 마이 리뷰-->
-         <div>
-         <label for="">마이리뷰</label>
+         <div class="md-form mb-5">
+         <label for="">　　My Review</label>
          	<ul>
           	<li>존나마싯쓰</li>
           </ul>
@@ -76,7 +76,7 @@
       <!--Modal Footer -->
       <div class="modal-footer d-flex justify-content-center">
       
-      <i class="fas fa-heart w-100"><small>관심 목록</small></i>
+      <i class="fas fa-heart w-100"><small>My List</small></i>
       </div>
     <div class="">
       	<ul>
@@ -133,7 +133,7 @@
           
           <!-- 마이 리뷰-->
          <div>
-         <label for="">마이리뷰</label>
+         <label for="">My Review</label>
          	<ul>
           	<li>존나마싯쓰</li>
           </ul>
