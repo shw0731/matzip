@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
-
+<%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+<meta charset="UTF-8" />
 
 <%@ include file="/common/header.jsp"%>
 
@@ -108,44 +109,20 @@ html, body, #map {
   </a>
 </div>
     <div class="media-body">
-    <a class="btn btn-primary" data-toggle="collapse" href="#collapse<s:property value="#stat.index"/>b" role="button" aria-expanded="false" aria-controls="collapseExample">
-    	<s:property value="context"/>
-  	</a>
+    
+    <s:a href="%{viewURL}">
+    	<h2><s:property value="restaurantName" /></h2><br>
+    	평점:<s:property value="starPoint"/>&nbsp;&nbsp;좋아요: <s:property value="likes"/><br>
+    	주소:<s:property value="address"/>&nbsp;&nbsp;음식종류:<s:property value="category"/><Br>
+    	가게 설명:<s:property value="context"/>
+    
+    </s:a>
+    	
+  	
     </div>
   </li>
-<!-- 상세보기 -->
-<div class="collapse" id="collapse<s:property value="#stat.index"/>b">
-  <div class="card card-body">
-  
-    <div id="carousel<s:property value="#stat.index"/>a" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="/imgs/<s:property value="restaurantNo"/>/<s:property value="images.split(',')[0]"/>" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="/imgs/<s:property value="restaurantNo"/>/<s:property value="images.split(',')[1]"/>" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="/imgs/<s:property value="restaurantNo"/>/<s:property value="images.split(',')[2]"/>" alt="Third slide">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carousel<s:property value="#stat.index"/>a" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carousel<s:property value="#stat.index"/>a" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-<s:property value="context"/>
-</div>
-</div>
+
+
   <br>
   </s:iterator>
   

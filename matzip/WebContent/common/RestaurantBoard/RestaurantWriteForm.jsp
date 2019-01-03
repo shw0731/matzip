@@ -7,14 +7,10 @@
 <head>
 	<title>음식점등록게시판</title>	
 	<SCRIPT type="text/javascript">
-	//엔터키 안먹게 하는거
-	document.addEventListener('keydown', function(event) {
-	    if (event.keyCode === 13) {
-	        event.preventDefault();
-	    }
-	}, true);
+	
 
-	출처: http://iberis.tistory.com/18 [Iberis]
+
+	
 		function validation() {
 		
 			var frm = document.rest;

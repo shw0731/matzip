@@ -1,3 +1,6 @@
+ <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+<meta charset="UTF-8" />
+ 
  <div class="modal fade" id="searchFilter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">

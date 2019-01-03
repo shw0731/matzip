@@ -11,5 +11,6 @@
 	<include file="/configs/RestaurantBoard.xml" />
 	<include file="/configs/Like.xml" />
     <include file="/configs/Member.xml" />
+    <include file="/configs/Reivew.xml"/>
 	
 </struts>

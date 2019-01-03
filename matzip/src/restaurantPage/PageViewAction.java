@@ -4,7 +4,9 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
+import org.apache.struts2.interceptor.SessionAware;
 
+import java.util.*;
 import java.io.Reader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,15 +15,22 @@ import java.io.IOException;
 
 import java.net.URLEncoder;
 
-public class PageViewAction extends ActionSupport{
+import review.ReviewVO;
+import review.ReviewWriteAction;
+
+public class PageViewAction extends ActionSupport implements SessionAware{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 
 	private BoardVO paramClass = new BoardVO(); //파라미터를 저장할 객체
 	private BoardVO restResultClass = new BoardVO(); //쿼리 결과 값을 저장할 객체
+	private List<ReviewVO> reviewList = new ArrayList<ReviewVO>();
+	
+	private ReviewVO reviewParamClass = new ReviewVO();
+	private ReviewVO reviewResultClass = new ReviewVO();
 
 	private int currentPage;
-
+	private Map session;
 	private int restaurantNo;
 	private String restaurantName;
 	private String context;
@@ -50,11 +59,15 @@ public class PageViewAction extends ActionSupport{
 
 	// 상세보기
 	public String execute() throws Exception {
-		// 해당 게시물의 좋아요 수를 가져온다.
-		paramClass.setRestaurantNo(restaurantNo);
+		
+		paramClass.setRestaurantNo(getRestaurantNo());
 		// 해당 번호의 글을 가져온다.
 		restResultClass = (BoardVO) sqlMapper.queryForObject("rest.selectOne", getRestaurantNo());
+		reviewList = sqlMapper.queryForList("review.selectAll",getRestaurantNo());
+		
+		
 		return SUCCESS;
+		
 	}
 
 	public BoardVO getParamClass() {
@@ -200,4 +213,13 @@ public class PageViewAction extends ActionSupport{
 	public void setContentLength(long contentLength) {
 		this.contentLength = contentLength;
 	}
+
+	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
+	}
+	
 }
