@@ -132,7 +132,6 @@ var fn_get_filter = function(){
    		var address_array = Array();
    		var address_cnt = 0;
    		var address = $("input[name='filter_address[]']");
-
    		for(i=0;i<address.length;i++) {
    		    if (address[i].checked == true){
    		        address_array[address_cnt] = address[i].value;
@@ -144,7 +143,6 @@ var fn_get_filter = function(){
    		var category_array = Array();
    		var category_cnt = 0;
    		var category = $("input[name='filter_category[]']");
-
    		for(i=0;i<category.length;i++) {
    		    if (category[i].checked == true){
    		        category_array[category_cnt] = category[i].value;
