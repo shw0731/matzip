@@ -55,24 +55,19 @@ html, body, #map {
 		
 		
 		geocoder.addressSearch('<s:property value="address"/>', function(result, status) {
-
     // 정상적으로 검색이 완료됐으면 
      if (status === daum.maps.services.Status.OK) {
-
         var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-
         // 결과값으로 받은 위치를 마커로 표시합니다
         var marker = new daum.maps.Marker({
             map: map,
             position: coords
         });
-
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new daum.maps.InfoWindow({
             content: '<div style="width:150px;text-align:center;padding:6px 0;"><s:property value="restaurantName"/></div>'
         });
         infowindow.open(map, marker);
-
       	//1등위치 기준
         if('<s:property value="#stat.index"/>'=='0'){
     	 tmp = coords;
@@ -163,21 +158,3 @@ html, body, #map {
   
 </body>
 </html>
-
-
-
-
- 
- 
-
-
-
-
-
-
-
-
-
-
-
-
