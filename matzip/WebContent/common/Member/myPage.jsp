@@ -7,7 +7,7 @@
 	 var url="http://localhost:8080/common/Member/myPageModify.jsp"
 	 
 		 open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"+
-		 "scrollbars=no,resizable=no,width=600,height=400");
+		 "scrollbars=no,resizable=no,width=500,height=250");
  }
   
   function delConfirm(){
@@ -40,8 +40,15 @@
         <div class="md-form mb-5">
           <i class="fa fa-id-badge prefix grey-text">
           	${resultClass.ID}
-           </i><a href="javascript:Modify();"><small>정보수정</small></a>
-        </div>
+          	<%-- </i><button type="button" class="btn btn-primary collapsed" data-toggle="modal" data-target=#modalModifyForm"><small>정보수정</small></button> --%>
+          </i><a href="javascript:Modify();"><small>정보수정</small></a>
+          <ul>
+          <small><li>MyName : ${resultClass.name}</small></li>
+          <small><li>MyEmail : ${resultClass.email}</small></li>
+          <small><li>MyPhoneNumber : ${resultClass.phoneNumber}</small></li>
+          
+          </ul>
+          </div>
         <div class="md-form mb-5">
           <i class="fa fa-gem prefix grey-text"><a href=""><small>잔여포인트 : <strong>${resultClass.point}점</strong></small></a></i>
           
