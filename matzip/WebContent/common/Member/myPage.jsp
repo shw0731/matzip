@@ -3,12 +3,20 @@
     <% String id=session.getId();
     %>
  <script>
-/*   function Modify(){
+  function Modify(){
 	 var url="http://localhost:8080/common/Member/myPageModify.jsp"
 	 
 		 open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"+
 		 "scrollbars=no,resizable=no,width=600,height=400");
- } */
+ }
+  
+  function delConfirm(){
+	  if(confirm('정말 탈퇴하시겠습니까?')){
+	  }else{
+		  alert('취소되었습니다.');
+		  return false;
+	  }
+  }
   </script>
   
  <div class="modal fade" id="modalmyPageForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -32,10 +40,7 @@
         <div class="md-form mb-5">
           <i class="fa fa-id-badge prefix grey-text">
           	${resultClass.ID}
-           </i>
-           <!-- 정보수정 -->
-          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalModifyForm"><font size="2em">정보수정</button>
-          <%--  <a href="javascript:Modify();"><small>정보수정</small></a> --%>
+           </i><a href="javascript:Modify();"><small>정보수정</small></a>
         </div>
         <div class="md-form mb-5">
           <i class="fa fa-gem prefix grey-text"><a href=""><small>잔여포인트 : <strong>${resultClass.point}점</strong></small></a></i>
@@ -79,16 +84,13 @@
    		</ul>
      </div>
           <!-- 탈퇴 -->
-     <form name="deleteAction" action="MemberDeleteAction.action">
+     <form name="deleteAction" action="MemberDeleteAction.action" onsubmit="return delConfirm()">
      <input type="submit" value="탈퇴하기" class="submit"></td>
     </form>
     </div>
   </div>
   </s:if>
-  
-  
  <%@ include file="/common/Member/myPageOwner.jsp"%>
-   <%@ include file="/common/Member/myPageModify.jsp" %>
   
   <!-- 관리자 페이지 -->
   <s:else>

@@ -1,4 +1,14 @@
  <%@ page session="true" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+<script>
+function delConfirm(){
+	  if(confirm('정말 탈퇴하시겠습니까?')){
+	  }else{
+		  alert('취소되었습니다.');
+		  return false;
+	  }
+}
+</script>
+
  <!-- 점주 -->
   <s:elseif test="resultClass.isType==1">
   <div class="modal-dialog modal-lg" role="document">
@@ -23,6 +33,10 @@
           	<a href="#" width="100" border="0" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('list.action?currentPage=<s:property value="currentPage" />','내 가게 리뷰 리스트','scrollbars=yes, width=650, height=650,');">내 가게 리뷰 보기</a>&nbsp;&nbsp;&nbsp;&nbsp;
           	<a href="javascript:location.href='deleteForm.action?currentPage=<s:property value="currentPage" />';" target="_blank", width="100" border="0" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="cursor:pointer">음식점 정보 삭제</a><br><br><br><br>
  		
+     <form name="deleteAction" action="MemberDeleteAction.action" onsubmit="return delConfirm()">
+     <input type="submit" value="탈퇴하기" class="submit"></td>
+     </form>
+    
   </div>
   </div>
   </s:elseif>
