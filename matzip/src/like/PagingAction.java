@@ -4,15 +4,15 @@ package like;
 
 public class PagingAction 
 {
-      private int currentPage; // ÇöÀçÆäÀÌÁö
-      private int totalCount; // ÀüÃ¼ °Ô½Ã¹° ¼ö
-      private int totalPage; // ÀüÃ¼ ÆäÀÌÁö ¼ö
-      private int blockCount; // ÇÑ ÆäÀÌÁöÀÇ  °Ô½Ã¹°ÀÇ ¼ö
-      private int blockPage; // ÇÑ È­¸é¿¡ º¸¿©ÁÙ ÆäÀÌÁö ¼ö
-      private int startCount; // ÇÑ ÆäÀÌÁö¿¡¼­ º¸¿©ÁÙ °Ô½Ã±ÛÀÇ ½ÃÀÛ ¹øÈ£
-      private int endCount; // ÇÑ ÆäÀÌÁö¿¡¼­ º¸¿©ÁÙ °Ô½Ã±ÛÀÇ ³¡ ¹øÈ£
-      private int startPage; // ½ÃÀÛ ÆäÀÌÁö
-      private int endPage; // ¸¶Áö¸· ÆäÀÌÁö
+      private int currentPage; // í˜„ì¬í˜ì´ì§€
+      private int totalCount; // ì „ì²´ ê²Œì‹œë¬¼ ìˆ˜
+      private int totalPage; // ì „ì²´ í˜ì´ì§€ ìˆ˜
+      private int blockCount; // í•œ í˜ì´ì§€ì˜  ê²Œì‹œë¬¼ì˜ ìˆ˜
+      private int blockPage; // í•œ í™”ë©´ì— ë³´ì—¬ì¤„ í˜ì´ì§€ ìˆ˜
+      private int startCount; // í•œ í˜ì´ì§€ì—ì„œ ë³´ì—¬ì¤„ ê²Œì‹œê¸€ì˜ ì‹œì‘ ë²ˆí˜¸
+      private int endCount; // í•œ í˜ì´ì§€ì—ì„œ ë³´ì—¬ì¤„ ê²Œì‹œê¸€ì˜ ë ë²ˆí˜¸
+      private int startPage; // ì‹œì‘ í˜ì´ì§€
+      private int endPage; // ë§ˆì§€ë§‰ í˜ì´ì§€
 
  
 
@@ -20,7 +20,7 @@ public class PagingAction
 
  
 
-      // ÆäÀÌÂ¡ »ı¼ºÀÚ
+      // í˜ì´ì§• ìƒì„±ì
       public PagingAction(int currentPage, int totalCount, int blockCount, int blockPage) 
       {
             this.blockCount = blockCount;
@@ -30,7 +30,7 @@ public class PagingAction
 
  
 
-            // ÀüÃ¼ ÆäÀÌÁö ¼ö
+            // ì „ì²´ í˜ì´ì§€ ìˆ˜
             totalPage = (int)Math.ceil((double) totalCount / blockCount);
 
 
@@ -41,43 +41,43 @@ public class PagingAction
 
  
 
-            // ÇöÀç ÆäÀÌÁö°¡ ÀüÃ¼ ÆäÀÌÁö ¼öº¸´Ù Å©¸é ÀüÃ¼ ÆäÀÌÁö ¼ö·Î ¼³Á¤
+            // í˜„ì¬ í˜ì´ì§€ê°€ ì „ì²´ í˜ì´ì§€ ìˆ˜ë³´ë‹¤ í¬ë©´ ì „ì²´ í˜ì´ì§€ ìˆ˜ë¡œ ì„¤ì •
             if(currentPage > totalPage) 
             {
                   currentPage = totalPage;
             }
-            // ÇöÀç ÆäÀÌÁöÀÇ Ã³À½°ú ¸¶Áö¸· ±ÛÀÇ ¹øÈ£ °¡Á®¿À±â
+            // í˜„ì¬ í˜ì´ì§€ì˜ ì²˜ìŒê³¼ ë§ˆì§€ë§‰ ê¸€ì˜ ë²ˆí˜¸ ê°€ì ¸ì˜¤ê¸°
             startCount = (currentPage - 1) * blockCount;
             endCount = startCount + blockCount - 1;
 
  
 
-            // ½ÃÀÛ ÆäÀÌÁö¿Í ¸¶Áö¸· ÆäÀÌÁö °ª ±¸ÇÏ±â
+            // ì‹œì‘ í˜ì´ì§€ì™€ ë§ˆì§€ë§‰ í˜ì´ì§€ ê°’ êµ¬í•˜ê¸°
             startPage = (int)((currentPage - 1) / blockPage) * blockPage + 1;
             endPage = startPage + blockPage - 1;
 
  
 
-            // ¸¶Áö¸· ÆäÀÌÁö°¡ ÀüÃ¼ ÆäÀÌÁö ¼öº¸´Ù Å©¸é ÀüÃ¼ ÆäÀÌÁö ¼ö·Î ¼³Á¤
+            // ë§ˆì§€ë§‰ í˜ì´ì§€ê°€ ì „ì²´ í˜ì´ì§€ ìˆ˜ë³´ë‹¤ í¬ë©´ ì „ì²´ í˜ì´ì§€ ìˆ˜ë¡œ ì„¤ì •
             if(endPage > totalPage) 
             {
                   endPage = totalPage;
             }
-            // ÀÌÀü block ÆäÀÌÁö
+            // ì´ì „ block í˜ì´ì§€
             pagingHtml = new StringBuffer();
   
             if(currentPage > blockPage) 
             {
                   pagingHtml.append("<a href=listAction.action?currentPage="
                          + (startPage - 1) + ">");
-                  pagingHtml.append("ÀÌÀü");
+                  pagingHtml.append("ì´ì „");
                   pagingHtml.append("</a>");
             }
             pagingHtml.append("&nbsp;|&nbsp;");
 
  
 
-            // ÆäÀÌÁö ¹øÈ£. ÇöÀç ÆäÀÌÁö´Â »¡°£»öÀ¸·Î °­Á¶ÇÏ°í ¸µÅ©¸¦ Á¦°Å
+            // í˜ì´ì§€ ë²ˆí˜¸. í˜„ì¬ í˜ì´ì§€ëŠ” ë¹¨ê°„ìƒ‰ìœ¼ë¡œ ê°•ì¡°í•˜ê³  ë§í¬ë¥¼ ì œê±°
             for(int i = startPage; i <= endPage; i++) 
             {
                   if(i > totalPage) 
@@ -105,12 +105,12 @@ public class PagingAction
 
  
 
-            // ´ÙÀ½ block ÆäÀÌÁö
+            // ë‹¤ìŒ block í˜ì´ì§€
             if(totalPage - startPage >= blockPage) 
             {
                   pagingHtml.append("<a href=listAction.action?currentPage="
                          + (endPage + 1) + ">");
-                  pagingHtml.append("´ÙÀ½");
+                  pagingHtml.append("ë‹¤ìŒ");
                   pagingHtml.append("</a>");
             }
       }

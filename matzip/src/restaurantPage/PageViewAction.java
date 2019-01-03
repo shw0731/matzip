@@ -17,8 +17,8 @@ public class PageViewAction extends ActionSupport{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 
-	private BoardVO paramClass = new BoardVO(); //ÆÄ¶ó¹ÌÅÍ¸¦ ÀúÀåÇÒ °´Ã¼
-	private BoardVO restResultClass = new BoardVO(); //Äõ¸® °á°ú °ªÀ» ÀúÀåÇÒ °´Ã¼
+	private BoardVO paramClass = new BoardVO(); //íŒŒë¼ë¯¸í„°ë¥¼ ì €ì¥í•  ê°ì²´
+	private BoardVO restResultClass = new BoardVO(); //ì¿¼ë¦¬ ê²°ê³¼ ê°’ì„ ì €ì¥í•  ê°ì²´
 
 	private int currentPage;
 
@@ -40,19 +40,19 @@ public class PageViewAction extends ActionSupport{
 	private String contentDisposition;
 	private long contentLength;
 
-	// »ı¼ºÀÚ
+	// ìƒì„±ì
 	public PageViewAction() throws IOException {
 
-		reader = Resources.getResourceAsReader("sqlMapConfig.xml"); // sqlMapConfig.xml ÆÄÀÏÀÇ ¼³Á¤³»¿ëÀ» °¡Á®¿Â´Ù.
-		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader); // sqlMapConfig.xmlÀÇ ³»¿ëÀ» Àû¿ëÇÑ sqlMapper °´Ã¼ »ı¼º.
+		reader = Resources.getResourceAsReader("sqlMapConfig.xml"); // sqlMapConfig.xml íŒŒì¼ì˜ ì„¤ì •ë‚´ìš©ì„ ê°€ì ¸ì˜¨ë‹¤.
+		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader); // sqlMapConfig.xmlì˜ ë‚´ìš©ì„ ì ìš©í•œ sqlMapper ê°ì²´ ìƒì„±.
 		reader.close();
 	}
 
-	// »ó¼¼º¸±â
+	// ìƒì„¸ë³´ê¸°
 	public String execute() throws Exception {
-		// ÇØ´ç °Ô½Ã¹°ÀÇ ÁÁ¾Æ¿ä ¼ö¸¦ °¡Á®¿Â´Ù.
+		// í•´ë‹¹ ê²Œì‹œë¬¼ì˜ ì¢‹ì•„ìš” ìˆ˜ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 		paramClass.setRestaurantNo(restaurantNo);
-		// ÇØ´ç ¹øÈ£ÀÇ ±ÛÀ» °¡Á®¿Â´Ù.
+		// í•´ë‹¹ ë²ˆí˜¸ì˜ ê¸€ì„ ê°€ì ¸ì˜¨ë‹¤.
 		restResultClass = (BoardVO) sqlMapper.queryForObject("rest.selectOne", getRestaurantNo());
 		return SUCCESS;
 	}

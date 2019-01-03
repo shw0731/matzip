@@ -1,4 +1,4 @@
-package restaurantPage; // °¡°Ô ÆäÀÌÁö ÆĞÅ°Áö
+package restaurantPage; // ê°€ê²Œ í˜ì´ì§€ íŒ¨í‚¤ì§€
 
 import com.opensymphony.xwork2.ActionSupport; 
 import com.ibatis.common.resources.Resources;
@@ -18,53 +18,53 @@ import restaurantPage.PagingAction;
 	@Result(name="success",value="/common/RestaurantList.jsp")
 })*/
 
-public class ListAction extends ActionSupport{ //°ø°ø Å¬·¡½ºÀÎ °¡°Ô¸®½ºÆ®¾×¼ÇÀ» ¾×¼Ç ¼­Æ÷Æ®·Î È®ÀåÇÑ´Ù.
+public class ListAction extends ActionSupport{ //ê³µê³µ í´ë˜ìŠ¤ì¸ ê°€ê²Œë¦¬ìŠ¤íŠ¸ì•¡ì…˜ì„ ì•¡ì…˜ ì„œí¬íŠ¸ë¡œ í™•ì¥í•œë‹¤.
 	public static Reader reader;
-	public static SqlMapClient sqlMapper;	//SqlMapClient API¸¦ »ç¿ëÇÏ±â À§ÇÑ sqlMapper °´Ã¼.
+	public static SqlMapClient sqlMapper;	//SqlMapClient APIë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•œ sqlMapper ê°ì²´.
 
 	private List<BoardVO> restList = new ArrayList<BoardVO>();;	 
 	
-	private int currentPage = 1;	//ÇöÀç ÆäÀÌÁö
-	private int totalCount; 		// ÃÑ °Ô½Ã¹°ÀÇ ¼ö
-	private int blockCount = 10;	// ÇÑ ÆäÀÌÁöÀÇ  °Ô½Ã¹°ÀÇ ¼ö
-	private int blockPage = 5; 	// ÇÑ È­¸é¿¡ º¸¿©ÁÙ ÆäÀÌÁö ¼ö
-	private String pagingHtml; 	//ÆäÀÌÂ¡À» ±¸ÇöÇÑ HTML
-	private PagingAction page; 	// ÆäÀÌÂ¡ Å¬·¡½º
+	private int currentPage = 1;	//í˜„ì¬ í˜ì´ì§€
+	private int totalCount; 		// ì´ ê²Œì‹œë¬¼ì˜ ìˆ˜
+	private int blockCount = 10;	// í•œ í˜ì´ì§€ì˜  ê²Œì‹œë¬¼ì˜ ìˆ˜
+	private int blockPage = 5; 	// í•œ í™”ë©´ì— ë³´ì—¬ì¤„ í˜ì´ì§€ ìˆ˜
+	private String pagingHtml; 	//í˜ì´ì§•ì„ êµ¬í˜„í•œ HTML
+	private PagingAction page; 	// í˜ì´ì§• í´ë˜ìŠ¤
 	
 	
 	
 	private List<File> uploads = new ArrayList<File>();
 	private List<String> uploadsFileName = new ArrayList<String>();
 	private List<String> uploadsContentType = new ArrayList<String>();
-	private String fileUploadPath = "C:\\Java\\App\\YammyYammy\\WebContent\\YammyYammy\\upload\\YammyList\\";	//¾÷·Îµå °æ·Î
+	private String fileUploadPath = "C:\\Java\\App\\YammyYammy\\WebContent\\YammyYammy\\upload\\YammyList\\";	//ì—…ë¡œë“œ ê²½ë¡œ
 	/*C:\\Java\\upload\\YammyList\\*/
 	
 	
-	public ListAction() throws IOException { //°¡°ÔÆäÀÌÁö¾×¼Ç¿¡¼­ ³ª¿À´Â IOExceptionÀ» Ã³¸®ÇÏ´Â Å¬·¡½º)
+	public ListAction() throws IOException { //ê°€ê²Œí˜ì´ì§€ì•¡ì…˜ì—ì„œ ë‚˜ì˜¤ëŠ” IOExceptionì„ ì²˜ë¦¬í•˜ëŠ” í´ë˜ìŠ¤)
 		
-		reader = Resources.getResourceAsReader("sqlMapConfig.xml"); // sqlMapConfig.xml ÆÄÀÏÀÇ ¼³Á¤³»¿ëÀ» °¡Á®¿Â´Ù.
-		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);	// sqlMapConfig.xmlÀÇ ³»¿ëÀ» Àû¿ëÇÑ sqlMapper °´Ã¼ »ı¼º.
+		reader = Resources.getResourceAsReader("sqlMapConfig.xml"); // sqlMapConfig.xml íŒŒì¼ì˜ ì„¤ì •ë‚´ìš©ì„ ê°€ì ¸ì˜¨ë‹¤.
+		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);	// sqlMapConfig.xmlì˜ ë‚´ìš©ì„ ì ìš©í•œ sqlMapper ê°ì²´ ìƒì„±.
 		reader.close();
 	}
-	// °Ô½ÃÆÇ LIST ¾×¼Ç
-	public String execute() throws Exception { // ¸ğµç ¿¹¿Ü¿¡ ´ëÇÑ ½ÇÇà
-		// ¸ğµç ±ÛÀ» °¡Á®¿Í list¿¡ ³Ö´Â´Ù. selectAllÄõ¸®Á¤º¸´ë·Î µ¥ÀÌÅÍ¸¦ »Ì¾Æ list °´Ã¼¿¡ ³Ö¾îÁØ´Ù.
+	// ê²Œì‹œíŒ LIST ì•¡ì…˜
+	public String execute() throws Exception { // ëª¨ë“  ì˜ˆì™¸ì— ëŒ€í•œ ì‹¤í–‰
+		// ëª¨ë“  ê¸€ì„ ê°€ì ¸ì™€ listì— ë„£ëŠ”ë‹¤. selectAllì¿¼ë¦¬ì •ë³´ëŒ€ë¡œ ë°ì´í„°ë¥¼ ë½‘ì•„ list ê°ì²´ì— ë„£ì–´ì¤€ë‹¤.
 		restList = sqlMapper.queryForList("rest.selectAll"); 
 
-		totalCount = restList.size(); // ÀüÃ¼ ±Û °¹¼ö¸¦ ±¸ÇÑ´Ù. //listÀÇ °¹¼ö¸¦ totalcount °´Ã¼·Î ÀúÀåÇÑ´Ù.
-		// pagingAction °´Ã¼ »ı¼º. currentPage, totalCount, blockCount, blockPage °ªÀ» ²¨³»¾î page°ª¿¡ ÀúÀåÇØÁØ´Ù.
+		totalCount = restList.size(); // ì „ì²´ ê¸€ ê°¯ìˆ˜ë¥¼ êµ¬í•œë‹¤. //listì˜ ê°¯ìˆ˜ë¥¼ totalcount ê°ì²´ë¡œ ì €ì¥í•œë‹¤.
+		// pagingAction ê°ì²´ ìƒì„±. currentPage, totalCount, blockCount, blockPage ê°’ì„ êº¼ë‚´ì–´ pageê°’ì— ì €ì¥í•´ì¤€ë‹¤.
 		page = new PagingAction(currentPage, totalCount, blockCount, blockPage); 
-		pagingHtml = page.getPagingHtml().toString(); // ÆäÀÌÁö HTML »ı¼º.
+		pagingHtml = page.getPagingHtml().toString(); // í˜ì´ì§€ HTML ìƒì„±.
 
-		// ÇöÀç ÆäÀÌÁö¿¡¼­ º¸¿©ÁÙ ¸¶Áö¸· ±ÛÀÇ ¹øÈ£ ¼³Á¤.
+		// í˜„ì¬ í˜ì´ì§€ì—ì„œ ë³´ì—¬ì¤„ ë§ˆì§€ë§‰ ê¸€ì˜ ë²ˆí˜¸ ì„¤ì •.
 		int lastCount = totalCount;
 
-		// ÇöÀç ÆäÀÌÁöÀÇ ¸¶Áö¸· ±ÛÀÇ ¹øÈ£°¡ ÀüÃ¼ÀÇ ¸¶Áö¸· ±Û ¹øÈ£º¸´Ù ÀÛÀ¸¸é 
-		//lastCount¸¦ +1 ¹øÈ£·Î ¼³Á¤.
+		// í˜„ì¬ í˜ì´ì§€ì˜ ë§ˆì§€ë§‰ ê¸€ì˜ ë²ˆí˜¸ê°€ ì „ì²´ì˜ ë§ˆì§€ë§‰ ê¸€ ë²ˆí˜¸ë³´ë‹¤ ì‘ìœ¼ë©´ 
+		//lastCountë¥¼ +1 ë²ˆí˜¸ë¡œ ì„¤ì •.
 		if (page.getEndCount() < totalCount)
 			lastCount = page.getEndCount() + 1;
 
-		// ÀüÃ¼ ¸®½ºÆ®¿¡¼­ ÇöÀç ÆäÀÌÁö¸¸Å­ÀÇ ¸®½ºÆ®¸¸ °¡Á®¿Â´Ù.
+		// ì „ì²´ ë¦¬ìŠ¤íŠ¸ì—ì„œ í˜„ì¬ í˜ì´ì§€ë§Œí¼ì˜ ë¦¬ìŠ¤íŠ¸ë§Œ ê°€ì ¸ì˜¨ë‹¤.
 		restList = restList.subList(page.getStartCount(), lastCount);
 
 		return SUCCESS;

@@ -13,45 +13,45 @@ import java.io.IOException;
 
 public class RegisterAction extends ActionSupport{
 	
-    public static Reader reader; // ÆÄÀÏ ½ºÅ©¸²À» À§ÇÑ reader
+    public static Reader reader; // íŒŒì¼ ìŠ¤í¬ë¦¼ì„ ìœ„í•œ reader
     
-    // SqlMapClient API¸¦ »ç¿ëÇÏ±â À§ÇÑ sqlMapper °´Ã¼
+    // SqlMapClient APIë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•œ sqlMapper ê°ì²´
     public static SqlMapClient sqlMapper;
 
-    private LikeVO paramClass; // ÆÄ¶ó¹ÌÅÍ¸¦ ÀúÀåÇÒ °´Ã¼
-    private LikeVO likeResultClass; // Äõ¸® °á°ú °ªÀ» ÀúÀåÇÒ °´Ã¼
+    private LikeVO paramClass; // íŒŒë¼ë¯¸í„°ë¥¼ ì €ì¥í•  ê°ì²´
+    private LikeVO likeResultClass; // ì¿¼ë¦¬ ê²°ê³¼ ê°’ì„ ì €ì¥í•  ê°ì²´
     
-    private int currentPage; // ÇöÀç ÆäÀÌÁö
+    private int currentPage; // í˜„ì¬ í˜ì´ì§€
     
     private String memberID;
     private int RestaurantNo;
     
-    // »ı¼ºÀÚ
+    // ìƒì„±ì
     public RegisterAction() throws IOException
     {
-          // sqlMapConfig.xml ÆÄÀÏÀÇ ¼³Á¤³»¿ëÀ» °¡Á®¿Â´Ù.
+          // sqlMapConfig.xml íŒŒì¼ì˜ ì„¤ì •ë‚´ìš©ì„ ê°€ì ¸ì˜¨ë‹¤.
           reader = Resources.getResourceAsReader("sqlMapConfig.xml");
 
-          // sqlMapConfig.xmlÀÇ ³»¿ëÀ» Àû¿ëÇÑ sqlMapper °´Ã¼ »ı¼º
+          // sqlMapConfig.xmlì˜ ë‚´ìš©ì„ ì ìš©í•œ sqlMapper ê°ì²´ ìƒì„±
           sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
           reader.close();
     }
     public String form() throws Exception
     {
-          // µî·Ï Æû
+          // ë“±ë¡ í¼
           return SUCCESS;
     }
     public String execute() throws Exception
     {
-          // ÆÄ¶ó¹ÌÅÍ¿Í ¸®ÀıÆ® °´Ã¼ »ı¼º
+          // íŒŒë¼ë¯¸í„°ì™€ ë¦¬ì ˆíŠ¸ ê°ì²´ ìƒì„±
           paramClass = new LikeVO();
           likeResultClass = new LikeVO();
 
-          // µî·ÏÇÒ Ç×¸ñ ¼³Á¤
+          // ë“±ë¡í•  í•­ëª© ì„¤ì •
           paramClass.setMemberID(getMemberID());
           paramClass.setRestaurantNo(getRestaurantNo());
 
-          // µî·Ï Äõ¸® ¼öÇà
+          // ë“±ë¡ ì¿¼ë¦¬ ìˆ˜í–‰
           sqlMapper.insert("likereg.like-up", paramClass);
 
          

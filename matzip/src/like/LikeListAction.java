@@ -13,46 +13,46 @@ import java.io.Reader;
 import java.io.IOException;
 
 public class LikeListAction extends ActionSupport{
-	 // ÆÄÀÏ ½ºÆ®¸²À» À§ÇÑ reader
+	 // íŒŒì¼ ìŠ¤íŠ¸ë¦¼ì„ ìœ„í•œ reader
     public static Reader reader;
     
-    // SqlMapClient API¸¦ »ç¿ëÇÏ±â À§ÇÑ sqlMapper °´Ã¼
+    // SqlMapClient APIë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•œ sqlMapper ê°ì²´
     public static SqlMapClient sqlMapper;
     
     private List<LikeVO> likeList = new ArrayList<LikeVO>();
     
-    private int currentPage = 1; // ÇöÀç ÆäÀÌÁö
-    private int totalCount; // ÃÑ °Ô½Ã¹°ÀÇ ¼ö
-    private int blockCount = 10; // ÇÑ ÆäÀÌÁöÀÇ  °Ô½Ã¹°ÀÇ ¼ö
-    private int blockPage = 5; // ÇÑ È­¸é¿¡ º¸¿©ÁÙ ÆäÀÌÁö ¼ö
-    private String pagingHtml; // ÆäÀÌÂ¡À» ±¸ÇöÇÑ html
-    private PagingAction page; // ÆäÀÌÂ¡ Å¬·¡½º
+    private int currentPage = 1; // í˜„ì¬ í˜ì´ì§€
+    private int totalCount; // ì´ ê²Œì‹œë¬¼ì˜ ìˆ˜
+    private int blockCount = 10; // í•œ í˜ì´ì§€ì˜  ê²Œì‹œë¬¼ì˜ ìˆ˜
+    private int blockPage = 5; // í•œ í™”ë©´ì— ë³´ì—¬ì¤„ í˜ì´ì§€ ìˆ˜
+    private String pagingHtml; // í˜ì´ì§•ì„ êµ¬í˜„í•œ html
+    private PagingAction page; // í˜ì´ì§• í´ë˜ìŠ¤
     
     public LikeListAction() throws IOException 
     {
-          // sqlMapConfig.xml ÆÄÀÏÀÇ ¼³Á¤³»¿ëÀ» °¡Á®¿Â´Ù.
+          // sqlMapConfig.xml íŒŒì¼ì˜ ì„¤ì •ë‚´ìš©ì„ ê°€ì ¸ì˜¨ë‹¤.
           reader = Resources.getResourceAsReader("sqlMapConfig.xml");
 
-          // sqlMapConfig.xmlÀÇ ³»¿ëÀ» Àû¿ëÇÑ sqlMapper °´Ã¼ »ı¼º
+          // sqlMapConfig.xmlì˜ ë‚´ìš©ì„ ì ìš©í•œ sqlMapper ê°ì²´ ìƒì„±
           sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
           reader.close();
     }
     public String execute() throws Exception{
     	likeList = sqlMapper.queryForList("likereg.like-list");
     	
-    	totalCount = likeList.size(); //ÀüÃ¼ ÁÁ¾Æ¿ä ÇÑ À½½ÄÁ¡ °¹¼ö ±¸ÇÏ±â
+    	totalCount = likeList.size(); //ì „ì²´ ì¢‹ì•„ìš” í•œ ìŒì‹ì  ê°¯ìˆ˜ êµ¬í•˜ê¸°
     	
-    	//pagingAction°´Ã¼
+    	//pagingActionê°ì²´
         page = new PagingAction(currentPage, totalCount, blockCount, blockPage); 
-        pagingHtml = page.getPagingHtml().toString(); // ÆäÀÌÁö html »ı¼º
+        pagingHtml = page.getPagingHtml().toString(); // í˜ì´ì§€ html ìƒì„±
         
-        // ÇöÀç ÆäÀÌÁö¿¡¼­ º¸¿©ÁÙ ¸¶Áö¸· ±ÛÀÇ ¹øÈ£ ¼³Á¤
+        // í˜„ì¬ í˜ì´ì§€ì—ì„œ ë³´ì—¬ì¤„ ë§ˆì§€ë§‰ ê¸€ì˜ ë²ˆí˜¸ ì„¤ì •
         int lastCount = totalCount;
         
         if(page.getEndCount() < totalCount)
             lastCount = page.getEndCount() + 1;
         
-        // ÀüÃ¼ ¸®½ºÆ®¿¡¼­ ÇöÀç ÆäÀÌÁö¸¸Å­ÀÇ ¸®½ºÆ®¸¸ °¡Á®¿Â´Ù.
+        // ì „ì²´ ë¦¬ìŠ¤íŠ¸ì—ì„œ í˜„ì¬ í˜ì´ì§€ë§Œí¼ì˜ ë¦¬ìŠ¤íŠ¸ë§Œ ê°€ì ¸ì˜¨ë‹¤.
         likeList = likeList.subList(page.getStartCount(), lastCount);        
        
         return SUCCESS;

@@ -20,27 +20,27 @@ import java.util.Map;
 import org.apache.commons.io.FileUtils;
 
 public class WriteAction extends ActionSupport implements SessionAware{
-	public static Reader reader; //ÆÄÀÏ ½ºÆ®¸²À» À§ÇÑ reader.
-	public static SqlMapClient sqlMapper; //SqlMapClient API¸¦ »ç¿ëÇÏ±â À§ÇÑ sqlMapper °´Ã¼.
+	public static Reader reader; //íŒŒì¼ ìŠ¤íŠ¸ë¦¼ì„ ìœ„í•œ reader.
+	public static SqlMapClient sqlMapper; //SqlMapClient APIë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•œ sqlMapper ê°ì²´.
 
-	private BoardVO paramClass; //ÆÄ¶ó¹ÌÅÍ¸¦ ÀúÀåÇÒ °´Ã¼
-	private BoardVO restResultClass; //Äõ¸® °á°ú °ªÀ» ÀúÀåÇÒ °´Ã¼
+	private BoardVO paramClass; //íŒŒë¼ë¯¸í„°ë¥¼ ì €ì¥í•  ê°ì²´
+	private BoardVO restResultClass; //ì¿¼ë¦¬ ê²°ê³¼ ê°’ì„ ì €ì¥í•  ê°ì²´
 
 	private Map session;
-	private int currentPage; //ÇöÀç ÆäÀÌÁö
+	private int currentPage; //í˜„ì¬ í˜ì´ì§€
 
-	private int restaurantNo; //À½½ÄÁ¡¹øÈ£
-	private String ID; //ÁÖÀÎ¾ÆÀÌµğ
-	private String restaurantName; //À½½ÄÁ¡ÀÌ¸§
-	private String context; //³»¿ë
-	private String images; //¾÷·Îµå ÀÌ¹ÌÁö
-	private String category; //Ä«Å×°í¸®
-	private String address; //ÁÖ¼Ò°ª
-	private String location; //À§Ä¡Á¤º¸
-/*	private File upload; //ÆÄÀÏ °´Ã¼
-	private String uploadContentType;//ÄÁÅÙÃ÷ Å¸ÀÔ
-	private String uploadFileName; //¾÷·ÎµåÆÄÀÏ¸í
-	private String fileUploadPath = "C:\\Java\\upload\\"; //¾÷·Îµå °æ·Î.
+	private int restaurantNo; //ìŒì‹ì ë²ˆí˜¸
+	private String ID; //ì£¼ì¸ì•„ì´ë””
+	private String restaurantName; //ìŒì‹ì ì´ë¦„
+	private String context; //ë‚´ìš©
+	private String images; //ì—…ë¡œë“œ ì´ë¯¸ì§€
+	private String category; //ì¹´í…Œê³ ë¦¬
+	private String address; //ì£¼ì†Œê°’
+	private String location; //ìœ„ì¹˜ì •ë³´
+/*	private File upload; //íŒŒì¼ ê°ì²´
+	private String uploadContentType;//ì»¨í…ì¸  íƒ€ì…
+	private String uploadFileName; //ì—…ë¡œë“œíŒŒì¼ëª…
+	private String fileUploadPath = "C:\\Java\\upload\\"; //ì—…ë¡œë“œ ê²½ë¡œ.
 */
 	private List<File> uploads = new ArrayList<File>();
 	private List<String> uploadsFileName = new ArrayList<String>();
@@ -50,30 +50,30 @@ public class WriteAction extends ActionSupport implements SessionAware{
 	
 	
 
-	// »ı¼ºÀÚ
+	// ìƒì„±ì
 	public WriteAction() throws IOException {
 
-		reader = Resources.getResourceAsReader("sqlMapConfig.xml"); // sqlMapConfig.xml ÆÄÀÏÀÇ ¼³Á¤³»¿ëÀ» °¡Á®¿Â´Ù.
-		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader); // sqlMapConfig.xmlÀÇ ³»¿ëÀ» Àû¿ëÇÑ sqlMapper °´Ã¼ »ı¼º.
+		reader = Resources.getResourceAsReader("sqlMapConfig.xml"); // sqlMapConfig.xml íŒŒì¼ì˜ ì„¤ì •ë‚´ìš©ì„ ê°€ì ¸ì˜¨ë‹¤.
+		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader); // sqlMapConfig.xmlì˜ ë‚´ìš©ì„ ì ìš©í•œ sqlMapper ê°ì²´ ìƒì„±.
 		reader.close();
 	}
 
 	public String form() throws Exception {
-		//µî·Ï Æû.
+		//ë“±ë¡ í¼.
 		return SUCCESS;
 	}
 
-	// °Ô½ÃÆÇ WRITE ¾×¼Ç
+	// ê²Œì‹œíŒ WRITE ì•¡ì…˜
 	public String execute() throws Exception {
 
-		//ÆÄ¶ó¹ÌÅÍ¿Í ¸®ÀıÆ® °´Ã¼ »ı¼º.
+		//íŒŒë¼ë¯¸í„°ì™€ ë¦¬ì ˆíŠ¸ ê°ì²´ ìƒì„±.
 		paramClass = new BoardVO();
 		restResultClass = new BoardVO();
 		
 	
 		
 		
-		// µî·ÏÇÒ Ç×¸ñ ¼³Á¤.
+		// ë“±ë¡í•  í•­ëª© ì„¤ì •.
 		paramClass.setID((String)session.get("ID"));
 		paramClass.setRestaurantNo(getRestaurantNo());
 		paramClass.setRestaurantName(getRestaurantName());
@@ -86,21 +86,17 @@ public class WriteAction extends ActionSupport implements SessionAware{
 		paramClass.setLikes(0);
 		paramClass.setStarPoint(0);
 		paramClass.setImages("0");
-		// µî·Ï Äõ¸® ¼öÇà.
+		// ë“±ë¡ ì¿¼ë¦¬ ìˆ˜í–‰.
 		
 		sqlMapper.insert("rest.insertBoard", paramClass);
-/*		// Ã·ºÎÆÄÀÏÀ» ¼±ÅÃÇß´Ù¸é ÆÄÀÏÀ» ¾÷·ÎµåÇÑ´Ù.
+/*		// ì²¨ë¶€íŒŒì¼ì„ ì„ íƒí–ˆë‹¤ë©´ íŒŒì¼ì„ ì—…ë¡œë“œí•œë‹¤.
 		if (getUpload() != null) {
-
-			//µî·ÏÇÑ ±Û ¹øÈ£ °¡Á®¿À±â.
+			//ë“±ë¡í•œ ê¸€ ë²ˆí˜¸ ê°€ì ¸ì˜¤ê¸°.
 			restResultClass = (BoardVO) sqlMapper.queryForObject("rest.selectLastNo");
-
-
-			//¼­¹ö¿¡ ÆÄÀÏ ÀúÀå.
+			//ì„œë²„ì— íŒŒì¼ ì €ì¥.
 			File destFile=new File(fileUploadPath+getUploadFileName());
 			FileUtils.copyFile(getUpload(), destFile);
-
-			//ÆÄÀÏ Á¤º¸ ¾÷µ¥ÀÌÆ®.
+			//íŒŒì¼ ì •ë³´ ì—…ë°ì´íŠ¸.
 			sqlMapper.update("rest.updateFile", paramClass);*/
 		makeDir();
 		for (int i = 0; i < uploads.size(); i++) {
@@ -133,10 +129,10 @@ public class WriteAction extends ActionSupport implements SessionAware{
 		fileUploadPath+=restaurantNo;
 		File Folder = new File(fileUploadPath);
 		
-		// ÇØ´ç µğ·ºÅä¸®°¡ ¾øÀ»°æ¿ì µğ·ºÅä¸®¸¦ »ı¼ºÇÕ´Ï´Ù.
+		// í•´ë‹¹ ë””ë ‰í† ë¦¬ê°€ ì—†ì„ê²½ìš° ë””ë ‰í† ë¦¬ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 		if (!Folder.exists()) {
 			try{
-			    Folder.mkdir(); //Æú´õ »ı¼ºÇÕ´Ï´Ù.
+			    Folder.mkdir(); //í´ë” ìƒì„±í•©ë‹ˆë‹¤.
 			    
 		        } 
 		        catch(Exception e){
@@ -270,23 +266,18 @@ public class WriteAction extends ActionSupport implements SessionAware{
 /*	public File getUpload() {
 		return upload;
 	}
-
 	public void setUpload(File upload) {
 		this.upload = upload;
 	}
-
 	public String getUploadContentType() {
 		return uploadContentType;
 	}
-
 	public void setUploadContentType(String uploadContentType) {
 		this.uploadContentType = uploadContentType;
 	}
-
 	public String getUploadFileName() {
 		return uploadFileName;
 	}
-
 	public void setUploadFileName(String uploadFileName) {
 		this.uploadFileName = uploadFileName;
 	}*/

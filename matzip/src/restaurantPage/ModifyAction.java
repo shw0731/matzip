@@ -19,10 +19,10 @@ public class ModifyAction extends ActionSupport
       public static Reader reader;
       public static SqlMapClient sqlMapper;
  
-      private BoardVO paramClass; // ÆÄ¶ó¹ÌÅÍ¸¦ ÀúÀåÇÒ °´Ã¼
-      private BoardVO restResultClass; // Äõ¸® °á°ú °ªÀ» ÀúÀåÇÒ °´Ã¼
+      private BoardVO paramClass; // íŒŒë¼ë¯¸í„°ë¥¼ ì €ì¥í•  ê°ì²´
+      private BoardVO restResultClass; // ì¿¼ë¦¬ ê²°ê³¼ ê°’ì„ ì €ì¥í•  ê°ì²´
  
-      private int currentPage; // ÇöÀç ÆäÀÌÁö
+      private int currentPage; // í˜„ì¬ í˜ì´ì§€
       
       private int restaurantNo;
       private String restaurantName;
@@ -37,25 +37,25 @@ public class ModifyAction extends ActionSupport
 	  	private List<String> uploadsContentType = new ArrayList<String>();
 	  	private String fileUploadPath = "C:\\Java\\upload\\";
  
-      // »ı¼ºÀÚ
+      // ìƒì„±ì
       public ModifyAction() throws IOException
       {
-            // sqlMapConfig.xml ÆÄÀÏÀÇ ¼³Á¤³»¿ëÀ» °¡Á®¿Â´Ù.
+            // sqlMapConfig.xml íŒŒì¼ì˜ ì„¤ì •ë‚´ìš©ì„ ê°€ì ¸ì˜¨ë‹¤.
             reader = Resources.getResourceAsReader("sqlMapConfig.xml");
   
-            // sqlMapConfig.xmlÀÇ ³»¿ëÀ» Àû¿ëÇÑ sqlMapper °´Ã¼ »ı¼º
+            // sqlMapConfig.xmlì˜ ë‚´ìš©ì„ ì ìš©í•œ sqlMapper ê°ì²´ ìƒì„±
             sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
             reader.close();
       }
  
-      // °Ô½Ã±Û ¼öÁ¤
+      // ê²Œì‹œê¸€ ìˆ˜ì •
       public String execute() throws Exception
       {
-            // ÆÄ¶ó¹ÌÅÍ¿Í ¸®ÀıÆ® °´Ã¼ »ı¼º
+            // íŒŒë¼ë¯¸í„°ì™€ ë¦¬ì ˆíŠ¸ ê°ì²´ ìƒì„±
             paramClass = new BoardVO();
             restResultClass = new BoardVO();
   
-            // ¼öÁ¤ÇÒ Ç×¸ñ ¼³Á¤
+            // ìˆ˜ì •í•  í•­ëª© ì„¤ì •
             paramClass.setRestaurantName(getRestaurantName());
             paramClass.setContext(getContext());
             paramClass.setImages(getImages());
@@ -78,12 +78,12 @@ public class ModifyAction extends ActionSupport
     		 paramClass.setImages(images);
     		 paramClass.setRestaurantNo(restaurantNo);
   
-            // ÀÏ´Ü Ç×¸ñ¸¸ ¼öÁ¤ÇÑ´Ù.
+            // ì¼ë‹¨ í•­ëª©ë§Œ ìˆ˜ì •í•œë‹¤.
             sqlMapper.update("rest.updateBoard", paramClass);
   
 
   
-            // ¼öÁ¤ÀÌ ³¡³ª¸é view ÆäÀÌÁö·Î ÀÌµ¿
+            // ìˆ˜ì •ì´ ëë‚˜ë©´ view í˜ì´ì§€ë¡œ ì´ë™
             restResultClass = (BoardVO)sqlMapper.queryForObject("rest.selectOne", getRestaurantNo());
   
             return SUCCESS;
@@ -98,10 +98,10 @@ public class ModifyAction extends ActionSupport
   		fileUploadPath+=restaurantNo;
   		File Folder = new File(fileUploadPath);
   		
-  		// ÇØ´ç µğ·ºÅä¸®°¡ ¾øÀ»°æ¿ì µğ·ºÅä¸®¸¦ »ı¼ºÇÕ´Ï´Ù.
+  		// í•´ë‹¹ ë””ë ‰í† ë¦¬ê°€ ì—†ì„ê²½ìš° ë””ë ‰í† ë¦¬ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
   		if (!Folder.exists()) {
   			try{
-  			    Folder.mkdir(); //Æú´õ »ı¼ºÇÕ´Ï´Ù.
+  			    Folder.mkdir(); //í´ë” ìƒì„±í•©ë‹ˆë‹¤.
   			    
   		        } 
   		        catch(Exception e){

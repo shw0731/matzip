@@ -16,8 +16,8 @@ public class ViewAction extends ActionSupport{
 	public static Reader reader;
     public static SqlMapClient sqlMapper;
 
-    private LikeVO paramClass = new LikeVO(); // ÆÄ¶ó¹ÌÅÍ¸¦ ÀúÀåÇÒ °´Ã¼
-    private LikeVO likeResultClass = new LikeVO(); // Äõ¸® °á°ú °ªÀ» ÀúÀåÇÒ °´Ã¼
+    private LikeVO paramClass = new LikeVO(); // íŒŒë¼ë¯¸í„°ë¥¼ ì €ì¥í•  ê°ì²´
+    private LikeVO likeResultClass = new LikeVO(); // ì¿¼ë¦¬ ê²°ê³¼ ê°’ì„ ì €ì¥í•  ê°ì²´
 
     private int currentPage;
 
@@ -28,21 +28,21 @@ public class ViewAction extends ActionSupport{
     private String contentDisposition;
     private long contentLength;
 
-    // »ı¼ºÀÚ
+    // ìƒì„±ì
     public ViewAction() throws IOException
     {
-          // sqlMapConfig.xml ÆÄÀÏÀÇ ¼³Á¤³»¿ëÀ» °¡Á®¿Â´Ù.
+          // sqlMapConfig.xml íŒŒì¼ì˜ ì„¤ì •ë‚´ìš©ì„ ê°€ì ¸ì˜¨ë‹¤.
           reader = Resources.getResourceAsReader("sqlMapConfig.xml");
 
-          // sqlMapConfig.xmlÀÇ ³»¿ëÀ» Àû¿ëÇÑ sqlMapper °´Ã¼ »ı¼º
+          // sqlMapConfig.xmlì˜ ë‚´ìš©ì„ ì ìš©í•œ sqlMapper ê°ì²´ ìƒì„±
           sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
           reader.close();
     }
 
-    // »ó¼¼º¸±â
+    // ìƒì„¸ë³´ê¸°
     public String execute() throws Exception
     {
-          // ÇØ´ç ¹øÈ£ÀÇ ±ÛÀ» °¡Á®¿Â´Ù.
+          // í•´ë‹¹ ë²ˆí˜¸ì˜ ê¸€ì„ ê°€ì ¸ì˜¨ë‹¤.
           likeResultClass = (LikeVO)sqlMapper.queryForObject("rest.selectOne", getRestaurantNo());
 
           return SUCCESS;

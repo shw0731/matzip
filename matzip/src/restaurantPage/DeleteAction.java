@@ -17,38 +17,38 @@ public class DeleteAction extends ActionSupport{
     public static Reader reader;
     public static SqlMapClient sqlMapper;
 
-    private BoardVO paramClass; // ÆÄ¶ó¹ÌÅÍ¸¦ ÀúÀåÇÒ °´Ã¼
-    private BoardVO restResultClass; // Äõ¸® °á°ú °ªÀ» ÀúÀåÇÒ °´Ã¼
+    private BoardVO paramClass; // íŒŒë¼ë¯¸í„°ë¥¼ ì €ì¥í•  ê°ì²´
+    private BoardVO restResultClass; // ì¿¼ë¦¬ ê²°ê³¼ ê°’ì„ ì €ì¥í•  ê°ì²´
 
-    private int currentPage; // ÇöÀç ÆäÀÌÁö
+    private int currentPage; // í˜„ì¬ í˜ì´ì§€
     
     private int RestaurantNo;
     
-    // »ı¼ºÀÚ
+    // ìƒì„±ì
     public DeleteAction() throws IOException
     {
-          // sqlMapConfig.xml ÆÄÀÏÀÇ ¼³Á¤³»¿ëÀ» °¡Á®¿Â´Ù.
+          // sqlMapConfig.xml íŒŒì¼ì˜ ì„¤ì •ë‚´ìš©ì„ ê°€ì ¸ì˜¨ë‹¤.
           reader = Resources.getResourceAsReader("sqlMapConfig.xml");
 
-          // sqlMapConfig.xmlÀÇ ³»¿ëÀ» Àû¿ëÇÑ sqlMapper °´Ã¼ »ı¼º
+          // sqlMapConfig.xmlì˜ ë‚´ìš©ì„ ì ìš©í•œ sqlMapper ê°ì²´ ìƒì„±
           sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
           reader.close();
     }
-    // °Ô½Ã±Û ±Û »èÁ¦
+    // ê²Œì‹œê¸€ ê¸€ ì‚­ì œ
     public String execute() throws Exception
     {
-          // ÆÄ¶ó¹ÌÅÍ¿Í ¸®ÀıÆ® °´Ã¼ »ı¼º
+          // íŒŒë¼ë¯¸í„°ì™€ ë¦¬ì ˆíŠ¸ ê°ì²´ ìƒì„±
           paramClass = new BoardVO();
           restResultClass = new BoardVO();
 
-          // ÇØ´ç ¹øÈ£ÀÇ ±ÛÀ» °¡Á®¿Â´Ù.
+          // í•´ë‹¹ ë²ˆí˜¸ì˜ ê¸€ì„ ê°€ì ¸ì˜¨ë‹¤.
           restResultClass = (BoardVO)sqlMapper.queryForObject("rest.selectOne", getRestaurantNo());
 
 
-          // »èÁ¦ÇÒ Ç×¸ñ ¼³Á¤
+          // ì‚­ì œí•  í•­ëª© ì„¤ì •
           paramClass.setRestaurantNo(getRestaurantNo());
 
-          // »èÁ¦ Äõ¸® ¼öÇà
+          // ì‚­ì œ ì¿¼ë¦¬ ìˆ˜í–‰
           sqlMapper.update("rest.deleteBoard", paramClass);
 
           return SUCCESS;
