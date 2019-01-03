@@ -5,8 +5,31 @@
 
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- 뷰포트 -->
+
+<meta name="viewport" content="width=device-width" initial-scale="1">
+
+<!-- 스타일시트 참조  -->
+
+<link rel="stylesheet" href="/matzip/common/notice/css/bootstrap.min.css">
+ <style>
+
+
+  </style>
+
+ <div class="container">
+
+  <div class="col-lg-15"></div>
+
+  <div class="col-lg-15">
+
+  <!-- 점보트론 -->
+
+   <div class="jumbotron" style="padding-top: 20px;">
+
 <title>공지사항</title>
-<link rel = "stylesheet" href = "/Struts2Board/board/css.css" type = "text/css">
 
  
 
@@ -44,11 +67,11 @@
  
 
 <body>
-<table width = "600" border = "0" cellspacing = "0" cellpadding = "2">
-      <tr>
-            <td align = "center"><h3>공지사항 작성</h3></td>
-      </tr>
-</table>
+		<tr>
+		<span style="color:#fed136">
+			<h3 style="text-align: center;">공지사항 작성</h3>
+			</span>
+		</tr>
 
  
 
@@ -67,7 +90,6 @@
 
  
 
-<table width = "600" border = "0" cellspacing = "0" cellpadding = "0">
       <tr bgcolor = "#777777">
             <td height = "1" colspan = "2"></td>
       </tr>
@@ -78,23 +100,22 @@
       </tr>
 
       
-            <tr>
-            <td width = "100" bgcolor = "#F4F4F4"></font> 제목</td>
-            <td width = "500" bgcolor = "#FFFFFF">
-                  <s:textfield name = "subject" theme = "simple"
-                        value = "%{resultClass.subject}" cssStyle = "width:337px" maxlength = "50" />
-            </td>
-      </tr>
+        <tr>
+        
+            <div class="form-group">
+<input type="text" class="form-control" placeholder="제목	"  name="subject" maxlength="20" value="<s:property value="resultClass.subject"/>">
+          </td>
+                </div>        </tr>
       <tr bgcolor = "#777777">
             <td height = "1" colspan = "2"></td>
       </tr>
-      <tr>
-            <td bgcolor = "#F4F4F4"></font>공지 내용</td>
-            <td bgcolor = "#FFFFFF">
-                  <s:textarea name = "context" theme = "simple"
-                        value = "%{resultClass.context}" cols = "50" rows = "10" />
-            </td>
-      </tr>
+	<tr>
+	    <div class="form-group">
+		<td><textarea class="form-control" placeholder="공지 내용"  name="Context" maxlength="2048" style="height: 300px;"><s:property value="resultClass.context"/></textarea>
+
+          </td>
+          </div>
+        </tr>
       <tr bgcolor = "#777777">
             <td height = "1" colspan = "2"></td>
       </tr>
@@ -104,14 +125,13 @@
       <tr>
             <td height = "10" colspan = "2"></td>
       </tr>
-      <tr>
-            <td align = "right" colspan = "2">
-                  <input name = "submit" type = "submit" value = "작성완료" class = "inputb">
-                  <input name = "list" type = "button" value = "목록" class = "inputb"
-                        onClick = "javascript:location.href=
-                        'no_listAction.action?currentPage=<s:property value = "currentPage" />'">
-            </td>
-      </tr>
+            <tr>
+          <td align="right" colspan="1">
+                  <input type = "submit" value = "글쓰기" class="btn btn-primary pull-right"/>
+          	  <input name="list" type="button" value="목록" class="btn btn-info right" onClick="javascript:location.href='no_listAction.action?currentPage=<s:property value="currentPage" />'">
+           
+          </td>
+        </tr>
 </table>
 </form>
 </body>

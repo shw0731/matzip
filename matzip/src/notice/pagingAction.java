@@ -68,7 +68,7 @@ public class pagingAction
   
             if(currentPage > blockPage) 
             {
-                  pagingHtml.append("<a href=listAction.action?currentPage="
+                  pagingHtml.append("<a href=no_listAction.action?currentPage="
                          + (startPage - 1) + ">");
                   pagingHtml.append("이전");
                   pagingHtml.append("</a>");
@@ -93,7 +93,7 @@ public class pagingAction
                   } 
                   else 
                   {
-                        pagingHtml.append("&nbsp;<a href='listAction.action?currentPage=");
+                        pagingHtml.append("&nbsp;<a href='no_listAction.action?currentPage=");
                         pagingHtml.append(i);
                         pagingHtml.append("'>");
                         pagingHtml.append(i);
@@ -108,7 +108,7 @@ public class pagingAction
             // 다음 block 페이지
             if(totalPage - startPage >= blockPage) 
             {
-                  pagingHtml.append("<a href=listAction.action?currentPage="
+                  pagingHtml.append("<a href=no_listAction.action?currentPage="
                          + (endPage + 1) + ">");
                   pagingHtml.append("다음");
                   pagingHtml.append("</a>");

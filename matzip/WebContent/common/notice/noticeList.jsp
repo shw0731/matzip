@@ -5,32 +5,42 @@
 
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- 뷰포트 -->
+
+<meta name="viewport" content="width=device-width" initial-scale="1">
+
+<!-- 스타일시트 참조  -->
+
+<link rel="stylesheet" href="/matzip/common/notice/css/bootstrap.min.css">
+ <style>
+
+
+  </style>
+
 <title>공지사항</title>
-<link rel = "stylesheet" href = "/Struts2Board/board/css.css" type = "text/css">
+
 </head>
 <body>
-<table width = "600" border = "0" cellspacing = "0" cellpadding = "2">
-      <tr>
-            <td align = "center"><h3>공지사항</h3></td>
-      </tr>
-      <tr>
-            <td height = "20"></td>
-      </tr>
-</table>
+<div class="row">
+    <div class="col-xs-2 col-md-2"></div>
+    <div class="col-xs-8 col-md-8">
+    <span style="color:#fed136">
+    <h2 class="text-center">공지사항</h2>
+    </span>
+    <div class="table-responsive">
+        <table class="table">
 
- 
-
-<table width = "600" border = "0" cellspacing = "0" cellpadding = "2">
-      <tr align = "center" bgcolor = "#F3F3F3">
+    <tr align = "center">
             <td width = "50"><strong>번호</strong></td>
+      
             <td width = "350"><strong>제목</strong></td>
             <td width = "80"><strong>날짜</strong></td>
       </tr>
-      <tr bgcolor = "#777777">
-            <td height = "1" colspan = "5"></td>
-      </tr>
+
  
-      <s:iterator value = "list" status = "stat">
+     <s:iterator value = "list" status = "stat">
             <s:url id = "viewURL" action = "no_viewAction">
                   <s:param name = "serviceno">
                         <s:property value = "serviceno" />
@@ -47,31 +57,30 @@
                   </td>
                   <td align = "center"><s:property value = "reg_date" /></td>
             </tr>
-            <tr bgcolor = "#777777">
-                  <td height = "1" colspan = "5"></td>
-            </tr>
+
       </s:iterator>
- 
-      <s:if test = "list.size() <= 0"> 
+      
+  <s:if test = "list.size() <= 0"> 
             <tr bgcolor = "#FFFFFF"  align = "center">
                   <td colspan = "5">등록된 게시물이 없습니다.</td>
             </tr>      
-            <tr bgcolor = "#777777">
-                  <td height = "1" colspan = "5"></td>
-            </tr> 
-      </s:if> 
+      </s:if>
  
-      <tr align = "center">
+	
+      
+
+
+     <tr align = "center">
             <td colspan = "5"><s:property value = "pagingHtml"  escape = "false" /></td>
       </tr>
-      <tr align = "right">
-            <td colspan = "5">
-                  <input type = "button" value = "글쓰기" class = "inputb" 
+      </table>
+                  <input type = "button" value = "글쓰기" class="btn btn-primary pull-right"
                         onClick = "javascript:location.href=
                         'no_writeForm.action?currentPage=<s:property value = "currentPage" />';">
             </td>
       </tr>
-</table>
+      </div>
+
 </body>
 </html>
 
