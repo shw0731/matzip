@@ -4,7 +4,7 @@
 <typeAlias alias="review" type="review.reviewVO"/>
 <resultMap class="reivew" id="reviewRes">
 <result column="reviewno" property="reviewNo"/>
-<result column="restuarantno" property="restuarantNo"/>
+<result column="restaurantno" property="restaurantNo"/>
 <result column="ID" property="ID"/>
 <result column="context" property="context"/>
 <result column="images" property="images"/>
@@ -22,16 +22,30 @@
 
 <!-- select 쿼리문 정의 -->
 <select id="selectAll" parameterClass="int" resultMap="reviewRes">
-	SELECT * FROM REVIEWBOARD WHERE restuarantNo = #restuarantNo# ORDER BY sympathy DESC, reg_date ASC
+	SELECT * FROM REVIEWBOARD WHERE restaurantNo = #restaurantNo# ORDER BY sympathy DESC, reg_date ASC
+</select>
+<select id="selectOne" parameterClass="String" resultMap="reviewRes">
+	SELECT REVIEWNO FROM REVIEWBOARD WHERE ID = #ID#
 </select>
 <!-- insert 쿼리문 정의 -->
 <insert id="insertReview" parameterClass="review">
-INSERT INTO SBOARD2(REVIEWNO,RESTUARANTNO,SUBJECT,ID,CONTEXT,IMAGES,SYMPATHY,STARPOINT,REG_DATE)
-VALUES (REVIEW_SEQ.NEXTVAL,#restuarantNo#,#subject#,#ID#,#context#,#images#,#sympathy#,#starPoint#,#reg_date#)
+INSERT INTO SBOARD2(REVIEWNO,restaurantNO,SUBJECT,ID,CONTEXT,IMAGES,SYMPATHY,STARPOINT,REG_DATE)
+VALUES (REVIEW_SEQ.NEXTVAL,#restaurantNo#,#subject#,#ID#,#context#,#images#,#sympathy#,#starPoint#,#reg_date#)
 </insert>
 <!-- update 쿼리문 정의 -->
 <update id="updateReview" parameterClass="review">
 UPDATE REVIEWBOARD SET SUBJECT = #subject#, CONTEXT = #context#, IMAGES = #images# , STARPOINT = #starPoint#
+<include refid="where-no"/>
+</update>
+<!-- 사진 업로드 기능 -->
+<update id="updateFile" parameterClass="review">
+	UPDATE REVIEWBOARD SET 
+	images=#images#
+	<include refid="where-no"/>
+</update>
+<!-- 공감 기능 -->
+<update id="increaseSympathy" parameterClass="int">
+UPDATE REVIEWBOARD SET SYMPATHY = SYMPATHY+1
 <include refid="where-no"/>
 </update>
 <!-- update sympathy-->
