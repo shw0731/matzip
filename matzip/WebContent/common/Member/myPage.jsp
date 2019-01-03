@@ -3,12 +3,12 @@
     <% String id=session.getId();
     %>
  <script>
-  function Modify(){
-	 var url="MemberModifyAction.action?ID="+ ModifyForm.ID.value;
+/*   function Modify(){
+	 var url="http://localhost:8080/common/Member/myPageModify.jsp"
 	 
 		 open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"+
 		 "scrollbars=no,resizable=no,width=600,height=400");
- }
+ } */
   </script>
   
  <div class="modal fade" id="modalmyPageForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -32,7 +32,10 @@
         <div class="md-form mb-5">
           <i class="fa fa-id-badge prefix grey-text">
           	${resultClass.ID}
-           </i><a href="javascript:Modify();"><small>정보수정</small></a>
+           </i>
+           <!-- 정보수정 -->
+          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalModifyForm"><font size="2em">정보수정</button>
+          <%--  <a href="javascript:Modify();"><small>정보수정</small></a> --%>
         </div>
         <div class="md-form mb-5">
           <i class="fa fa-gem prefix grey-text"><a href=""><small>잔여포인트 : <strong>${resultClass.point}점</strong></small></a></i>
@@ -82,7 +85,10 @@
     </div>
   </div>
   </s:if>
+  
+  
  <%@ include file="/common/Member/myPageOwner.jsp"%>
+   <%@ include file="/common/Member/myPageModify.jsp" %>
   
   <!-- 관리자 페이지 -->
   <s:else>

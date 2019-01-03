@@ -36,9 +36,8 @@ public class MemberDeleteAction extends ActionSupport implements SessionAware{
 		
 		//수정할 항목
 
-		paramClass.setID(getID());
+		paramClass.setID((String)session.get("ID"));
 		
-		//업데이트쿼리
 		String id = (String)session.get("ID");
 		System.out.println(id);
 		sqlMapper.delete("member.deleteMember", paramClass);

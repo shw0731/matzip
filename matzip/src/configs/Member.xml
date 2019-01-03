@@ -41,7 +41,7 @@
   <result>/common/Member/myPage.jsp</result>
 </action>
 
-<action name="MemberModifyAction" class="member.MemberModifyAction" method="modify">
+<action name="MemberModifyAction" class="member.MemberModifyAction">
   <result>/common/Member/myPageSuccess.jsp</result>
 </action>
 

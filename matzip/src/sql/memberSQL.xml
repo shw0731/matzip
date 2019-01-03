@@ -61,7 +61,6 @@ select * from MEMBER where ID = #ID# and EMAIL = #email#
 <!-- update 쿼리문 정의 -->
 <update id="updateMember" parameterClass="member">
   UPDATE MEMBER SET   
-                      PHONENUMBER = #phoneNumber#,
                       PASSWORD = #password#,
                       EMAIL = #email#
      WHERE ID = #ID#

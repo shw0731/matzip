@@ -23,11 +23,9 @@ public class MemberModifyAction extends ActionSupport implements SessionAware{
 	private MemberVO resultClass;
 	
 	private Map session;
-
-	private String phoneNumber;
+	
 	private String email;
 	private String password; 
-	private int password2;
 	private String ID;
 	
 	public MemberModifyAction() throws IOException{
@@ -36,29 +34,24 @@ public class MemberModifyAction extends ActionSupport implements SessionAware{
 		reader.close();
 	}
 	
-	public String execute() throws Exception {
-		String id = (String)session.get("ID");
-		System.out.println(id);
-		resultClass = (MemberVO) sqlMapper.queryForObject("member.idCheck",
-				id);
-
-		return SUCCESS;
-	}
-	
-	public String modify() throws Exception{
-		String id = (String)session.get("ID");
-		System.out.println(id);
+	public String execute() throws Exception{
+		  
+		paramClass = new MemberVO();
+		
 		//수정할 항목
-		   
+
 		paramClass.setID((String)session.get("ID"));
 		paramClass.setEmail(getEmail());
-		paramClass.setPhoneNumber(getPhoneNumber());
 		paramClass.setPassword(getPassword());
 		
-		//항목 수정
+		String id = (String)session.get("ID");
+		System.out.println(id);
 		sqlMapper.update("member.updateMember", paramClass);
+		//성공하면 마이페이지로 이동하기
 		return SUCCESS;
+		
 	}
+
  
 	public static Reader getReader() {
 		return reader;
@@ -92,14 +85,6 @@ public class MemberModifyAction extends ActionSupport implements SessionAware{
 		this.resultClass = resultClass;
 	}
 
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -130,14 +115,6 @@ public class MemberModifyAction extends ActionSupport implements SessionAware{
 
 	public void setSession(Map session) {
 		this.session = session;
-	}
-
-	public int getPassword2() {
-		return password2;
-	}
-
-	public void setPassword2(int password2) {
-		this.password2 = password2;
 	}
 	
 
