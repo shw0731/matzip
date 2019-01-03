@@ -68,9 +68,13 @@
 		
 		<s:else>
 		  <form action="modifyAction.action" method="post" enctype="multipart/form-data" name="form">
-		  <s:hidden name="restaurantNo" value="%{restResultClass.restaurantNo}" />
-		  <s:hidden name="currentPage" value="%{currentPage}" />
-		  <s:hidden name="images" value="%{restResultClass.images}" />
+			  <s:hidden name="restaurantNo" value="%{restResultClass.restaurantNo}" />
+			  <s:hidden name="currentPage" value="%{currentPage}" />
+			  <s:hidden name="restaurantName" value="%{restResultClass.restaurantName}"/>
+			  <s:hidden name="address" value="%{restResultClass.address}"/>
+			  <s:hidden name="location" value="%{restResultClass.location}"/>
+			  <s:hidden name="category" value="%{restResultClass.category}"/>
+			  <s:hidden name="images" value="%{restResultClass.images}" />
 		</s:else>
 
        <table width="600" border="0" cellspacing="5px" cellpadding="3px" align="center" valign="top">
@@ -217,7 +221,6 @@
         <tr>
           <td align="right" colspan="2">
           	<input name="submit" type="submit" value="작성완료" class="inputb">
-            <input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage" />'">
           </td>
         </tr>
 
