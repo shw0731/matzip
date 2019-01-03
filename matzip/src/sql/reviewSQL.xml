@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="review">
-<typeAlias alias="review" type="review.reviewVO"/>
-<resultMap class="reivew" id="reviewRes">
+<typeAlias alias="review" type="review.ReviewVO"/>
+<resultMap class="review" id="reviewRes">
 <result column="reviewno" property="reviewNo"/>
 <result column="restaurantno" property="restaurantNo"/>
 <result column="ID" property="ID"/>
