@@ -63,7 +63,7 @@
          <p class="b">♥　${resultClass.ID} </p>
           	<%-- </i><button type="button" class="btn btn-primary collapsed" data-toggle="modal" data-target=#modalModifyForm"><small>정보수정</small></button> --%>
           </i><a href="javascript:Modify();"><small>정보수정</small></a>
-<a href="#" width="100" border="0" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('no_listAction.action?currentPage=<s:property value="currentPage" />','공지','scrollbars=yes, width=650, height=650,');">공지사항 작성</a>&nbsp;&nbsp;&nbsp;&nbsp;
+
                     
           <ul>
           <small><li>MyName : ${resultClass.name}</small></li>
@@ -112,6 +112,9 @@
       			</li>
    		</ul>
      </div>
+     
+     <a href="#" width="100" border="0" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger pull-right" style="cursor:pointer" onclick="window.open('no_listAction.action?currentPage=<s:property value="currentPage" />','공지','scrollbars=yes, width=650, height=650,');">공지사항</a>&nbsp;&nbsp;&nbsp;&nbsp;
+     
           <!-- 탈퇴 -->
      <form name="deleteAction" action="MemberDeleteAction.action" onsubmit="return delConfirm()">
      <input class="btn btn-link" type="submit" value="탈퇴하기"></td></div>

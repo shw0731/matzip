@@ -36,11 +36,12 @@ function delConfirm(){
 			<a href="javascript:location.href='#.action?currentPage=<s:property value="currentPage" />';" target="_blank", width="100" border="0" class="btn btn-primary btn text-uppercase js-scroll-trigger" style="cursor:pointer"><small>고객센터</small></a><small>&nbsp;&nbsp;</small></text><br>
 
           	<text align=center>
+          	
           	<a href="#" width="100" border="0" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('WriteForm.action?currentPage=<s:property value="currentPage" />','음식점페이지 입력','scrollbars=yes, width=650, height=650,');">나의 음식점 등록</a>&nbsp;&nbsp;&nbsp;&nbsp;
           	<a href="#" width="100" border="0" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('modifyForm.action?currentPage=<s:property value="currentPage" />','음식점페이지 수정','scrollbars=yes, width=650, height=650,');">음식점 정보 수정</a><br><br>
           	<a href="#" width="100" border="0" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('list.action?currentPage=<s:property value="currentPage" />','내 가게 리뷰 리스트','scrollbars=yes, width=650, height=650,');">내 가게 리뷰 보기</a>&nbsp;&nbsp;&nbsp;&nbsp;
           	<a href="javascript:location.href='deleteForm.action?currentPage=<s:property value="currentPage" />';" target="_blank", width="100" border="0" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="cursor:pointer">음식점 정보 삭제</a><br><br><br><br>
-    
+    		<a href="#" width="100" border="0" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger pull-right" style="cursor:pointer" onclick="window.open('no_listAction.action?currentPage=<s:property value="currentPage" />','공지','scrollbars=yes, width=650, height=650,');">공지사항 작성</a>&nbsp;&nbsp;&nbsp;&nbsp;
   </div>
   </div>
   </s:elseif>
