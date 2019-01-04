@@ -10,7 +10,7 @@
 <!-- 가입 -->
 <action name="JoinAction" class="member.JoinAction" >
 	<result name="success">/index.jsp</result>
-	<result>/common/Member/joinError.jsp</result>
+	<result name="error">/common/Member/joinError.jsp</result>
 </action>
 <!-- 메인으로 돌아가기 -->
 <action name="MainAction" class="member.MainAction" >
