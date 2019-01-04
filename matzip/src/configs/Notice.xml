@@ -7,7 +7,7 @@
       <constant name = "struts.multipart.maxSize" value = "104857600" />
  
       <package name = "notice" extends = "struts-default">
-
+				
   
             <!-- 게시판 리스트 액션 -->
             <action name = "no_listAction" class = "notice.listAction">
