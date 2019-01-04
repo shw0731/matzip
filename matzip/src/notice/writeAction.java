@@ -4,7 +4,7 @@ package notice;
 
 import com.opensymphony.xwork2.ActionSupport;
 
- 
+import member.MemberVO;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -17,13 +17,13 @@ import java.io.Reader;
 import java.io.IOException;
 import java.io.File;
 
- 
+import member.MemberVO;
 
 import org.apache.commons.io.FileUtils;
 
- 
+import org.apache.struts2.interceptor.SessionAware;
 
-public class writeAction extends ActionSupport
+public class writeAction extends ActionSupport implements SessionAware
 {
       public static Reader reader; // 파일 스크림을 위한 reader
  
@@ -32,11 +32,13 @@ public class writeAction extends ActionSupport
  
       private noticeVO paramClass; // 파라미터를 저장할 객체
       private noticeVO resultClass; // 쿼리 결과 값을 저장할 객체
- 
+      private MemberVO memberResultClass;
       private int currentPage; // 현재 페이지
  
       private int serviceno;
       private String subject;
+      
+      private Map session;
       private String context;
       Calendar today = Calendar.getInstance(); // 오늘 날짜 구하기
  
@@ -54,6 +56,7 @@ public class writeAction extends ActionSupport
  
       public String form() throws Exception
       {
+    	  memberResultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", session.get("ID"));
             // 등록 폼
             return SUCCESS;
       }
@@ -101,6 +104,25 @@ public class writeAction extends ActionSupport
  
       public int getCurrentPage() { return currentPage; }
       public void setCurrentPage(int currentPage) { this.currentPage = currentPage; }
+
+	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
+	}
+
+	public MemberVO getMemberResultClass() {
+		return memberResultClass;
+	}
+
+	public void setMemberResultClass(MemberVO memberResultClass) {
+		this.memberResultClass = memberResultClass;
+	}
+	
+      
+      
 }
 
 

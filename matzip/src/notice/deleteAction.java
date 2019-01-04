@@ -14,11 +14,13 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import java.io.File;
 import java.io.Reader;
+import java.util.Map;
 import java.io.IOException;
 
+import org.apache.struts2.interceptor.SessionAware;
  
 
-public class deleteAction extends ActionSupport
+public class deleteAction extends ActionSupport implements SessionAware
 {
       public static Reader reader;
       public static SqlMapClient sqlMapper;
@@ -28,7 +30,8 @@ public class deleteAction extends ActionSupport
  
       private int currentPage; // 현재 페이지
  
- 
+      private Map session;
+      
       private int serviceno;
  
       // 생성자
@@ -73,6 +76,16 @@ public class deleteAction extends ActionSupport
  
       public int getCurrentPage() { return currentPage; }
       public void setCurrentPage(int currentPage) { this.currentPage = currentPage; }
+
+  	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
+	}
+      
+      
 }
  
 

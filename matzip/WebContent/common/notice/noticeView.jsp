@@ -74,7 +74,7 @@
                               <s:property value = "no" />
                         </s:param>
                   </s:url>
-   
+		<s:if test="memberResultClass.isType==2">
 				<input name = "list" type = "button" value = "수정" class = "btn btn-success right"
                         onClick = "javascript:open_win_noresizable('no_modifyForm.action?serviceno='+
                         '<s:property value = "resultClass.serviceno" />&currentPage='+
@@ -90,6 +90,7 @@
                   <input name = "list" type = "button" value = "목록" class="btn btn-info right"
                         onClick = "javascript:location.href='no_listAction.action?currentPage='+
                         '<s:property value = "currentPage" />'">
+          </s:if>              
             </td>
       </tr>
 </table>

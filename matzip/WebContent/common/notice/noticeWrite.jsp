@@ -1,7 +1,7 @@
-<%@ page contentType = "text/html; charset=utf-8" %>
-<%@ taglib prefix = "s" uri = "/struts-tags" %>
-
- 
+ <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page session="true" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+    <% String id=session.getId();
+    %>
 
 <html>
 <head>
@@ -12,9 +12,9 @@
 <meta name="viewport" content="width=device-width" initial-scale="1">
 
 <!-- 스타일시트 참조  -->
-
-<link rel="stylesheet" href="/matzip/vendor/bootstrap/css/bootstrap.min.css">
  <style>
+<link rel="stylesheet" href="/matzip/vendor/bootstrap/css/bootstrap.min.css">
+
 
 
   </style>
@@ -61,6 +61,7 @@
 
             return true;
       }
+      console.log(<s:property value="memberResultClass.isType"/>);
 </SCRIPT>
 </head>
 
@@ -127,9 +128,11 @@
       </tr>
             <tr>
           <td align="right" colspan="1">
+          	  <s:if test="memberResultClass.isType==2">
+          
                   <input type = "submit" value = "글쓰기" class="btn btn-primary pull-right"/>
           	  <input name="list" type="button" value="목록" class="btn btn-info right" onClick="javascript:location.href='no_listAction.action?currentPage=<s:property value="currentPage" />'">
-           
+           	</s:if>
           </td>
         </tr>
 </table>
