@@ -105,7 +105,7 @@ function openConfirmPhone(){
           <i class="fa fa-lock prefix grey-text"></i>
           <input type="password" name="password" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
-        </div>
+        </div> 
 
 		<div class="md-form mb-2">
           <i class="fa fa-lock prefix grey-text"></i>
