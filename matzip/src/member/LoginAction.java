@@ -32,7 +32,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
-	//ºñ¹Ğ¹øÈ£°¡ ¸ÂÀ¸¸é ¼¼¼ÇÀ¯Áö
+	//ë¹„ë°€ë²ˆí˜¸ê°€ ë§ìœ¼ë©´ ì„¸ì…˜ìœ ì§€
 	
 	public String execute() throws Exception{
 		password = getPassword();
@@ -41,8 +41,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			if (resultClass.getPassword().equals(password)) {
 				
 				
-				 ActionContext context = ActionContext.getContext();//sessionÀ» »ı¼ºÇÏ±â À§ÇØ
-				  Map<String, String> session = (Map<String, String>)context.getSession();// Map »ç¿ë½Ã
+				 ActionContext context = ActionContext.getContext();//sessionì„ ìƒì„±í•˜ê¸° ìœ„í•´
+				  Map<String, String> session = (Map<String, String>)context.getSession();// Map ì‚¬ìš©ì‹œ
 				  session.put("ID", resultClass.getID());
 				  
 				  context.setSession(session);
@@ -54,7 +54,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		
 		return ERROR;
 	}
-	//·Î±×¾Æ¿ô½Ã ¼¼¼ÇÁö¿ò
+	//ë¡œê·¸ì•„ì›ƒì‹œ ì„¸ì…˜ì§€ì›€
 	public String logout() throws Exception{
 		ActionContext context = ActionContext.getContext();
 		  Map<String, String> session = (Map<String, String>)context.getSession();

@@ -1,7 +1,7 @@
-<%@ page contentType="text/html; charset=euc-kr"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<?xml version="1.0" encoding="euc-kr" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <script type="text/javascript">
@@ -11,9 +11,9 @@ function window.close(){
 	self.close();
 }
 function check() {
-	var f=document.checkPhone;  //¹®¼­.Form name="";
+	var f=document.checkPhone;  //ë¬¸ì„œ.Form name="";
 	if(f.phoneNumber.value==""){
-		alert("¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		alert("ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 		f.phoneNumber.focus();
 		return false;
 	}
@@ -21,32 +21,44 @@ function check() {
 </script> 
 </head>
 <body bgcolor=#f5f5f5>
-<s:if test="chkNo==1">
 	<form name = "checkPhone" action="CheckPhoneAction.action" method="post" onsubmit="return check()">
+	<s:if test="chkNo==1">
+	<table width=400 border=0 cellspacing=0 cellpadding=5>
+		<tr>
+			<td align=center>
+				<br><br>
+				ë¸”ë™ë¦¬ìŠ¤íŠ¸ ëª…ë‹¨ì— ìˆëŠ” ë²ˆí˜¸ì…ë‹ˆë‹¤.</font>
+				<br/><br/>
+				<input type="button" value="ë‹«ê¸°" onclick="window.close()"/>
+			</td>
+		</tr>
+	</table>
+</s:if>
+<s:elseif test="chkNo==2">
 	<table width=400 border=0 cellspacing=0 cellpadding=5 class="BTABLE">
 		<tr align=center>
 			<td height=30>
 				<font><b>
-				ÀÌ¹Ì »ç¿ë ÁßÀÎ ¹øÈ£ÀÔ´Ï´Ù!</font>
+				ì´ë¯¸ ì‚¬ìš© ì¤‘ì¸ ë²ˆí˜¸ì…ë‹ˆë‹¤.</font>
 				<br/><br/>
-					<input type="button" value="´İ±â" onclick="window.close()"/>
+					<input type="button" value="ë‹«ê¸°" onclick="window.close()"/>
 			</td>
 		</tr>
-	</form>
-</s:if>
-
+		</table>
+</s:elseif>
 <s:else>
 	<table width=400 border=0 cellspacing=0 cellpadding=5>
 		<tr>
 			<td align=center>
 				<br><br>
-				ÀÔ·ÂÇÏ½Å ¹øÈ£´Â
-				»ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.</font>
+				ì…ë ¥í•˜ì‹  ë²ˆí˜¸ëŠ”
+				ì‚¬ìš©í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.</font>
 				<br/><br/>
-				<input type="button" value="´İ±â" onclick="window.close()"/>
+				<input type="button" value="ë‹«ê¸°" onclick="window.close()"/>
 			</td>
 		</tr>
 	</table>
 </s:else>
+	</form>
 </body>
 </html>

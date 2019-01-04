@@ -15,6 +15,7 @@ public class CheckPhoneAction extends ActionSupport {
 	public static SqlMapClient sqlMapper;
 	
 	private MemberVO resultClass;
+	private MemberVO resultClass2;
 	
 	private int phoneNumber;
 	private int chkNo;
@@ -27,18 +28,24 @@ public class CheckPhoneAction extends ActionSupport {
 	
 	public String execute() throws Exception{
 		resultClass=new MemberVO();
+		resultClass2=new MemberVO();
 		
 		if((Object)getPhoneNumber() != null) { //빈값이 아니면 phoneCheck 쿼리 실행
 			resultClass = (MemberVO)sqlMapper.queryForObject("member.phoneCheck",getPhoneNumber());
+			resultClass2 = (MemberVO)sqlMapper.queryForObject("member.blackList",getPhoneNumber());
 		}
 		
 		if(resultClass == null) { 
 			chkNo = 0;
-			
 		}
+		else if(resultClass2 != null) { //블랙리스트면 1
+			chkNo = 1;
+	}
 		else { 
-			chkNo = 1; //값이 있으면 1
+			chkNo = 2; //중복아이디면 2
 		}
+		
+		
 		
 	return SUCCESS;
 	}

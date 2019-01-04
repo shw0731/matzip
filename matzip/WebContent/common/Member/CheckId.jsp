@@ -27,7 +27,7 @@ function check() {
 		<tr align=center>
 			<td height=30>
 				<font><b>${ID}</b> 은(는) <br>
-				이미 사용 중인 닉네임입니다!</font>
+				이미 사용 중인 아이디입니다!</font>
 				<br/><br/>
 					<input type="button" value="닫기" onclick="window.close()"/>
 			</td>
@@ -41,7 +41,7 @@ function check() {
 			<td align=center>
 				<br><br>
 				입력하신 <b>${ID}</b>은(는) <br>
-				사용할 수 있는 닉네임입니다.</font>
+				사용할 수 있는 아이디입니다.</font>
 				<br/><br/>
 				<input type="button" value="닫기" onclick="window.close()"/>
 			</td>
