@@ -7,8 +7,10 @@
       <constant name = "struts.multipart.maxSize" value = "104857600" />
       <package name = "member" extends = "struts-default">
 
+<!-- 가입 -->
 <action name="JoinAction" class="member.JoinAction" >
-	<result>/index.jsp</result>
+	<result name="success">/index.jsp</result>
+	<result>/common/Member/joinError.jsp</result>
 </action>
 <!-- 메인으로 돌아가기 -->
 <action name="MainAction" class="member.MainAction" >
@@ -19,6 +21,7 @@
 	<result name="success" >/index.jsp</result>
 	<result name="error">/common/Member/loginError.jsp</result>
 </action>
+
 <!-- 로그아웃 -->
 <action name="logout" class="member.LoginAction" method="logout">
 	<result>/index.jsp</result>
@@ -30,6 +33,10 @@
 <!-- 아이디 체크 -->
 <action name="CheckIdAction" class="member.CheckIdAction">
 <result>/common/Member/CheckId.jsp</result>
+</action>
+<!-- 비밀번호 체크 -->
+<action name="CheckPhoneAction" class="member.CheckPhoneAction">
+<result>/common/Member/CheckPhone.jsp</result>
 </action>
 <!-- 비밀번호 찾기 -->
 <action name="FindPwAction" class="member.FindPwAction" method="find">

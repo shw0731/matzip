@@ -2,6 +2,28 @@
 <%@ page session="true" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
     <% String id=session.getId();
     %>
+ <head>
+     <style>
+      p {
+        font-family: 'Abel', sans-serif;
+        font-size: 23px;
+      }
+      p.a {
+        font-weight: 200;
+      }
+      p.b {
+        font-weight: 700;
+      }
+      p.c {
+        font-weight: 800;
+      }
+      p.d {
+        font-weight: bold;
+      }
+    </style>
+<link href="https://fonts.googleapis.com/css?family=Abel|Thasadith" rel="stylesheet">
+  </head>
+  
  <script>
   function Modify(){
 	 var url="http://localhost:8080/common/Member/myPageModify.jsp"
@@ -18,6 +40,7 @@
 	  }
   }
   </script>
+  
 
  <div class="modal fade" id="modalmyPageForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true" >
@@ -29,19 +52,18 @@
     
     <!--Modal Header -->
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">마이페이지</h4>
+        <h4 class="modal-title w-100 font-weight-bold">My Page</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <a href="#"><small>고객센터</small></a>
       </div>
       <!--Modal body -->
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
-          <i class="fa fa-id-badge prefix grey-text">
-          	　${resultClass.ID}
+         <p class="b">♥　${resultClass.ID} </p>
           	<%-- </i><button type="button" class="btn btn-primary collapsed" data-toggle="modal" data-target=#modalModifyForm"><small>정보수정</small></button> --%>
           </i><a href="javascript:Modify();"><small>정보수정</small></a>
+          ·<a href="#"><small>고객센터</small></a>
           <ul>
           <small><li>MyName : ${resultClass.name}</small></li>
           <small><li>MyEmail : ${resultClass.email}</small></li>
@@ -50,8 +72,8 @@
           </ul>
           </div>
         <div class="md-form mb-5">
-          <i class="fa fa-id-badge prefix grey-text">　My Point : <strong><a href="">${resultClass.point}점</strong></a></i>
-          
+        
+          <p class="b">♥　My Point : <strong><a href="">${resultClass.point}점</p></strong></a></i>
           <!-- 예약현황 -->
           <div>
           <ul>
@@ -63,7 +85,7 @@
           
           <!-- 마이 리뷰-->
          <div class="md-form mb-5">
-         <label for="">　　My Review</label>
+        <p class="b"> <label for="">♥　My Review</label></p>
          	<ul>
           	<li>존나마싯쓰</li>
           </ul>
@@ -74,11 +96,10 @@
         </div>
       </div>
       <!--Modal Footer -->
-      <div class="modal-footer d-flex justify-content-center">
-      
-      <i class="fas fa-heart w-100"><small>My List</small></i>
+      <div class="modal-body mx-3">
+      <p class="b">♥　My List</i></p>
       </div>
-    <div class="">
+    <div class="modal-body mx-3">
       	<ul>
       		<li>
       			<i class="fas fa-utensils"></i> 개마싯쓰 	
@@ -92,7 +113,7 @@
      </div>
           <!-- 탈퇴 -->
      <form name="deleteAction" action="MemberDeleteAction.action" onsubmit="return delConfirm()">
-     <input type="submit" value="탈퇴하기" class="submit"></td>
+     <input class="btn btn-link" type="submit" value="탈퇴하기"></td></div>
     </form>
     </div>
   </div>

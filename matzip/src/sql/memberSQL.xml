@@ -33,9 +33,12 @@
   SELECT * FROM MEMBER WHERE ID = #ID#
 </select>
 
-<!-- 아이디 중복확인하기 -->
+<!-- 아이디,비밀번호 중복확인하기 -->
 <select id="idCheck" resultClass="member" parameterClass="String">
   SELECT * FROM MEMBER WHERE ID = #ID# 
+</select>
+<select id="phoneCheck" resultClass="member" parameterClass="int">
+  SELECT * FROM MEMBER WHERE PHONENUMBER = #phoneNumber#
 </select>
 
 <select id="selectPassword" resultMap="memberRes" parameterClass="member">

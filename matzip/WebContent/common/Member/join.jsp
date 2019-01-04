@@ -5,7 +5,7 @@
 //회원가입할때
 function validation(){
 	
-	var frm=document.JoinForm;
+	var frm=document.joinForm;
 	
 	
 	if(frm.ID.value==""){
@@ -22,12 +22,11 @@ function validation(){
 	else if(frm.email.value==""){
 		alert("이메일을 입력해 주세요.");
 		return false;
-	}
-	else if(frm.isType.value==""){
+   }else if(frm.password.value!=frm.comPassword.value){
+	    alert("비밀번호가 동일하지 않습니다.");
+	    return false;
+   }else if(frm.isType.value==""){
 		alert("회원유형을 선택해주세요.");
-		return false;
-	}else if(frm.password.value!=frm.comPassword.value){
-		alert("비밀번호가 동일하지 않습니다.");
 		return false;
 	}
 	return true;
@@ -42,6 +41,20 @@ function openConfirmId(){
 	if(id.length==0){
 		alert("ID를 입력하세요");
 		joinForm.ID.focus();
+		return false;
+	}
+	open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"+
+						 "scrollbars=no,resizable=no,width=400,height=200");
+}
+
+function openConfirmPhone(){
+	
+	var phone=document.getElementById('user_phone').value;
+	var url="CheckPhoneAction.action?phoneNumber="+ joinForm.phoneNumber.value;
+	
+	if(phone.length==0){
+		alert("번호를 입력하세요");
+		joinForm.phoneNumber.focus();
 		return false;
 	}
 	open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"+
@@ -79,8 +92,9 @@ function openConfirmId(){
         </div>
         <div class="md-form mb-2">
           <i class="fa fa-mobile prefix grey-text"></i>
-          <input type="text" name="phoneNumber" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-email">Your phone</label>
+          <input type="text" id="user_phone"name="phoneNumber" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-pass">Your phone</label>
+         <input button type="button" name="confirm_phoneNumber" value="Check" onclick="openConfirmPhone();"/><br>
         </div>
 		<div class="md-form mb-2">
           <i class="fa fa-envelope prefix grey-text"></i>
@@ -95,7 +109,7 @@ function openConfirmId(){
 
 		<div class="md-form mb-2">
           <i class="fa fa-lock prefix grey-text"></i>
-          <input type="password" name="comPassword" class="form-control validate">
+          <input type="Password" name="comPassword" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-pass">Confirm Password</label>
         </div>
         Type<br/>

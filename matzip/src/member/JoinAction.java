@@ -20,13 +20,13 @@ public class JoinAction extends ActionSupport {
 	private String ID;
 	private String password;
 	private String email;
-	private int isType; //0È¸¿ø 1Á¡ÁÖ 2°ü¸®ÀÚ
-	private String phoneNumber;
+	private int isType; //0È¸ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ 2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int phoneNumber;
 	private int blacklist;
 	
 	private String idCheck;
 	
-	//sql¹® ¾²±â
+	//sqlï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public JoinAction() throws IOException{
 		
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -41,7 +41,6 @@ public class JoinAction extends ActionSupport {
 		paramClass = new MemberVO();
 		resultClass = new MemberVO();
 		
-		//µî·ÏÇÒ Ç×¸ñ
 		paramClass.setName(getName());
 		paramClass.setID(getID());
 		paramClass.setPassword(getPassword());
@@ -50,14 +49,13 @@ public class JoinAction extends ActionSupport {
 		paramClass.setPhoneNumber(getPhoneNumber());
 		paramClass.setBlacklist(getBlacklist());
 		
-		//µî·Ï Äõ¸® ¼öÇà
 		sqlMapper.insert("member.insertMember", paramClass);
-			
+				
 	return SUCCESS;
 	}
 	
 	public String idCheckMethod() throws Exception {
-		idCheck =  (String)sqlMapper.queryForObject("idCheck",  getID()); //Å°°ª,°´Ã¼
+		idCheck =  (String)sqlMapper.queryForObject("idCheck",  getID()); //Å°ï¿½ï¿½,ï¿½ï¿½Ã¼
 		return SUCCESS;
 	}
 
@@ -136,10 +134,10 @@ public class JoinAction extends ActionSupport {
 	public void setIdCheck(String idCheck) {
 		this.idCheck = idCheck;
 	}
-	public String getPhoneNumber() {
+	public int getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public int getBlacklist() {

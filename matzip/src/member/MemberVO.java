@@ -2,7 +2,7 @@ package member;
 
 public class MemberVO {
 	private String name;
-	private String phoneNumber;
+	private int phoneNumber;
 	private String ID;
 	private int blacklist;
 	private String email;
@@ -16,10 +16,10 @@ public class MemberVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPhoneNumber() {
+	public int getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public String getID() {

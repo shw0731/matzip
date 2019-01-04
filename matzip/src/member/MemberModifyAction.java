@@ -38,7 +38,7 @@ public class MemberModifyAction extends ActionSupport implements SessionAware{
 		  
 		paramClass = new MemberVO();
 		
-		//¼öÁ¤ÇÒ Ç×¸ñ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½
 
 		paramClass.setID((String)session.get("ID"));
 		paramClass.setEmail(getEmail());
@@ -47,7 +47,7 @@ public class MemberModifyAction extends ActionSupport implements SessionAware{
 		String id = (String)session.get("ID");
 		System.out.println(id);
 		sqlMapper.update("member.updateMember", paramClass);
-		//¼º°øÇÏ¸é ¸¶ÀÌÆäÀÌÁö·Î ÀÌµ¿ÇÏ±â
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Ï±ï¿½
 		return SUCCESS;
 		
 	}

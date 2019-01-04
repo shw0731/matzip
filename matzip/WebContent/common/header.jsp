@@ -4,7 +4,7 @@
 <script>
 function validation(){
 	
-	var frm=document.JoinForm;
+	var frm=document.joinForm;
 	
 	
 	if(frm.ID.value==""){
@@ -97,7 +97,6 @@ function openConfirmId(){
           <ul class="navbar-nav text-uppercase ml-auto">
             <s:if test="session.ID !=NULL">
              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalmyPageForm">MYPAGE</button>
-          
           	 <form action="logout.action">
           	 <button type="submit" class="btn btn-primary btn-lg">LOGOUT</button>
           	 </form>
@@ -114,7 +113,6 @@ function openConfirmId(){
     <!-- login -->
     
    <%@ include file="/common/Member/login.jsp"%>
-
 <!-- Join -->
 
     <%@ include file="/common/Member/join.jsp"%>

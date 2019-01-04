@@ -45,7 +45,6 @@ function checkValue(){
           <input type="password" name="password" class="form-control validate">
           <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
         </div>
-
       </div>
  <div class="modal-footer d-flex justify-content-center">
         <button class="btn btn-primary btn-lg" data-toggle="modal" type="button" data-target="#modalJoinForm">Join</button>

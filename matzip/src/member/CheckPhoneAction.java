@@ -10,16 +10,16 @@ import java.io.Reader;
 
 import member.MemberVO;
 
-public class CheckIdAction extends ActionSupport {
+public class CheckPhoneAction extends ActionSupport {
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
 	private MemberVO resultClass;
 	
-	private String ID;
+	private int phoneNumber;
 	private int chkNo;
 	
-	public CheckIdAction() throws IOException{
+	public CheckPhoneAction() throws IOException{
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml"); 
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
@@ -28,17 +28,16 @@ public class CheckIdAction extends ActionSupport {
 	public String execute() throws Exception{
 		resultClass=new MemberVO();
 		
-		if(getID() != null) {
-			resultClass = (MemberVO) sqlMapper.queryForObject("member.idCheck",getID());
-			System.out.println(getID());
+		if((Object)getPhoneNumber() != null) { //빈값이 아니면 phoneCheck 쿼리 실행
+			resultClass = (MemberVO)sqlMapper.queryForObject("member.phoneCheck",getPhoneNumber());
 		}
 		
 		if(resultClass == null) { 
 			chkNo = 0;
 			
 		}
-		else {
-			chkNo = 1;
+		else { 
+			chkNo = 1; //값이 있으면 1
 		}
 		
 	return SUCCESS;
@@ -49,7 +48,7 @@ public class CheckIdAction extends ActionSupport {
 	}
 
 	public static void setReader(Reader reader) {
-		CheckIdAction.reader = reader;
+		CheckPhoneAction.reader = reader;
 	}
 
 	public static SqlMapClient getSqlMapper() {
@@ -57,7 +56,7 @@ public class CheckIdAction extends ActionSupport {
 	}
 
 	public static void setSqlMapper(SqlMapClient sqlMapper) {
-		CheckIdAction.sqlMapper = sqlMapper;
+		CheckPhoneAction.sqlMapper = sqlMapper;
 	}
 
 	public MemberVO getResultClass() {
@@ -68,12 +67,12 @@ public class CheckIdAction extends ActionSupport {
 		this.resultClass = resultClass;
 	}
 
-	public String getID() {
-		return ID;
+	public int getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setID(String iD) {
-		ID = iD;
+	public void setPhoneNumber(int phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public int getChkNo() {
