@@ -13,7 +13,7 @@
 
 <!-- 스타일시트 참조  -->
 
-<link rel="stylesheet" href="/matzip/common/notice/css/bootstrap.min.css">
+<link rel="stylesheet" href="/matzip/vendor/bootstrap/css/bootstrap.min.css">
  <style>
 
 

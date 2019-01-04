@@ -41,9 +41,11 @@
 <div class="row">
     <div class="col-xs-2"></div>
     <div class="col-xs-8 col-md-8">
+    <span style="color:#fed136">
         <h2 class="text-center">공지사항</h2>
+        <span style="color:#fed136">
         <div class="table-responsive">
-        <table class="table table-bordered table-striped" >
+        <table class="table" >
 
 
 		<tr>
