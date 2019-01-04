@@ -41,11 +41,6 @@
   SELECT * FROM MEMBER WHERE PHONENUMBER = #phoneNumber#
 </select>
 
-<!-- 블랙리스트 -->
-<select id="blackList" resultClass="member" parameterClass="int">
- SELECT * FROM BLACKLIST WHERE PHONENUMBER = #phoneNumber#
-</select>
-
 <select id="selectPassword" resultMap="memberRes" parameterClass="member">
   <include refid="select-all"/>
   <include refid="where-no"/>

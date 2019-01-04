@@ -1,5 +1,13 @@
  <%@ page session="true" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+ <script>
+ function register(){
+	 var url="http://localhost:8080/common/BlackList/blackList.jsp"
+	 
+		 open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"+
+		 "scrollbars=no,resizable=no,width=500,height=150");
+ }
  
+ </script>
   <!-- 관리자 페이지 -->
   <s:else>
    <div class="modal-dialog" role="document">
@@ -20,7 +28,7 @@
 
           <!-- 마이 리뷰-->
          <div class="md-form mb-5">
-        <p class="b"> <label for="">♥<a href=#>　BlackList</label></p></a>
+        <p class="b"> <label for="">♥<a href="javascript:register();">　BlackList</label></p></a>
         <p class="b"> <label for="">♥<a href=#>　PowerLink</label></p></a>
         <p class="b"> <label for="">♥<a href="http://localhost:8080/no_listAction.action">　Notice</label></p></a>
          </div>

@@ -56,8 +56,10 @@
 <action name="MemberDeleteAction" class="member.MemberDeleteAction">
   <result>/common/Member/deleteSuccess.jsp</result>
 </action>
-</package>
 
+
+
+</package>
 </struts>
 
   

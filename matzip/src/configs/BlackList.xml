@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+      <!-- 용량제한 100MB로 설정 -->
+      <constant name = "struts.multipart.maxSize" value = "104857600" />
+      <package name = "blackList" extends = "struts-default">
+
+
+<!-- 블랙리스트 -->
+<action name="BlackListAction" class="blackList.BlackListAction">
+  <result name="success">/common/BlackList/blackListSuccess.jsp</result>
+</action>
+      
+      
+</package>
+</struts>

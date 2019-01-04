@@ -32,10 +32,10 @@ public class CheckPhoneAction extends ActionSupport {
 		
 		if((Object)getPhoneNumber() != null) { //빈값이 아니면 phoneCheck 쿼리 실행
 			resultClass = (MemberVO)sqlMapper.queryForObject("member.phoneCheck",getPhoneNumber());
-			resultClass2 = (MemberVO)sqlMapper.queryForObject("member.blackList",getPhoneNumber());
+			resultClass2 = (MemberVO)sqlMapper.queryForObject("blackList.blackListFind",getPhoneNumber());
 		}
 		
-		if(resultClass == null) { 
+		else if(resultClass == null && resultClass2 == null) { 
 			chkNo = 0;
 		}
 		else if(resultClass2 != null) { //블랙리스트면 1

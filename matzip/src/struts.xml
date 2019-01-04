@@ -13,6 +13,7 @@
 	<include file="/configs/Like.xml" />
     <include file="/configs/Member.xml" />
     <include file="/configs/Reivew.xml" />
-    <include file="/configs/QnA.xml" /> 
+    <include file="/configs/QnA.xml" />
+    <include file="/configs/BlackList.xml" /> 
 	
 </struts>
