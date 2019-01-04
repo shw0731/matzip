@@ -1,10 +1,10 @@
 package notice;
 
- 
+import org.apache.struts2.interceptor.SessionAware; 
 
 import com.opensymphony.xwork2.ActionSupport;
 
- 
+import member.MemberVO;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -13,6 +13,7 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
  
 
 import java.io.Reader;
+import java.util.Map;
 import java.io.File;
 import java.io.IOException;
 
@@ -22,7 +23,7 @@ import org.apache.commons.io.FileUtils;
 
  
 
-public class modifyAction extends ActionSupport
+public class modifyAction extends ActionSupport implements SessionAware
 {
       public static Reader reader;
       public static SqlMapClient sqlMapper;
@@ -37,6 +38,9 @@ public class modifyAction extends ActionSupport
       private String password;
       private String context;
       private String old_file;
+      
+      private Map session;
+      private MemberVO memberResultClass;
  
       private File upload; // 파일 객체
       private String uploadContentType; // 컨텐츠 타입
@@ -69,7 +73,8 @@ public class modifyAction extends ActionSupport
             // 일단 항목만 수정한다.
             sqlMapper.update("notice.updateBoard", paramClass);
   
-
+            memberResultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", session.get("ID"));
+            // 등록 폼
   
             // 수정이 끝나면 view 페이지로 이동
             resultClass = (noticeVO)sqlMapper.queryForObject("notice.selectOne", getServiceno());
@@ -116,5 +121,23 @@ public class modifyAction extends ActionSupport
  
       public int getCurrentPage() { return currentPage; }
       public void setCurrentPage(int currentPage) { this.currentPage = currentPage; }
+
+  	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
+	}
+
+	public MemberVO getMemberResultClass() {
+		return memberResultClass;
+	}
+
+	public void setMemberResultClass(MemberVO memberResultClass) {
+		this.memberResultClass = memberResultClass;
+	}
+	
 }
+
 

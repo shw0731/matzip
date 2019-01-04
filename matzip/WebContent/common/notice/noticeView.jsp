@@ -1,24 +1,29 @@
-<%@ page contentType = "text/html; charset=utf-8" %>
-<%@ taglib prefix = "s" uri = "/struts-tags" %>
+ <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page session="true" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+    <% String id=session.getId();
+    %>
 
  
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<!-- 뷰포트 -->
-
-<meta name="viewport" content="width=device-width" initial-scale="1">
-
-<!-- 스타일시트 참조  -->
-
-<link rel="stylesheet" href="/matzip/vendor/bootstrap/css/bootstrap.min.css">
- <style>
-
-
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 <title>공지사항</title>
+<!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  </head>
 <link rel = "stylesheet" href = "/Struts2Board/board/css.css" type = "text/css">
 
  
@@ -30,7 +35,7 @@
                    "scrollbars=no, status=no, resizable=no, width=600, height=500");
       }
 </SCRIPT>
-</head>
+
 
  
 

@@ -1,9 +1,10 @@
 package notice;
 
- 
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import member.MemberVO;
 import notice.pagingAction;
 
 import com.ibatis.common.resources.Resources;
@@ -18,7 +19,7 @@ import java.io.IOException;
 
  
 
-public class listAction extends ActionSupport 
+public class listAction extends ActionSupport implements SessionAware
 {
       public static Reader reader; // 파일 스트림을 위한 reader
  
@@ -36,6 +37,9 @@ public class listAction extends ActionSupport
       private String pagingHtml; // 페이징을 구현한 html
       private pagingAction page; // 페이징 클래스
  
+      private MemberVO memberResultClass;
+      private Map session;
+      
       // 생성자
       public listAction() throws IOException 
       {
@@ -78,6 +82,7 @@ public class listAction extends ActionSupport
             // 전체 리스트에서 현재 페이지만큼의 리스트만 가져온다.
             list = list.subList(page.getStartCount(), lastCount);
 
+            memberResultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", session.get("ID"));
  
 
             return SUCCESS;
@@ -115,6 +120,23 @@ public class listAction extends ActionSupport
 
       public pagingAction getPage() { return page; }
       public void setPage(pagingAction page) { this.page = page; }
+      
+  	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
+	}
+
+	public MemberVO getMemberResultClass() {
+		return memberResultClass;
+	}
+
+	public void setMemberResultClass(MemberVO memberResultClass) {
+		this.memberResultClass = memberResultClass;
+	}
+	
 }
 
 

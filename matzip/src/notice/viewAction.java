@@ -1,10 +1,10 @@
 package notice;
 
  
-
+import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
- 
+import member.MemberVO;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -21,10 +21,11 @@ import java.io.IOException;
  
 
 import java.net.URLEncoder;
+import java.util.Map;
 
  
 
-public class viewAction extends ActionSupport
+public class viewAction extends ActionSupport implements SessionAware
 {
       public static Reader reader;
       public static SqlMapClient sqlMapper;
@@ -35,6 +36,9 @@ public class viewAction extends ActionSupport
       private int currentPage;
  
       private int serviceno;
+      
+      private MemberVO memberResultClass;
+      private Map session;
  
  
       private InputStream inputStream;
@@ -55,7 +59,8 @@ public class viewAction extends ActionSupport
       // 상세보기
       public String execute() throws Exception
       {
-
+    	  memberResultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", session.get("ID"));
+          // 등록 폼
   
             // 해당 번호의 글을 가져온다.
             resultClass = (noticeVO)sqlMapper.queryForObject("notice.selectOne", getServiceno());
@@ -99,6 +104,25 @@ public class viewAction extends ActionSupport
  
       public int getCurrentPage() { return currentPage; }
       public void setCurrentPage(int currentPage) { this.currentPage = currentPage; }
+
+	public MemberVO getMemberResultClass() {
+		return memberResultClass;
+	}
+
+	public void setMemberResultClass(MemberVO memberResultClass) {
+		this.memberResultClass = memberResultClass;
+	}
+
+	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
+	}
+      
+      
+      
 }
 
 
