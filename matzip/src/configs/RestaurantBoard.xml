@@ -24,7 +24,7 @@
 		</action>
 		
 		<action name="PageViewAction" class="restaurantPage.PageViewAction">
-			<result>/common/RestaurantBoard/RestaurantPage.jsp</result>
+			<result>/common/RestaurantBoard/RestaurantView.jsp</result>
 		</action>
 
 		<action name="fileUploadForm" class="restaurantPage.WriteAction">
@@ -57,5 +57,9 @@
         <action name = "deleteAction" class = "restaurantPage.DeleteAction">
               <result type = "chain">listAction</result>
         </action>
+        <!-- 리뷰 작성 -->
+        <action name="ReviewWriteAction" class="review.ReviewWriteAction">
+			<result>/common/RestaurantBoard/RestaurantView.jsp</result>
+		</action>
 	</package>
 </struts>

@@ -5,10 +5,13 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
       <!-- 용량제한 100MB로 설정 -->
-      <constant name = "struts.multipart.maxSize" value = "104857600" />
-      <package name = "review" extends = "struts-default">
+      <package name="review" extends="struts-default">
+	  
+	<action name="ReviewWriteAction" class="review.ReviewWriteAction">
+	<result type="chain">PageViewAction</result>
 
+	</action>
 
-</package>
+	</package>
 
 </struts>

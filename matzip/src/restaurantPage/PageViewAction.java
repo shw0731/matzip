@@ -221,5 +221,29 @@ public class PageViewAction extends ActionSupport implements SessionAware{
 	public void setSession(Map session) {
 		this.session = session;
 	}
+
+	public List<ReviewVO> getReviewList() {
+		return reviewList;
+	}
+
+	public void setReviewList(List<ReviewVO> reviewList) {
+		this.reviewList = reviewList;
+	}
+
+	public ReviewVO getReviewParamClass() {
+		return reviewParamClass;
+	}
+
+	public void setReviewParamClass(ReviewVO reviewParamClass) {
+		this.reviewParamClass = reviewParamClass;
+	}
+
+	public ReviewVO getReviewResultClass() {
+		return reviewResultClass;
+	}
+
+	public void setReviewResultClass(ReviewVO reviewResultClass) {
+		this.reviewResultClass = reviewResultClass;
+	}
 	
 }

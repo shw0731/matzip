@@ -48,9 +48,9 @@ public class ReviewWriteAction extends ActionSupport implements SessionAware{
 	public String execute() throws Exception{
 		paramClass = new ReviewVO();
 		resultClass = new ReviewVO();
-		
+		ID=(String)session.get("ID");
 		paramClass.setRestaurantNo(getRestaurantNo());
-		paramClass.setID(getID());
+		paramClass.setID(ID);
 		paramClass.setSubject(getSubject());
 		paramClass.setContext(getContext());
 		paramClass.setImages("0");
@@ -76,12 +76,15 @@ public class ReviewWriteAction extends ActionSupport implements SessionAware{
 		 paramClass.setReviewNo(reviewNo);
 		
 		 sqlMapper.update("review.updateFile",paramClass);
-		
+		 //평점 기능
+		 float avg =(float)sqlMapper.queryForObject("review.AvgStarPoint", getRestaurantNo());
+		 sqlMapper.update("rest.updateAvg", avg);
+		 
 		return SUCCESS;
 	}
 public void makeDir()throws Exception{
 		
-		reviewNo = (int)sqlMapper.queryForObject("review.selectOne",(String)session.get("ID"));
+		reviewNo = (int)sqlMapper.queryForObject("review.selectOne",ID);
 		fileUploadPath+=getRestaurantNo()+"\\";
 		fileUploadPath+=reviewNo;
 		File Folder = new File(fileUploadPath);

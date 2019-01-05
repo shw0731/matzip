@@ -27,9 +27,13 @@
 <select id="selectOne" parameterClass="String" resultMap="reviewRes">
 	SELECT REVIEWNO FROM REVIEWBOARD WHERE ID = #ID#
 </select>
+<!-- 평점계산 -->
+<select id="AvgStarPoint" parameterClass="int" resultClass="float">
+	SELECT ROUND(AVG(STARPOINT),2) FROM REVIEWBOARD WHERE RESTAURANTNO = #restaurantNo# 
+</select>
 <!-- insert 쿼리문 정의 -->
 <insert id="insertReview" parameterClass="review">
-INSERT INTO SBOARD2(REVIEWNO,restaurantNO,SUBJECT,ID,CONTEXT,IMAGES,SYMPATHY,STARPOINT,REG_DATE)
+INSERT INTO REVIEWBOARD(REVIEWNO,restaurantNO,SUBJECT,ID,CONTEXT,IMAGES,SYMPATHY,STARPOINT,REG_DATE)
 VALUES (REVIEW_SEQ.NEXTVAL,#restaurantNo#,#subject#,#ID#,#context#,#images#,#sympathy#,#starPoint#,#reg_date#)
 </insert>
 <!-- update 쿼리문 정의 -->
