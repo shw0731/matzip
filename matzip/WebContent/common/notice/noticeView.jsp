@@ -90,12 +90,12 @@
                         '<s:property value = "resultClass.serviceno" />&currentPage='+
                         '<s:property value = "currentPage" />','delete'">
 
-
+		          </s:if>   
    
                   <input name = "list" type = "button" value = "목록" class="btn btn-info right"
                         onClick = "javascript:location.href='no_listAction.action?currentPage='+
                         '<s:property value = "currentPage" />'">
-          </s:if>              
+           
             </td>
       </tr>
 </table>
