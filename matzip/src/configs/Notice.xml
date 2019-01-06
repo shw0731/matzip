@@ -7,7 +7,7 @@
       <constant name = "struts.multipart.maxSize" value = "104857600" />
  
       <package name = "notice" extends = "struts-default">
-				
+
   
             <!-- 게시판 리스트 액션 -->
             <action name = "no_listAction" class = "notice.listAction">
@@ -24,6 +24,11 @@
                         <param name = "actionName">no_listAction</param>
                   </result>
             </action>
+            
+	<action name="no_Write" class="notice.writeAction">
+			<result name="success"> /common/notice/noticeSuccess.jsp </result>
+			<result name="error"> /common/notice/noticeError.jsp </result>		
+		</action>
   
             <!-- 게시판 상세보기 액션 -->
            <action name = "no_viewAction" class = "notice.viewAction">

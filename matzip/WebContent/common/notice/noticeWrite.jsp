@@ -67,10 +67,9 @@
 
  
 
-<s:if test = "resultClass == NULL">
-<form action = "no_writeAction.action" method = "post"
-      enctype = "multipart/form-data" onsubmit = "return validation();">
-</s:if>
+		<s:if test="resultClass == null">
+			<form action="no_Write.action" method="post" enctype="multipart/form-data" onsubmit="return validation();" name="form">
+		</s:if>
 
  
 
