@@ -23,7 +23,7 @@
 
 <!-- 공통으로 사용할 select절 -->
 <sql id="select-all">
-  SELECT * FROM RESTAURANTBOARD <!-- RESTAURANTBOARD 에있는 데이터 모두를 꺼내온다 -->
+  SELECT * FROM RESTAURANTBOARD  <!-- RESTAURANTBOARD 에있는 데이터 모두를 꺼내온다 -->
 </sql>
 
 <!-- 공통으로 사용할 where-no절 정의 -->
@@ -34,7 +34,7 @@
 <!-- select쿼리문-->
 <select id="selectAll" resultMap="restaurantRes">
   <include refid="select-all"/><!-- SELECT * FROM RESTAURANTBOARD -->
-  ORDER BY RESTAURANTNO DESC <!-- restaurantNo를 가져와서 내림차순 정렬 -->
+  ORDER BY STARPOINT DESC, LIKES DESC <!-- 평점순,좋아요 순-->
 </select>
 
 <select id="selectOne" resultMap="restaurantRes" parameterClass="int">
@@ -119,7 +119,7 @@
 	<include refid="where-no"/>
 </update>
 
-<update id="updateAvg" parameterClass="float">
+<update id="updateAvg" parameterClass="restaurantBoard">
 	UPDATE RESTAURANTBOARD SET STARPOINT = #starPoint#
 	<include refid="where-no"/>
 </update>

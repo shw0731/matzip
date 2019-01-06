@@ -5,7 +5,7 @@
 <struts>
 		<!-- 용량제한 100MB로 설정 -->
 	<constant name="struts.multipart.maxSize" value="104857600" />
-	<package name="restaurantboard" extends="struts-default">
+	<package name="restaurantboard" extends="struts-default" namespace="">
 		<global-exception-mappings>
 			<exception-mapping result="error" exception="java.sql.SQLException"/>
 		</global-exception-mappings>
@@ -43,6 +43,10 @@
 		<action name="multiUploadListAction" class="restaurantPage.WriteAction" method="upload">
 			<result>/common/RestaurantBoard/RestaurantList.jsp</result>
 		</action> 
+		<!-- 검색 -->
+		<action name="searchAction" class="search.SearchAction">
+			<result>/common/search/search.jsp</result>
+		</action>
 		
                        <!-- 게시판 수정 액션 -->
         <action name = "modifyForm" class = "restaurantPage.PageViewAction">
@@ -59,7 +63,8 @@
         </action>
         <!-- 리뷰 작성 -->
         <action name="ReviewWriteAction" class="review.ReviewWriteAction">
-			<result>/common/RestaurantBoard/RestaurantView.jsp</result>
+			<result name="success" type="chain">PageViewAction</result>
+			<result name="error">/common/RestaurantBoard/ReviewWriteError.jsp</result>
 		</action>
 	</package>
 </struts>

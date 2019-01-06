@@ -7,10 +7,7 @@
       <!-- 용량제한 100MB로 설정 -->
       <package name="review" extends="struts-default">
 	  
-	<action name="ReviewWriteAction" class="review.ReviewWriteAction">
-	<result type="chain">PageViewAction</result>
-
-	</action>
+	
 
 	</package>
 

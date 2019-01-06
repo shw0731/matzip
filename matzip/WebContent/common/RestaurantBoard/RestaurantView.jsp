@@ -143,11 +143,20 @@ img {vertical-align: middle;}
 
 
 
+<div class="card w-100">
+  			<div class="card-body">
+   				 <h3 class="card-title">(<s:property value="restResultClass.category"/>)<s:property value="restResultClass.restaurantName"/></h3>
+   				 
+   				 <p class="card-text">별점 : &nbsp;<s:property value="restResultClass.starPoint"/></p>
+   				 <p class="card-text">&nbsp;좋아요 : <s:property value="restResultClass.likes"/></p>
+   				 <p class="card-text">가게 설명: <s:property value="restResultClass.context"/></p>
+    		
+  			</div>
+		</div>
 
-<h3>	음식점명 :(<s:property value="restResultClass.category"/>)<s:property value="restResultClass.restaurantName"/></h3><br>
 
-		별점 : &nbsp;<s:property value="restResultClass.starPoint"/>
-		&nbsp;좋아요 : <s:property value="restResultClass.likes"/>
+		
+		
 
 
 		<input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage" />'">
@@ -160,8 +169,10 @@ img {vertical-align: middle;}
 	<s:iterator value="reviewList" status="stat">
 		<div class="card w-75">
   			<div class="card-body">
-   				 <h5 class="card-title"><s:property value="subject" />dd</h5>
-   				 <p class="card-text"><s:property value="context"/>dd</p>
+   				 <h5 class="card-title"><s:property value="subject" /></h5>
+   				 <img style="width: 400px; height: 150px;" src="/imgs/<s:property value="restResultClass.restaurantNo"/>/<s:property value="reviewNo"/>/<s:property value="images"/>" style="width:100%">
+   				 <p class="card-text"><s:property value="context"/></p>
+   				 <p class="card-text"><s:property value="starPoint"/></p>
    				 
     		<a href="#" class="btn btn-primary">동감</a>
   			</div>
@@ -192,7 +203,7 @@ img {vertical-align: middle;}
   		<div class="input-group-prepend">
   			<span class="input-group-text" id="basic-addon1">별점</span>
   		</div>
-  			<input name="startPoint" type="text" class="form-control" placeholder="1~5" aria-label="Username" aria-describedby="basic-addon1">
+  			<input name="starPoint" type="text" class="form-control" placeholder="1~5" aria-label="Username" aria-describedby="basic-addon1">
 	</div>
 	
 	 <!-- context  -->

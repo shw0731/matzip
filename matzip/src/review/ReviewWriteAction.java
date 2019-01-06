@@ -1,5 +1,6 @@
 package review;
 
+import restaurantPage.BoardVO;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.ibatis.common.resources.Resources;
@@ -16,6 +17,8 @@ import java.io.IOException;
 public class ReviewWriteAction extends ActionSupport implements SessionAware{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
+	
+	private BoardVO restParamClass;
 	
 	private ReviewVO paramClass;
 	private ReviewVO resultClass;
@@ -45,7 +48,7 @@ public class ReviewWriteAction extends ActionSupport implements SessionAware{
 		reader.close();
 
 	}
-	public String execute() throws Exception{
+	public String execute() {
 		paramClass = new ReviewVO();
 		resultClass = new ReviewVO();
 		ID=(String)session.get("ID");
@@ -57,7 +60,7 @@ public class ReviewWriteAction extends ActionSupport implements SessionAware{
 		paramClass.setStarPoint(getStarPoint());
 		paramClass.setSympathy(0);
 		paramClass.setReg_date(today.getTime());
-		
+		try {
 		sqlMapper.insert("review.insertReview",paramClass);
 		
 		makeDir();
@@ -78,7 +81,13 @@ public class ReviewWriteAction extends ActionSupport implements SessionAware{
 		 sqlMapper.update("review.updateFile",paramClass);
 		 //평점 기능
 		 float avg =(float)sqlMapper.queryForObject("review.AvgStarPoint", getRestaurantNo());
-		 sqlMapper.update("rest.updateAvg", avg);
+		 restParamClass = new BoardVO();
+		 restParamClass.setRestaurantNo(getRestaurantNo());
+		 restParamClass.setStarPoint(avg);
+		 sqlMapper.update("rest.updateAvg",restParamClass );
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		 
 		return SUCCESS;
 	}

@@ -24,7 +24,7 @@
 <select id="selectAll" parameterClass="int" resultMap="reviewRes">
 	SELECT * FROM REVIEWBOARD WHERE restaurantNo = #restaurantNo# ORDER BY sympathy DESC, reg_date ASC
 </select>
-<select id="selectOne" parameterClass="String" resultMap="reviewRes">
+<select id="selectOne" parameterClass="String" resultClass="int">
 	SELECT REVIEWNO FROM REVIEWBOARD WHERE ID = #ID#
 </select>
 <!-- 평점계산 -->

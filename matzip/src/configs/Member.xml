@@ -26,10 +26,7 @@
 <action name="logout" class="member.LoginAction" method="logout">
 	<result>/index.jsp</result>
 </action>
-<!-- 검색 -->
-<action name="searchAction" class="search.SearchAction">
-	<result>/common/search/search.jsp</result>
-</action>
+
 <!-- 아이디 체크 -->
 <action name="CheckIdAction" class="member.CheckIdAction">
 <result>/common/Member/CheckId.jsp</result>
