@@ -1,6 +1,9 @@
 package member;
 
 import com.opensymphony.xwork2.ActionSupport;
+
+import blackList.BlackListVO;
+
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
@@ -15,7 +18,7 @@ public class CheckPhoneAction extends ActionSupport {
 	public static SqlMapClient sqlMapper;
 	
 	private MemberVO resultClass;
-	private MemberVO resultClass2;
+	private BlackListVO resultClass2;
 	
 	private int phoneNumber;
 	private int chkNo;
@@ -28,14 +31,14 @@ public class CheckPhoneAction extends ActionSupport {
 	
 	public String execute() throws Exception{
 		resultClass=new MemberVO();
-		resultClass2=new MemberVO();
+		resultClass2=new BlackListVO();
 		
 		if((Object)getPhoneNumber() != null) { //빈값이 아니면 phoneCheck 쿼리 실행
 			resultClass = (MemberVO)sqlMapper.queryForObject("member.phoneCheck",getPhoneNumber());
-			resultClass2 = (MemberVO)sqlMapper.queryForObject("blackList.blackListFind",getPhoneNumber());
+			resultClass2 = (BlackListVO)sqlMapper.queryForObject("blackList.blackListFind",getPhoneNumber());
 		}
 		
-		else if(resultClass == null && resultClass2 == null) { 
+		if(resultClass == null && resultClass2 == null) { 
 			chkNo = 0;
 		}
 		else if(resultClass2 != null) { //블랙리스트면 1

@@ -12,6 +12,10 @@
 <action name="BlackListAction" class="blackList.BlackListAction">
   <result name="success">/common/BlackList/blackListSuccess.jsp</result>
 </action>
+
+<!-- <action name="BlackListView" class="blackList.BlackListView">
+  <result name="success">/common/BlackList/blackListView.jsp</result>
+</action> -->
       
       
 </package>

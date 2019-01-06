@@ -74,4 +74,9 @@ select * from MEMBER where ID = #ID# and EMAIL = #email#
   DELETE FROM MEMBER WHERE ID = #ID#
 </delete>
 
+<!-- 블랙리스트일때 아이디 삭제하기 -->
+<delete id="blackIDDelete" parameterClass="member">
+  DELETE FROM MEMBER WHERE PHONENUMBER = #phoneNumber#
+</delete>
+
 </sqlMap>

@@ -7,6 +7,14 @@
 		 "scrollbars=no,resizable=no,width=500,height=150");
  }
  
+ 
+ function list(){
+	 var url="http://localhost:8080/common/BlackList/blackListView.jsp"
+	 
+		 open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"+
+		 "scrollbars=no,resizable=no,width=620,height=400");
+ }
+ 
  </script>
   <!-- 관리자 페이지 -->
   <s:else>
@@ -28,7 +36,7 @@
 
           <!-- 마이 리뷰-->
          <div class="md-form mb-5">
-        <p class="b"> <label for="">♥<a href="javascript:register();">　BlackList</label></p></a>
+        <p class="b"> <label for="">♥　BlackList</label> <a href="javascript:list();">List</a> <a href="javascript:register();">regist</p></a>
         <p class="b"> <label for="">♥<a href=#>　PowerLink</label></p></a>
         <p class="b"> <label for="">♥<a href="http://localhost:8080/no_listAction.action">　Notice</label></p></a>
          </div>

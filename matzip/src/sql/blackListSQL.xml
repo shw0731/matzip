@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="blackList">
-<typeAlias alias="blackList" type="member.MemberVO"/>
+<typeAlias alias="blackList" type="blackList.BlackListVO"/>
 <!-- 리절트 맵 -->
 <resultMap id="blackListRes" class="blackList">
   <result property="phoneNumber" column="phoneNumber"/>
 </resultMap>
 
+<select id="selectAll" resultMap="blackListRes">
+  SELECT * FROM BLACKLIST ORDER BY PHONENUMBER DESC
+</select>
+
 <!-- 블랙리스트에 있는지 찾기-->
-<select id="blackListFind" resultClass="member" parameterClass="int">
+<select id="blackListFind" resultClass="blackList" parameterClass="int">
  SELECT * FROM BLACKLIST WHERE PHONENUMBER = #phoneNumber#
 </select>
 
 <!-- 블랙리스트 등록하기 -->
-<insert id="blackListRegister" parameterClass="member">
+<insert id="blackListRegister" parameterClass="blackList">
   INSERT INTO BLACKLIST (PHONENUMBER) VALUES (#phoneNumber#)
 </insert>
 
 
 <!-- 블랙리스트 삭제하기 -->
-<delete id="blackListDelete" parameterClass="member">
+<delete id="blackListDelete" parameterClass="int">
   DELETE FROM BLACKLIST WHERE PHONENUMBER = #phoneNumber#
-</delete>
-
-<!-- 블랙리스트일때 아이디 삭제하기 -->
-<delete id="blackIDDelete" parameterClass="member">
-  DELETE FROM MEMBER WHERE PHONENUMBER = #phoneNumber#
 </delete>
 
 

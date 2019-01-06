@@ -92,7 +92,7 @@ function openConfirmPhone(){
         </div>
         <div class="md-form mb-2">
           <i class="fa fa-mobile prefix grey-text"></i>
-          <input type="text" id="user_phone"name="phoneNumber" class="form-control validate">
+          <input type="text" id="user_phone" name="phoneNumber" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-pass">Your phone</label>
          <input button type="button" name="confirm_phoneNumber" value="Check" onclick="openConfirmPhone();"/><br>
         </div>

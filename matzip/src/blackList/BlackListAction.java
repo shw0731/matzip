@@ -13,15 +13,16 @@ package blackList;
 	import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 	import com.opensymphony.xwork2.ActionSupport;
 
-	import member.MemberVO;
+	import blackList.BlackListVO;
+import member.MemberVO;
 
 	public class BlackListAction extends ActionSupport{
 		
 		public static Reader reader;
 		public static SqlMapClient sqlMapper;
 
-		private MemberVO paramClass;
-		private MemberVO resultClass;
+		private BlackListVO paramClass;
+		private MemberVO MemparamClass;
 		
 		private int phoneNumber;
 		
@@ -33,13 +34,14 @@ package blackList;
 		
 		public String execute() throws Exception{
 			  
-			paramClass = new MemberVO();
+			paramClass = new BlackListVO();
+			MemparamClass = new MemberVO();
 
 			paramClass.setPhoneNumber(getPhoneNumber());
-		
+		    MemparamClass.setPhoneNumber(getPhoneNumber());
 			
+			sqlMapper.delete("member.blackIDDelete", MemparamClass);
 			sqlMapper.insert("blackList.blackListRegister", paramClass);
-			sqlMapper.delete("blackList.blackIDDelete", paramClass);
 			
 			return SUCCESS;
 			
@@ -61,20 +63,21 @@ package blackList;
 			BlackListAction.sqlMapper = sqlMapper;
 		}
 
-		public MemberVO getParamClass() {
+		public BlackListVO getParamClass() {
 			return paramClass;
 		}
 
-		public void setParamClass(MemberVO paramClass) {
+		public void setParamClass(BlackListVO paramClass) {
 			this.paramClass = paramClass;
 		}
 
-		public MemberVO getResultClass() {
-			return resultClass;
+		
+		public MemberVO getMemparamClass() {
+			return MemparamClass;
 		}
 
-		public void setResultClass(MemberVO resultClass) {
-			this.resultClass = resultClass;
+		public void setMemparamClass(MemberVO memparamClass) {
+			MemparamClass = memparamClass;
 		}
 
 		public int getPhoneNumber() {
