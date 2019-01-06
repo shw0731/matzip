@@ -14,19 +14,12 @@
 		</dataSource>
 	</transactionManager>
 	
-<!-- 	<sqlMap resource="/sql/blackListSQL.xml" />
-	<sqlMap resource="/sq1/likeRegSQL.xml" /> -->
 	<sqlMap resource="/sql/memberSQL.xml" />
       <sqlMap resource = "/sql/noticeSQL.xml" />
       <sqlMap resource="/sql/restaurantSQL.xml" />
       <sqlMap resource="/sql/QnASQL.xml" /> 
        <sqlMap resource="/sql/reviewSQL.xml" />
        <sqlMap resource="/sql/blackListSQL.xml" />
-<!-- 	<sqlMap resource="/sql/powerLinkRegSQL.xml" />
-	 />
-	<sqlMap resource="/sql/reservationRegSQL.xml" />
-	
-	<sqlMap resource="/sql/reviewSQL.xml" /> -->
-	
+       <sqlMap resource="/sql/powerLinkSQL.xml" />
 	
 </sqlMapConfig>

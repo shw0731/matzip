@@ -36,7 +36,7 @@
 
           <!-- 마이 리뷰-->
          <div class="md-form mb-5">
-        <p class="b"> <label for="">♥　BlackList</label> <a href="javascript:list();">List</a> <a href="javascript:register();">regist</p></a>
+        <p class="b"> <label for="">♥　BlackList</label><a href="http://localhost:8080/BlackListViewAction.action">List</a> <a href="javascript:register();">regist</p></a>
         <p class="b"> <label for="">♥<a href=#>　PowerLink</label></p></a>
         <p class="b"> <label for="">♥<a href="http://localhost:8080/no_listAction.action">　Notice</label></p></a>
          </div>

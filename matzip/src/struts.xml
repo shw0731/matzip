@@ -14,6 +14,7 @@
     <include file="/configs/Member.xml" />
     <!-- <include file="/configs/Reivew.xml" /> -->
     <include file="/configs/QnA.xml" />
-    <include file="/configs/BlackList.xml" /> 
+    <include file="/configs/BlackList.xml" />
+    <include file="/configs/PowerLink.xml" /> 
 	
 </struts>
