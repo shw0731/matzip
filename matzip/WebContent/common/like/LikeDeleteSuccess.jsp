@@ -4,9 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>좋아요 완료</title>
 </head>
 <body>
-
+<script language="javascript">
+	window.onload = function() {
+		alert("음식점 삭제가 완료되었습니다.");
+		window.close();
+	}
+</script>
 </body>
 </html>
