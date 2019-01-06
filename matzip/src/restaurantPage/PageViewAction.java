@@ -59,7 +59,7 @@ public class PageViewAction extends ActionSupport implements SessionAware{
 
 	// 상세보기
 	public String execute() throws Exception {
-		
+  		restaurantNo = (int)sqlMapper.queryForObject("rest.selectID",session.get("ID"));
 		paramClass.setRestaurantNo(getRestaurantNo());
 		// 해당 번호의 글을 가져온다.
 		restResultClass = (BoardVO) sqlMapper.queryForObject("rest.selectOne", getRestaurantNo());

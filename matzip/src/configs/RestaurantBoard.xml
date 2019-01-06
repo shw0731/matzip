@@ -6,9 +6,9 @@
 		<!-- 용량제한 100MB로 설정 -->
 	<constant name="struts.multipart.maxSize" value="104857600" />
 	<package name="restaurantboard" extends="struts-default" namespace="">
-		<global-exception-mappings>
+<!-- 		<global-exception-mappings>
 			<exception-mapping result="error" exception="java.sql.SQLException"/>
-		</global-exception-mappings>
+		</global-exception-mappings> -->
 		
 		<action name="listAction" class="restaurantPage.ListAction">
 			<result>/common/RestaurantBoard/RestaurantList.jsp</result>
@@ -56,12 +56,14 @@
         </action>
   
         <action name = "modifyAction" class = "restaurantPage.ModifyAction">
-              <result type = "chain">PageViewAction</result>
+            <result name="success"> /common/RestaurantBoard/RestaurantModifySuccess.jsp </result>
+			<result name="error"> /common/RestaurantBoard/RestaurantWriteError.jsp </result>
         </action>
         
                        <!-- 게시판 삭제 액션 -->
         <action name = "deleteAction" class = "restaurantPage.DeleteAction">
-              <result type = "chain">listAction</result>
+            <result name="success"> /common/RestaurantBoard/RestaurantPageDelete.jsp </result>
+			<result name="error"> /common/RestaurantBoard/RestaurantPageDeleteFail.jsp </result> 
         </action>
         <!-- 리뷰 작성 -->
         <action name="ReviewWriteAction" class="review.ReviewWriteAction">

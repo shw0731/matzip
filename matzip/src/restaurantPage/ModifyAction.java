@@ -1,11 +1,12 @@
 package restaurantPage;
 
 import com.opensymphony.xwork2.ActionSupport;
-
+import org.apache.struts2.interceptor.SessionAware;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
+import java.util.*;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 
-public class ModifyAction extends ActionSupport
+public class ModifyAction extends ActionSupport implements SessionAware
 {
       public static Reader reader;
       public static SqlMapClient sqlMapper;
@@ -23,7 +24,7 @@ public class ModifyAction extends ActionSupport
       private BoardVO restResultClass; // 쿼리 결과 값을 저장할 객체
  
       private int currentPage; // 현재 페이지
-      
+      private Map session;
       private int restaurantNo;
       private String restaurantName;
       private String context;
@@ -31,6 +32,8 @@ public class ModifyAction extends ActionSupport
       private String category;
       private String address;
       private String location;
+      private String Old_file;
+      private String ID;
  
 	  	private List<File> uploads = new ArrayList<File>();
 	  	private List<String> uploadsFileName = new ArrayList<String>();
@@ -62,20 +65,32 @@ public class ModifyAction extends ActionSupport
             paramClass.setCategory(getCategory());
             paramClass.setAddress(getAddress());
             paramClass.setLocation(getLocation());
+            paramClass.setID((String)session.get("ID"));
             
-    		makeDir();
-    		for (int i = 0; i < uploads.size(); i++) {
-    			File destFile = new File(fileUploadPath
-    					+ getUploadsFileName().get(i));
-    			if(images==null)
-    				images=getUploadsFileName().get(i);
-    			else
-    				images+=getUploadsFileName().get(i);
-    			if(i!=uploads.size()-1)
-    				images+=",";
-    			FileUtils.copyFile(getUploads().get(i), destFile);
-    		}
+            
+            if(getUploads()!=null){
+            	//기존파일 삭제
+            	makeDir();
+            	File deleteFile = new File(fileUploadPath+getOld_file());
+            			deleteFile.delete();
+            	
+            	//새 파일 업로드
+	    		for (int i = 0; i < uploads.size(); i++) {
+	    			File destFile = new File(fileUploadPath
+	    					+ getUploadsFileName().get(i));
+	    			if(images==null)
+	    				images=getUploadsFileName().get(i);
+	    			else
+	    				images+=getUploadsFileName().get(i);
+	    			if(i!=uploads.size()-1)
+	    				images+=",";
+	    			FileUtils.copyFile(getUploads().get(i), destFile);
+	    		}
+            }	
+    		
     		 paramClass.setImages(images);
+    		 
+    	  	restaurantNo = (int)sqlMapper.queryForObject("rest.selectID",session.get("ID"));
     		 paramClass.setRestaurantNo(restaurantNo);
   
             // 일단 항목만 수정한다.
@@ -84,17 +99,13 @@ public class ModifyAction extends ActionSupport
 
   
             // 수정이 끝나면 view 페이지로 이동
-            restResultClass = (BoardVO)sqlMapper.queryForObject("rest.selectOne", getRestaurantNo());
+            restResultClass = (BoardVO)sqlMapper.queryForObject("rest.selectOne", session.get("ID"));
   
             return SUCCESS;
       }
       public void makeDir()throws Exception{
   		
-    		
-  		
-  		
-
-  		restaurantNo = (int)sqlMapper.queryForObject("rest.selectID","11");
+  		restaurantNo = (int)sqlMapper.queryForObject("rest.selectID",session.get("ID"));
   		fileUploadPath+=restaurantNo;
   		File Folder = new File(fileUploadPath);
   		
@@ -109,7 +120,33 @@ public class ModifyAction extends ActionSupport
   		        }        
   	        }
   		fileUploadPath+="\\";
-  		}
+  		} 
+
+      
+      
+	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
+	}
+
+	public String getID() {
+		return ID;
+	}
+
+	public void setID(String iD) {
+		ID = iD;
+	}
+
+	public String getOld_file() {
+		return Old_file;
+	}
+
+	public void setOld_file(String old_file) {
+		Old_file = old_file;
+	}
 
 	public BoardVO getParamClass() {
 		return paramClass;

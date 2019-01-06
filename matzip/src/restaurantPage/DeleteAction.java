@@ -1,7 +1,10 @@
 package restaurantPage;
 
-
 import com.opensymphony.xwork2.ActionSupport;
+
+import member.MemberVO;
+
+import org.apache.struts2.interceptor.SessionAware;
 
 import restaurantPage.BoardVO;
 
@@ -10,9 +13,10 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import java.io.Reader;
+import java.util.Map;
 import java.io.IOException;
 
-public class DeleteAction extends ActionSupport{
+public class DeleteAction extends ActionSupport implements SessionAware{
 	
     public static Reader reader;
     public static SqlMapClient sqlMapper;
@@ -22,7 +26,10 @@ public class DeleteAction extends ActionSupport{
 
     private int currentPage; // 현재 페이지
     
+	private Map session;
+    
     private int RestaurantNo;
+    private String ID;
     
     // 생성자
     public DeleteAction() throws IOException
@@ -41,28 +48,29 @@ public class DeleteAction extends ActionSupport{
           paramClass = new BoardVO();
           restResultClass = new BoardVO();
 
-          // 해당 번호의 글을 가져온다.
-          restResultClass = (BoardVO)sqlMapper.queryForObject("rest.selectOne", getRestaurantNo());
+          /*// 해당 번호의 글을 가져온다.
+          paramClass = (BoardVO)sqlMapper.queryForObject("rest.selectOne", (String)session.get("ID"));
 
 
           // 삭제할 항목 설정
-          paramClass.setRestaurantNo(getRestaurantNo());
+          paramClass.setID((String)session.get("ID"));*/
 
           // 삭제 쿼리 수행
-          sqlMapper.update("rest.deleteBoard", paramClass);
+          sqlMapper.delete("rest.deleteBoard", (String)session.get("ID"));
 
           return SUCCESS;
     }
+
 	public BoardVO getParamClass() {
 		return paramClass;
 	}
 	public void setParamClass(BoardVO paramClass) {
 		this.paramClass = paramClass;
 	}
-	public BoardVO getrestResultClass() {
+	public BoardVO getRestResultClass() {
 		return restResultClass;
 	}
-	public void setrestResultClass(BoardVO restResultClass) {
+	public void setRestResultClass(BoardVO restResultClass) {
 		this.restResultClass = restResultClass;
 	}
 	public int getCurrentPage() {
@@ -71,10 +79,22 @@ public class DeleteAction extends ActionSupport{
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = currentPage;
 	}
+	public Map getSession() {
+		return session;
+	}
+	public void setSession(Map session) {
+		this.session = session;
+	}
 	public int getRestaurantNo() {
 		return RestaurantNo;
 	}
 	public void setRestaurantNo(int restaurantNo) {
 		RestaurantNo = restaurantNo;
+	}
+	public String getID() {
+		return ID;
+	}
+	public void setID(String iD) {
+		ID = iD;
 	}
 }
