@@ -13,6 +13,7 @@
           <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
           <input type="text" class="search-bar"/>
           <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">검색</a>
+          <s:property value="category_array[0]"/>
         </div>
       </div>
     </header>

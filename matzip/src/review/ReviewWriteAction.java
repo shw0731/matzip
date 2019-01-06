@@ -93,7 +93,7 @@ public class ReviewWriteAction extends ActionSupport implements SessionAware{
 	}
 public void makeDir()throws Exception{
 		
-		reviewNo = (int)sqlMapper.queryForObject("review.selectOne",ID);
+		reviewNo = (int)sqlMapper.queryForObject("review.selectLastNo");
 		fileUploadPath+=getRestaurantNo()+"\\";
 		fileUploadPath+=reviewNo;
 		File Folder = new File(fileUploadPath);

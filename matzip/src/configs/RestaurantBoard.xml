@@ -47,7 +47,9 @@
 		<action name="searchAction" class="search.SearchAction">
 			<result>/common/search/search.jsp</result>
 		</action>
-		
+		<action name="searchFilterAction" class="search.SearchFilterAction">
+			<result type="chain">MainAction</result>
+		</action>
                        <!-- 게시판 수정 액션 -->
         <action name = "modifyForm" class = "restaurantPage.PageViewAction">
               <result type = "chain">WriteForm</result>

@@ -107,6 +107,9 @@ img {vertical-align: middle;}
 }
 </style>
 </head>
+<script>
+	var hasReview;
+</script>
 <body>
 
 <div class="slideshow-container">
@@ -150,7 +153,7 @@ img {vertical-align: middle;}
    				 <p class="card-text">별점 : &nbsp;<s:property value="restResultClass.starPoint"/></p>
    				 <p class="card-text">&nbsp;좋아요 : <s:property value="restResultClass.likes"/></p>
    				 <p class="card-text">가게 설명: <s:property value="restResultClass.context"/></p>
-    		
+    			<input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='searchAction.action?currentPage=<s:property value="currentPage" />'">
   			</div>
 		</div>
 
@@ -159,7 +162,7 @@ img {vertical-align: middle;}
 		
 
 
-		<input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage" />'">
+		
     <s:if test="%{#session.ID==restResultClass.ID}">
 		<input name = "list" type = "button" value = "수정" class = "inputb" onClick = "javascript:open_win_noresizable('modifyForm.action?no='<s:property value = "resultClass.restaurantNo" />&currentPage='<s:property value = "currentPage" />','modify')">
         <input name = "list" type = "button" value = "삭제" class = "inputb" onClick = "javascript:location.href='deleteAction.action?no='<s:property value = "resultClass.restaurantNo" />&currentPage='<s:property value = "currentPage" />','delete'">
@@ -173,8 +176,14 @@ img {vertical-align: middle;}
    				 <img style="width: 400px; height: 150px;" src="/imgs/<s:property value="restResultClass.restaurantNo"/>/<s:property value="reviewNo"/>/<s:property value="images"/>" style="width:100%">
    				 <p class="card-text"><s:property value="context"/></p>
    				 <p class="card-text"><s:property value="starPoint"/></p>
-   				 
+   			
     		<a href="#" class="btn btn-primary">동감</a>
+    		<s:if test="%{#session.ID==ID}">
+    			<a href="#" class="btn btn-primary">수정</a>
+    			<a href="#" class="btn btn-primary">삭제</a>
+    			
+    		</s:if>
+    		작성일자 : <s:property value="reg_date"/>
   			</div>
 		</div>
         		
@@ -189,6 +198,7 @@ img {vertical-align: middle;}
     		
 	      </s:if>
 	 <Br>
+	 <s:if test="session.ID!=null">
 	 <!-- 입력 폼 -->
 	 <form action="ReviewWriteAction.action" method="post" enctype="multipart/form-data">
 	<!-- subject -->
@@ -219,6 +229,7 @@ img {vertical-align: middle;}
 	 
 	<input name="submit" type="submit" value="작성완료" class="inputb">
 	</form>
+	</s:if>
 <script>
 var slideIndex = 1;
 showSlides(slideIndex);

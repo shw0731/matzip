@@ -20,7 +20,7 @@ public class SearchAction extends ActionSupport implements SessionAware{ //공�
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;	//SqlMapClient API를 사용하기 위한 sqlMapper 객체.
 
-	private List<BoardVO> restList = new ArrayList<BoardVO>();;	 
+	private List<BoardVO> restList = new ArrayList<BoardVO>();
 	
 	private Map session;
 	private int currentPage = 1;	//현재 페이지

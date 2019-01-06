@@ -27,6 +27,9 @@
 <select id="selectOne" parameterClass="String" resultClass="int">
 	SELECT REVIEWNO FROM REVIEWBOARD WHERE ID = #ID#
 </select>
+<select id="selectLastNo" resultClass="int">
+	SELECT MAX(REVIEWNO) FROM REVIEWBOARD 
+</select>
 <!-- 평점계산 -->
 <select id="AvgStarPoint" parameterClass="int" resultClass="float">
 	SELECT ROUND(AVG(STARPOINT),2) FROM REVIEWBOARD WHERE RESTAURANTNO = #restaurantNo# 
