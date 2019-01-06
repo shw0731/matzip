@@ -39,6 +39,12 @@
 		  return false;
 	  }
   }
+  function LikeList(){
+		 var url="http://localhost:8080/common/like/LikeList.jsp"
+		 
+			 open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"+
+			 "scrollbars=no,resizable=no,width=630,height=400");
+	 }
   </script>
   
 
@@ -63,6 +69,7 @@
          <p class="b">♥　${resultClass.ID} </p>
           	<%-- </i><button type="button" class="btn btn-primary collapsed" data-toggle="modal" data-target=#modalModifyForm"><small>정보수정</small></button> --%>
           </i><a href="javascript:Modify();"><small>정보수정</small></a>
+          <a href="javascript:LikeList();"><small>내가 좋아요 한 리스트 관리</small></a>
 
                     
           <ul>

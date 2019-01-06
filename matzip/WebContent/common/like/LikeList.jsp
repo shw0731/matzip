@@ -7,7 +7,7 @@
 
 <html>
 <head>
-<title>공지사항</title>
+<title>좋아요 리스트</title>
 <link rel = "stylesheet" href = "/Struts2Board/board/css.css" type = "text/css">
 </head>
 <body>
@@ -23,7 +23,7 @@
  
 
 <table width = "600" border = "0" cellspacing = "0" cellpadding = "2">
-      <tr align = "center" bgcolor = "#F3F3F3">
+      <tr align = "center" bgcolor = "#fd7e14">
             <td width = "350"><strong>음식점명</strong></td>
             <td width = "80"><strong>상태</strong></td>
       </tr>
@@ -48,18 +48,14 @@
                   </td>
                   <td align = "center"><s:property value = "restaurantName" /></td>
             </tr>
-            <tr bgcolor = "#777777">
-                  <td height = "1" colspan = "5"></td>
-            </tr>
+
       </s:iterator>
  
       <s:if test = "list.size() <= 0"> 
             <tr bgcolor = "#FFFFFF"  align = "center">
                   <td colspan = "5">등록된 음식점이 없습니다.</td>
             </tr>      
-            <tr bgcolor = "#777777">
-                  <td height = "1" colspan = "5"></td>
-            </tr> 
+
       </s:if> 
  
       <tr align = "center">
