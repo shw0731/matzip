@@ -1,14 +1,14 @@
 package like;
 
 public class LikeVO {
-	private String memberID;
+	private String ID;
 	private int RestaurantNo;
 	
-	public String getMemberID() {
-		return memberID;
+	public String getID() {
+		return ID;
 	}
-	public void setMemberID(String memberID) {
-		this.memberID = memberID;
+	public void setMemberID(String ID) {
+		this.ID = ID;
 	}
 	public int getRestaurantNo() {
 		return RestaurantNo;

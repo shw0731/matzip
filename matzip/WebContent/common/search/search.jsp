@@ -11,7 +11,8 @@ html, body, #map {
     width: 100%;
     height: 90%;
     margin: 0;
-    padding: 0;
+    padding-top: 5
+    0px;
 }
 #map {
     position: relative;

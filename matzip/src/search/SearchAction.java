@@ -62,6 +62,9 @@ public class SearchAction extends ActionSupport implements SessionAware{ //ê³µê³
 			filter_category = getFilter_category().substring(0, getFilter_category().length()-1);
 			filter.put("category", filter_category);
 		}
+		if(!"".equals(getKeyword())) {
+			filter.put("keyword", getKeyword());
+		}
 			restList = sqlMapper.queryForList("rest.selectFilter",filter);
 		
 		}else {
