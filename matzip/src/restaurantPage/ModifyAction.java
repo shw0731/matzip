@@ -35,10 +35,10 @@ public class ModifyAction extends ActionSupport implements SessionAware
       private String Old_file;
       private String ID;
  
-	  	private List<File> uploads = new ArrayList<File>();
-	  	private List<String> uploadsFileName = new ArrayList<String>();
-	  	private List<String> uploadsContentType = new ArrayList<String>();
-	  	private String fileUploadPath = "C:\\Java\\upload\\";
+	  private List<File> uploads = new ArrayList<File>();
+	  private List<String> uploadsFileName = new ArrayList<String>();
+	  private List<String> uploadsContentType = new ArrayList<String>();
+	  private String fileUploadPath = "C:\\Java\\upload\\";
  
       // 생성자
       public ModifyAction() throws IOException
@@ -67,10 +67,12 @@ public class ModifyAction extends ActionSupport implements SessionAware
             paramClass.setLocation(getLocation());
             paramClass.setID((String)session.get("ID"));
             
+
             
             if(getUploads()!=null){
             	//기존파일 삭제
             	makeDir();
+            	
             	File deleteFile = new File(fileUploadPath+getOld_file());
             			deleteFile.delete();
             	
@@ -86,11 +88,11 @@ public class ModifyAction extends ActionSupport implements SessionAware
 	    				images+=",";
 	    			FileUtils.copyFile(getUploads().get(i), destFile);
 	    		}
-            }	
+            }
     		
     		 paramClass.setImages(images);
     		 
-    	  	restaurantNo = (int)sqlMapper.queryForObject("rest.selectID",session.get("ID"));
+    	  	restaurantNo = (int)sqlMapper.queryForObject("rest.selectID", session.get("ID"));
     		 paramClass.setRestaurantNo(restaurantNo);
   
             // 일단 항목만 수정한다.

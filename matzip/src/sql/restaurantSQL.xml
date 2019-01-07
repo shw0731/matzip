@@ -30,6 +30,9 @@
 <sql id="where-no">
   WHERE restaurantNo = #restaurantNo#<!-- 해당하는 restaurantNo를 찾아온다 -->
 </sql>
+<sql id="where-id">
+  WHERE ID = #ID#
+</sql>
 
 <!-- select쿼리문-->
 <select id="selectAll" resultMap="restaurantRes">
@@ -44,14 +47,18 @@
 
 <select id="selectID" resultClass="int" parameterClass="String">
   SELECT restaurantNo FROM RESTAURANTBOARD<!-- SELECT restaurantNo FROM RESTAURANTBOARD -->
-  WHERE ID = #ID# <!--  WHERE restaurantNo = #restaurantNo# --> <!-- restaurantNo에 해당하는 RESTAURANTBOARD에 있는 데이터 전부를 꺼낸다. -->
+  <include refid="where-id"/> <!--  WHERE restaurantNo = #restaurantNo# --> <!-- restaurantNo에 해당하는 RESTAURANTBOARD에 있는 데이터 전부를 꺼낸다. -->
 </select>
 
 <select id="selectLastNo" resultClass="restaurantBoard">
   SELECT max(restaurantNo) as restaurantNo FROM RESTAURANTBOARD <!-- RESTAURANTBOARD에서 restaurantNo값의 최대값을 restaurantNo로 명명하여 꺼낸다. -->
 </select>
 
-
+<select id="selectImages" resultClass="String" parameterClass="String">
+  SELECT IMAGES FROM RESTAURANTBOARD
+  <include refid="where-id"/>
+  
+</select>
 
 <!-- 검색로직 -->
 
@@ -127,7 +134,7 @@
 <!-- delete쿼리문 정의 -->
 <delete id="deleteBoard" parameterClass="restaurantBoard">
   DELETE FROM RESTAURANTBOARD
-  <include refid="where-no"/><!--  WHERE restaurantNo = #restaurantNo# -->
+  <include refid="where-id"/><!--  WHERE restaurantNo = #restaurantNo# -->
 </delete><!-- RESTAURANTBOARD에서  해당 restaurantNo 에 맞는 데이터값들을 삭제해준다 -->
 
 </sqlMap>

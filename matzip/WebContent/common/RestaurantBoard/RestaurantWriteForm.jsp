@@ -66,11 +66,7 @@
 		  <form action="modifyAction.action" method="post" enctype="multipart/form-data" name="form">
 			  <s:hidden name="restaurantNo" value="%{restResultClass.restaurantNo}" />
 			  <s:hidden name="currentPage" value="%{currentPage}" />
-			  <s:hidden name="restaurantName" value="%{restResultClass.restaurantName}"/>
-			  <s:hidden name="address" value="%{restResultClass.address}"/>
 			  <s:hidden name="location" value="%{restResultClass.location}"/>
-			  <s:hidden name="category" value="%{restResultClass.category}"/>
-			  <s:hidden name="images" value="%{restResultClass.images}" />
 		</s:else>
 
        <table width="600" border="0" cellspacing="5px" cellpadding="3px" align="center" valign="top">
