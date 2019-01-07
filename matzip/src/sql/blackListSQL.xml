@@ -4,11 +4,18 @@
 <typeAlias alias="blackList" type="blackList.BlackListVO"/>
 <!-- 리절트 맵 -->
 <resultMap id="blackListRes" class="blackList">
-  <result property="phoneNumber" column="phoneNumber"/>
+  <result property="phoneNumber" column="PHONENUMBER"/>
 </resultMap>
 
-<select id="selectAll" resultMap="blackListRes">
-  SELECT * FROM BLACKLIST ORDER BY PHONENUMBER DESC
+
+<!-- 공통사용 -->
+<sql id="select-all-b">
+   SELECT * FROM BLACKLIST
+</sql>
+
+<select id="selectAll" resultClass = "blackList">
+   <include refid = "select-all-b" />
+  ORDER BY PHONENUMBER DESC
 </select>
 
 <!-- 블랙리스트에 있는지 찾기-->
