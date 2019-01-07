@@ -9,10 +9,10 @@
  
  
  function list(){
-	 var url="http://localhost:8080/common/BlackList/blackListView.jsp"
+	 var url="http://localhost:8080/BlackListViewAction.action"
 	 
 		 open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"+
-		 "scrollbars=no,resizable=no,width=620,height=400");
+		 "scrollbars=no,resizable=no,width=600,height=400");
  }
  
  </script>
@@ -36,8 +36,7 @@
 
           <!-- 마이 리뷰-->
          <div class="md-form mb-5">
-        <p class="b"> <label for="">♥　BlackList</label><a href="http://localhost:8080/BlackListViewAction.action">List</a> <a href="javascript:register();">regist</p></a>
-        <p class="b"> <label for="">♥<a href=#>　PowerLink</label></p></a>
+        <p class="b"> <label for="">♥　BlackList</label><a href="javascript:list();">List</a> <a href="javascript:register();">regist</p></a>
         <p class="b"> <label for="">♥<a href="http://localhost:8080/no_listAction.action">　Notice</label></p></a>
          </div>
          <!--마이리뷰 END  -->
