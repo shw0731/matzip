@@ -4,14 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>완료</title>
+<title>에러페이지</title>
 </head>
 <body>
 <script language="javascript">
 	window.onload = function() {
-		alert("수정이 완료되었습니다.");
+		alert("에러발생.");
 		window.close();
 	}
-</script>
 </body>
 </html>

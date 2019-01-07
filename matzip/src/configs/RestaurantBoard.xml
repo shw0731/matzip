@@ -8,6 +8,7 @@
 	<package name="restaurantboard" extends="struts-default" namespace="">
   		<global-exception-mappings>
 			<exception-mapping result="error" exception="java.sql.SQLException"/>
+			<exception-mapping result="null" exception="java.lang.NullPointerException"/>
 		</global-exception-mappings>
 		
 		<action name="listAction" class="restaurantPage.ListAction">
@@ -20,8 +21,10 @@
 		
 		<action name="Write" class="restaurantPage.WriteAction">
 			<result name="success"> /common/RestaurantBoard/RestaurantWriteSuccess.jsp </result>
-			<result name="error"> /common/RestaurantBoard/RestaurantWriteError.jsp </result>		
+			<result name="error"> /common/RestaurantBoard/RestaurantWriteError.jsp </result>
+	
 		</action>
+		
 		
 		<action name="PageViewAction" class="restaurantPage.PageViewAction">
 			<result>/common/RestaurantBoard/RestaurantView.jsp</result>
@@ -52,19 +55,21 @@
 			<result type="chain">MainAction</result>
 		</action>
                        <!-- 게시판 수정 액션 -->
-        <action name = "modifyForm" class = "restaurantPage.PageViewAction">
-              <result type = "chain">WriteForm</result>
+        <action name = "modifyForm" class = "restaurantPage.WriteAction" method="modify">
+              <result>/common/RestaurantBoard/RestaurantWriteForm.jsp</result>
         </action>
   
         <action name = "modifyAction" class = "restaurantPage.ModifyAction">
             <result name="success"> /common/RestaurantBoard/RestaurantModifySuccess.jsp </result>
-			<result name="error"> /common/RestaurantBoard/RestaurantModifySuccess.jsp </result>
+			<result name="error"> /common/RestaurantBoard/RestaurantModifyError.jsp </result>
+			<result name="null">/common/RestaurantBoard/RestaurantPageModifyNull.jsp</result>
         </action>
         
                        <!-- 게시판 삭제 액션 -->
         <action name = "deleteAction" class = "restaurantPage.DeleteAction">
             <result name="success"> /common/RestaurantBoard/RestaurantPageDelete.jsp </result>
-			<result name="error"> /common/RestaurantBoard/RestaurantPageDeleteFail.jsp </result> 
+			<result name="error"> /common/RestaurantBoard/RestaurantPageDeleteFail.jsp </result>
+			<result name="null">/common/RestaurantBoard/RestaurantPageNull.jsp</result> 
         </action>
         <!-- 리뷰 작성 -->
         <action name="ReviewWriteAction" class="review.ReviewWriteAction">

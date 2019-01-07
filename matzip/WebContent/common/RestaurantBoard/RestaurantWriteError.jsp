@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>완료</title>
+<title>오류페이지</title>
 </head>
 <body>
 <script language="javascript">
 	window.onload = function() {
-		alert("수정이 완료되었습니다.");
-		window.close();
+		alert("작성되지 않았습니다.");
+		history.go(-1);
 	}
 </script>
 </body>

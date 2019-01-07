@@ -49,7 +49,6 @@ public class WriteAction extends ActionSupport implements SessionAware{
 	
 	
 	
-
 	// 생성자
 	public WriteAction() throws IOException {
 
@@ -59,13 +58,23 @@ public class WriteAction extends ActionSupport implements SessionAware{
 	}
 
 	public String form() throws Exception {
-		//등록 폼.
+			//등록 폼.
+		
+		return SUCCESS;
+	}
+	
+	public String modify() throws Exception{
+		
+		
+		
+		restaurantNo = (int)sqlMapper.queryForObject("rest.selectID", session.get("ID"));
+		restResultClass = (BoardVO)sqlMapper.queryForObject("rest.selectOne", restaurantNo);
 		return SUCCESS;
 	}
 
 	// 게시판 WRITE 액션
-	public String execute() throws Exception {
-
+	public String execute(){
+		try {
 		//파라미터와 리절트 객체 생성.
 		paramClass = new BoardVO();
 		restResultClass = new BoardVO();
@@ -89,15 +98,8 @@ public class WriteAction extends ActionSupport implements SessionAware{
 		// 등록 쿼리 수행.
 		
 		sqlMapper.insert("rest.insertBoard", paramClass);
-/*		// 첨부파일을 선택했다면 파일을 업로드한다.
-		if (getUpload() != null) {
-			//등록한 글 번호 가져오기.
-			restResultClass = (BoardVO) sqlMapper.queryForObject("rest.selectLastNo");
-			//서버에 파일 저장.
-			File destFile=new File(fileUploadPath+getUploadFileName());
-			FileUtils.copyFile(getUpload(), destFile);
-			//파일 정보 업데이트.
-			sqlMapper.update("rest.updateFile", paramClass);*/
+		// 첨부파일을 선택했다면 파일을 업로드한다.
+
 		makeDir();
 		for (int i = 0; i < uploads.size(); i++) {
 			File destFile = new File(fileUploadPath
@@ -114,10 +116,14 @@ public class WriteAction extends ActionSupport implements SessionAware{
 		 paramClass.setRestaurantNo(restaurantNo);
 		
 		 sqlMapper.update("rest.updateFile",paramClass);
-		
+		 
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		
 		return SUCCESS;
 	}
+	
 
 	public void makeDir()throws Exception{
 		

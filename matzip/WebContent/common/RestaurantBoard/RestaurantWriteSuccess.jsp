@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>완료</title>
+<title>오류페이지</title>
 </head>
 <body>
 <script language="javascript">
 	window.onload = function() {
-		alert("수정이 완료되었습니다.");
+		alert("등록이 완료되었습니다.");
 		window.close();
 	}
 </script>

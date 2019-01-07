@@ -52,8 +52,9 @@ public class ModifyAction extends ActionSupport implements SessionAware
       }
  
       // 게시글 수정
-      public String execute() throws Exception
+      public String execute() 
       {
+    	  try {
             // 파라미터와 리절트 객체 생성
             paramClass = new BoardVO();
             restResultClass = new BoardVO();
@@ -102,7 +103,9 @@ public class ModifyAction extends ActionSupport implements SessionAware
   
             // 수정이 끝나면 view 페이지로 이동
             restResultClass = (BoardVO)sqlMapper.queryForObject("rest.selectOne", session.get("ID"));
-  
+    	  }catch(Exception e) {
+    		  e.printStackTrace();
+    	  }
             return SUCCESS;
       }
       public void makeDir()throws Exception{

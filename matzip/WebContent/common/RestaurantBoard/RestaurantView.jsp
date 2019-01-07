@@ -152,6 +152,7 @@ img {vertical-align: middle;}
    				 
    				 <p class="card-text">별점 : &nbsp;<s:property value="restResultClass.starPoint"/></p>
    				 <p class="card-text">&nbsp;좋아요 : <s:property value="restResultClass.likes"/></p>
+   				 <input name="Like" type="button" value="UP" class="inputb" onClick="javascript:location.href='LikeWriteAction.action?currentPage=<s:property value="currentPage" />'">
    				 <p class="card-text">가게 설명: <s:property value="restResultClass.context"/></p>
     			<input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='searchAction.action?currentPage=<s:property value="currentPage" />'">
   			</div>
@@ -164,8 +165,8 @@ img {vertical-align: middle;}
 
 		
     <s:if test="%{#session.ID==restResultClass.ID}">
-		<input name = "list" type = "button" value = "수정" class = "inputb" onClick = "javascript:open_win_noresizable('modifyForm.action?no='<s:property value = "resultClass.restaurantNo" />&currentPage='<s:property value = "currentPage" />','modify')">
-        <input name = "list" type = "button" value = "삭제" class = "inputb" onClick = "javascript:location.href='deleteAction.action?no='<s:property value = "resultClass.restaurantNo" />&currentPage='<s:property value = "currentPage" />','delete'">
+		<input name = "list" type = "button" value = "수정" class = "inputb" onClick = "javascript:open_win_noresizable('modifyForm.action?no='<s:property value = "restresultClass.restaurantNo" />&currentPage='<s:property value = "currentPage" />','modify')">
+        <input name = "list" type = "button" value = "삭제" class = "inputb" onClick = "javascript:location.href='deleteAction.action?no='<s:property value = "restresultClass.restaurantNo" />&currentPage='<s:property value = "currentPage" />','delete'">
 	</s:if>
 	<Br>
 	<!-- review -->

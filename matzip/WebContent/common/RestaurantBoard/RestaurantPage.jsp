@@ -155,8 +155,6 @@
 <td colspan="2">
 		<input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage" />'">
       <s:if test="%{#session.ID==restResultClass.ID}">
-		<input name = "list" type = "button" value = "수정" class = "inputb" onClick = "javascript:open_win_noresizable('modifyForm.action?no='<s:property value = "resultClass.restaurantNo" />&currentPage='<s:property value = "currentPage" />','modify')">
-        <input name = "list" type = "button" value = "삭제" class = "inputb" onClick = "javascript:location.href='deleteAction.action?no='<s:property value = "resultClass.restaurantNo" />&currentPage='<s:property value = "currentPage" />','delete'">
 	</s:if>
 </td>
 </tr>
