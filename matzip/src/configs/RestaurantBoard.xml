@@ -45,7 +45,8 @@
 		</action> 
 		<!-- 검색 -->
 		<action name="searchAction" class="search.SearchAction">
-			<result>/common/search/search.jsp</result>
+			<result name="success">/common/search/search.jsp</result>
+			<result name="error">/common/search/searchError.jsp</result>
 		</action>
 		<action name="searchFilterAction" class="search.SearchFilterAction">
 			<result type="chain">MainAction</result>

@@ -42,8 +42,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				
 				
 				 ActionContext context = ActionContext.getContext();//session을 생성하기 위해
-				  Map<String, String> session = (Map<String, String>)context.getSession();// Map 사용시
+				  Map<String, Object> session = (Map<String, Object>)context.getSession();// Map 사용시
 				  session.put("ID", resultClass.getID());
+				  session.put("isType", resultClass.getIsType());
 				  
 				  context.setSession(session);
 
@@ -61,6 +62,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		  if(session.get("ID") != null){
 			  
 		   session.remove("ID");
+		   session.remove("isType");
 		   
 		  }
 		  context.setSession(session);

@@ -25,7 +25,7 @@ public class MainAction extends ActionSupport implements SessionAware {
 		reader.close();
 	}
 	public String execute() throws Exception{
-		
+		if(session.get("ID")!=null)
 		resultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", session.get("ID"));	
 				return SUCCESS;
 			

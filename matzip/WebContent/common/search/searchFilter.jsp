@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="css/checkbox.css">
 지역별
 <div class="container-b">
- <form name="SearchFilterForm" action="searchFilterAction.action">
   <input type="checkbox" id="Checkbox" name="filter_address[]" value="강남">
   <label for="Checkbox">
     <span class="label-name">강남</span>
@@ -111,55 +110,40 @@
    
     
       <div class="modal-footer d-flex justify-content-center">
-        <button type="submit" class="btn btn-primary">적용</input>
+        <button type="button" class="btn btn-primary" onclick="javascript:fn_get_filter(); return false;">적용</button>
       </div>
       
     </div>
   </div>
 </div>
 </div>
-</form>
  <script type="text/javascript">
 var fn_get_filter = function(){
-    	/* var address = $('#filter_address').val();
-    	var category = $('#filter_category').val();
-    
     	
-    	
-   		$('#address-data').val(address);
-   		$('#category-data').val(category);
-   		
-   		$('#searchFilter').modal('hide');
-   		$('.modal-backdrop').css('display','none');
-   		
-   		alert(category-data);
-   		alert(address-data); */
-   		var address_array = Array();
-   		var address_cnt = 0;
+   		var address_data = '';
    		var address = $("input[name='filter_address[]']");
    		for(i=0;i<address.length;i++) {
    		    if (address[i].checked == true){
-   		        address_array[address_cnt] = address[i].value;
-   		        address_cnt++;
-   		       alert(address_array);
+   		    		address_data += address[i].value+'|';
    		    }
    		}
-   		
-   		var category_array = Array();
-   		var category_cnt = 0;
+   		address_data.slice(0,-1);
+   		var category_data = '';
    		var category = $("input[name='filter_category[]']");
    		for(i=0;i<category.length;i++) {
    		    if (category[i].checked == true){
-   		        category_array[category_cnt] = category[i].value;
-   		        category_cnt++;
-   		       alert(category_array);
+   		        category_data += category[i].value+'|';
    		    }
    		}
+   		category_data.slice(0,-1);
+   		$('#address').val(address_data);
+   		$('#category').val(category_data);
    		
    		$('#searchFilter').modal('hide');
    		$('.modal-backdrop').css('display','none');
    		
     }
+    
     
     
 </script>

@@ -62,23 +62,22 @@
 
 <!-- 검색로직 -->
 
-<select id="selectSearchA" resultMap="restaurantRes" parameterClass="String">
-  <include refid="select-all"/><!-- SELECT * FROM RESTAURANTBOARD -->
-  WHERE address like #searchKeyword#    		<!--RESTAURANTBOARD에서 #searchKeyword#에 부합하는 address값들을 전부 꺼내어 restaurantNo값으로 내림차순 정렬한다. -->
-  ORDER BY restaurantNo DESC
+<select id="selectFilter" resultClass="restaurantBoard" parameterClass="HashMap">
+	SELECT RESTAURANTNO                                     AS RESTAURNTNO
+     	 , RESTAURANTNAME                                   AS RESTAURANTNAME
+     	 , CONTEXT                                          AS CONTEXT
+     	 , IMAGES                                           AS IMAGES
+     	 , CATEGORY                                         AS CATEGORY
+     	 , ADDRESS                                          AS ADDRESS
+     	 , LIKES                                            AS LIKES
+     	 , ISPOWER                                          AS ISPOWER
+      	 , ISRES                                            AS ISRES
+      	 , STARPOINT                                        AS STARTPOINT
+	  FROM RESTAURANTBOARD
+	 WHERE REGEXP_LIKE(ADDRESS, #address#)
+	 AND REGEXP_LIKE(CATEGORY, #category#)
 </select>
 
-<select id="selectSearchS" resultMap="restaurantRes" parameterClass="string">
-  <include refid="select-all"/><!-- SELECT * FROM RESTAURANTBOARD -->
-  WHERE restaurantName like #searchKeyword# <!--RESTAURANTBOARD에서 #searchKeyword#에 부합하는 restaurantName값들을 전부 꺼내어 restaurantNo값으로 내림차순 정렬한다. -->
-  ORDER BY restaurantNo DESC
-</select>
-
-<select id="selectSearchC" resultMap="restaurantRes" parameterClass="String">
-  <include refid="select-all"/><!-- SELECT * FROM RESTAURANTBOARD -->
-  WHERE context like #searchKeyword#<!--RESTAURANTBOARD에서 #searchKeyword#에 부합하는 context값들을 전부 꺼내어 restaurantNo값으로 내림차순 정렬한다. -->
-  ORDER BY restaurantNo DESC
-</select>
 
 <!-- insert쿼리문 정의 -->
 <insert id="insertBoard" parameterClass="restaurantBoard">

@@ -17,7 +17,7 @@ function delConfirm(){
 </script>
 
  <!-- 점주 -->
-  <s:elseif test="resultClass.isType==1">
+  <s:elseif test="session.isType==1">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
     

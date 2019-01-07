@@ -30,6 +30,11 @@ public class SearchAction extends ActionSupport implements SessionAware{ //공�
 	private String pagingHtml; 	//페이징을 구현한 HTML
 	private PagingAction page; 	// 페이징 클래스
 	
+	//검색 필터
+	private String filter_address = "";
+	private String filter_category = "";
+	Map<String, String> filter = new HashMap<String, String>();
+	private String keyword;
 	
 	
 	private List<String> images = new ArrayList<String>();
@@ -45,9 +50,23 @@ public class SearchAction extends ActionSupport implements SessionAware{ //공�
 		reader.close();
 	}
 	
-	public String execute() throws Exception { 
-	restList = sqlMapper.queryForList("rest.selectAll"); 
-
+	public String execute() { 
+		try {
+		if(!"".equals(getFilter_category())||!"".equals(getFilter_address())){
+		if(!"".equals(getFilter_address())) {
+			
+			filter_address = getFilter_address().substring(0, getFilter_address().length()-1);
+			filter.put("address",filter_address);
+		}
+		if(!"".equals(getFilter_category())) {
+			filter_category = getFilter_category().substring(0, getFilter_category().length()-1);
+			filter.put("category", filter_category);
+		}
+			restList = sqlMapper.queryForList("rest.selectFilter",filter);
+		
+		}else {
+			restList = sqlMapper.queryForList("rest.selectAll"); 
+		}
 	totalCount = restList.size(); // 전체 글 갯수를 구한다. //list의 갯수를 totalcount 객체로 저장한다.
 	// pagingAction 객체 생성. currentPage, totalCount, blockCount, blockPage 값을 꺼내어 page값에 저장해준다.
 	page = new PagingAction(currentPage, totalCount, blockCount, blockPage); 
@@ -63,8 +82,35 @@ public class SearchAction extends ActionSupport implements SessionAware{ //공�
 
 	// 전체 리스트에서 현재 페이지만큼의 리스트만 가져온다.
 	restList = restList.subList(page.getStartCount(), lastCount);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 
 	return SUCCESS;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public String getFilter_address() {
+		return filter_address;
+	}
+
+	public void setFilter_address(String filter_address) {
+		this.filter_address = filter_address;
+	}
+
+	public String getFilter_category() {
+		return filter_category;
+	}
+
+	public void setFilter_category(String filter_category) {
+		this.filter_category = filter_category;
 	}
 
 	public Map getSession() {

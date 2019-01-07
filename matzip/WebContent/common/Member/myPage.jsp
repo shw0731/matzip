@@ -52,7 +52,7 @@
   aria-hidden="true" >
   
   <!-- 회원 -->
-  <s:if test="resultClass.isType==0">
+  <s:if test="session.isType==0">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
     

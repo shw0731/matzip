@@ -86,9 +86,11 @@ function openConfirmId(){
       <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="MainAction.action">맛.zip</a>
         
-        
-         <input type="text" class="search-bar" style="width:200px; height:40px;"></input>
-         <form action="searchAction.action">
+        <form action="searchAction.action" accept-charset="utf-8">
+         <input type="text" class="search-bar" name="keyword" style="width:200px; height:40px;"></input>
+         
+         <input type="hidden" id="address" name="filter_address" value=""/>
+		 <input type="hidden" id="category" name="filter_category" value=""/>
          <button type="submit" id="searchbtn" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" >검색</button>
          <!-- <button type="button" id="searchbtn" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" onclick="javascript:data_check(); return false;">검색</button> -->
          </form>
