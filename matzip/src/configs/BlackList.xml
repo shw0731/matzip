@@ -8,15 +8,15 @@
       <package name = "blackList" extends = "struts-default">
 
 
-<!-- 블랙리스트 -->
+<!-- 블랙리스트 등록-->
 <action name="BlackListAction" class="blackList.BlackListAction">
   <result name="success">/common/BlackList/blackListSuccess.jsp</result>
 </action>
 
-<!-- <action name="BlackListView" class="blackList.BlackListView">
-  <result name="success">/common/BlackList/blackListView.jsp</result>
-</action> -->
-      
-      
+<!-- 블랙리스트 목록보기 -->
+<action name="BlackListViewAction" class="blackList.BlackListViewAction">
+  <result>/common/BlackList/blackListView.jsp</result>
+</action>
+
 </package>
 </struts>
