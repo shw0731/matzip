@@ -6,7 +6,7 @@
 		<!-- 용량제한 100MB로 설정 -->
 	<constant name="struts.multipart.maxSize" value="104857600" />
 	<package name="restaurantboard" extends="struts-default" namespace="">
- 		<global-exception-mappings>
+  		<global-exception-mappings>
 			<exception-mapping result="error" exception="java.sql.SQLException"/>
 		</global-exception-mappings>
 		

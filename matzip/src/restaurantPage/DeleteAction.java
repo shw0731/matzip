@@ -48,15 +48,12 @@ public class DeleteAction extends ActionSupport implements SessionAware{
           paramClass = new BoardVO();
           restResultClass = new BoardVO();
 
-          /*// 해당 번호의 글을 가져온다.
-          paramClass = (BoardVO)sqlMapper.queryForObject("rest.selectOne", (String)session.get("ID"));
-
-
-          // 삭제할 항목 설정
-          paramClass.setID((String)session.get("ID"));*/
-
           // 삭제 쿼리 수행
-          sqlMapper.delete("rest.deleteBoard", (String)session.get("ID"));
+          RestaurantNo = (int)sqlMapper.queryForObject("rest.selectID", session.get("ID"));
+          paramClass.setRestaurantNo(RestaurantNo);
+
+          
+          sqlMapper.delete("rest.deleteBoard", paramClass);
 
           return SUCCESS;
     }

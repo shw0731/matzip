@@ -134,7 +134,7 @@
 <!-- delete쿼리문 정의 -->
 <delete id="deleteBoard" parameterClass="restaurantBoard">
   DELETE FROM RESTAURANTBOARD
-  <include refid="where-id"/><!--  WHERE restaurantNo = #restaurantNo# -->
+  <include refid="where-no"/><!--  WHERE restaurantNo = #restaurantNo# -->
 </delete><!-- RESTAURANTBOARD에서  해당 restaurantNo 에 맞는 데이터값들을 삭제해준다 -->
 
 </sqlMap>
