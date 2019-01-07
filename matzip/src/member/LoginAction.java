@@ -45,7 +45,10 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				  Map<String, Object> session = (Map<String, Object>)context.getSession();// Map 사용시
 				  session.put("ID", resultClass.getID());
 				  session.put("isType", resultClass.getIsType());
-				  
+				  session.put("name", resultClass.getName());
+				  session.put("email", resultClass.getEmail());
+				  session.put("point", resultClass.getPoint());
+				  session.put("phoneNumber", resultClass.getPhoneNumber());
 				  context.setSession(session);
 
 				
@@ -63,6 +66,11 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			  
 		   session.remove("ID");
 		   session.remove("isType");
+		   session.remove("name");
+		   session.remove("email");
+		   session.remove("point");
+		   session.remove("phoneNumber");
+		   
 		   
 		  }
 		  context.setSession(session);

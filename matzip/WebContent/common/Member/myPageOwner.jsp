@@ -30,7 +30,7 @@ function delConfirm(){
       </div>
       <!--Modal body -->
 
-          	<text align=right padding="5">${resultClass.ID} 님의 방문을 환영합니다.<small>&nbsp;&nbsp;</small><br>
+          	<text align=right padding="5">${session.ID} 님의 방문을 환영합니다.<small>&nbsp;&nbsp;</small><br>
 			<a href="javascript:Modify();" target="_blank", width="100" border="0" class="btn btn-primary btn text-uppercase js-scroll-trigger" style="cursor:pointer"><small>정보수정</small></a>
 			<a href="javascript:location.href='#.action?currentPage=<s:property value="currentPage" />';" target="_blank", width="100" border="0" class="btn btn-primary btn text-uppercase js-scroll-trigger" style="cursor:pointer"><small>고객센터</small></a><small>&nbsp;&nbsp;</small></text><br>
 

@@ -1,7 +1,6 @@
  <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page session="true" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
-    <% String id=session.getId();
-    %>
+   
  <head>
      <style>
       p {
@@ -66,22 +65,22 @@
       <!--Modal body -->
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
-         <p class="b">♥　${resultClass.ID} </p>
+         <p class="b">♥　${session.ID} </p>
           	<%-- </i><button type="button" class="btn btn-primary collapsed" data-toggle="modal" data-target=#modalModifyForm"><small>정보수정</small></button> --%>
           </i><a href="javascript:Modify();"><small>정보수정</small></a>
           <a href="javascript:LikeList();"><small>내가 좋아요 한 리스트 관리</small></a>
 
                     
           <ul>
-          <small><li>MyName : ${resultClass.name}</small></li>
-          <small><li>MyEmail : ${resultClass.email}</small></li>
-          <small><li>MyPhoneNumber : ${resultClass.phoneNumber}</small></li>
+          <small><li>MyName : ${session.name}</small></li>
+          <small><li>MyEmail : ${session.email}</small></li>
+          <small><li>MyPhoneNumber : ${session.phoneNumber}</small></li>
           
           </ul>
           </div>
         <div class="md-form mb-5">
         
-          <p class="b">♥　My Point : <strong><a href="">${resultClass.point}점</p></strong></a></i>
+          <p class="b">♥　My Point : <strong><a href="">${session.point}점</p></strong></a></i>
           <!-- 예약현황 -->
           <div>
           <ul>
