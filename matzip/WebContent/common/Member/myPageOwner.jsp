@@ -31,17 +31,19 @@ function delConfirm(){
       <!--Modal body -->
 
           	<text align=right padding="5">${session.ID} 님의 방문을 환영합니다.<small>&nbsp;&nbsp;</small><br>
-			<a href="javascript:Modify();" target="_blank", width="100" border="0" class="btn btn-primary btn text-uppercase js-scroll-trigger" style="cursor:pointer"><small>정보수정</small></a>
-			<a href="javascript:location.href='#.action?currentPage=<s:property value="currentPage" />';" target="_blank", width="100" border="0" class="btn btn-primary btn text-uppercase js-scroll-trigger" style="cursor:pointer"><small>고객센터</small></a><small>&nbsp;&nbsp;</small></text><br>
+			<a href="javascript:Modify();" target="_blank", width="100" border="0" class="btn btn-outline-warning btn-lg  text-uppercase js-scroll-trigger" style="cursor:pointer"><small>정보수정</small></a>
+			<a href="javascript:location.href='#.action?currentPage=<s:property value="currentPage" />';" target="_blank", width="100" border="0" class="btn btn-outline-warning btn-lg  text-uppercase js-scroll-trigger" style="cursor:pointer"><small>고객센터</small></a><small>&nbsp;&nbsp;</small></text><br>
 
           	<text align=center>
           	
-          	<a href="#" width="100" border="0" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('WriteForm.action?currentPage=<s:property value="currentPage" />','음식점페이지 입력','scrollbars=yes, width=650, height=650,');">나의 음식점 등록</a>&nbsp;&nbsp;&nbsp;&nbsp;
-          	<a href="#" width="100" border="0" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('modifyForm.action?currentPage=<s:property value="currentPage" />','음식점페이지 수정','scrollbars=yes, width=650, height=650,');">음식점 정보 수정</a><br><br>
-          	<a href="#" width="100" border="0" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('list.action?currentPage=<s:property value="currentPage" />','내 가게 리뷰 리스트','scrollbars=yes, width=650, height=650,');">내 가게 리뷰 보기</a>&nbsp;&nbsp;&nbsp;&nbsp;
-          	<a href="javascript:location.href='deleteAction.action?currentPage=<s:property value="currentPage" />';" target="_blank", width="100" border="0" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="cursor:pointer">음식점 정보 삭제</a><br><br>
-    		<a href="#" width="100" border="0" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('no_listAction.action?currentPage=<s:property value="currentPage" />','공지','scrollbars=yes, width=650, height=650,');">공지사항 작성</a>&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br><br>
+          	<p class="b"><a href="#" width="100" border="0" class="btn btn-outline-warning btn-lg btn-block text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('WriteForm.action?currentPage=<s:property value="currentPage" />','음식점페이지 입력','scrollbars=yes, width=650, height=650,');">나의 음식점 등록</p></a> &nbsp;&nbsp;&nbsp;&nbsp;
+          	<p class="b"><a href="#" width="100" border="0" class="btn btn-outline-warning btn-lg btn-block text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('modifyForm.action?currentPage=<s:property value="currentPage" />','음식점페이지 수정','scrollbars=yes, width=650, height=650,');">음식점 정보 수정</p></a>&nbsp;&nbsp;&nbsp;&nbsp;
+          	<p class="b"><a href="#" width="100" border="0" class="btn btn-outline-warning btn-lg btn-block text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('list.action?currentPage=<s:property value="currentPage" />','내 가게 리뷰 리스트','scrollbars=yes, width=650, height=650,');">내 가게 리뷰 보기</p></a>&nbsp;&nbsp;&nbsp;&nbsp;
+          	<p class="b"><a href="javascript:location.href='deleteAction.action?currentPage=<s:property value="currentPage" />';" target="_blank", width="100" border="0" class="btn btn-outline-warning btn-lg btn-block text-uppercase js-scroll-trigger" style="cursor:pointer">음식점 정보 삭제</p></a><br>
+    		<p class="b"><a href="#" width="100" border="0" class="btn btn-outline-warning btn-lg btn-block text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('no_listAction.action?currentPage=<s:property value="currentPage" />','공지','scrollbars=yes, width=650, height=650,');">공지사항 작성</p></a>&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br><br>
   
+  
+  <p class="b"><a href="#" width="100" border="0" class="btn btn-outline-warning btn-lg btn-block text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('memberDeleteAction.action.action?currentPage=<s:property value="currentPage" />','공지','scrollbars=yes, width=650, height=650,');">탈퇴하기</p></a>&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br><br>
   <form name="deleteAction" action="MemberDeleteAction.action" onsubmit="return delConfirm()">
      <input class="btn btn-link" type="submit" value="탈퇴하기"></td></div>
     </form>
