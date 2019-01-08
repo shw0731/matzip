@@ -2,18 +2,18 @@ package like;
 
 public class LikeVO {
 	private String ID;
-	private int RestaurantNo;
+	private int restaurantNo;
 	
 	public String getID() {
 		return ID;
 	}
-	public void setMemberID(String ID) {
+	public void setID(String ID) {
 		this.ID = ID;
 	}
 	public int getRestaurantNo() {
-		return RestaurantNo;
+		return restaurantNo;
 	}
 	public void setRestaurantNo(int restaurantNo) {
-		this.RestaurantNo = restaurantNo;
+		this.restaurantNo = restaurantNo;
 	}
 }

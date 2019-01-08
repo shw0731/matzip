@@ -118,8 +118,11 @@ html, body, #map {
     	가게 설명:<s:property value="context"/>
     
     </s:a>
-    	
-  	
+    <input type="hidden" value="<s:property value="restaurantNo"/>" name="restaurantNo" id="restaurantNo"/>
+    <input type="hidden" id="ID" name="ID" value="${session.ID }" />
+    <s:if test="session.ID!=null">
+    <button type="button" name="confirm_id" onclick="registerLikes();">좋아요</button>	
+  	</s:if>
     </div>
   </li>
 
@@ -136,3 +139,16 @@ html, body, #map {
   
 </body>
 </html>
+<script>
+function registerLikes(){
+	
+	var restaurantNo=document.getElementById('restaurantNo').value;
+	var id = document.getElementById('ID').value;
+	console.log('restaurantNo'+'id');
+	var url='RegisterLikeAction.action?ID='+id+'&'+'restaurantNo='+restaurantNo;
+	
+	
+	open(url, "좋아요 등록", "toolbar=no,location=no,status=no,menubar=no,"+
+						 "scrollbars=no,resizable=no,width=400,height=200");
+}
+</script>

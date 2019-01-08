@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="likereg">
-<typeAlias alias="like" type="LikeVO"/>
+<typeAlias alias="like" type="like.LikeVO"/>
 <!-- 리절트 맵 -->
 
 <resultMap id="likeres" class="like">
-  <result property="memberID" column="memberID"/>
-  <result property="RestaurantNo" column="RestaurantNo"/>
+  <result property="ID" column="ID"/>
+  <result property="restaurantNo" column="restaurantNo"/>
 </resultMap>
 
 <select id="select-all">
 SELECT * FROM LIKEREG 
 </select>
 <select id="select-no">
-WHERE RESTAURANTNO=#RestaurentNo#
+WHERE RESTAURANTNO=#restaurentNo#
 </select>
 <select id="select-id">
-WHERE MEMBERID=#memberID#
+WHERE ID=#ID#
 </select>
 
 <select id="selectOne">
@@ -25,22 +25,24 @@ WHERE MEMBERID=#memberID#
 </select>
 
 <!-- LIKEREG에서 선택한 음식점 게시판과 맞는 유저아이디, 유저아이디개수, 음식점게시판번호를 가져온다.  -->
-<select id="like-rate" resultMap="likeres" parameterClass="like">
-SELECT COUNT(MEMBERID) as "LIKERATE" 
-FROM LIKEREG 
- <include refid="select-no"/>
+
+<select id="isLike" resultClass="like" parameterClass="like">
+SELECT * FROM LIKEREG WHERE ID = #ID#
+</select>
+<select id="countLike" resultClass="int" parameterClass="like">
+SELECT COUNT (RESTAURANTNO) FROM LIKEREG WHERE RESTAURANTNO = #restaurantNo#
 </select>
 
 <!-- 유저의 좋아요한 음식점 이름 목록보기 -->
-<select id="like-list" resultMap="likeres" parameterClass="like">
-SELECT RESTAURANTNAME FROM RESTAURANTBOARD WHERE RESTAURANTNO=(SELECT RESTAURANTNO FROM LIKEREG WHERE MEMBERID=#memberID#)
+<select id="like-list" resultClass="String" parameterClass="like">
+SELECT RESTAURANTNAME FROM RESTAURANTBOARD WHERE RESTAURANTNO=(SELECT RESTAURANTNO FROM LIKEREG WHERE ID=#ID#)
 <!-- SELECT a.RESTAURANTNAME, b.memberID FROM RESTAURANTBOARD a, LIKEREG b WHERE a.RESTAURANTNO=b.RESTAURANTNO -->
 </select>
 
 <!-- LIKEREG에 유저아이디와 음식점 게시판번호를 입력한다 -->
-<insert id="like-up" parameterClass="like">
-INSERT INTO LIKEREG(MEMBERID, RESTAURANTNO)
-VALUES(#memberID#, #RestaurantNo#)
+<insert id="insertLike" parameterClass="like">
+INSERT INTO LIKEREG(ID, RESTAURANTNO)
+VALUES(#ID#, #restaurantNo#)
 </insert>
 
 <!-- 선택한 음식점게시판번호와 맞는 유저아이디와 음식점 번호를 삭제한다. -->
