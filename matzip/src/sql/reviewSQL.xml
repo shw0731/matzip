@@ -15,10 +15,10 @@
 </resultMap>
 
 <!-- 공통으로 사용할 select 절 정의 -->
-<sql id="select-all">SELECT * FROM reviewboard </sql>
+<sql id="select-all-c">SELECT * FROM reviewboard </sql>
 
 <!-- 공통으로 사용할 where-no 절 정의 -->
-<sql id="where-no">WHERE reviewno = #reviewNo# </sql>
+<sql id="where-no-c">WHERE reviewno = #reviewNo# </sql>
 
 <!-- select 쿼리문 정의 -->
 <select id="selectAll" parameterClass="int" resultMap="reviewRes">
@@ -30,6 +30,9 @@
 <select id="selectLastNo" resultClass="int">
 	SELECT MAX(REVIEWNO) FROM REVIEWBOARD 
 </select>
+<select id="selectRestaurantNo" resultClass="int" parameterClass="review">
+	SELECT RESTAURANTNO FROM REVIEWBOARD WHERE REVIEWNO = #reviewNo#
+</select> 
 <!-- 평점계산 -->
 <select id="AvgStarPoint" parameterClass="int" resultClass="float">
 	SELECT ROUND(AVG(STARPOINT),2) FROM REVIEWBOARD WHERE RESTAURANTNO = #restaurantNo# 
@@ -42,20 +45,24 @@ VALUES (REVIEW_SEQ.NEXTVAL,#restaurantNo#,#subject#,#ID#,#context#,#images#,#sym
 <!-- update 쿼리문 정의 -->
 <update id="updateReview" parameterClass="review">
 UPDATE REVIEWBOARD SET SUBJECT = #subject#, CONTEXT = #context#, IMAGES = #images# , STARPOINT = #starPoint#
-<include refid="where-no"/>
+<include refid="where-no-c"/>
 </update>
 <!-- 사진 업로드 기능 -->
 <update id="updateFile" parameterClass="review">
 	UPDATE REVIEWBOARD SET 
 	images=#images#
-	<include refid="where-no"/>
+	<include refid="where-no-c"/>
 </update>
 <!-- 공감 기능 -->
 <update id="increaseSympathy" parameterClass="int">
 UPDATE REVIEWBOARD SET SYMPATHY = SYMPATHY+1
-<include refid="where-no"/>
+<include refid="where-no-c"/>
 </update>
 <!-- update sympathy-->
 
+<!-- delete -->
+<delete id="deleteReview" parameterClass="review">
+  DELETE FROM REVIEWBOARD WHERE REVIEWNO = #reviewNo#
+</delete>
 
 </sqlMap>
