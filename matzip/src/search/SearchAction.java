@@ -49,7 +49,10 @@ public class SearchAction extends ActionSupport implements SessionAware{ //공�
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);	// sqlMapConfig.xml의 내용을 적용한 sqlMapper 객체 생성.
 		reader.close();
 	}
-	
+	public String top3() throws Exception {
+		restList = sqlMapper.queryForList("rest.selectAll"); 
+		return SUCCESS;
+	}
 	public String execute() { 
 		try {
 		if(!"".equals(getFilter_category())||!"".equals(getFilter_address())||!"".equals(getKeyword())){

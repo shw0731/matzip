@@ -10,6 +10,9 @@ public class PagingAction {
 	private int endCount; //한페이지에서 보여줄 게시글의 끝번호
 	private int startPage; //시작페이지
 	private int endPage; //마지막페이지
+	private String filter_address = "";
+	private String filter_category = "";
+	private String keyword="";
 	
 	private StringBuffer pagingHtml;
 	
@@ -47,8 +50,7 @@ public class PagingAction {
 		// 이전 block 페이지
 		pagingHtml = new StringBuffer();
 		if (currentPage > blockPage) {
-			pagingHtml.append("<a href=restaurantListAction.action?currentPage="
-					+ (startPage - 1) + ">");
+			pagingHtml.append("<a href=searchAction.action?currentPage="+(startPage-1)+"&filter_address="+filter_address+"&filter_category="+filter_category+"&keyword="+keyword+">" );
 			pagingHtml.append("이전");
 			pagingHtml.append("</a>");
 		}
@@ -66,9 +68,10 @@ public class PagingAction {
 				pagingHtml.append("</font></b>");
 			} else {
 				pagingHtml
-						.append("&nbsp;<a href='restaurantListAction.action?currentPage=");
+						.append("&nbsp;<a href=searchAction.action?currentPage=");
 				pagingHtml.append(i);
-				pagingHtml.append("'>");
+				pagingHtml.append("&filter_address="+filter_address+"&filter_category="+filter_category+"&keyword="+keyword);
+				pagingHtml.append(">");
 				pagingHtml.append(i);
 				pagingHtml.append("</a>");
 			}
@@ -80,8 +83,10 @@ public class PagingAction {
 
 		// 다음 block 페이지
 		if (totalPage - startPage >= blockPage) {
-			pagingHtml.append("<a href=restaurantListAction.action?currentPage="
-					+ (endPage + 1) + ">");
+			pagingHtml.append("&nbsp;<a href=searchAction.action?currentPage=");
+			pagingHtml.append((endPage+1));	
+			pagingHtml.append("&filter_address="+filter_address+"&filter_category="+filter_category+"&keyword="+keyword);
+			pagingHtml.append(">");
 			pagingHtml.append("다음");
 			pagingHtml.append("</a>");
 		}

@@ -51,6 +51,9 @@
 			<result name="success">/common/search/search.jsp</result>
 			<result name="error">/common/search/searchError.jsp</result>
 		</action>
+		<action name="TOP3Action" class="search.SearchAction" method="top3">
+			<result>/index.jsp</result>
+		</action>
 		<action name="searchFilterAction" class="search.SearchFilterAction">
 			<result type="chain">MainAction</result>
 		</action>

@@ -74,7 +74,7 @@
       	 , ISRES                                            AS ISRES
       	 , STARPOINT                                        AS STARTPOINT
 	  FROM RESTAURANTBOARD
-	  WHERE
+	 <dynamic prepend="WHERE">
 	 <isNotEmpty property="address">
 	 REGEXP_LIKE(ADDRESS, #address#)
 	 </isNotEmpty>
@@ -84,6 +84,7 @@
 	 <isNotEmpty prepend="AND" property="keyword">
 	 (REGEXP_LIKE(ADDRESS, #keyword#) OR REGEXP_LIKE(RESTAURANTNAME, #keyword#) OR REGEXP_LIKE(CATEGORY, #keyword#))
 	 </isNotEmpty>
+	 </dynamic>
 </select>
 
 
