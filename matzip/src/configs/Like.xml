@@ -17,14 +17,10 @@
            	<action name="RegisterLikeAction" class="like.RegisterLikeAction">
            		<result>/common/like/LikeSuccess.jsp</result>
            	</action>
-            <!-- 게시판 상세보기 액션 -->
-           <action name = "likeviewAction" class = "like.ViewAction">
-                  <result>/common/like/RestaurantPage.jsp</result>
-           </action>
-
+            
            <!-- 게시판 삭제 액션 -->
-            <action name = "likeDeleteAction" class = "like.DeleteAction">
-                  <result type = "chain">LikeListAction</result>
+            <action name = "DeleteLikeAction" class = "like.DeleteLikeAction">
+                  <result type="chain">LikeListAction</result>
             </action>
       </package>
 </struts>

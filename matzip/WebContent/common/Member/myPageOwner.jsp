@@ -40,13 +40,12 @@ function delConfirm(){
           	<p class="b"><a href="#" width="100" border="0" class="btn btn-outline-warning btn-lg btn-block text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('modifyForm.action?currentPage=<s:property value="currentPage" />','음식점페이지 수정','scrollbars=yes, width=650, height=650,');">음식점 정보 수정</p></a>&nbsp;&nbsp;&nbsp;&nbsp;
           	<p class="b"><a href="#" width="100" border="0" class="btn btn-outline-warning btn-lg btn-block text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('list.action?currentPage=<s:property value="currentPage" />','내 가게 리뷰 리스트','scrollbars=yes, width=650, height=650,');">내 가게 리뷰 보기</p></a>&nbsp;&nbsp;&nbsp;&nbsp;
           	<p class="b"><a href="javascript:location.href='deleteAction.action?currentPage=<s:property value="currentPage" />';" target="_blank", width="100" border="0" class="btn btn-outline-warning btn-lg btn-block text-uppercase js-scroll-trigger" style="cursor:pointer">음식점 정보 삭제</p></a><br>
-    		<p class="b"><a href="#" width="100" border="0" class="btn btn-outline-warning btn-lg btn-block text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('no_listAction.action?currentPage=<s:property value="currentPage" />','공지','scrollbars=yes, width=650, height=650,');">공지사항 작성</p></a>&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br><br>
+    		<p class="b"><a href="#" width="100" border="0" class="btn btn-outline-warning btn-lg btn-block text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('no_listAction.action?currentPage=<s:property value="currentPage" />','공지','scrollbars=yes, width=650, height=650,');">공지사항</p></a>&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br><br>
   
   
-  <p class="b"><a href="#" width="100" border="0" class="btn btn-outline-warning btn-lg btn-block text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('memberDeleteAction.action.action?currentPage=<s:property value="currentPage" />','공지','scrollbars=yes, width=650, height=650,');">탈퇴하기</p></a>&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br><br>
+  
   <form name="deleteAction" action="MemberDeleteAction.action" onsubmit="return delConfirm()">
      <input class="btn btn-link" type="submit" value="탈퇴하기"></td></div>
     </form>
-  </div>
   </div>
   </s:elseif>

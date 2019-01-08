@@ -3,8 +3,16 @@ package like;
 public class LikeVO {
 	private String ID;
 	private int restaurantNo;
-	private String memberID;
+	private String restaurantName;
+	private float starPoint;
 	
+	
+	public float getStarPoint() {
+		return starPoint;
+	}
+	public void setStarPoint(float starPoint) {
+		this.starPoint = starPoint;
+	}
 	public String getID() {
 		return ID;
 	}
@@ -17,11 +25,12 @@ public class LikeVO {
 	public void setRestaurantNo(int restaurantNo) {
 		this.restaurantNo = restaurantNo;
 	}
-	public String getMemberID() {
-		return memberID;
+	public String getRestaurantName() {
+		return restaurantName;
 	}
-	public void setMemberID(String memberID) {
-		this.memberID = memberID;
+	public void setRestaurantName(String restaurantName) {
+		this.restaurantName = restaurantName;
 	}
+	
 	
 }

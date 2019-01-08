@@ -3,71 +3,74 @@
 <%@ page contentType = "text/html; charset=UTF-8" %>
 <%@ taglib prefix = "s" uri = "/struts-tags" %>
 
- 
+
 
 <html>
 <head>
 <title>좋아요 리스트</title>
-<link rel = "stylesheet" href = "/Struts2Board/board/css.css" type = "text/css">
+<!-- Bootstrap core CSS -->
+<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+	rel="stylesheet" type="text/css">
+<link href='https://fonts.googleapis.com/css?family=Kaushan+Script'
+	rel='stylesheet' type='text/css'>
+<link
+	href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic'
+	rel='stylesheet' type='text/css'>
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700'
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Custom styles for this template -->
+<link href="/css/agency.css" rel="stylesheet">
 </head>
 <body>
-<table width = "600" border = "0" cellspacing = "0" cellpadding = "2">
-      <tr>
-            <td align = "center"><h3>내가 좋아요한 음식점</h3></td>
-      </tr>
-      <tr>
-            <td height = "20"></td>
-      </tr>
-</table>
 
- 
+	<table class="table">
+		<thead class="thead-light">
+			<tr>
+				<th scope="col"></th>
+				<th scope="col">음식점 명</th>
+				<th scope="col">평점</th>
+				<th scope="col">삭제 여부</th>
+			</tr>
+		</thead>
+		<tbody>
+			<s:iterator value="likeList" status="stat">
+				<tr>
+					<th scope="row"><s:property value="#stat.index" /></th>
+					<td><s:property value="restaurantName" /></td>
+					<td><s:property value="starPoint" /></td>
+					<td><button type="button" name="confirm_id"
+							onclick="deleteLikes(<s:property value='restaurantNo'/>,<s:property value='ID'/>);">좋아요
+							삭제</button></td>
+				</tr>
+			</s:iterator>
 
-<table width = "600" border = "0" cellspacing = "0" cellpadding = "2">
-      <tr align = "center" bgcolor = "#fd7e14">
-            <td width = "350"><strong>음식점명</strong></td>
-            <td width = "80"><strong>상태</strong></td>
-      </tr>
-      <tr bgcolor = "#777777">
-            <td height = "1" colspan = "5"></td>
-      </tr>
- 
-      <s:iterator value = "list" status = "stat">
-            <s:url id = "viewURL" action = "LikeListAction">
-                  <s:param name = "no">
-                        <s:property value = "no" />
-                  </s:param>
-                  <s:param name = "currentPage">
-                        <s:property value = "currentPage" />
-                  </s:param>
-            </s:url>
-  
-            <tr bgcolor = "#FFFFFF" align = "center">
-                  <td><s:property value = "no" /></td>
-                  <td align = "left">&nbsp;<s:a href = "%{viewURL}">
-                        <s:property value = "restaurantNo" /></s:a>
-                  </td>
-                  <td align = "center"><s:property value = "restaurantName" /></td>
-            </tr>
-
-      </s:iterator>
- 
-      <s:if test = "list.size() <= 0"> 
-            <tr bgcolor = "#FFFFFF"  align = "center">
-                  <td colspan = "5">등록된 음식점이 없습니다.</td>
-            </tr>      
-
-      </s:if> 
- 
-      <tr align = "center">
-            <td colspan = "5"><s:property value = "pagingHtml"  escape = "false" /></td>
-      </tr>
-      <tr align = "right">
-            <td colspan = "5">
-                  <input type = "button" value = "내 목록에서 삭제" class = "inputb" 
-                        onClick = "javascript:location.href=
-                        'LikeDelete.action?currentPage=<s:property value = "currentPage" />';">
-            </td>
-      </tr>
-</table>
+		
+		</tbody>
+	</table>
+	<s:if test="likeList.size() <= 0">
+				
+	     
+				등록된 게시물이 없습니다.
+        
+   	</s:if>
 </body>
 </html>
+<script>
+function deleteLikes(restaurantNo,ID){
+	
+	
+	var url='DeleteLikeAction.action?ID='+ID+'&'+'restaurantNo='+restaurantNo;
+	
+	
+	open(url, "좋아요 삭제", "toolbar=no,location=no,status=no,menubar=no,"+
+						 "scrollbars=no,resizable=no,width=400,height=200");
+}
+</script>

@@ -22,7 +22,7 @@ public class ListAction extends ActionSupport{ //공공 클래스인 가게리�
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;	//SqlMapClient API를 사용하기 위한 sqlMapper 객체.
 
-	private List<BoardVO> restList = new ArrayList<BoardVO>();;	 
+	private List<BoardVO> restList = new ArrayList<BoardVO>();	 
 	
 	private int currentPage = 1;	//현재 페이지
 	private int totalCount; 		// 총 게시물의 수

@@ -7,6 +7,8 @@
 <resultMap id="likeres" class="like">
   <result property="ID" column="ID"/>
   <result property="restaurantNo" column="restaurantNo"/>
+  <result property="restaurantName" column="restaurantName"/>
+  <result property="starPoint" column="starPoint"/>
 </resultMap>
 
 
@@ -21,9 +23,12 @@ SELECT COUNT (RESTAURANTNO) FROM LIKEREG WHERE RESTAURANTNO = #restaurantNo#
 </select>
 
 <!-- 유저의 좋아요한 음식점 이름 목록보기 -->
-<select id="like-list" resultClass="String" parameterClass="like">
-SELECT RESTAURANTNAME FROM RESTAURANTBOARD WHERE RESTAURANTNO=(SELECT RESTAURANTNO FROM LIKEREG WHERE ID=#ID#)
-<!-- SELECT a.RESTAURANTNAME, b.memberID FROM RESTAURANTBOARD a, LIKEREG b WHERE a.RESTAURANTNO=b.RESTAURANTNO -->
+<select id="listByID" resultClass="like" parameterClass="String">
+SELECT L.RESTAURANTNO , R.RESTAURANTNAME , L.ID , R.STARPOINT
+FROM LIKEREG L
+LEFT JOIN RESTAURANTBOARD R
+on L.RESTAURANTNO = R.RESTAURANTNO
+WHERE L.ID = #ID#
 </select>
 
 <!-- LIKEREG에 유저아이디와 음식점 게시판번호를 입력한다 -->
@@ -32,5 +37,8 @@ INSERT INTO LIKEREG(ID, RESTAURANTNO)
 VALUES(#ID#, #restaurantNo#)
 </insert>
 
-
+<!-- Delete Like  -->
+<delete id="deleteLike" parameterClass="like">
+DELETE FROM LIKEREG WHERE RESTAURANTNO = #restaurantNo# AND ID = #ID#
+</delete>
 </sqlMap>
