@@ -1,5 +1,5 @@
 package qna;
-import member.MemberVO;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -12,9 +12,8 @@ import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 
-
 import org.apache.struts2.interceptor.SessionAware;
-
+import member.MemberVO;
 public class QnAModifyAction extends ActionSupport implements SessionAware{
 
 	public static Reader reader;
@@ -24,6 +23,7 @@ public class QnAModifyAction extends ActionSupport implements SessionAware{
 	private QnAVO resultClass;
 	
 	private int currentPage;
+	private MemberVO memberResultClass;
 	
 	private int serviceno;
 	private String subject;
@@ -31,8 +31,9 @@ public class QnAModifyAction extends ActionSupport implements SessionAware{
 	private String password;
 	private String context;
 	
-	private MemberVO memberResultClass;  
 	private Map session;
+	
+	
 	/*private String old_file;
 	
 	private File upload;
@@ -61,6 +62,8 @@ public class QnAModifyAction extends ActionSupport implements SessionAware{
 		
 		sqlMapper.update("QnAUpdate", paramClass);
 		
+		memberResultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", session.get("ID"));
+		
 		/*if(getUpload() != null)
 		{
 			String file_name = "file_" + getNo();
@@ -78,11 +81,8 @@ public class QnAModifyAction extends ActionSupport implements SessionAware{
 			sqlMapper.update("updateFile", paramClass);
 			}*/
 		
-		memberResultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", session.get("ID"));
-		
 		resultClass = (QnAVO) sqlMapper.queryForObject("QnAselectNo", getServiceno());
 		return SUCCESS;
-		
 		
 		
 	}

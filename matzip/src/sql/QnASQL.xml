@@ -10,7 +10,6 @@
   <result property="id" column="id"/>
   <result property="subject" column="subject"/>
   <result property="context" column="context"/>
-  <result property="password" column="password"/>
   <result property="reg_date" column="reg_date"/>
   <result property="isprivate" column="isprivate"/>
   <result property="answerno" column="answerno"/>
@@ -46,20 +45,15 @@ SELECT * FROM QNABOARD
 			SELECT max(serviceno) as serviceno FROM QNABOARD
 	</select>
 	
-	<select id="QnAselectPassword" resultMap="qnaRes">
-		<include refid="select-all"/>
-		<include refid="where-serviceno" />  
-		AND password = #password#
-	</select>
 
 <insert id="QnAInsert" parameterClass="QnA">
-INSERT INTO QNABOARD(SERVICENO, ID, SUBJECT, CONTEXT, PASSWORD, REG_DATE, ISPRIVATE, ANSWERNO, ISANSWER) 
-VALUES(QNABOARD_SEQ.NEXTVAL, #id#, #subject#, #context#, #password#, #reg_date#, #isprivate#,QNABOARD_SEQ.CURRVAL,0)
+INSERT INTO QNABOARD(SERVICENO, ID, SUBJECT, CONTEXT, REG_DATE, ISPRIVATE, ANSWERNO, ISANSWER) 
+VALUES(QNABOARD_SEQ.NEXTVAL, #id#, #subject#, #context#, #reg_date#, #isprivate#,QNABOARD_SEQ.CURRVAL,0)
 </insert>
 
 <insert id="QnAInsertReply" parameterClass="QnA">
-INSERT INTO QNABOARD(SERVICENO, ID, SUBJECT, CONTEXT, PASSWORD, REG_DATE,  ISPRIVATE, ANSWERNO , ISANSWER)
-VALUES(QNABOARD_SEQ.NEXTVAL, #id#, #subject#, #context#, #password#, #reg_date#, #isprivate#, #answerno#,1)
+INSERT INTO QNABOARD(SERVICENO, ID, SUBJECT, CONTEXT, REG_DATE,  ISPRIVATE, ANSWERNO , ISANSWER)
+VALUES(QNABOARD_SEQ.NEXTVAL, #id#, #subject#, #context#, #reg_date#, #isprivate#, #answerno#,1)
 </insert>
 
 
@@ -67,7 +61,6 @@ VALUES(QNABOARD_SEQ.NEXTVAL, #id#, #subject#, #context#, #password#, #reg_date#,
 <update id="QnAUpdate" parameterClass="QnA">
 	UPDATE QNABOARD SET SUBJECT = #subject#, 
 					ID = #id#,
-					PASSWORD = #password#,
 					CONTEXT = #context#<!-- ,
 					ISPRIVATE = #isprivate#,
 					ANSWERNO = #answerno# -->

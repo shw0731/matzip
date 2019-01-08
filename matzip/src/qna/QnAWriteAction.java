@@ -1,9 +1,6 @@
 package qna;
 
 import com.opensymphony.xwork2.ActionSupport;
-import member.MemberVO;
-
-import org.apache.struts2.interceptor.SessionAware;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -16,8 +13,12 @@ import java.io.IOException;
 import java.io.File;
 import org.apache.commons.io.FileUtils;
 
+import org.apache.struts2.interceptor.SessionAware;
 
-public class QnAWriteAction extends ActionSupport implements SessionAware{
+import member.MemberVO;
+
+
+public class QnAWriteAction extends ActionSupport implements SessionAware {
 	
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
@@ -42,13 +43,12 @@ public class QnAWriteAction extends ActionSupport implements SessionAware{
 	private String uploadFileName;
 	private String fileUploadPath="C:\\Java\\upload\\";
 	
-	private Map session;
-	private MemberVO memberResultClass;   
-	
-	
 	private int answerno;
 	private int re_step;
 	private int re_level;
+	
+	private Map session;
+	private MemberVO memberResultClass;
 	
 
 	boolean reply = false;
@@ -63,7 +63,7 @@ public class QnAWriteAction extends ActionSupport implements SessionAware{
 	
 	public String form() throws Exception
 	{
-		 memberResultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", session.get("ID"));
+		memberResultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", session.get("ID"));
 		return SUCCESS;
 		
 	}
@@ -73,11 +73,10 @@ public class QnAWriteAction extends ActionSupport implements SessionAware{
 		reply=true;
 		resultClass = new QnAVO();
 		
+		id = (String) session.get("ID");
+		
 		resultClass = (QnAVO) sqlMapper.queryForObject("QnAselectNo", getServiceno());
-		
-		
 		resultClass.setSubject("[´äº¯] " + resultClass.getSubject());
-		
 		resultClass.setPassword("");
 		resultClass.setId("");
 		resultClass.setContext("");
@@ -102,9 +101,9 @@ public class QnAWriteAction extends ActionSupport implements SessionAware{
 			paramClass.setAnswerno(getAnswerno());
 			
 		}
+		paramClass.setId((String)session.get("ID"));
 		
 		paramClass.setSubject(getSubject());
-		paramClass.setId(getId());
 		paramClass.setPassword(getPassword());
 		paramClass.setContext(getContext());
 		paramClass.setReg_date(today.getTime());
@@ -134,8 +133,8 @@ public class QnAWriteAction extends ActionSupport implements SessionAware{
 			
 			sqlMapper.update("updateFile", paramClass);
 		}
-	
-		return SUCCESS; 
+
+		return SUCCESS;
 	}
 
 
@@ -345,5 +344,4 @@ public class QnAWriteAction extends ActionSupport implements SessionAware{
 		this.session = session;
 	}
 	
-
 }

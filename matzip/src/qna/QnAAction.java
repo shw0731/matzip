@@ -1,6 +1,7 @@
 package qna;
 
 import com.opensymphony.xwork2.ActionSupport;
+
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
@@ -31,8 +32,8 @@ public class QnAAction extends ActionSupport implements SessionAware {
 	private QnAPagingAction page;
 	private int num = 0;
 	
-    private Map session;
-    private MemberVO memberResultClass;     
+	private Map session;
+	private MemberVO memberResultClass;
 	 
 	public QnAAction() throws IOException
 	{
@@ -52,7 +53,7 @@ public class QnAAction extends ActionSupport implements SessionAware {
 		totalCount = list.size();
 		page = new QnAPagingAction(currentPage, totalCount, blockCount, blockPage, num, "");
 		pagingHtml = page.getPagingHtml().toString();
-		
+		memberResultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", session.get("ID"));
 		int lastCount = totalCount;
 		
 		if(page.getEndCount() < totalCount)
@@ -60,7 +61,6 @@ public class QnAAction extends ActionSupport implements SessionAware {
 		
 		list = list.subList(page.getStartCount(), lastCount);
 		
-		memberResultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", session.get("ID"));
 		return SUCCESS;
 	}
 	
@@ -173,7 +173,7 @@ public String search() throws Exception {
 	public void setNum(int num) {
 		this.num = num;
 	}
-
+	
 	public Map getSession() {
 		return session;
 	}
@@ -181,6 +181,5 @@ public String search() throws Exception {
 	public void setSession(Map session) {
 		this.session = session;
 	}
-		
 	
 }

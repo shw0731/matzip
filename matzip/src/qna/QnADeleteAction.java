@@ -2,8 +2,6 @@ package qna;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import org.apache.struts2.interceptor.SessionAware;
-
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
@@ -13,17 +11,15 @@ import java.io.Reader;
 import java.util.Map;
 import java.io.IOException;
 
+import org.apache.struts2.interceptor.SessionAware;
 
-public class QnADeleteAction extends ActionSupport 
-implements SessionAware{
+public class QnADeleteAction extends ActionSupport implements SessionAware{
 	
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
 	private QnAVO paramClass;
 	private QnAVO resultClass;
-	
-    private Map session;
 	
 	/*private cQnAVO cClass = new cQnAVO();
 	private cQnAVO cResult = new cQnAVO();*/
@@ -32,6 +28,8 @@ implements SessionAware{
 	/*private String fileUploadPath = "C:\\Java\\Framework07\\upload\\";*/
 	
 	private int serviceno;
+	
+	private Map session;
 	
 	public QnADeleteAction() throws IOException
 	{
@@ -102,10 +100,6 @@ implements SessionAware{
 		return serviceno;
 	}
 
-	public void setServiceno(int serviceno) {
-		this.serviceno = serviceno;
-	}
-
 	public Map getSession() {
 		return session;
 	}
@@ -114,5 +108,5 @@ implements SessionAware{
 		this.session = session;
 	}
 	
-	
+
 }
