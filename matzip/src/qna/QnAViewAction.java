@@ -1,6 +1,6 @@
 package qna;
 
-import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ActionSupport; 
 
 import member.MemberVO;
 
@@ -83,19 +83,6 @@ public class QnAViewAction extends ActionSupport implements SessionAware{
 		return SUCCESS;
 	}
 	
-	public String checkAction()	throws Exception
-	{
-		paramClass.setServiceno(getServiceno());
-		paramClass.setPassword(getPassword());
-		System.out.println(getServiceno());
-		System.out.println(getPassword());
-		resultClass = (QnAVO) sqlMapper.queryForObject("QnAselectPassword", paramClass);
-		
-		if(resultClass == null)
-			return ERROR;
-		
-		return SUCCESS;
-	}
 	
 	
 	public int getOriginno() {
@@ -190,6 +177,16 @@ public class QnAViewAction extends ActionSupport implements SessionAware{
 	public void setSession(Map session) {
 		this.session = session;
 	}
+
+	public MemberVO getMemberResultClass() {
+		return memberResultClass;
+	}
+
+	public void setMemberResultClass(MemberVO memberResultClass) {
+		this.memberResultClass = memberResultClass;
+	}
+	
+	
 	
 	
 	
