@@ -25,7 +25,7 @@ public class RegisterLikeAction extends ActionSupport {
     
     private String ID;
     private int restaurantNo;
-    private boolean isUpdate;
+    private int isUpdate;
     
     public RegisterLikeAction() throws IOException {
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -34,7 +34,8 @@ public class RegisterLikeAction extends ActionSupport {
 	}
 	//비밀번호가 맞으면 세션유지
 	
-	public String execute() throws Exception{
+	public String execute() {
+		try {
 		paramClass = new LikeVO();
 		likeResultClass = new LikeVO();
 		restParamClass = new BoardVO();
@@ -44,24 +45,38 @@ public class RegisterLikeAction extends ActionSupport {
 		
 		
 		likeResultClass=(LikeVO)sqlMapper.queryForObject("likereg.isLike",paramClass );
-		if(!likeResultClass.getID().equals(paramClass.getID())||likeResultClass.getRestaurantNo()!=paramClass.getRestaurantNo()) { 
+		if(likeResultClass==null) {
 			sqlMapper.insert("likereg.insertLike",paramClass);
 			likeCount=(int)sqlMapper.queryForObject("likereg.countLike", paramClass);
 			restParamClass.setRestaurantNo(restaurantNo);
 			restParamClass.setLikes(likeCount);
 			sqlMapper.update("rest.updateLike",restParamClass);
-			isUpdate = true;
-		}
-			isUpdate = false;
+			isUpdate = 1;
 			return SUCCESS;
+			
+		}else if(!likeResultClass.getID().equals(paramClass.getID())||likeResultClass.getRestaurantNo()!=paramClass.getRestaurantNo()) { 
+			sqlMapper.insert("likereg.insertLike",paramClass);
+			likeCount=(int)sqlMapper.queryForObject("likereg.countLike", paramClass);
+			restParamClass.setRestaurantNo(restaurantNo);
+			restParamClass.setLikes(likeCount);
+			sqlMapper.update("rest.updateLike",restParamClass);
+			isUpdate = 1;
+			return SUCCESS;
+		}
+			isUpdate = 0;
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return SUCCESS;
 		
 	}
 
-	public boolean isUpdate() {
+	public int isUpdate() {
 		return isUpdate;
 	}
 
-	public void setUpdate(boolean isUpdate) {
+	public void setUpdate(int isUpdate) {
 		this.isUpdate = isUpdate;
 	}
 

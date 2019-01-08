@@ -78,11 +78,11 @@
 	 <isNotEmpty property="address">
 	 REGEXP_LIKE(ADDRESS, #address#)
 	 </isNotEmpty>
-	 <isNotEmpty property="category">
-	 AND REGEXP_LIKE(CATEGORY, #category#)
+	 <isNotEmpty prepend="AND" property="category">
+	 REGEXP_LIKE(CATEGORY, #category#)
 	 </isNotEmpty>
-	 <isNotEmpty property="keyword">
-	 AND (REGEXP_LIKE(ADDRESS, #keyword#) OR REGEXP_LIKE(RESTAURANTNAME, #keyword#) OR REGEXP_LIKE(CATEGORY, #keyword#))
+	 <isNotEmpty prepend="AND" property="keyword">
+	 (REGEXP_LIKE(ADDRESS, #keyword#) OR REGEXP_LIKE(RESTAURANTNAME, #keyword#) OR REGEXP_LIKE(CATEGORY, #keyword#))
 	 </isNotEmpty>
 </select>
 

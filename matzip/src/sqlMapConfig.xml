@@ -20,5 +20,6 @@
       <sqlMap resource="/sql/QnASQL.xml" /> 
        <sqlMap resource="/sql/reviewSQL.xml" />
        <sqlMap resource="/sql/blackListSQL.xml" />
+       <sqlMap resource="/sql/likeRegSQL.xml"/>
 	
 </sqlMapConfig>

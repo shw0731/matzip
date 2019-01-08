@@ -52,7 +52,7 @@ public class SearchAction extends ActionSupport implements SessionAware{ //ê³µê³
 	
 	public String execute() { 
 		try {
-		if(!"".equals(getFilter_category())||!"".equals(getFilter_address())){
+		if(!"".equals(getFilter_category())||!"".equals(getFilter_address())||!"".equals(getKeyword())){
 		if(!"".equals(getFilter_address())) {
 			
 			filter_address = getFilter_address().substring(0, getFilter_address().length()-1);

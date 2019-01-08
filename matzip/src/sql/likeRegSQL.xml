@@ -9,20 +9,7 @@
   <result property="restaurantNo" column="restaurantNo"/>
 </resultMap>
 
-<select id="select-all">
-SELECT * FROM LIKEREG 
-</select>
-<select id="select-no">
-WHERE RESTAURANTNO=#restaurentNo#
-</select>
-<select id="select-id">
-WHERE ID=#ID#
-</select>
 
-<select id="selectOne">
-<include refid="select-all"/>
-<include refid="select-no"/>
-</select>
 
 <!-- LIKEREG에서 선택한 음식점 게시판과 맞는 유저아이디, 유저아이디개수, 음식점게시판번호를 가져온다.  -->
 
@@ -45,10 +32,5 @@ INSERT INTO LIKEREG(ID, RESTAURANTNO)
 VALUES(#ID#, #restaurantNo#)
 </insert>
 
-<!-- 선택한 음식점게시판번호와 맞는 유저아이디와 음식점 번호를 삭제한다. -->
-<delete id="like-down" parameterClass="like">
-DELETE FROM LIKEREG(MEMBERID, RESTAURANTNO) 
- <include refid="select-no"/>
- 
-</delete>
+
 </sqlMap>
