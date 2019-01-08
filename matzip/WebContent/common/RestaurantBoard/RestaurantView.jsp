@@ -180,10 +180,27 @@ img {vertical-align: middle;}
    			
     		<a href="#" class="btn btn-primary">동감</a>
     		<s:if test="%{#session.ID==ID}">
-    			<a href="#" class="btn btn-primary">수정</a>
-    			<a href="#" class="btn btn-primary">삭제</a>
-    			
+    		
+  <a href='javascript:Modify(<s:property value="reviewNo"/>,<s:property value="restaurantNo"/>);'><small>정보수정</small>
+    		<s:param name="restaurantNo">
+					<s:property value="restaurantNo" />
+				</s:param>
+				 <s:hidden name="restaurantNo" value="%{restaurantNo}" />
+    		<s:param name="reviewNo">
+					<s:property value="reviewNo" />
+				</s:param>
+				 <s:hidden name="reviewNo" value="%{reviewNo}" />
+    		</a> 	 
+                
+              <form action="ReviewdeleteAction.action" method="post">
+                <s:param name="reviewNo">
+					<s:property value="reviewNo" />
+				</s:param>
+				 <s:hidden name="reviewNo" value="%{reviewNo}" />
+               <input class="btn btn-link" type="submit" value="삭제"></td></div>
+                </form>  		
     		</s:if>
+    		
     		작성일자 : <s:property value="reg_date"/>
   			</div>
 		</div>
@@ -257,6 +274,13 @@ function showSlides(n) {
   }
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
+}
+
+function Modify(reviewNo,restaurantNo){
+	 var url="ReviewModifyForm.action?reviewNo="+reviewNo+"&"+"restaurantNo="+restaurantNo;
+	 
+		 open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"+
+		 "scrollbars=no,resizable=no,width=550,height=350");
 }
 
 </script>

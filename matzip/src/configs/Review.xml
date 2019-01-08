@@ -6,9 +6,16 @@
 <struts>
       <!-- 용량제한 100MB로 설정 -->
       <package name="review" extends="struts-default">
-	  
-	
+      
+ <action name="ReviewdeleteAction" class="review.ReviewDeleteAction">
+   <result name="success">/common/RestaurantBoard/DeleteSuccess.jsp</result>
+ </action>
 
-	</package>
-
+<action name="ReviewModifyAction" class="review.ReviewModifyAction">
+  <result>/common/RestaurantBoard/ModifySuccess.jsp</result>
+</action>
+<action name="ReviewModifyForm" class="review.ReviewModifyAction" method="form">
+	<result>/common/RestaurantBoard/RestaurantViewModify.jsp</result>
+</action>
+</package>
 </struts>
