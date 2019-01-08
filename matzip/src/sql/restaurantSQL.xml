@@ -75,15 +75,15 @@
       	 , STARPOINT                                        AS STARTPOINT
 	  FROM RESTAURANTBOARD
 	 <dynamic prepend="WHERE">
-	 <isNotEmpty property="address">
+	 <isPropertyAvailable prepend="AND" property="address">
 	 REGEXP_LIKE(ADDRESS, #address#)
-	 </isNotEmpty>
-	 <isNotEmpty prepend="AND" property="category">
+	 </isPropertyAvailable>
+	 <isPropertyAvailable prepend="AND" property="category">
 	 REGEXP_LIKE(CATEGORY, #category#)
-	 </isNotEmpty>
-	 <isNotEmpty prepend="AND" property="keyword">
+	 </isPropertyAvailable>
+	 <isPropertyAvailable prepend="AND" property="keyword">
 	 (REGEXP_LIKE(ADDRESS, #keyword#) OR REGEXP_LIKE(RESTAURANTNAME, #keyword#) OR REGEXP_LIKE(CATEGORY, #keyword#))
-	 </isNotEmpty>
+	 </isPropertyAvailable>
 	 </dynamic>
 </select>
 
