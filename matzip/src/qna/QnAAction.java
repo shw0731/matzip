@@ -11,7 +11,10 @@ import java.io.IOException;
 
 import java.net.*;
 
-public class QnAAction extends ActionSupport {
+import org.apache.struts2.interceptor.SessionAware;
+import member.MemberVO;
+
+public class QnAAction extends ActionSupport implements SessionAware {
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
@@ -27,6 +30,9 @@ public class QnAAction extends ActionSupport {
 	private String pagingHtml;
 	private QnAPagingAction page;
 	private int num = 0;
+	
+    private Map session;
+    private MemberVO memberResultClass;     
 	 
 	public QnAAction() throws IOException
 	{
@@ -53,6 +59,8 @@ public class QnAAction extends ActionSupport {
 			lastCount = page.getEndCount() + 1;
 		
 		list = list.subList(page.getStartCount(), lastCount);
+		
+		memberResultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", session.get("ID"));
 		return SUCCESS;
 	}
 	
@@ -164,6 +172,14 @@ public String search() throws Exception {
 
 	public void setNum(int num) {
 		this.num = num;
+	}
+
+	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
 	}
 		
 	

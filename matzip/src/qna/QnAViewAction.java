@@ -3,6 +3,8 @@ package qna;
 import com.opensymphony.xwork2.ActionSupport;
 
 
+
+
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
@@ -16,10 +18,12 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.struts2.interceptor.SessionAware;
+import member.MemberVO;
 
-
-public class QnAViewAction extends ActionSupport{
+public class QnAViewAction extends ActionSupport implements SessionAware{
 	
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
@@ -33,6 +37,9 @@ public class QnAViewAction extends ActionSupport{
 	
 	private int serviceno;
 	private int originno;
+	
+	private Map session;
+	private MemberVO memberResultClass; 
 	
 	private String password;
 		
@@ -51,6 +58,7 @@ public class QnAViewAction extends ActionSupport{
 		paramClass.setServiceno(getServiceno());
 		//sqlMapper.update("updateReadHit",paramClass);
 		
+		memberResultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", session.get("ID"));
 		
 		resultClass = (QnAVO) sqlMapper.queryForObject("QnAselectNo", getServiceno());
 		
@@ -176,6 +184,16 @@ public class QnAViewAction extends ActionSupport{
 		this.contextLength = contextLength;
 	}
 
+	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
+	}
+	
+	
+	
 	
 	
 	

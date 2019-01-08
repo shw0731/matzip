@@ -1,13 +1,14 @@
-<%@ page contentType="text/html;charset=euc-kr" import="java.sql.*"%>
-<%@ page import="java.util.HashMap"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+ <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page session="true" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+    <% String id=session.getId();
+    %>
 
 <?xml version="1.0" encoding="euc-kr" ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>1:1 ���ǰԽ���</title>
+<title>1:1 문의게시판</title>
 <style>
 
 .button{
@@ -56,15 +57,15 @@
 <body>
   <section class="section--top">
   <!--for demo wrap-->
-  <h1>Q&A �Խ���</h1>
+  <h1>Q&A 게시판</h1>
   <div class="tbl-header">
     <table cellpadding="0" cellspacing="0" border="0">
       <thead>
         <tr>
-          <th><strong>��	ȣ</strong></th>
-          <th width="350"><strong>��	��</strong></th>
-          <th><strong>�� �� ��</strong></th>
-          <th><strong>��ϳ�¥</strong></th>
+          <th><strong>번	호</strong></th>
+          <th width="350"><strong>제	목</strong></th>
+          <th><strong>글 쓴 이</strong></th>
+          <th><strong>등록날짜</strong></th>
         
           
         	</tr>
@@ -102,7 +103,7 @@
 		<s:if test="list.size() <= 0">
 				
 			<tr align="center">
-				<td colspan="5">��ϵ� �Խù��� �����ϴ�.</td>
+				<td colspan="5">등록된 게시물이 없습니다.</td>
 			</tr>						
 			<tr>
 				<td height="1" colspan="5"></td>
@@ -124,7 +125,7 @@
 		
 		<div id="input-write">
   <%--  <s:if test='%{#session.member_email != null}'> --%>
-    <input name="write" type="button" value="�۾���" class="button" onClick="javascript:location.href='QnAWriteForm.action?currentPage=<s:property value="currentPage" />'"/>
+    <input name="write" type="button" value="글쓰기" class="button" onClick="javascript:location.href='QnAWriteForm.action?currentPage=<s:property value="currentPage" />'"/>
    
    <%--  </s:if> --%>
     </div>

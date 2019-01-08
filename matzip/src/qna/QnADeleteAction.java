@@ -1,22 +1,29 @@
 package qna;
 
 import com.opensymphony.xwork2.ActionSupport;
+
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import java.io.File;
 import java.io.Reader;
+import java.util.Map;
 import java.io.IOException;
 
 
-public class QnADeleteAction extends ActionSupport{
+public class QnADeleteAction extends ActionSupport 
+implements SessionAware{
 	
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
 	private QnAVO paramClass;
 	private QnAVO resultClass;
+	
+    private Map session;
 	
 	/*private cQnAVO cClass = new cQnAVO();
 	private cQnAVO cResult = new cQnAVO();*/
@@ -97,5 +104,15 @@ public class QnADeleteAction extends ActionSupport{
 
 	public void setServiceno(int serviceno) {
 		this.serviceno = serviceno;
-	}	
+	}
+
+	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
+	}
+	
+	
 }

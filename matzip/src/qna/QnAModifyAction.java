@@ -1,17 +1,21 @@
 package qna;
-
+import member.MemberVO;
 import com.opensymphony.xwork2.ActionSupport;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import java.io.Reader;
+import java.util.Map;
 import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 
-public class QnAModifyAction extends ActionSupport{
+
+import org.apache.struts2.interceptor.SessionAware;
+
+public class QnAModifyAction extends ActionSupport implements SessionAware{
 
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
@@ -26,6 +30,9 @@ public class QnAModifyAction extends ActionSupport{
 	private String id;
 	private String password;
 	private String context;
+	
+	private MemberVO memberResultClass;  
+	private Map session;
 	/*private String old_file;
 	
 	private File upload;
@@ -71,8 +78,11 @@ public class QnAModifyAction extends ActionSupport{
 			sqlMapper.update("updateFile", paramClass);
 			}*/
 		
+		memberResultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", session.get("ID"));
+		
 		resultClass = (QnAVO) sqlMapper.queryForObject("QnAselectNo", getServiceno());
 		return SUCCESS;
+		
 		
 		
 	}
@@ -165,6 +175,14 @@ public class QnAModifyAction extends ActionSupport{
 
 	public void setContext(String context) {
 		this.context = context;
+	}
+
+	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
 	}
 	
 	

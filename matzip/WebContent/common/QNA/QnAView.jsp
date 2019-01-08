@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+ <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page session="true" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+    <% String id=session.getId();
+    %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -58,7 +59,7 @@ display:inline;
   background: #2c3e50;
 }
 </style>
-<title>½ºÆ®·µÃ÷ 2 °Ô½ÃÆÇ</title>
+<title>ìŠ¤íŠ¸ëŸ¿ì¸  2 ê²Œì‹œíŒ</title>
 
 <script type="text/javascript">
 	function open_win_noresizable(url, id)
@@ -72,7 +73,7 @@ display:inline;
 <body>
 	<table width="600" border="0" cellspacing="0" cellpadding="2">
 	<tr>
-		<td align="center"><h2>½ºÆ®·µÃ÷ °Ô½ÃÆÇ</h2></td>
+		<td align="center"><h2>ìŠ¤íŠ¸ëŸ¿ì¸  ê²Œì‹œíŒ</h2></td>
 	</tr>
 	</table>
 
@@ -81,26 +82,26 @@ display:inline;
 			<td colspan="2" height="1"></td>
 		</tr>
 		<%-- <tr>
-			<td width="10">¹øÈ£</td>
+			<td width="10">ë²ˆí˜¸</td>
 			<td width="500">
 				<s:property value="resultClass.serviceno" />
 			</td>
 		</tr> --%>
 		<tr>
-			<th scope="row">Á¦¸ñ</th>
+			<th scope="row">ì œëª©</th>
 			<td width="500">
 				<s:property value="resultClass.subject"/>
 			</td>
 		</tr>
 		<tr>
-			<th scope="row">±Û¾´ÀÌ</th>
+			<th scope="row">ê¸€ì“´ì´</th>
 			<td width="500">
 				<s:property value="resultClass.id" />
 			</td>
 		</tr>
 		
 		 <tr>
-			<th scope="row">³»¿ë</th>
+			<th scope="row">ë‚´ìš©</th>
 			<td width="500">
 				${resultClass.context}
 			</td>
@@ -109,19 +110,19 @@ display:inline;
 		
 		
 		<%-- <tr>
-			<td width="100">Á¶È¸¼ö</td>
+			<td width="100">ì¡°íšŒìˆ˜</td>
 			<td width="500">
 				<s:property value="resultClass.readhit" />
 			</td>
 		</tr> --%>
 		<tr>
-			<th scope="row">µî·ÏÀÏÀÚ</th>
+			<th scope="row">ë“±ë¡ì¼ì</th>
 			<td width="500">
 				<s:property value="resultClass.reg_date" />
 			</td>
 		</tr>
 		<%-- <tr>
-			<td width="100">Ã·ºÎÆÄÀÏ</td>
+			<td width="100">ì²¨ë¶€íŒŒì¼</td>
 			<td width="500">
 				&nbsp;&nbsp;
 				<s:url id="download" action="fileDownloadAction">
@@ -147,22 +148,22 @@ display:inline;
 					<table>
 						<tr>
 							<td width="170">
-								ÀÌ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;¸§ <s:textfield name="memberID" theme="simple" value="" cssStyle="width:100px" maxlength="20" /><br>
-								ºñ¹Ğ¹øÈ£ <s:textfield name="password" theme="simple" value="" cssStyle="width:100px" maxlength="20" />
+								ì´&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ë¦„ <s:textfield name="memberID" theme="simple" value="" cssStyle="width:100px" maxlength="20" /><br>
+								ë¹„ë°€ë²ˆí˜¸ <s:textfield name="password" theme="simple" value="" cssStyle="width:100px" maxlength="20" />
 							</td>
 							<s:hidden name="restaurantNo" value="%{resultClass.serviceNo}" />
 							<s:hidden name="serviceNo" value="%{resultClass.serviceNo}" />
-					<!-- !!!!!!!!!!!!!!!!!!!!!!!!¼öÁ¤!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+					<!-- !!!!!!!!!!!!!!!!!!!!!!!!ìˆ˜ì •!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 							
 							<s:hidden name="currentPage" value="%{currentPage}" />
-					<!-- !!!!!!!!!!!!!!!!!!!!!!!!¼öÁ¤!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+					<!-- !!!!!!!!!!!!!!!!!!!!!!!!ìˆ˜ì •!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 							<td align="left">
 								<s:textarea name="context" theme="simple" value="" cols="60" rows="3" />
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2" align="right">
-								<input name="submit" type="submit" value="ÀÛ¼º" class="button">
+								<input name="submit" type="submit" value="ì‘ì„±" class="button">
 							</td>
 						</tr>
 					</table>
@@ -182,7 +183,7 @@ display:inline;
 				<s:property value="reg_date" /><br><br>
 			</td>
 			<td>
-			<!-- @@@@@@@@@@@@ÄÚ¸àÆ® »èÁ¦@@@@@@@@@@@@ -->
+			<!-- @@@@@@@@@@@@ì½”ë©˜íŠ¸ ì‚­ì œ@@@@@@@@@@@@ -->
 				<s:property value="context" /> 
 				<a href="javascript:open_win_noresizable('checkForm2.action?serviceno=<s:property value="serviceno" />&originno=<s:property value="originno" />&currentPage=<s:property value="currentPage" />','cdelete')">x</a>
 			</td>
@@ -194,7 +195,7 @@ display:inline;
 		<tr>
 			<td colspan="2" height="10">
 				<s:if test="commentlist.size() <= 0">
-				´ñ±Û¾øÀ½
+				ëŒ“ê¸€ì—†ìŒ
 			</td>
 		</tr>
 				</s:if>	
@@ -220,10 +221,12 @@ display:inline;
 						<s:property value="serviceno" />
 					</s:param>
 				</s:url>
-				<input name="list" type="button" value="´äº¯" class="button" onClick="javascript:location.href='QnAReplyForm.action?serviceno=<s:property value="serviceno" />'">
-				<input name="list" type="button" value="¼öÁ¤" class="button" onClick="javascript:open_win_noresizable('checkForm.action?serviceno=<s:property value="resultClass.serviceno" />&currentPage=<s:property value="currentPage" />','modify')">
-				<input name="list" type="button" value="»èÁ¦" class="button" onClick="javascript:open_win_noresizable('checkForm.action?serviceno=<s:property value="resultClass.serviceno" />&currentPage=<s:property value="currentPage" />','delete')">
-				<input name="list" type="button" value="¸ñ·Ï" class="button" onClick="javascript:location.href='QnAList.action?currentPage=<s:property value="currentPage" />'">
+				          	  <s:if test="memberResultClass.isType==2">
+				<input name="list" type="button" value="ë‹µë³€" class="button" onClick="javascript:location.href='QnAReplyForm.action?serviceno=<s:property value="serviceno" />&currentPage=<s:property value="currentPage" />'">
+				</s:if>
+				<input name="list" type="button" value="ìˆ˜ì •" class="button" onClick="javascript:open_win_noresizable('checkForm.action?serviceno=<s:property value="resultClass.serviceno" />&currentPage=<s:property value="currentPage" />','modify')">
+				<input name="list" type="button" value="ì‚­ì œ" class="button" onClick="javascript:open_win_noresizable('checkForm.action?serviceno=<s:property value="resultClass.serviceno" />&currentPage=<s:property value="currentPage" />','delete')">
+				<input name="list" type="button" value="ëª©ë¡" class="button" onClick="javascript:location.href='QnAList.action?currentPage=<s:property value="currentPage" />'">
 			</td>
 		</tr>
 	</table>
