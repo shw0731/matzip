@@ -3,6 +3,10 @@
  * Copyright 2013-2018 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-agency/blob/master/LICENSE)
  */
+.Gaegu {
+	font-family: 'Gaegu', cursive;
+	font-size: 10px;
+}
 
 body {
   overflow-x: hidden;
@@ -110,7 +114,7 @@ img::-moz-selection {
 }
 
 #mainNav {
-  background-color: #212529;
+  background-color: #ffffff;
 }
 
 #mainNav .navbar-toggler {
@@ -166,7 +170,7 @@ img::-moz-selection {
   #mainNav.navbar-shrink {
     padding-top: 0;
     padding-bottom: 0;
-    background-color: #212529;
+    background-color: #ffffff;
   }
   #mainNav.navbar-shrink .navbar-brand {
     font-size: 1.25em;

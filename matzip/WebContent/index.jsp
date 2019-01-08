@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-
-
+<head>
+<!-- <link href="https://fonts.googleapis.com/css?family=Gaegu:400,700&amp;subset=korean" rel="stylesheet">
+ --></head>
 <%@ include file="/common/header.jsp"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
 <meta charset="UTF-8" />
@@ -9,10 +10,8 @@
     <header class="masthead">
       <div class="container">
         <div class="intro-text">
-          <div class="intro-lead-in">Welcome To Our Studio!</div>
-          <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
-          <input type="text" class="search-bar"/>
-          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">검색</a>
+        <div class="intro-lead-in">Welcome To The</div>
+          <div class="intro-heading text-uppercase">맛.zip</div>
           <s:property value="category_array[0]"/>
         </div>
       </div>
