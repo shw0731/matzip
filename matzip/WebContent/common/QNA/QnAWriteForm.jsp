@@ -2,6 +2,7 @@
 <%@ page session="true" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
     <% String id=session.getId();
     %>
+
  
 
 <html>
@@ -31,10 +32,10 @@
   <div class="col-lg-4">
 
   <!-- 점보트론 -->
- <link rel="stylesheet" href="/matzip/css/qnaForm.css">
+
    <div class="jumbotron" style="padding-top: 20px;">
 
-<title>Q&A</title>
+<title>공지사항</title>
 <!-- <link rel = "stylesheet" href = "/Struts2Board/board/css.css" type = "text/css">
  -->
  
@@ -83,14 +84,12 @@
 		
 		<form action="QnAReplyAction.action" method="post" enctype="multipart/form-data" onsubmit="return validation();">
 			<s:hidden name="answerno" value="%{resultClass.answerno}" />
-			<s:hidden name = "currentPage" value= "%{currentPqge}" />  
 			
 	</s:if>
 
 <s:if test = "resultClass == NULL">
 <form action = "QnAWriteAction.action" method = "post"
       enctype = "multipart/form-data" onsubmit = "return validation();">
-     
 </s:if>
 
  
@@ -113,35 +112,24 @@
       </tr>
 
       
-       <tr>
-          <td width="100" bgcolor="#F4F4F4"><font color="#FF0000">*</font>  제목</td>
-          <td width="500" bgcolor="#FFFFFF">
-            <s:textfield name="subject" theme="simple" value="%{resultClass.subject}" cssStyle="width:370px" maxlength="50"/>
-            
+        <tr>
+        
+            <div class="form-group">
+<input type="text" class="form-control" placeholder="제목	" name="subject" maxlength="20">
           </td>
+                </div>
         </tr>
         
-         <tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  이름 </td>
-          <td bgcolor="#FFFFFF">
-            <s:textfield name="name" theme="simple" value="%{resultClass.id}" cssStyle="width:100px" maxlength="20"/>
+
+      <tr bgcolor = "#777777">
+            <td height = "1" colspan = "2"></td>
+      </tr>
+	<tr>
+	    <div class="form-group">
+		<td><textarea class="form-control" placeholder="공지 내용" name="Context" maxlength="2048" style="height: 300px;"></textarea>
+
           </td>
-        </tr>
-        
-         <tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  비밀번호 </td>
-          <td bgcolor="#FFFFFF">
-            <s:textfield name="password" theme="simple" value="%{resultClass.password}" cssStyle="width:100px" maxlength="20"/>
-          </td>
-        </tr>
-        
-     <br><br>
-      <tr>
-      
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  내용 </td>
-          <td bgcolor="#FFFFFF">
-            <s:textarea name="context" theme="simple" value="%{resultClass.context}" cols="50" rows="10" />
-          </td>
+          </div>
         </tr>
       <tr bgcolor = "#777777">
             <td height = "1" colspan = "2"></td>

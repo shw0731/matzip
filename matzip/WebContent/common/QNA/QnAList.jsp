@@ -3,81 +3,45 @@
     <% String id=session.getId();
     %>
 
-<?xml version="1.0" encoding="euc-kr" ?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-<title>1:1 문의게시판</title>
-<style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<title>QnA</title>
+<!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-.button{
-  display:;
-  text-decoration: none;
-  padding: 9px;
-  width: 70px;
-  border: none;
-  border-radius: 5px;
-  text-align: center;
-  color: #FFF;
-  background: #407775;
-  font-family: sans-serif;
-  font-size: 15px;
-  cursor: pointer;
-  margin-top: -470px;
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-}
-
-.button:hover{
-  background: #2c3e50;
-}
-
-#pagingnum	{  
-	margin-top:300px;
-     text-align:center; 
-     color:#00cdcd;
-     font-size:15px;
-}
-
-#input-write{
-	text-align:right;
-	color:#00cdcd;
-	font-size:15px;
-	font-weight: bold;
-	 padding: 450px;
-
-}
-
-</style>
-
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-		<link rel="stylesheet" href="/YammyYammy/css/admin/qna.css">
-
-</head>
+  </head>
 <body>
-  <section class="section--top">
-  <!--for demo wrap-->
-  <h1>Q&A 게시판</h1>
-  <div class="tbl-header">
-    <table cellpadding="0" cellspacing="0" border="0">
-      <thead>
-        <tr>
-          <th><strong>번	호</strong></th>
-          <th width="350"><strong>제	목</strong></th>
-          <th><strong>글 쓴 이</strong></th>
-          <th><strong>등록날짜</strong></th>
-        
-          
-        	</tr>
-    	  </thead>
-   	 </table>
-  		</div>
- 	 <div class="tbl-content">
-    <table cellpadding="0" cellspacing="0" border="0">
-<tbody>
-        
-	<s:iterator value="list" status="stat">
+<div class="row">
+    <div class="col-xs-2 col-md-2"></div>
+    <div class="col-xs-8 col-md-8">
+    <span style="color:#fed136">
+    <h2 class="text-center">QNA</h2>
+    </span>
+    <div class="table-responsive">
+        <table class="table table-striped">
 
+    <tr align = "center">
+    
+            <td width = "50"><strong>번호</strong></td>
+            <td width = "350"><strong>제목</strong></td>
+            <td width = "80"><strong>이름</strong></td>
+            <td width = "80"><strong>날짜</strong></td>
+
+        	</tr>
+        	
+	<s:iterator value="list" status="stat">
 		<s:url id="qnaViewURL" action="QnAViewAction" >
 			<s:param name="serviceno">
 				<s:property value="serviceno" />
@@ -87,16 +51,15 @@
 			</s:param>
 		</s:url>
 		
-		<tr>
-				<td align="center"><s:property value="serviceno" /></td>
-				<td width="350" align="center"><s:a href="%{qnaViewURL}"><s:property value="subject" /></s:a></td>
+		<tr bgcolor = "#FFFFFF" align = "center">
+				<td><s:property value = "serviceno" /></td>
+				<td align = "left">&nbsp;<s:a href="%{qnaViewURL}">
+				<s:property value="subject" /></s:a></td>
 				<td align="center"><s:property value="id" /></td>
 				<td align="center"><s:property value="reg_date" /></td>
 				
 		</tr>
-		<tr>
-			<td></td>
-		</tr>
+
 			
 	      </s:iterator>
 			
@@ -105,29 +68,21 @@
 			<tr align="center">
 				<td colspan="5">등록된 게시물이 없습니다.</td>
 			</tr>						
-			<tr>
-				<td height="1" colspan="5"></td>
-			</tr>
+
     		
 		</s:if>
 		    	
 
-		</tbody>
-    </table>
+     <tr align = "center">
+            <td colspan = "5"><s:property value = "pagingHtml"  escape = "false" /></td>
+      </tr>
+      </table>
 
-  </div>
-</section>
-<br/><br/><br/><br/><br/><br/><br/>
-    		 <div id="pagingnum"><s:property value="pagingHtml"  escape="false" /></div>
-    
-    
-    		
-		
-		<div id="input-write">
-  <%--  <s:if test='%{#session.member_email != null}'> --%>
-    <input name="write" type="button" value="글쓰기" class="button" onClick="javascript:location.href='QnAWriteForm.action?currentPage=<s:property value="currentPage" />'"/>
-   
-   <%--  </s:if> --%>
-    </div>
-		
-   </body>
+                  <input type = "button" value = "글쓰기" class="btn btn-primary pull-right"
+                        onClick="javascript:location.href='QnAWriteForm.action?currentPage=<s:property value="currentPage" />'"/>
+            </td>
+      </tr>
+      </div>
+
+</body>
+</html>

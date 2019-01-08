@@ -2,64 +2,26 @@
 <%@ page session="true" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
     <% String id=session.getId();
     %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<style>
-table.type05 {
-	border-collapse: separate;
-	border-spacing: 1px;
-	text-align: left;
-	line-height: 1.5;
-	border-top: 1px solid #ccc;
-	margin: 20px 10px;
-}
-table.type05 th {
-	width: 150px;
-	padding: 10px;
-	font-weight: bold;
-	font-size: 16px;
-	vertical-align: top;
-  	text-align: center;
-	border-bottom: 1px solid #ccc;
-	/* background: #efefef; */
-}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<title>QNA</title>
+<!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-table.type05 td {
-	width: 550px;
-	padding: 10px;
-	font-size: 16px;
-	vertical-align: top;
-	border-bottom: 1px solid #ccc;
-}
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-table.type06 {
-display:inline;
-}
-
-
-
-.button{
-  display:inline;
-  text-decoration: none;
-  padding: 9px;
-  width: 50px;
-  border: none;
-  border-radius: 5px;
-  text-align: center;
-  color: #FFF;
-  background: #407775;
-  font-family: sans-serif;
-  font-size: 15px;
-  cursor: pointer;
-
-}
-.button:hover{
-  background: #2c3e50;
-}
-</style>
-<title>스트럿츠 2 게시판</title>
+  </head>
 
 <script type="text/javascript">
 	function open_win_noresizable(url, id)
@@ -73,13 +35,12 @@ display:inline;
 <body>
 	<table width="600" border="0" cellspacing="0" cellpadding="2">
 	<tr>
-		<td align="center"><h2>스트럿츠 게시판</h2></td>
+		<td align="center"><h2>QNA</h2></td>
 	</tr>
 	</table>
 
 	<table class="type05">
 		<tr bgcolor="#777777">
-			<td colspan="2" height="1"></td>
 		</tr>
 		<%-- <tr>
 			<td width="10">번호</td>
@@ -100,12 +61,7 @@ display:inline;
 			</td>
 		</tr>
 		
-		 <tr>
-			<th scope="row">내용</th>
-			<td width="500">
-				${resultClass.context}
-			</td>
-		</tr> 
+
 		
 		
 		
@@ -121,6 +77,16 @@ display:inline;
 				<s:property value="resultClass.reg_date" />
 			</td>
 		</tr>
+		
+				 <tr>
+			<th scope="row">내용</th>
+			<td width="500">
+				${resultClass.context}
+			</td>
+		</tr>
+		
+		
+		 
 		<%-- <tr>
 			<td width="100">첨부파일</td>
 			<td width="500">
@@ -221,9 +187,7 @@ display:inline;
 						<s:property value="serviceno" />
 					</s:param>
 				</s:url>
-				          	  <s:if test="memberResultClass.isType==2">
-				<input name="list" type="button" value="답변" class="button" onClick="javascript:location.href='QnAReplyForm.action?serviceno=<s:property value="serviceno" />&currentPage=<s:property value="currentPage" />'">
-				</s:if>
+				<input name="list" type="button" value="답변" class="button" onClick="javascript:location.href='QnAReplyForm.action?serviceno=<s:property value="serviceno" />'">
 				<input name="list" type="button" value="수정" class="button" onClick="javascript:open_win_noresizable('checkForm.action?serviceno=<s:property value="resultClass.serviceno" />&currentPage=<s:property value="currentPage" />','modify')">
 				<input name="list" type="button" value="삭제" class="button" onClick="javascript:open_win_noresizable('checkForm.action?serviceno=<s:property value="resultClass.serviceno" />&currentPage=<s:property value="currentPage" />','delete')">
 				<input name="list" type="button" value="목록" class="button" onClick="javascript:location.href='QnAList.action?currentPage=<s:property value="currentPage" />'">
