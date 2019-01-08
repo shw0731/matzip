@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionContext;
@@ -25,6 +25,7 @@ public class MainAction extends ActionSupport implements SessionAware {
 	
 
 	private List<BoardVO> restList = new ArrayList<BoardVO>();
+	private List<BoardVO> restLikeList = new ArrayList<BoardVO>();
 	private Map session;
 	private MemberVO resultClass = new MemberVO();
 	public MainAction() throws IOException {
@@ -34,12 +35,21 @@ public class MainAction extends ActionSupport implements SessionAware {
 	}
 	public String execute() throws Exception{
 		restList = sqlMapper.queryForList("rest.selectAll"); 
+		restLikeList = sqlMapper.queryForList("rest.selectAllLike");
 		if(session.get("ID")!=null)
 		resultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", session.get("ID"));	
-				return SUCCESS;
-			
+				
+		restList = restList.subList(0, 3);
+		restLikeList = restLikeList.subList(0, 3);
+		return SUCCESS;
 		}
 		
+	public List<BoardVO> getRestLikeList() {
+		return restLikeList;
+	}
+	public void setRestLikeList(List<BoardVO> restLikeList) {
+		this.restLikeList = restLikeList;
+	}
 	public List<BoardVO> getRestList() {
 		return restList;
 	}
