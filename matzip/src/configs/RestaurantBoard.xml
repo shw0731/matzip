@@ -27,7 +27,7 @@
 		
 		
 		<action name="PageViewAction" class="restaurantPage.PageViewAction">
-			<result>/common/RestaurantBoard/RestaurantView.jsp</result>
+			<result name = "success">/common/RestaurantBoard/RestaurantView.jsp</result>
 		</action>
 
 		<action name="fileUploadForm" class="restaurantPage.WriteAction">
