@@ -31,9 +31,9 @@ function delConfirm(){
       <!--Modal body -->
 
           	<text align=right padding="5">${session.ID} 님의 방문을 환영합니다.<small>&nbsp;&nbsp;</small><br>
-			<a href="javascript:Modify();" target="_blank", width="100" border="0" class="btn btn-outline-warning btn-lg  text-uppercase js-scroll-trigger" style="cursor:pointer"><small>정보수정</small></a>
-			<a href="javascript:location.href='#.action?currentPage=<s:property value="currentPage" />';" target="_blank", width="100" border="0" class="btn btn-outline-warning btn-lg  text-uppercase js-scroll-trigger" style="cursor:pointer"><small>고객센터</small></a><small>&nbsp;&nbsp;</small></text><br>
-
+			<a href="javascript:Modify();" target="_blank", width="100" border="0" class="btn btn-outline-warning btn-lg  text-uppercase js-scroll-trigger" style="cursor:pointer"><small>정보수정</small></a><small>&nbsp;&nbsp;</small></text><br>
+<%-- 			<a href="javascript:location.href='#.action?currentPage=<s:property value="currentPage" />';" target="_blank", width="100" border="0" class="btn btn-outline-warning btn-lg  text-uppercase js-scroll-trigger" style="cursor:pointer"><small>고객센터</small></a><small>&nbsp;&nbsp;</small></text><br>
+ --%>
           	<text align=center>
           	
           	<p class="b"><a href="#" width="100" border="0" class="btn btn-outline-warning btn-lg btn-block text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('WriteForm.action?currentPage=<s:property value="currentPage" />','음식점페이지 입력','scrollbars=yes, width=650, height=650,');">나의 음식점 등록</p></a> &nbsp;&nbsp;&nbsp;&nbsp;
