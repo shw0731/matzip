@@ -6,13 +6,17 @@
 <struts>
       <!-- 용량제한 100MB로 설정 -->
       <package name="review" extends="struts-default">
-      
+      <global-exception-mappings>
+			<exception-mapping result="error" exception="java.sql.SQLException"/>
+			<exception-mapping result="null" exception="java.lang.NullPointerException"/>
+	</global-exception-mappings>
  <action name="ReviewdeleteAction" class="review.ReviewDeleteAction">
    <result name="success">/common/RestaurantBoard/DeleteSuccess.jsp</result>
  </action>
 
 <action name="ReviewModifyAction" class="review.ReviewModifyAction">
-  <result>/common/RestaurantBoard/ModifySuccess.jsp</result>
+  <result name="success">/common/RestaurantBoard/ModifySuccess.jsp</result>
+  <result name="error">/common/RestaurantBoard/ReviewWriteError.jsp</result>
 </action>
 <action name="ReviewModifyForm" class="review.ReviewModifyAction" method="form">
 	<result>/common/RestaurantBoard/RestaurantViewModify.jsp</result>
