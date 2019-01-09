@@ -86,7 +86,7 @@ function ReviewModifyForm(reviewNo,restaurantNo){
 	
 	
 	open(url, "리뷰 수정", "toolbar=no,location=no,status=no,menubar=no,"+
-						 "scrollbars=no,resizable=no,width=400,height=500");
+						 "scrollbars=no,resizable=no,width=600,height=500");
 	
 }
 
