@@ -10,7 +10,7 @@
 <script language="javascript">
 	window.onload = function() {
 		alert("등록이 완료되었습니다.");
-		window.close();
+		document.location.href="no_listAction.action";
 	}
 </script>
 </body>
