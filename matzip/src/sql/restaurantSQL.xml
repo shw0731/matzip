@@ -37,12 +37,12 @@
 <!-- select쿼리문-->
 <select id="selectAll" resultMap="restaurantRes">
   <include refid="select-all"/><!-- SELECT * FROM RESTAURANTBOARD -->
-  ORDER BY STARPOINT DESC, LIKES DESC <!-- 평점순,좋아요 순-->
+  ORDER BY ISPOWER DESC, STARPOINT DESC, LIKES DESC <!-- 평점순,좋아요 순-->
 </select>
 
 <select id="selectAllLike" resultMap="restaurantRes">
   <include refid="select-all"/><!-- SELECT * FROM RESTAURANTBOARD -->
-  ORDER BY LIKES DESC, STARPOINT DESC  <!-- 평점순,좋아요 순-->
+  ORDER BY ISPOWER DESC, LIKES DESC, STARPOINT DESC  <!-- 평점순,좋아요 순-->
 </select>
 
 <select id="selectOne" resultMap="restaurantRes" parameterClass="int">
@@ -136,6 +136,14 @@
 
 <update id="updateLike" parameterClass="restaurantBoard">
 	UPDATE RESTAURANTBOARD SET lIKES = #likes# WHERE RESTAURANTNO = #restaurantNo#
+</update>
+
+<update id="registPower" parameterClass="int">
+	UPDATE RESTAURANTBOARD SET ISPOWER = 1 WHERE RESTAURANTNO = #restaurantNo#
+</update>
+
+<update id="deletePower" parameterClass="int">
+	UPDATE RESTAURANTBOARD SET ISPOWER = 0 WHERE RESTAURANTNO = #restaurantNo#
 </update>
 
 <!-- delete쿼리문 정의 -->
