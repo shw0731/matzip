@@ -38,9 +38,9 @@ public String execute() throws Exception {
 	paramClass = new ReviewVO();
 	resultClass = new ReviewVO();
 	
-	paramClass.setReviewNo(getReviewNo());
 	
-	sqlMapper.update("review.deleteReview",paramClass);
+	
+	sqlMapper.delete("review.deleteReview",reviewNo);
 	
 	return SUCCESS;
 }

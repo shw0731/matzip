@@ -50,10 +50,10 @@
 					<td><s:property value="subject" /></td>
 					<td><s:property value="sympathy"/></td>
 					<td><button type="button"
-							onclick="ReviewListModifyForm(<s:property value='reviewNo'/>,<s:property value='restaurantNo'/>);">
+							onclick="ReviewModifyForm(<s:property value='reviewNo'/>,<s:property value='restaurantNo'/>);">
 							수정</button>
 						<button type="button"
-							onclick="ReviewListdeleteAction(<s:property value='reviewNo'/>);">
+							onclick="ReviewdeleteAction(<s:property value='reviewNo'/>);">
 							삭제</button>	
 					</td>
 				</tr>
@@ -75,14 +75,14 @@
 function ReviewdeleteAction(reviewNo){
 	
 	
-	var url='ReviewListdeleteAction.action?reviewNo='+reviewNo;
+	var url='ReviewdeleteAction.action?reviewNo='+reviewNo;
 	
 	
 	open(url, "리뷰 삭제", "toolbar=no,location=no,status=no,menubar=no,"+
 						 "scrollbars=no,resizable=no,width=400,height=200");
 }
 function ReviewModifyForm(reviewNo,restaurantNo){
-	var url='ReviewListModifyForm.action?reviewNo='+reviewNo+'&'+'restaurantNo='+restaurantNo;
+	var url='ReviewModifyForm.action?reviewNo='+reviewNo+'&'+'restaurantNo='+restaurantNo;
 	
 	
 	open(url, "리뷰 수정", "toolbar=no,location=no,status=no,menubar=no,"+

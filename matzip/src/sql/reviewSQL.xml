@@ -2,10 +2,10 @@
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="review">
 <typeAlias alias="review" type="review.ReviewVO"/>
+<typeAlias alias="reviewList" type="review.ReviewListVO"/>
 <resultMap class="review" id="reviewRes">
 <result column="reviewno" property="reviewNo"/>
 <result column="restaurantno" property="restaurantNo"/>
-<result column="restaurantname" property="restaurantName"/>
 <result column="ID" property="ID"/>
 <result column="context" property="context"/>
 <result column="images" property="images"/>
@@ -14,16 +14,25 @@
 <result column="starpoint" property="starPoint"/>
 <result column="subject" property="subject"/>
 </resultMap>
+<resultMap class="reviewList" id="reviewListRes">
+<result column="reviewno" property="reviewNo"/>
+<result column="restaurantno" property="restaurantNo"/>
+<result column="restaurantname" property="restaurantName"/>
+<result column="ID" property="ID"/>
+<result column="sympathy" property="sympathy"/>
+<result column="subject" property="subject"/>
+</resultMap>
+
 
 <!-- 공통으로 사용할 select 절 정의 -->
-<sql id="select-all-c">SELECT * FROM reviewboard </sql>
+<sql id="select-all-c">SELECT REVIEWNO, RESTAURANTNO, ID, CONTEXT, IMAGES, REG_DATE, SYMPATHY, STARPOINT, SUBJECT FROM reviewboard </sql>
 
 <!-- 공통으로 사용할 where-no 절 정의 -->
 <sql id="where-no-c">WHERE reviewno = #reviewNo# </sql>
 
 <!-- select 쿼리문 정의 -->
-<select id="selectAll" parameterClass="int" resultMap="reviewRes">
-	SELECT * FROM REVIEWBOARD WHERE restaurantNo = #restaurantNo# ORDER BY sympathy DESC, reg_date ASC
+<select id="selectAll" parameterClass="int" resultClass="review">
+	SELECT REVIEWNO, RESTAURANTNO, ID, CONTEXT, IMAGES, REG_DATE, SYMPATHY, STARPOINT, SUBJECT FROM REVIEWBOARD WHERE restaurantNo = #restaurantNo# ORDER BY sympathy DESC, reg_date ASC
 </select>
 <select id="selectOne" parameterClass="String" resultClass="int">
 	SELECT REVIEWNO FROM REVIEWBOARD WHERE ID = #ID#
@@ -34,8 +43,8 @@
 <select id="selectRestaurantNo" resultClass="int" parameterClass="review">
 	SELECT RESTAURANTNO FROM REVIEWBOARD WHERE REVIEWNO = #reviewNo#
 </select> 
-<select id="selectAllByID" parameterClass="String" resultClass="review">
-	SELECT  L.RESTAURANTNO , R.RESTAURANTNAME , L.ID , L.SUBJECT , l.SYMPATHY
+<select id="selectAllByID" parameterClass="String" resultClass="reviewList">
+	SELECT  L.RESTAURANTNO , R.RESTAURANTNAME , L.ID , L.SUBJECT , L.SYMPATHY ,L.REVIEWNO
 			FROM REVIEWBOARD L 
 			LEFT JOIN RESTAURANTBOARD R
 			on L.RESTAURANTNO = R.RESTAURANTNO
@@ -69,7 +78,7 @@ UPDATE REVIEWBOARD SET SYMPATHY = SYMPATHY+1
 <!-- update sympathy-->
 
 <!-- delete -->
-<delete id="deleteReview" parameterClass="review">
+<delete id="deleteReview" parameterClass="int">
   DELETE FROM REVIEWBOARD WHERE REVIEWNO = #reviewNo#
 </delete>
 

@@ -90,6 +90,15 @@ html, body, #map {
 			<s:param name="currentPage">
 				<s:property value="currentPage" />
 			</s:param>
+			<s:param name="filter_address">
+				<s:property value="filter_address" />
+			</s:param>
+			<s:param name="filter_category">
+				<s:property value="filter_category" />
+			</s:param>
+			<s:param name="keyword">
+				<s:property value="keyword" />
+			</s:param>
 		</s:url>
 		<script>
 		
@@ -185,16 +194,3 @@ html, body, #map {
   
 </body>
 </html>
-<script>
-function registerLikes(){
-	
-	var restaurantNo=document.getElementById('restaurantNo').value;
-	var id = document.getElementById('ID').value;
-	console.log('restaurantNo'+'id');
-	var url='RegisterLikeAction.action?ID='+id+'&'+'restaurantNo='+restaurantNo;
-	
-	
-	open(url, "좋아요 등록", "toolbar=no,location=no,status=no,menubar=no,"+
-						 "scrollbars=no,resizable=no,width=400,height=200");
-}
-</script>

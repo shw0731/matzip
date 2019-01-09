@@ -68,17 +68,7 @@
 <!-- 검색로직 -->
 
 <select id="selectFilter" resultClass="restaurantBoard" parameterClass="HashMap">
-	SELECT RESTAURANTNO                                     AS RESTAURNTNO
-     	 , RESTAURANTNAME                                   AS RESTAURANTNAME
-     	 , CONTEXT                                          AS CONTEXT
-     	 , IMAGES                                           AS IMAGES
-     	 , CATEGORY                                         AS CATEGORY
-     	 , ADDRESS                                          AS ADDRESS
-     	 , LIKES                                            AS LIKES
-     	 , ISPOWER                                          AS ISPOWER
-      	 , ISRES                                            AS ISRES
-      	 , STARPOINT                                        AS STARTPOINT
-	  FROM RESTAURANTBOARD
+	 SELECT *  FROM RESTAURANTBOARD
 	 <dynamic prepend="WHERE">
 	 <isPropertyAvailable prepend="AND" property="address">
 	 REGEXP_LIKE(ADDRESS, #address#)

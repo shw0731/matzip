@@ -34,7 +34,7 @@ public class SearchAction extends ActionSupport implements SessionAware{ //ê³µê³
 	private String filter_address = "";
 	private String filter_category = "";
 	Map<String, String> filter = new HashMap<String, String>();
-	private String keyword;
+	private String keyword ="";
 	
 	
 	private List<String> images = new ArrayList<String>();

@@ -8,10 +8,12 @@ import restaurantPage.BoardVO;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
-
+import org.apache.struts2.interceptor.SessionAware;
 import java.io.Reader;
 import java.io.IOException;
-public class RegisterLikeAction extends ActionSupport {
+import java.util.*;
+
+public class RegisterLikeAction extends ActionSupport implements SessionAware {
 	public static Reader reader; // 파일 스크림을 위한 reader
     
     // SqlMapClient API를 사용하기 위한 sqlMapper 객체
@@ -21,6 +23,7 @@ public class RegisterLikeAction extends ActionSupport {
     private LikeVO likeResultClass; // 쿼리 결과 값을 저장할 객체
     private BoardVO restParamClass;
     
+    private Map session;
     private int currentPage; // 현재 페이지
     
     private String ID;
@@ -40,7 +43,7 @@ public class RegisterLikeAction extends ActionSupport {
 		likeResultClass = new LikeVO();
 		restParamClass = new BoardVO();
 		int likeCount;
-		paramClass.setID(ID);
+		paramClass.setID((String)session.get("ID"));
 		paramClass.setRestaurantNo(restaurantNo);
 		
 		
@@ -70,6 +73,31 @@ public class RegisterLikeAction extends ActionSupport {
 		}
 		return SUCCESS;
 		
+	}
+	
+
+	public BoardVO getRestParamClass() {
+		return restParamClass;
+	}
+
+	public void setRestParamClass(BoardVO restParamClass) {
+		this.restParamClass = restParamClass;
+	}
+
+	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
+	}
+
+	public int getIsUpdate() {
+		return isUpdate;
+	}
+
+	public void setIsUpdate(int isUpdate) {
+		this.isUpdate = isUpdate;
 	}
 
 	public int isUpdate() {

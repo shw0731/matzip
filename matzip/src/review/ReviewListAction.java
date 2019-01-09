@@ -19,11 +19,8 @@ public class ReviewListAction extends ActionSupport implements SessionAware{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 		
-	private BoardVO restParamClass;
 	
-	private ReviewVO paramClass;
-	private ReviewVO resultClass;
-	private List<ReviewVO> reviewList =  new ArrayList<ReviewVO>();
+	private List<ReviewListVO> reviewList =  new ArrayList<ReviewListVO>();
 	
 	private int restaurantNo;
 	private int currentPage;
@@ -49,36 +46,13 @@ public class ReviewListAction extends ActionSupport implements SessionAware{
 	}
 
 	
-	public List<ReviewVO> getReviewList() {
+	
+	public List<ReviewListVO> getReviewList() {
 		return reviewList;
 	}
 
-	public void setReviewList(List<ReviewVO> reviewList) {
+	public void setReviewList(List<ReviewListVO> reviewList) {
 		this.reviewList = reviewList;
-	}
-
-	public BoardVO getRestParamClass() {
-		return restParamClass;
-	}
-
-	public void setRestParamClass(BoardVO restParamClass) {
-		this.restParamClass = restParamClass;
-	}
-
-	public ReviewVO getParamClass() {
-		return paramClass;
-	}
-
-	public void setParamClass(ReviewVO paramClass) {
-		this.paramClass = paramClass;
-	}
-
-	public ReviewVO getResultClass() {
-		return resultClass;
-	}
-
-	public void setResultClass(ReviewVO resultClass) {
-		this.resultClass = resultClass;
 	}
 
 	public int getRestaurantNo() {

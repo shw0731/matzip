@@ -213,7 +213,7 @@ to {
 				<s:property value="restResultClass.restaurantName" /></span>
 				&nbsp;<input name="Like" type="image" src="/img/logos/like.jpg"
 					value="UP" class="inputb"
-					onClick="javascript:location.href='LikeWriteAction.action?currentPage=<s:property value="currentPage" />'"><small><s:property
+					onClick="registerLikes(<s:property value='restResultClass.restaurantNo'/>)"/><small><s:property
 						value="restResultClass.likes" /></small>
 
 				<p class="nanu" style="font-size: 13pt"><br/>
@@ -236,9 +236,9 @@ to {
 
 	<s:if test="%{#session.ID==restResultClass.ID}">
 		<input name="list" type="button" value="수정" class="inputb"
-			onClick="javascript:open_win_noresizable('modifyForm.action?no='<s:property value = "restresultClass.restaurantNo" />&currentPage='<s:property value = "currentPage" />','modify')">
+			onClick="javascript:open_win_noresizable('modifyForm.action?no='<s:property value = "restresultClass.restaurantNo" />&currentPage='<s:property value = "currentPage" />','modify')"/>
 		<input name="list" type="button" value="삭제" class="inputb"
-			onClick="javascript:location.href='deleteAction.action?no='<s:property value = "restresultClass.restaurantNo" />&currentPage='<s:property value = "currentPage" />','delete'">
+			onClick="javascript:location.href='deleteAction.action?no='<s:property value = "restresultClass.restaurantNo" />&currentPage='<s:property value = "currentPage" />','delete'"/>
 	</s:if>
 	<Br>
 	<!-- review -->
@@ -254,7 +254,7 @@ to {
 			
 			<br/>
 				<img style="width: 500px; height: 300px;"
-<%-- 					src="/imgs/<s:property value="restResultClass.restaurantNo"/>/<s:property value="reviewNo"/>/<s:property value="images"/>" --%>
+					src="/imgs/<s:property value="restResultClass.restaurantNo"/>/<s:property value="reviewNo"/>/<s:property value="images"/>" 
 					style="width:100%">
 				<p class="nanum" style="font-size: 15pt"><small>
 					<s:property value="context" /></small>
@@ -332,7 +332,7 @@ to {
    <input name="submit" type="submit" value="작성완료" class="inputb">
    </form>
    </s:if>
-	<script>
+<script>
 var slideIndex = 1;
 showSlides(slideIndex);
 
@@ -367,7 +367,18 @@ function Modify(reviewNo,restaurantNo){
 		 "scrollbars=no,resizable=no,width=550,height=350");
 }
 
+
+function registerLikes(restaurantNo){
+	
+	
+	var url='RegisterLikeAction.action?restaurantNo='+restaurantNo;
+	
+	
+	open(url, "좋아요 등록", "toolbar=no,location=no,status=no,menubar=no,"+
+						 "scrollbars=no,resizable=no,width=400,height=200");
+}
 </script>
+
 
 </body>
 </html>

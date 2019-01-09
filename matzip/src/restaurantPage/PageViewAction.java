@@ -42,7 +42,11 @@ public class PageViewAction extends ActionSupport implements SessionAware{
 	private int isPower;
 	private int isRes;
 	private float starPoint;
-
+	
+	private String filter_address = "";
+	private String filter_category = "";
+	private String keyword ="";
+	
 	private String fileUploadPath = "C:\\Java\\upload\\";
 
 	private InputStream inputStream;
@@ -58,15 +62,42 @@ public class PageViewAction extends ActionSupport implements SessionAware{
 	}
 
 	// 상세보기
-	public String execute() throws Exception {
+	public String execute()  {
   		
+	try {	
 		// 해당 번호의 글을 가져온다.
 		restResultClass = (BoardVO) sqlMapper.queryForObject("rest.selectOne", getRestaurantNo());
 		reviewList = sqlMapper.queryForList("review.selectAll",getRestaurantNo());
-		
+	}catch(Exception e) {
+		e.printStackTrace();
+	}
 		
 		return SUCCESS;
 		
+	}
+	
+	public String getFilter_address() {
+		return filter_address;
+	}
+
+	public void setFilter_address(String filter_address) {
+		this.filter_address = filter_address;
+	}
+
+	public String getFilter_category() {
+		return filter_category;
+	}
+
+	public void setFilter_category(String filter_category) {
+		this.filter_category = filter_category;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 
 	public BoardVO getParamClass() {
