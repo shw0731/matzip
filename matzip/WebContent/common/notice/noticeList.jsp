@@ -74,10 +74,11 @@
             <td colspan = "5"><s:property value = "pagingHtml"  escape = "false" /></td>
       </tr>
       </table>
+      <s:if test="memberResultClass.isType==2">
       <input type = "button" value = "메인으로 돌아가기" class="btn btn-primary pull-right"
                         onClick = "javascript:location.href=
                         'MainAction.action';">
-       <s:if test="memberResultClass.isType==2">
+       
                   <input type = "button" value = "글쓰기" class="btn btn-primary pull-right"
                         onClick = "javascript:location.href=
                         'no_writeForm.action?currentPage=<s:property value = "currentPage" />';">
