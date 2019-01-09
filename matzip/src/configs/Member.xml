@@ -9,7 +9,7 @@
 
 <!-- 가입 -->
 <action name="JoinAction" class="member.JoinAction" >
-	<result name="success">/index.jsp</result>
+	<result name="success" type="chain">MainAction</result>
 	<result name="error">/common/Member/joinError.jsp</result>
 </action>
 <!-- 메인으로 돌아가기 -->
@@ -18,13 +18,13 @@
 </action>
 <!-- 로그인 -->
 <action name="LoginAction" class="member.LoginAction" >
-	<result name="success" >/index.jsp</result>
+	<result name="success" type="chain">MainAction</result>
 	<result name="error">/common/Member/loginError.jsp</result>
 </action>
 
 <!-- 로그아웃 -->
 <action name="logout" class="member.LoginAction" method="logout">
-	<result>/index.jsp</result>
+	<result type="chain">MainAction</result>
 </action>
 
 <!-- 아이디 체크 -->
