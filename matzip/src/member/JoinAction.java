@@ -54,6 +54,7 @@ public class JoinAction extends ActionSupport {
 	return SUCCESS;
 	}
 	
+	
 	public String idCheckMethod() throws Exception {
 		idCheck =  (String)sqlMapper.queryForObject("idCheck",  getID()); //Ű��,��ü
 		return SUCCESS;

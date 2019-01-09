@@ -51,12 +51,20 @@ function openConfirmPhone(){
 	
 	var phone=document.getElementById('user_phone').value;
 	var url="CheckPhoneAction.action?phoneNumber="+ joinForm.phoneNumber.value;
-	
+	var regTel = /^(01[016789]{1}|070|02|0[3-9]{1}[0-9]{1})[0-9]{3,4}[0-9]{4}$/;
+
 	if(phone.length==0){
 		alert("번호를 입력하세요");
 		joinForm.phoneNumber.focus();
 		return false;
+	}else if(!regTel.test(phone)) {
+
+		alert('올바른 전화번호를 입력하세요.');
+
+		return false;
+
 	}
+
 	open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"+
 						 "scrollbars=no,resizable=no,width=400,height=200");
 }
