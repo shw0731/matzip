@@ -10,7 +10,7 @@ public class QnAVO {
 	private String password;
 	private Date reg_date;
 	private int isprivate;
-	private int answerno;
+	private int answerno; 
 	private int isanswer; 
 	
 	public int getServiceno() {

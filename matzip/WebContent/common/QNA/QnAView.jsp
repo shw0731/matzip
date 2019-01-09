@@ -3,6 +3,7 @@
     <% String id=session.getId();
     %>
 
+
  
 
 <html>
@@ -193,19 +194,19 @@
                         '<s:property value = "currentPage" />','modify')">
 				</s:if>
 								<input name = "list" type = "button" value = "수정" class = "btn btn-success right"
-                        onClick = "javascript:open_win_noresizable('checkForm.action?serviceno='+
+                        onClick = "javascript:open_win_noresizable('QnAModifyForm.action?serviceno='+
                         '<s:property value = "resultClass.serviceno" />&currentPage='+
                         '<s:property value = "currentPage" />','modify')">
     
                  <input name = "list" type = "button" value = "삭제" class="btn btn-warning right"
-                        onClick = "javascript:location.href='checkForm.action?serviceno='+
+                        onClick = "javascript:location.href='QnADeleteAction.action?serviceno='+
                         '<s:property value = "resultClass.serviceno" />&currentPage='+
                         '<s:property value = "currentPage" />','delete'">
    
                   <input name = "list" type = "button" value = "목록" class="btn btn-info right"
                         onClick = "javascript:location.href='QnAList.action?currentPage='+
                         '<s:property value = "currentPage" />'">
-				
+		 		
 			</td>
 		</tr>
 	</table>

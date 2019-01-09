@@ -23,7 +23,7 @@ public class QnADeleteAction extends ActionSupport implements SessionAware{
 	
 	/*private cQnAVO cClass = new cQnAVO();
 	private cQnAVO cResult = new cQnAVO();*/
-	
+	 
 	private int currentPage;
 	/*private String fileUploadPath = "C:\\Java\\Framework07\\upload\\";*/
 	
@@ -107,6 +107,12 @@ public class QnADeleteAction extends ActionSupport implements SessionAware{
 	public void setSession(Map session) {
 		this.session = session;
 	}
+
+	public void setServiceno(int serviceno) {
+		this.serviceno = serviceno;
+	}
+	
+	
 	
 
 }

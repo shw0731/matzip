@@ -20,7 +20,7 @@ public class QnAAction extends ActionSupport implements SessionAware {
 	public static SqlMapClient sqlMapper;
 	
 	private List<QnAVO> list = new ArrayList<QnAVO>();
-	
+	 
 	private String searchKeyword;
 	private int searchNum;
 	

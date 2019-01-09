@@ -63,7 +63,7 @@
 		<tr>
 			<td width="100" align="center">내용</td>
 			<td width="500" >
-				${resultClass.context }
+				<pre>${resultClass.context }</pre>
 			</td>
 		</tr>
 

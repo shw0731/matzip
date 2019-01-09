@@ -4,7 +4,7 @@
     %>
 
  
-
+   
 <html>
 <head>
     <meta charset="utf-8">
@@ -115,8 +115,7 @@
         <tr>
         
             <div class="form-group">
-<input type="text" class="form-control" placeholder="제목	" name="subject" maxlength="20">
-          </td>
+<input type="text" class="form-control" placeholder="제목	" name="subject" maxlength="20" value="<s:property value="resultClass.subject"/>">
                 </div>
         </tr>
         
@@ -126,7 +125,7 @@
       </tr>
 	<tr>
 	    <div class="form-group">
-		<td><textarea class="form-control" placeholder="공지 내용" name="Context" maxlength="2048" style="height: 300px;"></textarea>
+		<td><textarea class="form-control" placeholder="공지 내용"  name="Context" maxlength="2048" style="height: 300px;"><s:property value="resultClass.context"/></textarea>
 
           </td>
           </div>
