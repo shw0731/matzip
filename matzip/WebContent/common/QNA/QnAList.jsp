@@ -33,11 +33,12 @@
         <table class="table table-striped">
 
     <tr align = "center">
-    
-            <td width = "50"><strong>번호</strong></td>
+               <td width = "80"><strong>날짜</strong></td> 
+
             <td width = "350"><strong>제목</strong></td>
-            <td width = "80"><strong>이름</strong></td>
-            <td width = "80"><strong>날짜</strong></td>
+                        <td width = "80"><strong>ID</strong></td>
+
+
 
         	</tr>
         	
@@ -52,12 +53,13 @@
 		</s:url>
 		
 		<tr bgcolor = "#FFFFFF" align = "center">
-				<td><s:property value = "serviceno" /></td>
+						<td align="center"><s:property value="reg_date" /></td>
+
 				<td align = "left">&nbsp;<s:a href="%{qnaViewURL}">
 				<s:property value="subject" /></s:a></td>
 				<td align="center"><s:property value="id" /></td>
-				<td align="center"><s:property value="reg_date" /></td>
-			 	
+
+				
 		</tr>
 
 			
