@@ -66,7 +66,7 @@
   </label>
  
 </div>
-<p class="nanum" style="font-size: 18pt" align="center"><b>카테고리 별</b></p>
+<p class="nanum" style="font-size: 18pt" align="center">카테고리 별</p>
 <div class="container-b">
   <input type="checkbox" id="Checkbox7" name="filter_category[]" value="중식">
   <label for="Checkbox7">
