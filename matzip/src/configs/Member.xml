@@ -18,7 +18,7 @@
 </action>
 <!-- 로그인 -->
 <action name="LoginAction" class="member.LoginAction" >
-	<result name="success" type="chain">MainAction</result>
+	<result name="success">/common/Member/loginSuccess.jsp</result>
 	<result name="error">/common/Member/loginError.jsp</result>
 </action>
 
