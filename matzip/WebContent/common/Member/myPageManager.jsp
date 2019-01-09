@@ -1,11 +1,11 @@
  <%@ page session="true" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
  <script>
- function register(){
+/*  function register(){
 	 var url="http://localhost:8080/common/BlackList/blackList.jsp"
 	 
 		 open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"+
 		 "scrollbars=no,resizable=no,width=500,height=150");
- }
+ } */
  
  
  function list(){
@@ -36,8 +36,8 @@
 
           <!-- 마이 리뷰-->
          <div class="md-form mb-5">
-        <p class="b"> <label for="">♥　BlackList</label><a href="javascript:list();">List</a> <a href="javascript:register();">regist</p></a>
-        <p class="b"> <label for="">♥<a href="http://localhost:8080/no_listAction.action">　Notice</label></p></a>
+<!--         <p class="b"> <label for="">♥　BlackList</label><a href="javascript:list();">List</a> <a href="javascript:register();">regist</p></a>
+ -->        <p class="b"> <label for="">♥<a href="http://localhost:8080/no_listAction.action">　Notice</label></p></a>
          </div>
          <!--마이리뷰 END  -->
         </div>

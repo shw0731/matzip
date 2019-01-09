@@ -75,8 +75,8 @@ p.d {
 					<div class="md-form mb-5">
 						<p class="b">♥ ${session.ID}</p>
 						<%-- </i><button type="button" class="btn btn-primary collapsed" data-toggle="modal" data-target=#modalModifyForm"><small>정보수정</small></button> --%>
-						</i><a href="javascript:Modify();"><small>정보수정</small></a> <a
-							href="javascript:LikeList();"><small>내가 좋아요 한 리스트 관리</small></a>
+						</i><a href="javascript:Modify();"><small>정보수정</small></a> 
+						<%-- <a href="javascript:LikeList();"><small>내가 좋아요 한 리스트 관리</small></a> --%>
 
 
 						<ul>
