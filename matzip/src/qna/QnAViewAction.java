@@ -55,6 +55,7 @@ public class QnAViewAction extends ActionSupport implements SessionAware{
 
 	public String execute() throws Exception {
 		paramClass.setServiceno(getServiceno());
+		paramClass.setId((String)session.get("ID"));
 		//sqlMapper.update("updateReadHit",paramClass);
 		
 		memberResultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", session.get("ID"));

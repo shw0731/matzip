@@ -1,6 +1,6 @@
 package qna;
 
-import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ActionSupport; 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
@@ -53,7 +53,7 @@ public class QnAModifyAction extends ActionSupport implements SessionAware{
 	{
 		paramClass = new QnAVO();
 		resultClass = new QnAVO();
-		
+		id = (String) session.get("ID");
 		paramClass.setServiceno(getServiceno());
 		paramClass.setSubject(getSubject());
 		paramClass.setId(getId());
@@ -184,6 +184,16 @@ public class QnAModifyAction extends ActionSupport implements SessionAware{
 	public void setSession(Map session) {
 		this.session = session;
 	}
+
+	public MemberVO getMemberResultClass() {
+		return memberResultClass;
+	}
+
+	public void setMemberResultClass(MemberVO memberResultClass) {
+		this.memberResultClass = memberResultClass;
+	}
+	
+	
 	
 	
 

@@ -18,6 +18,10 @@ import org.apache.struts2.interceptor.SessionAware;
 import member.MemberVO;
 
 
+/**
+ * @author ¿ø¼±¹Î
+ *
+ */
 public class QnAWriteAction extends ActionSupport implements SessionAware {
 	
 	public static Reader reader;
@@ -343,5 +347,14 @@ public class QnAWriteAction extends ActionSupport implements SessionAware {
 	public void setSession(Map session) {
 		this.session = session;
 	}
+
+	public MemberVO getMemberResultClass() {
+		return memberResultClass;
+	}
+
+	public void setMemberResultClass(MemberVO memberResultClass) {
+		this.memberResultClass = memberResultClass;
+	}
+	
 	
 }
