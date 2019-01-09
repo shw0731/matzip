@@ -13,9 +13,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-* {
-	box-sizing: border-box
-}
+
 
 }
 body {
@@ -159,11 +157,56 @@ to {
 		font-size: 11px
 	}
 }
+<style>  
+.nanum{
+  font-family: 'Do Hyeon', sans-serif;
+}
+.noto{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+html, body, #map {
+    width: 100%;
+    height: 90%;
+    margin: 5;
+    margin-botton:10px;
+    padding-arg: 5;
+    0px;
+}
+#map {
+    position: relative;
+}
+
+.findMap{
+    position: relative;
+    float: left;
+    width: 329px;
+    height: 309px;
+    background: url(/image/restaurant/teste_rest/bg_findmap_15.gif) no-repeat;
+}
+
+.wrapper {
+
+    display: grid;
+    grid-template-columns: 200px 100px;
+    grid-template-rows: 40px 100px;
+}
+
+.header {
+   grid-column: span 12;
+}
+
+.menu {
+   gride-column: span 4;
+}
+
+.content{
+   grid-column: span 9;
+}
+
+
 </style>
 </head>
-<script>
-	var hasReview;
-</script>
+
 <body>
 
 	<div class="slideshow-container">
@@ -205,34 +248,56 @@ to {
 	</div>
 
 
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 text-right">
+			<div class="card w-100">
+				<div class="card-body" style="text-align: left">
 
-	<div class="card w-100">
-		<div class="card-body" style="text-align:center">
+					<span style="font-size: 25pt" class="Sunflower"> <s:property value="restResultClass.restaurantName" /></span> &nbsp;<input
+						name="Like" type="image" src="/img/logos/like.jpg" value="UP" class="inputb" onClick="registerLikes(<s:property value='restResultClass.restaurantNo'/>)" />
+						<small><s:property value="restResultClass.likes" /></small>
 
-			<span style="font-size: 25pt" class="Sunflower">
-				<s:property value="restResultClass.restaurantName" /></span>
-				&nbsp;<input name="Like" type="image" src="/img/logos/like.jpg"
-					value="UP" class="inputb"
-					onClick="registerLikes(<s:property value='restResultClass.restaurantNo'/>)"/><small><s:property
-						value="restResultClass.likes" /></small>
+					<p class="nanu" style="font-size: 13pt">
+						<br />
+						<s:property value="restResultClass.address" />
+						<br /> &nbsp;
+						<s:property value="restResultClass.category" />
+						<br />
 
-				<p class="nanu" style="font-size: 13pt"><br/>
-					<s:property value="restResultClass.address" /><br/>
-					&nbsp;
-					<s:property value="restResultClass.category" /><br/>
-					
-					
-				</p>
-				<p class="Sunflower">
-				<table class="table table-bordered" style="width:500px" align="center">
-					<th><br>
-					<s:property value="restResultClass.context" /><br>
-					<br></th>
+
 					</p>
-				</table>
+					<p class="Sunflower">
+					<table class="table table-bordered" style="width: 500px"
+						align="center">
+						<th><br> <s:property value="restResultClass.context" /><br>
+							<br></th>
+						</p>
+					</table>
+				</div>
+			</div>
+			</div>
+			<div class="col-lg-6 text-right">
+				<div id="map" align="center"></div><br><br>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=82957f9de3f5badbdcfb736f5cc155ac&libraries=services"></script>
+<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		mapOption = {
+    	center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+    		level: 3 // 지도의 확대 레벨
+		};  
+		// 지도를 생성합니다    
+		var map = new daum.maps.Map(mapContainer, mapOption); 
+		
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new daum.maps.services.Geocoder();
+		
+		var tmp;
+		
+	</script>
+			</div>
 		</div>
 	</div>
-
 
 	<s:if test="%{#session.ID==restResultClass.ID}">
 		<input name="list" type="button" value="수정" class="inputb"
@@ -242,10 +307,10 @@ to {
 	</s:if>
 	<Br>
 	<!-- review -->
-
+<div class="col-lg-12 text-center">
 	<s:iterator value="reviewList" status="stat">
 	
-		<table class="table table-hover" style="width:500px" align="center">
+		<table class="table table-hover" style="width:500px" align="center" >
 		<td>
 			<div class="card-body">
 				<span style="font-size: 20pt" class="Sunflower">
@@ -264,7 +329,7 @@ to {
 				</p>
 
 <span style="font-size: 20pt" class="Sunflower">
-				<a href="#" class="btn btn-primary">동감</a> <br/>
+				
 				<s:if test="%{#session.ID==ID}">
 					<a href='javascript:Modify(<s:property value="reviewNo"/>,<s:property value="restaurantNo"/>);' class="btn btn-link">수정</small>
 						<s:param name="restaurantNo">
@@ -291,7 +356,7 @@ to {
 
 
 	</s:iterator>
-
+</div>
 	<s:if test="reviewList.size() <= 0">
 				
 	     
@@ -302,11 +367,12 @@ to {
 	<Br>
 	<s:if test="session.ID!=null">
 <!-- 입력폼 -->
-    <form action="ReviewWriteAction.action" method="post" enctype="multipart/form-data" style="width:600px" align="center">
+	<div class="container" align="center" >
+    <form action="ReviewWriteAction.action" method="post" enctype="multipart/form-data" style="width:600px" >
    <!-- subject -->
       <s:hidden name="restaurantNo" value="%{restResultClass.restaurantNo}" />
       <s:hidden name="currentPage" value="%{currentPage}" />
-    <div class="input-group mb-3"  >
+    <div class="input-group input-group-lg"  >
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1">제목</span>
         </div>
@@ -319,7 +385,7 @@ to {
    </div>
    
     <!-- context  -->
-    <div class="input-group mb-3">
+    <div class="input-group input-group-lg">
         <div class="input-group-prepend">
           <span class="input-group-text">내용</span>
         </div>
@@ -327,10 +393,11 @@ to {
      </div>
    <!-- upload file -->
     
-            <s:file label="File[1]" name="uploads" />
+            <s:file label="File" name="uploads" />
     
    <input name="submit" type="submit" value="작성완료" class="inputb">
    </form>
+   </div>
    </s:if>
 <script>
 var slideIndex = 1;
@@ -377,9 +444,34 @@ function registerLikes(restaurantNo){
 	open(url, "좋아요 등록", "toolbar=no,location=no,status=no,menubar=no,"+
 						 "scrollbars=no,resizable=no,width=600,height=200");
 }
-
 </script>
 
 
 </body>
 </html>
+
+	<script>
+		
+		
+		
+		
+		geocoder.addressSearch('<s:property value="restResultClass.address"/>', function(result, status) {
+    // 정상적으로 검색이 완료됐으면 
+     if (status === daum.maps.services.Status.OK) {
+        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        var marker = new daum.maps.Marker({
+            map: map,
+            position: coords
+        });
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new daum.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;"><s:property value="restResultClass.restaurantName"/></div>'
+        });
+        infowindow.open(map, marker);
+      
+       map.setCenter(coords);
+    } 
+}); 
+</script>
+

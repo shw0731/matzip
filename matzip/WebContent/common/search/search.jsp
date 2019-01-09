@@ -116,7 +116,7 @@ html, body, #map {
         });
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new daum.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;"><s:property value="restaurantName"/></div>'
+            content: '<s:a href="%{viewURL}"><div style="width:150px;text-align:center;padding:6px 0;"><s:property value="restaurantName"/></div></s:a>'
         });
         infowindow.open(map, marker);
       	//1등위치 기준
