@@ -41,12 +41,13 @@
             </action>
   
             <action name = "no_modifyAction" class = "notice.modifyAction">
-                  <result type = "chain">no_viewAction</result>
+                  <result>/common/notice/noticeModifySuccess.jsp</result>
             </action>
+           
             
                         <!-- 게시판 삭제 액션 -->
             <action name = "no_deleteAction" class = "notice.deleteAction">
-                  <result type = "chain">no_listAction</result>
+                  <result>/common/notice/noticeDeleteSuccess.jsp</result>
             </action>
       </package>
 </struts>

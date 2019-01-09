@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <head>
-<!-- <link href="https://fonts.googleapis.com/css?family=Gaegu:400,700&amp;subset=korean" rel="stylesheet">
- -->
+<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
 </head>
+<style>
+.namupen{
+font-family: 'Dancing Script', cursive;
+font-size: 70px;
+}
+</style>
 <%@ include file="/common/header.jsp"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <meta charset="UTF-8" />
@@ -11,7 +16,7 @@
 	<header class="masthead">
 		<div class="container">
 			<div class="intro-text">
-				<div class="intro-lead-in">Welcome To The</div>
+				<div class="intro-lead-in"><p class="namupen" font-size="">Welcome To The</p></div>
 				<div class="intro-heading text-uppercase">맛.zip</div>
 
 			</div>

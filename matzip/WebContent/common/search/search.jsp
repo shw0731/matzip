@@ -4,21 +4,60 @@
 <meta charset="UTF-8" />
 
 <%@ include file="/common/header.jsp"%>
-
+<head>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500&amp;subset=korean" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
+</head>
 <!-- 맵 크기 자동형 -->
 <style>  
+.nanum{
+  font-family: 'Do Hyeon', sans-serif;
+}
+.noto{
+  font-family: 'Noto Sans KR', sans-serif;
+}
 html, body, #map {
     width: 100%;
     height: 90%;
-    margin: 0;
-    padding-top: 5
+    margin: 5;
+    margin-botton:10px;
+    padding-arg: 5;
     0px;
 }
 #map {
     position: relative;
 }
+
+.findMap{
+    position: relative;
+    float: left;
+    width: 329px;
+    height: 309px;
+    background: url(/image/restaurant/teste_rest/bg_findmap_15.gif) no-repeat;
+}
+
+.wrapper {
+
+    display: grid;
+    grid-template-columns: 200px 100px;
+    grid-template-rows: 40px 100px;
+}
+
+.header {
+   grid-column: span 12;
+}
+
+.menu {
+   gride-column: span 4;
+}
+
+.content{
+   grid-column: span 9;
+}
+
 </style>
-<div id="map"></div>
+<br><br><br><br><table><td>
+<div id="map" style="width:1500px;height:400px;" align="center"></div><br><br>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=82957f9de3f5badbdcfb736f5cc155ac&libraries=services"></script>
 <script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -35,7 +74,8 @@ html, body, #map {
 		var tmp;
 		
 	</script>
-	<br>
+</td>
+	</table>
 
 <!-- list 첫번째 예 -->
 
@@ -109,20 +149,26 @@ html, body, #map {
     <span class="sr-only">Next</span>
   </a>
 </div>
-    <div class="media-body">
-    
+<table class="table table-condensed">
+    <td width="200">
     <s:a href="%{viewURL}">
     	<h2><s:property value="restaurantName" /></h2><br>
-    	평점:<s:property value="starPoint"/>&nbsp;&nbsp;좋아요: <s:property value="likes"/><br>
-    	주소:<s:property value="address"/>&nbsp;&nbsp;음식종류:<s:property value="category"/><Br>
-    	가게 설명:<s:property value="context"/>
-    
-    </s:a>
+    	<s:property value="restResultClass.restaurantName" /></s:a>
+    	<p class="nanum" style="font-size: 14pt">
+    	&nbsp;&nbsp;★:<s:property value="starPoint"/>&nbsp;&nbsp;<br>
+    	&nbsp;&nbsp;<small><s:property value="category"/></small><br>
+    	&nbsp;&nbsp;<s:property value="address"/>
+    	<p class="noto" style="font-size: 15pt">
+    	<table class="table table-bordered">
+    	<td width="100" height="100" >
+    	&nbsp;&nbsp;<s:property value="context"/></p></td></table></td>
+
+    	</table>
+
     <input type="hidden" value="<s:property value="restaurantNo"/>" name="restaurantNo" id="restaurantNo"/>
     <input type="hidden" id="ID" name="ID" value="${session.ID }" />
-    <s:if test="session.ID!=null">
-    <button type="button" name="confirm_id" onclick="registerLikes();">좋아요</button>	
-  	</s:if>
+    <%-- <s:if test="session.ID!=null">
+    <button type="button" name="confirm_id" onclick="registerLikes();">좋아요</button> --%>	
     </div>
   </li>
 

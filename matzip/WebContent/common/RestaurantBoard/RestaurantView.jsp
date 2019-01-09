@@ -10,6 +10,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Poor+Story"
 	rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 * {
@@ -29,7 +30,9 @@ body {
 img {
 	vertical-align: middle;
 }
-
+.nanu{
+  font-family: 'Do Hyeon', sans-serif;
+}
 .Nanum{
 font-family: 'Nanum Gothic Coding', monospace;
 font-size: 13px;
@@ -213,10 +216,9 @@ to {
 					onClick="javascript:location.href='LikeWriteAction.action?currentPage=<s:property value="currentPage" />'"><small><s:property
 						value="restResultClass.likes" /></small>
 
-				<p class="Sunfloweㅊ" style="font-size: 13pt"><br/>
-					주소 : &nbsp;
+				<p class="nanu" style="font-size: 13pt"><br/>
 					<s:property value="restResultClass.address" /><br/>
-					음식 종류 : &nbsp;
+					&nbsp;
 					<s:property value="restResultClass.category" /><br/>
 					
 					
