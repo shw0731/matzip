@@ -377,6 +377,7 @@ function registerLikes(restaurantNo){
 	open(url, "좋아요 등록", "toolbar=no,location=no,status=no,menubar=no,"+
 						 "scrollbars=no,resizable=no,width=400,height=200");
 }
+}
 </script>
 
 

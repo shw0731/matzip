@@ -10,7 +10,9 @@
 <script language="javascript">
 	window.onload = function() {
 		alert("수정이 완료되었습니다.");
+		opener.parent.location.reload();
 		window.close();
+		
 	}
 </script>
 </body>
