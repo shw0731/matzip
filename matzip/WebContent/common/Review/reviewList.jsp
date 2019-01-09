@@ -79,14 +79,14 @@ function ReviewdeleteAction(reviewNo){
 	
 	
 	open(url, "리뷰 삭제", "toolbar=no,location=no,status=no,menubar=no,"+
-						 "scrollbars=no,resizable=no,width=400,height=200");
+						 "scrollbars=no,resizable=no,width=600,height=200");
 }
 function ReviewModifyForm(reviewNo,restaurantNo){
 	var url='ReviewModifyForm.action?reviewNo='+reviewNo+'&'+'restaurantNo='+restaurantNo;
 	
 	
 	open(url, "리뷰 수정", "toolbar=no,location=no,status=no,menubar=no,"+
-						 "scrollbars=no,resizable=no,width=400,height=200");
+						 "scrollbars=no,resizable=no,width=400,height=500");
 	
 }
 
