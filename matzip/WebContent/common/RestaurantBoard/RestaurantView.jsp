@@ -307,12 +307,14 @@ html, body, #map {
 	</s:if>
 	<Br>
 	<!-- review -->
-<div class="col-lg-12 text-center">
+<div class="container">
+		<div class="row">
+		  
 	<s:iterator value="reviewList" status="stat">
 	
-		<table class="table table-hover" style="width:500px" align="center" >
-		<td>
-			<div class="card-body">
+		<div class="col-lg-6 text-right">
+		<div class="card">
+			<div class="card-body" style="text-align: left">
 				<span style="font-size: 20pt" class="Sunflower">
 					&nbsp;&nbsp;<s:property value="subject" /></span><font color="848484">
 			<s:property value="reg_date" /></font>
@@ -328,7 +330,7 @@ html, body, #map {
 					<s:property value="starPoint" />
 				</p>
 
-<span style="font-size: 20pt" class="Sunflower">
+				<span style="font-size: 20pt" class="Sunflower">
 				
 				<s:if test="%{#session.ID==ID}">
 					<a href='javascript:Modify(<s:property value="reviewNo"/>,<s:property value="restaurantNo"/>);' class="btn btn-link">수정</small>
@@ -344,18 +346,19 @@ html, body, #map {
 						</s:param>
 						<s:hidden name="reviewNo" value="%{reviewNo}" />
 						<input class="btn btn-link" type="submit" value="삭제">
-						</td>
+						
 						</span>
 						
-			</div>
+		
 			</form>
 			</s:if>
+			</div>
 		</div>
-
-		</table>
-
-
+	</div>
+		
 	</s:iterator>
+	
+</div>
 </div>
 	<s:if test="reviewList.size() <= 0">
 				
