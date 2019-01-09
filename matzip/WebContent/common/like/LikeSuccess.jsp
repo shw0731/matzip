@@ -19,11 +19,11 @@
 	window.onload = function() {
 		if(isUpload=="1"){
 		alert("등록이 완료되었습니다.");
-		
+		window.close();
 		
 		}else{
 			alert("이미 등록이 되어있습니다.");
-			
+			window.close();
 		}
 	}
 </script>
