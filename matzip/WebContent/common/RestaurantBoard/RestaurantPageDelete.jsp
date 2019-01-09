@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>오류페이지</title>
+<title>삭제성공페이지</title>
 </head>
 <body>
 <script language="javascript">
 	window.onload = function() {
 		alert("음식점페이지가 삭제 되었습니다.");
-		history.go(-1);
+		history.go(-2);
 	}
 </script>
 </body>

@@ -118,7 +118,7 @@ public class WriteAction extends ActionSupport implements SessionAware{
 		 sqlMapper.update("rest.updateFile",paramClass);
 		 
 		}catch(Exception e){
-			e.printStackTrace();
+			return ERROR;
 		}
 		
 		return SUCCESS;

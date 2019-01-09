@@ -10,7 +10,7 @@
 <script language="javascript">
 	window.onload = function() {
 		alert("삭제할 페이지가 존재하지 않습니다.");
-		window.close();
+		history.go(-1);
 	}
 </script>
 </body>

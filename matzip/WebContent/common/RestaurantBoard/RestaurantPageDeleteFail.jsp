@@ -9,7 +9,7 @@
 <body>
 <script language="javascript">
 	window.onload = function() {
-		alert("음식점페이지가 없습니다.");
+		alert("음식점 페이지 삭제실패.");
 		history.go(-1);
 	}
 </script>
