@@ -84,7 +84,7 @@ p.d {
 							</li>
 							<small><li>MyEmail : ${session.email}</small>
 							</li>
-							<small><li>MyPhoneNumber : ${session.phoneNumber}</small>
+							<small><li>MyPhoneNumber : 0${session.phoneNumber}</small>
 							</li>
 
 						</ul>
