@@ -79,11 +79,11 @@
                               <s:property value = "no" />
                         </s:param>
                   </s:url>
-		<s:if test="memberResultClass.isType==2">
+		<s:if test="memberResultClass.isType==2"> 
 				<input name = "list" type = "button" value = "수정" class = "btn btn-success right"
-                        onClick = "javascript:open_win_noresizable('no_modifyForm.action?serviceno='+
+                        onClick = "javascript:location.href='no_modifyForm.action?serviceno='+
                         '<s:property value = "resultClass.serviceno" />&currentPage='+
-                        '<s:property value = "currentPage" />','modify')">
+                        '<s:property value = "currentPage" />','modify'">
     
                  <input name = "list" type = "button" value = "삭제" class="btn btn-warning right"
                         onClick = "javascript:location.href='no_deleteAction.action?serviceno='+
