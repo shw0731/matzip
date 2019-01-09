@@ -24,7 +24,7 @@
 
 <!-- 로그아웃 -->
 <action name="logout" class="member.LoginAction" method="logout">
-	<result type="chain">MainAction</result>
+	<result name="success">/common/Member/logoutSuccess.jsp</result>
 </action>
 
 <!-- 아이디 체크 -->
