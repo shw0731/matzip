@@ -11,7 +11,6 @@
 	window.onload = function() {
 		alert("등록이 완료되었습니다.");
 		window.close();
-		window.location.reload(true);
 	}
 </script>
 </body>
