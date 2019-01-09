@@ -4,10 +4,12 @@
 <html>
 <head>
 <script language="javascript">
-	window.onload = function() {
-		alert("삭제가 완료되었습니다.");
-		history.go(-1);
-	}
+window.onload = function() {
+	alert("삭제가 완료되었습니다.");
+	opener.parent.location.reload();
+	window.close();
+	
+}
 </script>
 </head>
 <body>
