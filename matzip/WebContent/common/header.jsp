@@ -1,6 +1,25 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
 <meta charset="UTF-8" />
+<head>
+<link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
+</head>
+<style>
+.a{
+font-family: 'Charm', cursive;
+font-size: 80px;
+}
+.namupen{
+font-family: 'Dancing Script', cursive;
+font-size: 70px;
+}
+.brush{
+font-family: 'Nanum Brush Script', cursive;
+font-size: 90px;
+}
+</style>
 <script>
 function validation(){
 	
@@ -84,7 +103,7 @@ function openConfirmId(){
 
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="MainAction.action">맛.zip</a>
+        <a class="navbar-brand js-scroll-trigger" href="MainAction.action"><div class="intro-heading text-uppercase"><span class="brush"  style = "font-size:45px;">맛.<span class="a" style = "font-size:25px;">zip</span></div></a>
         
         <form action="searchAction.action" accept-charset="utf-8">
          <input type="text" class="search-bar" name="keyword" style="width:200px; height:40px;"></input>

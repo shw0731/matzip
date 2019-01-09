@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <head>
-<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
 </head>
 <style>
+.a{
+font-family: 'Charm', cursive;
+font-size: 80px;
+}
 .namupen{
 font-family: 'Dancing Script', cursive;
 font-size: 70px;
+}
+.brush{
+font-family: 'Nanum Brush Script', cursive;
+font-size: 90px;
 }
 </style>
 <%@ include file="/common/header.jsp"%>
@@ -17,7 +27,7 @@ font-size: 70px;
 		<div class="container">
 			<div class="intro-text">
 				<div class="intro-lead-in"><p class="namupen" font-size="">Welcome To The</p></div>
-				<div class="intro-heading text-uppercase">맛.zip</div>
+				<div class="intro-heading text-uppercase"><span class="brush">맛.<span class="a">zip</span></div>
 
 			</div>
 		</div>
