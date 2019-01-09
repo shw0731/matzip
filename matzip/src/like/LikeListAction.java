@@ -19,7 +19,7 @@ public class LikeListAction extends ActionSupport implements SessionAware{
     // SqlMapClient API를 사용하기 위한 sqlMapper 객체
     public static SqlMapClient sqlMapper;
     
-    private List<LikeVO> likeList = new ArrayList<LikeVO>();
+    private List<LikeListVO> likeList = new ArrayList<LikeListVO>();
     private Map session;
    
     
@@ -44,13 +44,13 @@ public class LikeListAction extends ActionSupport implements SessionAware{
 	public void setSession(Map session) {
 		this.session = session;
 	}
-	public void setLikeList(List<LikeVO> likeList) {
+	public void setLikeList(List<LikeListVO> likeList) {
 		this.likeList = likeList;
 	}
-	public List<LikeVO> getLikeList() {
+	public List<LikeListVO> getLikeList() {
 		return likeList;
 	}
-	public void setList(List<LikeVO> likeList) {
+	public void setList(List<LikeListVO> likeList) {
 		this.likeList = likeList;
 	}
 	

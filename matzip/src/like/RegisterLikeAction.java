@@ -19,8 +19,9 @@ public class RegisterLikeAction extends ActionSupport implements SessionAware {
     // SqlMapClient API를 사용하기 위한 sqlMapper 객체
     public static SqlMapClient sqlMapper;
 
-    private LikeVO paramClass; // 파라미터를 저장할 객체
-    private LikeVO likeResultClass; // 쿼리 결과 값을 저장할 객체
+    
+    private List<LikeVO> likeResultClass = new ArrayList<LikeVO>(); // 쿼리 결과 값을 저장할 객체
+    private LikeVO paramClass;
     private BoardVO restParamClass;
     
     private Map session;
@@ -39,15 +40,18 @@ public class RegisterLikeAction extends ActionSupport implements SessionAware {
 	
 	public String execute() {
 		try {
-		paramClass = new LikeVO();
-		likeResultClass = new LikeVO();
-		restParamClass = new BoardVO();
+		String ID=(String)session.get("ID");
+		
 		int likeCount;
-		paramClass.setID((String)session.get("ID"));
+		paramClass = new LikeVO();
+		restParamClass = new BoardVO();
+		paramClass.setID(ID);
 		paramClass.setRestaurantNo(restaurantNo);
+	
 		
 		
-		likeResultClass=(LikeVO)sqlMapper.queryForObject("likereg.isLike",paramClass );
+		likeResultClass=sqlMapper.queryForList("likereg.isLike",ID );
+		
 		if(likeResultClass==null) {
 			sqlMapper.insert("likereg.insertLike",paramClass);
 			likeCount=(int)sqlMapper.queryForObject("likereg.countLike", paramClass);
@@ -57,7 +61,13 @@ public class RegisterLikeAction extends ActionSupport implements SessionAware {
 			isUpdate = 1;
 			return SUCCESS;
 			
-		}else if(!likeResultClass.getID().equals(paramClass.getID())||likeResultClass.getRestaurantNo()!=paramClass.getRestaurantNo()) { 
+		}else { 
+			for(LikeVO likeVO:likeResultClass) {
+				if(likeVO.getRestaurantNo()==restaurantNo) {
+					isUpdate=0;
+					return SUCCESS;
+				}
+			}
 			sqlMapper.insert("likereg.insertLike",paramClass);
 			likeCount=(int)sqlMapper.queryForObject("likereg.countLike", paramClass);
 			restParamClass.setRestaurantNo(restaurantNo);
@@ -65,8 +75,9 @@ public class RegisterLikeAction extends ActionSupport implements SessionAware {
 			sqlMapper.update("rest.updateLike",restParamClass);
 			isUpdate = 1;
 			return SUCCESS;
+			
 		}
-			isUpdate = 0;
+			
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -75,6 +86,22 @@ public class RegisterLikeAction extends ActionSupport implements SessionAware {
 		
 	}
 	
+
+	public List<LikeVO> getLikeResultClass() {
+		return likeResultClass;
+	}
+
+	public void setLikeResultClass(List<LikeVO> likeResultClass) {
+		this.likeResultClass = likeResultClass;
+	}
+
+	public LikeVO getParamClass() {
+		return paramClass;
+	}
+
+	public void setParamClass(LikeVO paramClass) {
+		this.paramClass = paramClass;
+	}
 
 	public BoardVO getRestParamClass() {
 		return restParamClass;
@@ -108,21 +135,7 @@ public class RegisterLikeAction extends ActionSupport implements SessionAware {
 		this.isUpdate = isUpdate;
 	}
 
-	public LikeVO getParamClass() {
-		return paramClass;
-	}
 
-	public void setParamClass(LikeVO paramClass) {
-		this.paramClass = paramClass;
-	}
-
-	public LikeVO getLikeResultClass() {
-		return likeResultClass;
-	}
-
-	public void setLikeResultClass(LikeVO likeResultClass) {
-		this.likeResultClass = likeResultClass;
-	}
 
 	public int getCurrentPage() {
 		return currentPage;

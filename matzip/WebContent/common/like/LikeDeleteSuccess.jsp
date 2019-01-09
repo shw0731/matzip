@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>좋아요 완료</title>
+<title>좋아요 삭제</title>
 </head>
 <body>
 <script language="javascript">

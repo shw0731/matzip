@@ -20,7 +20,7 @@
             
            <!-- 게시판 삭제 액션 -->
             <action name = "DeleteLikeAction" class = "like.DeleteLikeAction">
-                  <result type="chain">LikeListAction</result>
+                  <result>/common/like/LikeDeleteSuccess.jsp</result>
             </action>
       </package>
 </struts>

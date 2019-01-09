@@ -21,7 +21,7 @@
 
 <!-- LIKEREG에서 선택한 음식점 게시판과 맞는 유저아이디, 유저아이디개수, 음식점게시판번호를 가져온다.  -->
 
-<select id="isLike" resultClass="like" parameterClass="like">
+<select id="isLike" resultClass="like" parameterClass="String">
 SELECT ID, RESTAURANTNO FROM LIKEREG WHERE ID = #ID#
 </select>
 <select id="countLike" resultClass="int" parameterClass="like">

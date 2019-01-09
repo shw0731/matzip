@@ -9,19 +9,21 @@
 <title>좋아요 완료</title>
 </head>
 <body>
-<input type="hidden" id="isUpdate" value="<s:property value="isUpdate"/>"/>
+
+
+</body>
+</html>
 <script language="javascript">
-	var isUpload = document.getElementById('isUpdate');
+	var isUpload = <s:property value='isUpdate'/>;
+	
 	window.onload = function() {
-		if(isUpload==1){
+		if(isUpload=="1"){
 		alert("등록이 완료되었습니다.");
 		
-		window.close();
+		
 		}else{
 			alert("이미 등록이 되어있습니다.");
-			window.close();
+			
 		}
 	}
 </script>
-</body>
-</html>
