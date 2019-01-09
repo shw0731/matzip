@@ -21,5 +21,6 @@
        <sqlMap resource="/sql/reviewSQL.xml" />
        <sqlMap resource="/sql/blackListSQL.xml" />
        <sqlMap resource="/sql/likeRegSQL.xml"/>
+       <sqlMap resource="/sql/powerSQL.xml"/>
 	
 </sqlMapConfig>

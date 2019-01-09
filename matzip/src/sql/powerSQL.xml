@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap namespace="power">
+<typeAlias alias="power" type="power.PowerVO"/>
+<typeAlias alias="powerList" type="power.PowerListVO"/>
+
+<!-- 리절트 맵 -->
+
+<resultMap id="powerres" class="power">
+  <result property="restaurantNo" column="RESTAURANTNO"/>
+  <result property="state" column="STATE"/>
+</resultMap>
+
+<resultMap id="powerListres" class="powerList">
+	<result property="restaurantNo" column="RESTAURANTNO"/>
+ 	<result property="state" column="STATE"/>
+ 	<result property="restaurantName" column="RESTAURANTNAME"/>
+</resultMap>
+
+<select id="selectAll" resultClass="power">
+	SELECT L.RESTAURANTNO , L.STATE, R.RESTAURANTNAME 
+	FROM POWERLINKREG L LEFT RESTAURANTBOARD R
+	ON L.RESTAURANTNO = R.RESTAURANTNO
+	
+</select>
+
+
+
+<insert id="insertPower" parameterClass="int">
+	INSERT INTO POWERLINKREG(STATE, RESTAURANTNO)
+				VALUES(0, #restaurantNo#)
+</insert>
+
+<update id="registerPower" parameterClass="int">
+	UPDATE POWERLINKREG SET STATE = 1 WHERE RESTAURANTNO = #restaurantNo#
+</update>
+
+
+<delete id="deletePower" parameterClass="int">
+	DELETE FROM POWERLINKREG WHERE RESTAURANTNO = #restaurantNo#
+</delete>
+
+</sqlMap>
