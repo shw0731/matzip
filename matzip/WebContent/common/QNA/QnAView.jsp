@@ -206,7 +206,7 @@
                   <input name = "list" type = "button" value = "목록" class="btn btn-info right"
                         onClick = "javascript:location.href='QnAList.action?currentPage='+
                         '<s:property value = "currentPage" />'">
-				
+		 		
 			</td>
 		</tr>
 	</table>

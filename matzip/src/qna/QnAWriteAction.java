@@ -103,7 +103,7 @@ public class QnAWriteAction extends ActionSupport implements SessionAware {
 		{
 			
 			paramClass.setAnswerno(getAnswerno());
-			
+			 
 		}
 		paramClass.setId((String)session.get("ID"));
 		

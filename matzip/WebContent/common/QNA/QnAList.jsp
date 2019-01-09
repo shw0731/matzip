@@ -57,7 +57,7 @@
 				<s:property value="subject" /></s:a></td>
 				<td align="center"><s:property value="id" /></td>
 				<td align="center"><s:property value="reg_date" /></td>
-				
+			 	
 		</tr>
 
 			
