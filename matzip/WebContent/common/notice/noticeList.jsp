@@ -75,7 +75,7 @@
       </tr>
       </table>
       <s:if test="memberResultClass.isType==2">
-      <input type = "button" value = "메인으로 돌아가기" class="btn btn-primary pull-right"
+      <input type = "button" value = "메인" class="btn btn-warning pull-left"
                         onClick = "javascript:location.href=
                         'MainAction.action';">
        
