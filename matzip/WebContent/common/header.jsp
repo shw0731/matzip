@@ -119,7 +119,7 @@ function openConfirmId(){
             <s:if test="session.ID !=NULL">
              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalmyPageForm">MYPAGE</button>
           	 <form action="logout.action">
-          	 <button type="submit" class="btn btn-primary btn-lg">LOGOUT</button>
+          	  &nbsp;&nbsp;<button type="submit" class="btn btn-primary btn-lg">LOGOUT</button>
           	 </form>
           </s:if>
           <s:else>
