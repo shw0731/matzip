@@ -5,6 +5,7 @@
 <resultMap class="review" id="reviewRes">
 <result column="reviewno" property="reviewNo"/>
 <result column="restaurantno" property="restaurantNo"/>
+<result column="restaurantname" property="restaurantName"/>
 <result column="ID" property="ID"/>
 <result column="context" property="context"/>
 <result column="images" property="images"/>
@@ -33,6 +34,13 @@
 <select id="selectRestaurantNo" resultClass="int" parameterClass="review">
 	SELECT RESTAURANTNO FROM REVIEWBOARD WHERE REVIEWNO = #reviewNo#
 </select> 
+<select id="selectAllByID" parameterClass="String" resultClass="review">
+	SELECT  L.RESTAURANTNO , R.RESTAURANTNAME , L.ID , L.SUBJECT , l.SYMPATHY
+			FROM REVIEWBOARD L 
+			LEFT JOIN RESTAURANTBOARD R
+			on L.RESTAURANTNO = R.RESTAURANTNO
+			WHERE L.ID = #ID#
+</select>
 <!-- 평점계산 -->
 <select id="AvgStarPoint" parameterClass="int" resultClass="float">
 	SELECT ROUND(AVG(STARPOINT),2) FROM REVIEWBOARD WHERE RESTAURANTNO = #restaurantNo# 

@@ -12,6 +12,15 @@ public class ReviewVO {
 	private int sympathy;
 	private Date reg_date;
 	private float starPoint;
+	private String restaurantName;
+	
+	
+	public String getRestaurantName() {
+		return restaurantName;
+	}
+	public void setRestaurantName(String restaurantName) {
+		this.restaurantName = restaurantName;
+	}
 	public int getRestaurantNo() {
 		return restaurantNo;
 	}

@@ -7,7 +7,7 @@
 
 <html>
 <head>
-<title>좋아요 리스트</title>
+<title>리뷰 리스트</title>
 <!-- Bootstrap core CSS -->
 <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -30,47 +30,65 @@
 <link href="/css/agency.css" rel="stylesheet">
 </head>
 <body>
+<body>
 
 	<table class="table">
 		<thead class="thead-light">
 			<tr>
 				<th scope="col"></th>
 				<th scope="col">음식점 명</th>
-				<th scope="col">평점</th>
-				<th scope="col">삭제 여부</th>
+				<th scope="col">리뷰 제목</th>
+				<th scope="col">동감 수</th>
+				<th scope="col">수정,삭제</th>
 			</tr>
 		</thead>
 		<tbody>
-			<s:iterator value="likeList" status="stat">
+			<s:iterator value="reviewList" status="stat">
 				<tr>
 					<th scope="row"><s:property value="#stat.index + 1"/></th>
 					<td><s:property value="restaurantName" /></td>
-					<td><s:property value="starPoint" /></td>
-					<td><button type="button" name="confirm_id"
-							onclick="deleteLikes(<s:property value='restaurantNo'/>,<s:property value='ID'/>);">좋아요
-							삭제</button></td>
+					<td><s:property value="subject" /></td>
+					<td><s:property value="sympathy"/></td>
+					<td><button type="button"
+							onclick="ReviewListModifyForm(<s:property value='reviewNo'/>,<s:property value='restaurantNo'/>);">
+							수정</button>
+						<button type="button"
+							onclick="ReviewListdeleteAction(<s:property value='reviewNo'/>);">
+							삭제</button>	
+					</td>
 				</tr>
 			</s:iterator>
 
 		
 		</tbody>
 	</table>
-	<s:if test="likeList.size() <= 0">
+	<s:if test="reviewList.size() <= 0">
 				
 	     
 				등록된 게시물이 없습니다.
         
    	</s:if>
+
 </body>
 </html>
 <script>
-function deleteLikes(restaurantNo,ID){
+function ReviewdeleteAction(reviewNo){
 	
 	
-	var url='DeleteLikeAction.action?ID='+ID+'&'+'restaurantNo='+restaurantNo;
+	var url='ReviewListdeleteAction.action?reviewNo='+reviewNo;
 	
 	
-	open(url, "좋아요 삭제", "toolbar=no,location=no,status=no,menubar=no,"+
+	open(url, "리뷰 삭제", "toolbar=no,location=no,status=no,menubar=no,"+
 						 "scrollbars=no,resizable=no,width=400,height=200");
 }
+function ReviewModifyForm(reviewNo,restaurantNo){
+	var url='ReviewListModifyForm.action?reviewNo='+reviewNo+'&'+'restaurantNo='+restaurantNo;
+	
+	
+	open(url, "리뷰 수정", "toolbar=no,location=no,status=no,menubar=no,"+
+						 "scrollbars=no,resizable=no,width=400,height=200");
+	
+}
+
 </script>
+

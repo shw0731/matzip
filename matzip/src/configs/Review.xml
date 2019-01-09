@@ -17,5 +17,14 @@
 <action name="ReviewModifyForm" class="review.ReviewModifyAction" method="form">
 	<result>/common/RestaurantBoard/RestaurantViewModify.jsp</result>
 </action>
+<action name="ReviewListAction" class="review.ReviewListAction">
+	<result>/common/Review/reviewList.jsp</result>
+</action>
+<action name="ReviewListModifyAction" class="review.ReviewModifyAction">
+  <result>/common/RestaurantBoard/ModifySuccess.jsp</result>
+</action>
+<action name="ReviewListModifyForm" class="review.ReviewModifyAction" method="form">
+	<result>/common/RestaurantBoard/RestaurantViewModify.jsp</result>
+</action>
 </package>
 </struts>

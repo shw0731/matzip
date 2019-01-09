@@ -103,7 +103,7 @@ p.d {
 						<a href="#" width="100" border="0"
 							class="btn btn-outline-warning btn-lg btn-block text-uppercase js-scroll-trigger"
 							style="cursor: pointer"
-							onclick="window.open('modifyForm.action?currentPage=<s:property value="currentPage" />','음식점페이지 수정','scrollbars=yes, width=650, height=650,');">리뷰
+							onclick="window.open('ReviewListAction.action','리뷰 목록','scrollbars=yes, width=650, height=650,');">리뷰
 							목록
 					
 					</a>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -116,14 +116,7 @@ p.d {
 					
 					</a>&nbsp;&nbsp;&nbsp;&nbsp;<br>
 					</p>
-					<p class="b">
-						<a href="#" width="100" border="0"
-							class="btn btn-outline-warning btn-lg btn-block text-uppercase js-scroll-trigger"
-							style="cursor: pointer"
-							onclick="window.open('no_listAction.action?currentPage=<s:property value="currentPage" />','공지','scrollbars=yes, width=650, height=650,');">공지사항
 					
-					</a>&nbsp;&nbsp;&nbsp;&nbsp;<br>
-					</p>
 
 
 					<!-- 탈퇴 -->
