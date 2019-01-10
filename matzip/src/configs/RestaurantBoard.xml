@@ -76,7 +76,7 @@
         </action>
         <!-- 리뷰 작성 -->
         <action name="ReviewWriteAction" class="review.ReviewWriteAction">
-			<result name="success" type="chain">PageViewAction</result>
+			<result name="success">/common/RestaurantBoard/ReviewWriteSuccess.jsp</result>
 			<result name="error">/common/RestaurantBoard/ReviewWriteError.jsp</result>
 		</action>
 	</package>
