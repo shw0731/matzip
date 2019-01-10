@@ -30,26 +30,27 @@
         		<td height="1" colspan="5"></td>
       	      </tr>
 
-	      <s:iterator value="list" status="stat">
+	      <s:iterator value="List" status="stat">
 
-		<s:url id="viewURL" action="power.ListPowerAction" >
-			<s:param name="restaurantNo">
-				<s:property value="restaurantNo" />
-			</s:param>
-			<s:param name="currentPage">
-				<s:property value="currentPage" />
-			</s:param>
-		</s:url>
-			
+		
      	      <tr bgcolor="#FFFFFF"  align="center">
-        		<td><s:property value="restaurantNo" />
+        		<td><s:property value="restaurantName" />
         		</td>
-                  <td align = "center"><%-- <s:property value = "phoneNumber" /> --%></td>
+                  <td align = "center">
+                  <s:if test="state==0">
+                  	<button type="button"
+							onclick="UpdatePowerAction(<s:property value='restaurantNo'/>);">등록</button>
+                  </s:if>
+                  <s:if test="state==1">
+                  	<button type="button"
+							onclick="DeletePowerAction(<s:property value='restaurantNo'/>);">삭제</button>
+                  </s:if>
+                  </td>
       	      </tr>
 
 	      </s:iterator>
 			
-	      <s:if test="list.size() <= 0">
+	      <s:if test="List.size() <= 0">
 				
 	      <tr bgcolor="#FFFFFF"  align="center">
 		<td colspan="5">등록된 게시물이 없습니다.</td>
@@ -59,17 +60,29 @@
     	      </tr>
     		
 	      </s:if>
-			
-	      <tr align="center">
-    		<td colspan="5"><s:property value="pagingHtml"  escape="false" /></td>
-    	      </tr>
-    	
-    	      <tr align="right">
-    		<td colspan="5">
-		</td>
-    	       </tr>
-	</div>
+		
+	
 	</table>
+	</div>
    </body>
 </html>
-
+<script>
+function UpdatePowerAction(restaurantNo){
+	
+	
+	var url='UpdatePowerAction.action?restaurantNo='+restaurantNo;
+	
+	
+	open(url, "파워링크 등록", "toolbar=no,location=no,status=no,menubar=no,"+
+						 "scrollbars=no,resizable=no,width=600,height=200");
+}
+function DeletePowerAction(restaurantNo){
+	
+	
+	var url='DeletePowerAction.action?restaurantNo='+restaurantNo;
+	
+	
+	open(url, "파워링크 삭제", "toolbar=no,location=no,status=no,menubar=no,"+
+						 "scrollbars=no,resizable=no,width=600,height=200");
+}
+</script>

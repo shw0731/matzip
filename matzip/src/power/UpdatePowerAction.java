@@ -28,9 +28,9 @@ public class UpdatePowerAction extends ActionSupport implements SessionAware{
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
-	public String excute() {
+	public String execute() {
 		try {
-			System.out.print(11);
+		
 		sqlMapper.update("power.registerPower",restaurantNo);
 		sqlMapper.update("rest.registerPower",restaurantNo);
 		}catch(Exception e) {

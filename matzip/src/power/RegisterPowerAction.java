@@ -23,28 +23,40 @@ public class RegisterPowerAction extends ActionSupport implements SessionAware{
 	private Map session;
 	private PowerVO paramClass;
 	private int restaurantNo;
-	private BoardVO RparamClass;
+	private BoardVO restParamClass;
+	private int isUpdate;
 
 	public RegisterPowerAction() throws IOException {
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
-	public String excute() throws Exception{
+	public String execute(){
 		
-		paramClass = new PowerVO();
-		RparamClass = new BoardVO();
+		try {
 		
-		RparamClass.setRestaurantNo(getRestaurantNo());
-		paramClass.setRestaurantNo(getRestaurantNo());
-
-		sqlMapper.insert("power.insertPower",RparamClass);
-
+		restaurantNo =(int)sqlMapper.queryForObject("rest.selectID", session.get("ID"));
+		if(null!=sqlMapper.queryForObject("power.selectNo",restaurantNo)) {
+			isUpdate=0;
+			return SUCCESS;
+		}else {
+		sqlMapper.insert("power.insertPower",restaurantNo);
+		isUpdate=1;
+		}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		return SUCCESS;
 	}
 	
 	
 	
+	public int getIsUpdate() {
+		return isUpdate;
+	}
+	public void setIsUpdate(int isUpdate) {
+		this.isUpdate = isUpdate;
+	}
 	public static Reader getReader() {
 		return reader;
 	}
@@ -57,13 +69,14 @@ public class RegisterPowerAction extends ActionSupport implements SessionAware{
 	public static void setSqlMapper(SqlMapClient sqlMapper) {
 		RegisterPowerAction.sqlMapper = sqlMapper;
 	}
-	public BoardVO getRparamClass() {
-		return RparamClass;
-	}
-	public void setRparamClass(BoardVO rparamClass) {
-		RparamClass = rparamClass;
-	}
+	
 
+	public BoardVO getRestParamClass() {
+		return restParamClass;
+	}
+	public void setRestParamClass(BoardVO restParamClass) {
+		this.restParamClass = restParamClass;
+	}
 	public int getRestaurantNo() {
 		return restaurantNo;
 	}

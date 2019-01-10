@@ -8,19 +8,19 @@
 <!-- 리절트 맵 -->
 
 <resultMap id="powerres" class="power">
-  <result property="restaurantNo" column="RESTAURANTNO"/>
-  <result property="state" column="STATE"/>
+  <result property="restaurantNo" column="restaurantNo"/>
+  <result property="state" column="state"/>
 </resultMap>
 
 <resultMap id="powerListres" class="powerList">
-	<result property="restaurantNo" column="RESTAURANTNO"/>
- 	<result property="state" column="STATE"/>
- 	<result property="restaurantName" column="RESTAURANTNAME"/>
+	<result property="restaurantNo" column="restaurantNo"/>
+ 	<result property="state" column="state"/>
+ 	<result property="restaurantName" column="restaurantName"/>
 </resultMap>
 
-<select id="selectAll" resultClass="power">
+<select id="selectAll" resultClass="powerList">
 	SELECT L.RESTAURANTNO , L.STATE, R.RESTAURANTNAME 
-	FROM POWERLINKREG L LEFT RESTAURANTBOARD R
+	FROM POWERLINKREG L LEFT JOIN RESTAURANTBOARD R
 	ON L.RESTAURANTNO = R.RESTAURANTNO
 	
 </select>
@@ -29,8 +29,8 @@
   SELECT * FROM POWERLINKREG WHERE RESTAURANTNO = #restaurantNo#
 </select>
 
-<select id="selectNO" resultMap="powerres">
-SELECT * FROM POWERLINKREG ORDER BY restaurantNo DESC
+<select id="selectNo" resultClass = "power" parameterClass="int">
+SELECT * FROM POWERLINKREG WHERE RESTAURANTNO = #restaurantNo#
 </select>
 
 

@@ -162,9 +162,9 @@ html, body, #map {
 <table class="table table-condensed">
 
     <td width="200">
-    	<%-- <s:if test="restResultClass.isPower == 1">
+    	<s:if test="isPower == 1">
          <p class="nanum" style="color: #64AFCB;"><small>*PowerLink*</small></p>
-     </s:if> --%>
+    	</s:if>
     
     <s:a href="%{viewURL}">
     	<h2><s:property value="restaurantName" /></h2>

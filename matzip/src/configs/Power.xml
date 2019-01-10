@@ -8,14 +8,21 @@
       <package name = "power" extends = "struts-default">
       
 <action name="ListPowerAction" class="power.ListPowerAction">
-	<result>/common/PowerLink/powerLinkList.jsp</result>
+   <result>/common/PowerLink/powerLinkList.jsp</result>
+</action>
+
+<action name="RegisterPowerAction" class="power.RegisterPowerAction">
+  <result>/common/PowerLink/regPowerSuccess.jsp</result>
+</action>
+
+<action name="DeletePowerAction" class="power.DeletePowerAction">
+	<result>/common/PowerLink/deletePowerSuccess.jsp</result>
 </action>
 
 <action name="UpdatePowerAction" class="power.UpdatePowerAction">
-  <result name="success">/common/PowerLink/regPowerSuccess.jsp</result>
+	<result>/common/PowerLink/updatePowerSuccess.jsp</result>
 </action>
 
 
-
-	  </package>  
+     </package>  
 </struts>

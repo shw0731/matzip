@@ -2,7 +2,7 @@
  <script>
 
  function list(){
-	 var url="http://localhost:8080/ListPowerAction.action"
+	 var url="ListPowerAction.action"
 	 
 		 open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"+
 		 "scrollbars=no,resizable=no,width=600,height=400");

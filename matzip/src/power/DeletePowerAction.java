@@ -27,7 +27,7 @@ public class DeletePowerAction extends ActionSupport implements SessionAware{
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
-	public String excute() {
+	public String execute() {
 		try {
 		sqlMapper.delete("power.deletePower",restaurantNo);
 		sqlMapper.update("rest.deletePower",restaurantNo);

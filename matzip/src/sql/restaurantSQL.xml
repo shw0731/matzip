@@ -144,7 +144,7 @@
 	UPDATE RESTAURANTBOARD SET lIKES = #likes# WHERE RESTAURANTNO = #restaurantNo#
 </update>
 
-<update id="registPower" parameterClass="int">
+<update id="registerPower" parameterClass="int">
 	UPDATE RESTAURANTBOARD SET ISPOWER = 1 WHERE RESTAURANTNO = #restaurantNo#
 </update>
 

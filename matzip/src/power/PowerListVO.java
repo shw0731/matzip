@@ -3,7 +3,7 @@ package power;
 public class PowerListVO {
 	private int restaurantNo;
 	private int state; //0  신청  1 파워링크 등록
-	private int restaurantName;
+	private String restaurantName;
 	public int getRestaurantNo() {
 		return restaurantNo;
 	}
@@ -16,12 +16,13 @@ public class PowerListVO {
 	public void setState(int state) {
 		this.state = state;
 	}
-	public int getRestaurantName() {
+	public String getRestaurantName() {
 		return restaurantName;
 	}
-	public void setRestaurantName(int restaurantName) {
+	public void setRestaurantName(String restaurantName) {
 		this.restaurantName = restaurantName;
 	}
+	
 	
 	
 }
