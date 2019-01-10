@@ -42,7 +42,8 @@ function delConfirm(){
  --%>          	<p class="b"><a href="javascript:location.href='deleteAction.action?currentPage=<s:property value="currentPage" />';" target="_blank", width="100" border="0" class="btn btn-outline-warning btn-lg btn-block text-uppercase js-scroll-trigger" style="cursor:pointer">음식점 정보 삭제</a></p><br>
     		<p class="b"><a href="#" width="100" border="0" class="btn btn-outline-warning btn-lg btn-block text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="window.open('no_listAction.action?currentPage=<s:property value="currentPage" />','공지','scrollbars=yes, width=650, height=650,');">공지사항</a></p>&nbsp;&nbsp;&nbsp;&nbsp;
     		<p class="b"><a href="#" width="100" border="0" class="btn btn-outline-warning btn-lg btn-block text-uppercase js-scroll-trigger" style="cursor:pointer" onclick="javascript:location.href='QnAList.action?currentPage=<s:property value="currentPage" />','QNA','scrollbars=yes, width=650, height=650,';">QnA</a></p>&nbsp;&nbsp;&nbsp;&nbsp;
-    		<p class="b"><form name="UpdatePowerAction" action="UpdatePowerAction.action" method="post" enctype="multipart/form-data">
+    		<p class="b">
+    		<form name="UpdatePowerAction" action="UpdatePowerAction.action" method="post" enctype="multipart/form-data">
              <s:param name="restaurantNo">
 							<s:property value="restaurantNo" />
 						</s:param>

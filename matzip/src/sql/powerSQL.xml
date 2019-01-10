@@ -29,8 +29,8 @@
   SELECT * FROM POWERLINKREG WHERE RESTAURANTNO = #restaurantNo#
 </select>
 
-<select id="selectNO" resultClass = "power">
-SELECT * FROM POWERLINKREG ORDER BY RESTAURANTNO DESC
+<select id="selectNO" resultMap="powerres">
+SELECT * FROM POWERLINKREG ORDER BY restaurantNo DESC
 </select>
 
 

@@ -21,8 +21,9 @@ public class ListPowerAction extends ActionSupport implements SessionAware{
 	// SqlMapClient API를 사용하기 위한 sqlMapper 객체
 	public static SqlMapClient sqlMapper;
 	private Map session;
-	private List<PowerVO> List = new ArrayList<PowerVO>();
+	private List<PowerVO> list = new ArrayList<PowerVO>();
 	private int restaurantNo;
+	private PowerVO paramClass;
 	
 	private int currentPage = 1;	//현재 페이지
 	private int totalCount; 		// 총 게시물의 수
@@ -30,6 +31,7 @@ public class ListPowerAction extends ActionSupport implements SessionAware{
 	private int blockPage = 5; 	// 한 화면에 보여줄 페이지 수
 	private String pagingHtml; 	//페이징을 구현한 HTML
 	private PowerLinkPagingAction page; 	// 페이징 클래스
+	
 	
 	private PowerVO ResultClass;
 
@@ -39,10 +41,13 @@ public class ListPowerAction extends ActionSupport implements SessionAware{
 		reader.close();
 	}
 	public String excute() throws Exception{
-System.out.println(1);
 		
-		List = sqlMapper.queryForList("power.selectNo");
-		totalCount=List.size();//전체 글 개수
+		paramClass = new PowerVO();
+		paramClass.setRestaurantNo(getRestaurantNo());
+		
+		list = sqlMapper.queryForList("power.selectNo");
+		
+		totalCount=list.size();//전체 글 개수
 		page=new PowerLinkPagingAction(currentPage, totalCount, blockCount, blockPage);
 		pagingHtml=page.getPagingHtml().toString();//페이지HTML생성.
 		
@@ -51,8 +56,9 @@ System.out.println(1);
 		if(page.getEndCount()<totalCount)
 			lastCount=page.getEndCount()+1;
 		
-		List=List.subList(page.getStartCount(), lastCount);
-		ResultClass = (PowerVO) sqlMapper.queryForObject("power.selectOne", session.get("restaurantNo"));
+		list=list.subList(page.getStartCount(), lastCount);
+		
+		ResultClass = (PowerVO) sqlMapper.queryForObject("power.selectOne", paramClass);
 		
 		return SUCCESS;
 	}
@@ -63,10 +69,10 @@ System.out.println(1);
 		this.session = session;
 	}
 	public List<PowerVO> getList() {
-		return List;
+		return list;
 	}
 	public void setList(List<PowerVO> list) {
-		List = list;
+		this.list = list;
 	}
 	public int getRestaurantNo() {
 		return restaurantNo;
