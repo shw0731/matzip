@@ -57,7 +57,7 @@ html, body, #map {
 
 </style>
 <br><br><br><br><table><td>
-<div id="map" style="width:1500px;height:400px;" align="center"></div><br><br>
+<div id="map" style="width:1710px;height:400px;" align="center"></div><br><br>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=82957f9de3f5badbdcfb736f5cc155ac&libraries=services"></script>
 <script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
