@@ -6,9 +6,8 @@
 <script language="javascript">
 window.onload = function() {
 	alert("삭제가 완료되었습니다.");
-	opener.parent.location.reload();
-	window.close();
-	
+	/* window.close(); */
+	location.href = document.referrer;	
 }
 </script>
 </head>
