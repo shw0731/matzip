@@ -115,7 +115,7 @@
         <tr>
         
             <div class="form-group">
-<input type="text" class="form-control" placeholder="제목	" name="subject" maxlength="20" value="<s:property value="resultClass.subject"/>">
+<input type="text" class="form-control" placeholder="제목	" name="subject" maxlength="30" value="<s:property value="resultClass.subject"/>">
                 </div>
         </tr>
         

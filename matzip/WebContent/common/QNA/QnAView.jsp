@@ -189,15 +189,16 @@
 				</s:url>
 				<s:if test="memberResultClass.isType==2">
 				<input name = "list" type = "button" value = "답변" class = "btn btn-secondary right"
-                        onClick = "javascript:open_win_noresizable('QnAReplyForm.action?serviceno='+
+                        onClick = "javascript:location.href='QnAReplyForm.action?serviceno='+
                         '<s:property value = "resultClass.serviceno" />&currentPage='+
-                        '<s:property value = "currentPage" />','modify')">
+                        '<s:property value = "currentPage" />','modify'">
 				</s:if>
+				<s:if test="memberResultClass.isType!=2">
 								<input name = "list" type = "button" value = "수정" class = "btn btn-success right"
                         onClick = "javascript:open_win_noresizable('QnAModifyForm.action?serviceno='+
                         '<s:property value = "resultClass.serviceno" />&currentPage='+
                         '<s:property value = "currentPage" />','modify')">
-    
+    			</s:if>
                  <input name = "list" type = "button" value = "삭제" class="btn btn-warning right"
                         onClick = "javascript:location.href='QnADeleteAction.action?serviceno='+
                         '<s:property value = "resultClass.serviceno" />&currentPage='+
