@@ -32,7 +32,7 @@ p.d {
 
 <script>
   function Modify(){
-	 var url="http://localhost:8080/common/Member/myPageModify.jsp"
+	 var url="http://localhost:8080/MemberModifyAction.action"
 	 
 		 open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"+
 		 "scrollbars=no,resizable=no,width=500,height=250");

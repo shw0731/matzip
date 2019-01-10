@@ -15,7 +15,7 @@ function checkValue(){
 }
 
  function findPasswd(){
-	 var url="http://localhost:8080/common/Member/findMember.jsp"
+	 var url="http://localhost:8080/FindPwAction.action"
 	 
 		 open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"+
 		 "scrollbars=no,resizable=no,width=600,height=400");
