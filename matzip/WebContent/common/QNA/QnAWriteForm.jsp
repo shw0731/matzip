@@ -35,7 +35,7 @@
 
    <div class="jumbotron" style="padding-top: 20px;">
 
-<title>공지사항</title>
+<title>QnA</title>
 <!-- <link rel = "stylesheet" href = "/Struts2Board/board/css.css" type = "text/css">
  -->
  
@@ -76,7 +76,7 @@
 <body>
 		<tr>
 		
-			<h3 style="text-align: center;">Q&A 글쓰기</h3>
+			<h3 style="text-align: center;">QnA 글쓰기</h3>
 			
 		</tr>
 
@@ -115,7 +115,7 @@
         <tr>
         
             <div class="form-group">
-<input type="text" class="form-control" placeholder="제목	" name="subject" maxlength="20" value="<s:property value="resultClass.subject"/>">
+<input type="text" class="form-control" placeholder="제목	" name="subject" maxlength="30" value="<s:property value="resultClass.subject"/>">
                 </div>
         </tr>
         
@@ -125,7 +125,7 @@
       </tr>
 	<tr>
 	    <div class="form-group">
-		<td><textarea class="form-control" placeholder="공지 내용"  name="Context" maxlength="2048" style="height: 300px;"><s:property value="resultClass.context"/></textarea>
+		<td><textarea class="form-control" placeholder="내용"  name="Context" maxlength="2048" style="height: 300px;"><s:property value="resultClass.context"/></textarea>
 
           </td>
           </div>

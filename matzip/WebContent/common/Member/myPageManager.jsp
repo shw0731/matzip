@@ -38,6 +38,7 @@
          <div class="md-form mb-5">
 <!--         <p class="b"> <label for="">♥　BlackList</label><a href="javascript:list();">List</a> <a href="javascript:register();">regist</p></a>
  -->        <p class="b"> <label for="">♥<a href="http://localhost:8080/no_listAction.action">　Notice</label></p></a>
+			<p class="b"> <label for="">♥<a href="http://localhost:8080/QnAList.action">　QnA</label></p></a>
          </div>
          <!--마이리뷰 END  -->
         </div>

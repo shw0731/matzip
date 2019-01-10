@@ -27,7 +27,7 @@
     <div class="col-xs-2 col-md-2"></div>
     <div class="col-xs-8 col-md-8">
     <span style="color:#fed136">
-    <h2 class="text-center">QNA</h2>
+    <h2 class="text-center">QnA</h2>
     </span>
     <div class="table-responsive">
         <table class="table table-striped">

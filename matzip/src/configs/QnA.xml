@@ -40,16 +40,7 @@
 			<result>/common/QNA/QnAView.jsp</result>
 		</action>
 		
-		<!-- 비밀번호 체크 액션 -->
-	<action name="checkForm" class="qna.QnAViewAction" method="checkForm">
-		<result>/common/QNA/checkPassword.jsp</result>
-	</action>
-	
-	
-	<action name="checkAction" class="qna.QnAViewAction" method="checkAction">
-		<result name="error">/common/QNA/checkError.jsp</result>
-		<result>/common/QNA/checkSuccess.jsp</result>
-	</action>
+
 	
 	<!-- 게시판 수정 액션 -->
 	<action name="QnAModifyForm" class="qna.QnAViewAction">
@@ -427,5 +418,16 @@
 		</action>
 		
 	</package> -->
+	
+			<!-- 비밀번호 체크 액션 -->
+<!-- 	<action name="checkForm" class="qna.QnAViewAction" method="checkForm">
+		<result>/common/QNA/checkPassword.jsp</result>
+	</action>
+	
+	
+	<action name="checkAction" class="qna.QnAViewAction" method="checkAction">
+		<result name="error">/common/QNA/checkError.jsp</result>
+		<result>/common/QNA/checkSuccess.jsp</result>
+	</action> -->
 
 </struts>

@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-<title>공지사항</title>
+<title>QnA</title>
 <!-- Bootstrap core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -48,7 +48,7 @@
     <div class="col-xs-2"></div>
     <div class="col-xs-8 col-md-8">
     <span style="color:#fed136">
-        <h2 class="text-center">QNA</h2>
+        <h2 class="text-center">QnA</h2>
         <span style="color:#fed136">
         <div class="table-responsive">
         <table class="table" >
@@ -189,15 +189,16 @@
 				</s:url>
 				<s:if test="memberResultClass.isType==2">
 				<input name = "list" type = "button" value = "답변" class = "btn btn-secondary right"
-                        onClick = "javascript:open_win_noresizable('QnAReplyForm.action?serviceno='+
+                        onClick = "javascript:location.href='QnAReplyForm.action?serviceno='+
                         '<s:property value = "resultClass.serviceno" />&currentPage='+
-                        '<s:property value = "currentPage" />','modify')">
+                        '<s:property value = "currentPage" />','modify'">
 				</s:if>
+
 								<input name = "list" type = "button" value = "수정" class = "btn btn-success right"
                         onClick = "javascript:open_win_noresizable('QnAModifyForm.action?serviceno='+
                         '<s:property value = "resultClass.serviceno" />&currentPage='+
                         '<s:property value = "currentPage" />','modify')">
-    
+
                  <input name = "list" type = "button" value = "삭제" class="btn btn-warning right"
                         onClick = "javascript:location.href='QnADeleteAction.action?serviceno='+
                         '<s:property value = "resultClass.serviceno" />&currentPage='+
