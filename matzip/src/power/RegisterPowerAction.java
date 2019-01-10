@@ -2,7 +2,9 @@ package power;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import blackList.BlackListVO;
 import power.PowerVO;
+import restaurantPage.BoardVO;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -21,23 +23,47 @@ public class RegisterPowerAction extends ActionSupport implements SessionAware{
 	private Map session;
 	private PowerVO paramClass;
 	private int restaurantNo;
+	private BoardVO RparamClass;
 
 	public RegisterPowerAction() throws IOException {
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
-	public String excute() {
-		try {
-		sqlMapper.insert("power.insertPower",restaurantNo);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
+	public String excute() throws Exception{
+		
+		paramClass = new PowerVO();
+		RparamClass = new BoardVO();
+		
+		RparamClass.setRestaurantNo(getRestaurantNo());
+		paramClass.setRestaurantNo(getRestaurantNo());
+
+		sqlMapper.insert("power.insertPower",RparamClass);
+
 		return SUCCESS;
 	}
 	
 	
 	
+	public static Reader getReader() {
+		return reader;
+	}
+	public static void setReader(Reader reader) {
+		RegisterPowerAction.reader = reader;
+	}
+	public static SqlMapClient getSqlMapper() {
+		return sqlMapper;
+	}
+	public static void setSqlMapper(SqlMapClient sqlMapper) {
+		RegisterPowerAction.sqlMapper = sqlMapper;
+	}
+	public BoardVO getRparamClass() {
+		return RparamClass;
+	}
+	public void setRparamClass(BoardVO rparamClass) {
+		RparamClass = rparamClass;
+	}
+
 	public int getRestaurantNo() {
 		return restaurantNo;
 	}

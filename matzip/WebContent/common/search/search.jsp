@@ -80,6 +80,7 @@ html, body, #map {
 <!-- list 첫번째 예 -->
 
 <ul class="list-unstyled">
+
 <!-- 슬라이드 -->
 <s:iterator value="restList" status="stat">
 
@@ -127,8 +128,7 @@ html, body, #map {
     } 
 }); 
 </script>
-		
-	
+			
 	
 		
   <li class="media">
@@ -158,10 +158,16 @@ html, body, #map {
     <span class="sr-only">Next</span>
   </a>
 </div>
+
 <table class="table table-condensed">
+
     <td width="200">
+    	<%-- <s:if test="restResultClass.isPower == 1">
+         <p class="nanum" style="color: #64AFCB;"><small>*PowerLink*</small></p>
+     </s:if> --%>
+    
     <s:a href="%{viewURL}">
-    	<h2><s:property value="restaurantName" /></h2><br>
+    	<h2><s:property value="restaurantName" /></h2>
     	<s:property value="restResultClass.restaurantName" /></s:a>
     	<p class="nanum" style="font-size: 14pt">
     	&nbsp;&nbsp;★:<s:property value="starPoint"/>&nbsp;&nbsp;<br>

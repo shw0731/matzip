@@ -15,5 +15,6 @@
     <include file="/configs/QnA.xml" />
     <include file="/configs/BlackList.xml" />
     <include file="/configs/Review.xml" />
+    <include file="/configs/Power.xml" />
 	
 </struts>
