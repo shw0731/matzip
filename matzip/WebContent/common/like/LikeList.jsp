@@ -71,6 +71,6 @@ function deleteLikes(restaurantNo,ID){
 	
 	
 	open(url, "좋아요 삭제", "toolbar=no,location=no,status=no,menubar=no,"+
-						 "scrollbars=no,resizable=no,width=400,height=200");
+						 "scrollbars=no,resizable=no,width=600,height=200");
 }
 </script>
