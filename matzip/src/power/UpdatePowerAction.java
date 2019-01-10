@@ -30,6 +30,7 @@ public class UpdatePowerAction extends ActionSupport implements SessionAware{
 	}
 	public String excute() {
 		try {
+			System.out.print(11);
 		sqlMapper.update("power.registerPower",restaurantNo);
 		sqlMapper.update("rest.registerPower",restaurantNo);
 		}catch(Exception e) {

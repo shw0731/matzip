@@ -25,17 +25,24 @@
 	
 </select>
 
+<select id="selectOne" resultMap="powerres" parameterClass="int">
+  SELECT * FROM POWERLINKREG WHERE RESTAURANTNO = #restaurantNo#
+</select>
+
+<select id="selectNO" resultClass = "power">
+SELECT * FROM POWERLINKREG ORDER BY RESTAURANTNO DESC
+</select>
 
 
+<!-- 0은 신청 -->
 <insert id="insertPower" parameterClass="int">
 	INSERT INTO POWERLINKREG(STATE, RESTAURANTNO)
 				VALUES(0, #restaurantNo#)
 </insert>
-
+<!-- 1은 등록 -->
 <update id="registerPower" parameterClass="int">
 	UPDATE POWERLINKREG SET STATE = 1 WHERE RESTAURANTNO = #restaurantNo#
 </update>
-
 
 <delete id="deletePower" parameterClass="int">
 	DELETE FROM POWERLINKREG WHERE RESTAURANTNO = #restaurantNo#

@@ -5,8 +5,17 @@
 <struts>
       <!-- 용량제한 100MB로 설정 -->
       <constant name = "struts.multipart.maxSize" value = "104857600" />
- 
       <package name = "power" extends = "struts-default">
+      
+<action name="ListPowerAction" class="power.ListPowerAction">
+	<result>/common/PowerLink/powerLinkList.jsp</result>
+</action>
+
+<action name="UpdatePowerAction" class="power.UpdatePowerAction">
+  <result name="success">/common/PowerLink/regPowerSuccess.jsp</result>
+</action>
+
+
 
 	  </package>  
 </struts>

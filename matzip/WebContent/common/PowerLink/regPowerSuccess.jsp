@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title></title>
 </head>
 <body>
-
 <script language="javascript">
 	window.onload = function() {
-		alert("삭제가 완료되었습니다.");
-		document.location.href="no_listAction.action";
+		alert("신청되었습니다.");
+		history.go(-1);
 	}
 </script>
 </body>
