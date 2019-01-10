@@ -115,6 +115,15 @@ p.d {
 							onclick="window.open('no_listAction.action?currentPage=<s:property value="currentPage" />','공지','scrollbars=yes, width=650, height=650,');">공지사항
 					
 					</a>&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+					</p>
+					<p class="b">
+						<a href="#" width="100" border="0"
+							class="btn btn-outline-warning btn-lg btn-block text-uppercase js-scroll-trigger"
+							style="cursor: pointer"
+							onclick="javascript:location.href='QnAList.action?currentPage=<s:property value="currentPage" />','QnA','scrollbars=yes, width=650, height=650,';">QnA
+					
+					</a>&nbsp;&nbsp;&nbsp;&nbsp;<br>
 					</p>
 					
 
