@@ -79,6 +79,9 @@
             <td colspan = "5"><s:property value = "pagingHtml"  escape = "false" /></td>
       </tr>
       </table>
+            <input type = "button" value = "메인" class="btn btn-warning pull-left"
+                        onClick = "javascript:location.href=
+                        'MainAction.action';">
 
                   <input type = "button" value = "글쓰기" class="btn btn-primary pull-right"
                         onClick="javascript:location.href='QnAWriteForm.action?currentPage=<s:property value="currentPage" />'"/>
