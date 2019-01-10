@@ -34,7 +34,7 @@ public class MainAction extends ActionSupport implements SessionAware {
 		reader.close();
 	}
 	public String execute() throws Exception{
-		restList = sqlMapper.queryForList("rest.selectAll"); 
+		restList = sqlMapper.queryForList("rest.selectAllStar"); 
 		restLikeList = sqlMapper.queryForList("rest.selectAllLike");
 		if(session.get("ID")!=null)
 		resultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", session.get("ID"));	
