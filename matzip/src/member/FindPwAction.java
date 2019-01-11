@@ -46,6 +46,7 @@ public class FindPwAction extends ActionSupport{
 			return ERROR;
 		}
 		
+		
 }
 	public String getName() {
 		return name;

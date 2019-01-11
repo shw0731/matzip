@@ -36,6 +36,10 @@
 <result>/common/Member/CheckPhone.jsp</result>
 </action>
 <!-- 비밀번호 찾기 -->
+<action name="FindPwFormAction" class="member.FindPwAction">
+	<result>/common/Member/findMember.jsp</result>
+</action>
+
 <action name="FindPwAction" class="member.FindPwAction" method="find">
   <result name="success">/common/Member/findMember.jsp</result>
   <result name="error">/common/Member/findLoginError.jsp</result>
