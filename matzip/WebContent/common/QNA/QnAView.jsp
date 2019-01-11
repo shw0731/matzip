@@ -87,89 +87,7 @@
 				<s:property value="resultClass.reg_date" />
 			</td>
 		</tr>
-		<%-- <tr>
-			<td width="100">첨부파일</td>
-			<td width="500">
-				&nbsp;&nbsp;
-				<s:url id="download" action="fileDownloadAction">
-					<s:param name="no">
-						<s:property value="no" />
-					</s:param>
-				</s:url>
-				
-				<s:a href="%{download}">
-					<s:property value="resultClass.file_orgname" />
-				</s:a>
-			</td>
-		</tr> --%>
-	 <%-- 	<tr bgcolor="#777777">
-			<td colspan="2" height="1"></td>
-		</tr>
-		<tr>
-			<td colspan="2" height="10"></td>
-		</tr>
-		<tr>
-			<td colspan="2" height="10">
-				<form action="writeCommentAction.action" method="post">
-					<table>
-						<tr>
-							<td width="170">
-								이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름 <s:textfield name="memberID" theme="simple" value="" cssStyle="width:100px" maxlength="20" /><br>
-								비밀번호 <s:textfield name="password" theme="simple" value="" cssStyle="width:100px" maxlength="20" />
-							</td>
-							<s:hidden name="restaurantNo" value="%{resultClass.serviceNo}" />
-							<s:hidden name="serviceNo" value="%{resultClass.serviceNo}" />
-					<!-- !!!!!!!!!!!!!!!!!!!!!!!!수정!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-							
-							<s:hidden name="currentPage" value="%{currentPage}" />
-					<!-- !!!!!!!!!!!!!!!!!!!!!!!!수정!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-							<td align="left">
-								<s:textarea name="context" theme="simple" value="" cols="60" rows="3" />
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2" align="right">
-								<input name="submit" type="submit" value="작성" class="button">
-							</td>
-						</tr>
-					</table>
-				</form>
-			</td>
-		</tr>
-	
-		<tr bgcolor="#777777">
-			<td colspan="2" height="1"></td>
-		</tr>
-	 
-	
-		<s:iterator value="reviewList" status="stat">
-		<tr>
-			<td height="10" width="130" align="center">
-				<s:property value="memberID" /><br>
-				<s:property value="reg_date" /><br><br>
-			</td>
-			<td>
-			<!-- @@@@@@@@@@@@코멘트 삭제@@@@@@@@@@@@ -->
-				<s:property value="context" /> 
-				<a href="javascript:open_win_noresizable('checkForm2.action?serviceno=<s:property value="serviceno" />&originno=<s:property value="originno" />&currentPage=<s:property value="currentPage" />','cdelete')">x</a>
-			</td>
-		</tr>
-		<tr bgcolor="#777777">
-			<td colspan="2" height="1"></td>
-		</tr>
-		</s:iterator>
-		<tr>
-			<td colspan="2" height="10">
-				<s:if test="commentlist.size() <= 0">
-				댓글없음
-			</td>
-		</tr>
-				</s:if>	
-				
-			
-		<tr bgcolor="#777777">
-			<td colspan="2" height="1"></td>
-		</tr> --%>
+		
 		<tr>
 			<td colspan="2" height="10"></td>
 		</tr> 
@@ -187,13 +105,13 @@
 						<s:property value="serviceno" />
 					</s:param>
 				</s:url>
-				<s:if test="memberResultClass.isType==2">
+				<s:if test="session.isType==2">
 				<input name = "list" type = "button" value = "답변" class = "btn btn-secondary right"
                         onClick = "javascript:location.href='QnAReplyForm.action?serviceno='+
                         '<s:property value = "resultClass.serviceno" />&currentPage='+
                         '<s:property value = "currentPage" />','modify'">
 				</s:if>
-
+				<s:if test="session.ID==resultClass.id">
 								<input name = "list" type = "button" value = "수정" class = "btn btn-success right"
                         onClick = "javascript:open_win_noresizable('QnAModifyForm.action?serviceno='+
                         '<s:property value = "resultClass.serviceno" />&currentPage='+
@@ -203,7 +121,7 @@
                         onClick = "javascript:location.href='QnADeleteAction.action?serviceno='+
                         '<s:property value = "resultClass.serviceno" />&currentPage='+
                         '<s:property value = "currentPage" />','delete'">
-   
+   				</s:if>
                   <input name = "list" type = "button" value = "목록" class="btn btn-info right"
                         onClick = "javascript:location.href='QnAList.action?currentPage='+
                         '<s:property value = "currentPage" />'">
